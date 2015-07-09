@@ -1,0 +1,13 @@
+.DS_Store
+
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+.idea/*
+msh.iml
+user_guide/*
+user_guide/database/call_function.html
