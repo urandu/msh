@@ -7,3 +7,4 @@ GRANT UPDATE ON msh_db.* TO 'msh'@'localhost';
 GRANT SELECT ON msh_db.* TO 'msh'@'localhost';
 -- Reload permissions 
 FLUSH PRIVILEGES;
+
