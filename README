@@ -1,6 +1,6 @@
 Installation instructions
 
 1.clone the repository from git into a folder named msh at the root of your web-server i.e www folder in WAMP
-2.run schema.sql on your database
-3.run create_user.sql on your database
+2.import schema.sql on your database
+3.import create_user.sql on your database
 4.access the project from your browser at http://localhost/msh
