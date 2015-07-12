@@ -1,5 +1,5 @@
 <?php
-class Forecast_model extends CI_Model 
+class Report_model extends CI_Model 
 {
 
 	
