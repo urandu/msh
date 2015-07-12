@@ -3,7 +3,7 @@
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Dashboard</h2>
+            <h2>Manage funding agencies</h2>
             <!--<ol class="breadcrumb">
                 <li>
                     <a href="index.html">This is</a>

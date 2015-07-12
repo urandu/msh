@@ -14,7 +14,7 @@
         <p>Page rendered in <strong>{elapsed_time}</strong> seconds</p>
     </div>
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2015
+        <strong>Copyright</strong> MSH &copy; <?php echo date("Y");?>
     </div>
 </div>
 
