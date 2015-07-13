@@ -64,6 +64,7 @@ require_once("top_includes.php");
                     <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reports</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="<?php echo(base_url()); ?>reports/central_mos">Central level MOS</a></li>
+                        <li><a href="<?php echo(base_url()); ?>reports/forecast_mos">Forecast data MOS</a></li>
                         <li><a href="<?php echo(base_url()); ?>reports/facility_mos">Facility level MOS</a></li>
                         <li><a href="<?php echo(base_url()); ?>reports/national_mos">National level MOS</a></li>
                         <li><a href="<?php echo(base_url()); ?>reports/county_mos">County level MOS</a></li>
