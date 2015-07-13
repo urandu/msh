@@ -1,6 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class County extends CI_Controller {
+class County extends MY_Controller
+{
+    private $data;
+    protected $before_filter = array(
+        'action' => '_check_if_logged_in',
+        'except' => array()
+    );
 
 	/**
 	 * Index Page for this controller.
