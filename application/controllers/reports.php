@@ -26,6 +26,10 @@ class Reports extends CI_Controller {
     {
         $this->load->view('central_mos');
     }
+    public function forecast_mos()
+    {
+        $this->load->view('forecast_mos');
+    }
     public function facility_mos()
     {
         $this->load->view('facility_mos');

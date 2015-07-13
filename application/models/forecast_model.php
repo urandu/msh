@@ -8,10 +8,11 @@ class Forecast_model extends CI_Model
        parent::__construct();
         
     }
-    function show_commodity_forecast_data(){
-	$query = $this->db->get('commodity_forecast_data');
-	$query_result = $query->result();
-	return $query_result;
+    function show_commodity_forecast_data($period){
+	$query = "SELECT commodity_forecast_data_id,forecast_start_date,forecast_period,commodity_id as cid,(SELECT commodity_name FROM malaria_commodities WHERE commodity_id=cid) as commodity_name,forecast_monthly_consumption FROM commodity_forecast_data WHERE forecast_start_date ='{$period}' order by cid";
+	$result=$this->db->query($query);
+
+    return $result->result();
 	}
 
 	function show_commodity_forecast_data_id($datasp){
@@ -34,7 +35,18 @@ class Forecast_model extends CI_Model
     $this->db->update('commodity_forecast_data', $data);
     }
 
+    function get_forecast_period()
+    {
 
+
+        $query="SELECT DISTINCT forecast_start_date FROM commodity_forecast_data ORDER by forecast_start_date DESC";
+
+        $result=$this->db->query($query);
+
+        return $result->result();
+
+    }
+    
     function get_commodity_forecast_data(){	
 	$this->db->select('*');
 	$this->db->from('commodity_forecast_data');				
