@@ -9,13 +9,13 @@
 	return $result;
 	}
 	// Function To Fetch All Commodies Record
-	function show_commodities(){
+	function show_malaria_commodities(){
 	$query = $this->db->get('malaria_commodities');
 	$query_result = $query->result();
 	return $query_result;
 	}
 	// Function To Fetch Selected Student Record
-	function show_commodities_id($data){
+	function show_malaria_commodities_id($data){
 	$this->db->select('*');
 	$this->db->from('malaria_commodities');
 	$this->db->where('commodity_id', $data);
@@ -28,19 +28,16 @@
 	$this->db->where('commodity_id', $id);
 	$this->db->update('malaria_commodities', $data);
 	}
-
 	/*this function adds a commodity to the database*/
 	function addcommodity($commodity=NULL){		
 	$this->db->insert('malaria_commodities', $commodity);
 	return $this->db->insert_id();						
 	}
-	/*this function gets all commodities in the database*/
+	/*this function gets all malaria_commodities in the database*/
 	function getCommodity(){	
 		$this->db->select('*');
 		$this->db->from('malaria_commodities');				
 		$query = $this->db->get();		
 		return $query->result();			
 	}
-
-
 ?>
