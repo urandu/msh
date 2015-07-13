@@ -200,7 +200,7 @@ require_once("top_includes.php");
 
 
                     <li>
-                        <a href="login.html">
+                        <a href="<?php base_url() ?>login/logout">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>
