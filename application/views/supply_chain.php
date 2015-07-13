@@ -23,11 +23,11 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
 
-                <div class="col-lg-8">
+                <div class="col-lg-12">
 
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Supply Chain </h5>
+                        <h5>All supply Chain agencies </h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -42,6 +42,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Contact person</th>
+                                <th>Phone number</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
 
@@ -55,6 +57,8 @@
     <tr>
         <td><?php echo $count; ?></td>
         <td><?php echo $agency->supply_chain_agency; ?></td>
+        <td><?php echo $agency->contact_person; ?></td>
+        <td><?php echo $agency->contact_phone; ?></td>
         <td data-toggle="modal" data-target="#myModal_<?php echo $agency->supply_chain_agency_id?>" ><i class="fa fa-wrench"></i></td>
         <td><a href="<?php echo(base_url()."supply_chain/delete_supply_chain_agency/".$agency->supply_chain_agency_id); ?>"><i class="fa fa-trash"></i></a></td>
 
@@ -63,9 +67,9 @@
                 <div class="modal-content animated bounceInRight">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <i class="fa fa-laptop modal-icon"></i>
-                        <h4 class="modal-title">Edit Supply Chain Agency</h4>
-                        <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+                        <!--<i class="fa fa-laptop modal-icon"></i>-->
+                        <h4 class="modal-title">Edit Supply Chain Agency - <strong><?php echo $agency->supply_chain_agency; ?></strong></h4>
+                        <!--<small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>-->
                     </div>
                     <div class="modal-body">
 

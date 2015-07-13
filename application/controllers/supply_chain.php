@@ -43,7 +43,7 @@ class Supply_chain extends MY_Controller
 	public function show_agency_id() {
 		$id = $this->uri->segment(3);//get id from the url
 		$data['agencies'] = $this->agency_model->show_supply_chain_agencies();
-		$data['single_agency'] = $this->agency_model->show_supply_chain_agency_id($id);
+		$data['single_agency'] = $this->agency_model->show_supply_chain_agencies_id($id);
 
 		$this->load->view('supply_chain',$data);
 	}
@@ -57,7 +57,7 @@ class Supply_chain extends MY_Controller
 			'COMMENT' => $this->input->post('supply_agency_description'),
 
 		);
-		$updaterecord=$this->agency_model->update_supply_chain_agency_id1($id,$data);
+		$updaterecord=$this->agency_model->update_supply_chain_agencies_id1($id,$data);
 
 		$data['formupdate'] =  "";
 		if($updaterecord){
@@ -67,12 +67,13 @@ class Supply_chain extends MY_Controller
 
 		$id = $this->uri->segment(3);//get id from the url
 		$data['agencies'] = $this->agency_model->show_supply_chain_agencies();
-		$data['single_agency'] = $this->agency_model->show_supply_chain_agency_id($id);
+		$data['single_agency'] = $this->agency_model->show_supply_chain_agencies_id($id);
 
 
-		$this->load->view('supply_chain',$data);
-
+		//$this->load->view('supply_chain',$data);
+//bildad changed this to a redirect on 14 of july 2015 at 2.05 am
 		// $this->show_agency_id();
+        redirect(base_url()."supply_chain");
 	}
 
 	function delete_supply_chain_agency($id)   {
