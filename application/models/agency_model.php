@@ -9,7 +9,7 @@ class Agency extends CI_Model{
 	return $query_result;
 	}
 	// Function To Fetch Selected Supply Chain Agency Record
-	function show_supply_chain_agency_id($data){
+	function show_supply_chain_agencies_id($data){
 	$this->db->select('*');
 	$this->db->from('supply_chain_agencies');
 	$this->db->where('supply_chain_agency_id', $data);
@@ -18,7 +18,7 @@ class Agency extends CI_Model{
 	return $result;
 	}
 	// Update Query For Selected Student
-	function update_supply_chain_agency_id1($id,$data){
+	function update_supply_chain_agencies_id1($id,$data){
 	    $this->db->where('supply_chain_agency_id', $id);
 	    $this->db->update('supply_chain_agencies', $data);
 	}
@@ -26,9 +26,9 @@ class Agency extends CI_Model{
 	function get_agency_id_with_the_given_name($datas){
 	$this->db->select('supply_chain_agency_id');
 	$this->db->from('supply_chain_agencies');
-	$this->db->where('supply_chain_agency', $datas);
+	$this->db->where('supply_chain_agency_id', $datas);
 	$query = $this->db->get();
-	$result = $query->row()->supply_chain_agency_id;
+	$result = $query->row()->supply_chain_agencies_id;
 	return $result;
 	}
 	/*--------------------------------------------------------------------------------------------------*/
