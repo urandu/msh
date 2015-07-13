@@ -102,21 +102,29 @@ class Register extends CI_Controller {
         if($this->user_model->new_user($names,$phone_number,$national_id,$password,$email))
         {
             $data['flash_message']=TRUE;
-            $this->load->view('register', $data);
+            //$this->load->view('register', $data);
+            redirect(base_url()."users");
         }
     }
     public function edit_user()
     {
-        $phone=$this->input->post('phone');
-        $user_id=$this->session->userdata('user_id');
+
+        $names=$this->input->post('names');
+        $phone_number=$this->input->post('phone_number');
+        $national_id=$this->input->post('national_id');
         $password=$this->input->post('password');
+        $user_id=$this->input->post('user_id');
+        if(empty($password))
+        {
+            $password=1111;
+        }
         $email=$this->input->post('email');
-        $user_name=$this->input->post('user_name');
         $this->load->model('user_model');
-        if($this->user_model->edit_user($phone,$password,$email,$user_name,$user_id))
+        if($this->user_model->edit_user($names,$phone_number,$national_id,$password,$email,$user_id))
         {
             $data['flash_message']=TRUE;
-            $this->load->view('new_user', $data);
+            //$this->load->view('register', $data);
+            redirect(base_url()."users");
         }
     }
 

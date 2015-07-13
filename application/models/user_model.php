@@ -30,12 +30,11 @@ class User_model extends CI_Model
 
     function new_user($names,$phone_number,$national_id,$password,$email)
     {
-        echo($email);
-        echo("rrrrrrrrrrrrrrrrr");
+
         $this->db->where('email', $email);
         $query = $this->db->get('user_table');
 
-        print_r($query);
+
         if ($query->num_rows > 0) {
             echo '<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>';
             echo "Email address already registered";
@@ -54,42 +53,49 @@ class User_model extends CI_Model
         }
     }
 
-    function edit_user($phone, $password, $email, $user_name,$user_id)
+    function edit_user($names,$phone_number,$national_id,$password,$email,$user_id)
     {
-        $this->db->where('user_name', $user_name);
-        $query = $this->db->get('users');
 
         if ($password==1111) {
 
 
             $new_user_insert_data = array(
-                'phone' => $phone,
+                'phone_number' => $phone_number,
                 'email' => $email,
-                'user_name' => $user_name
+                'names' => $names,
+                'national_id'=>$national_id
             );
 
 
         } else {
 
             $new_user_insert_data = array(
-                'phone' => $phone,
-                'password' => md5($password),
+                'phone_number' => $phone_number,
                 'email' => $email,
-                'user_name' => $user_name
+                'names' => $names,
+                'national_id'=>$national_id,
+                'password'=>$password
             );
-            $this->db->where('user_id', $user_id);
-            $insert = $this->db->update('users', $$new_user_insert_data);
 
-            return $insert;
         }
+        $this->db->where('user_id', $user_id);
+        $insert = $this->db->update('user_table', $new_user_insert_data);
+
+        return $insert;
     }
 
 
     function get_user($user_id)
     {
         $this->db->where('user_id',$user_id);
-        $user=$this->db->get('users');
+        $user=$this->db->get('user_table');
         return $user->result();
+    }
+
+    function get_all_users()
+    {
+        $users=$this->db->get('user_table');
+        return $users->result();
     }
 
 }

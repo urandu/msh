@@ -72,6 +72,10 @@ require_once("top_includes.php");
                         <li><a href="<?php echo(base_url()); ?>reports/agencies">Agencies</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="<?php echo(base_url()); ?>users"><i class="fa fa-user"></i> <span class="nav-label">Manage users</span> </a>
+
+                </li>
 
 
 
