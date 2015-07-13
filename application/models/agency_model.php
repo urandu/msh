@@ -1,5 +1,5 @@
 <?php 
-class Agency extends CI_Model{
+class Agency_model extends CI_Model{
 	/*-----------------------------------Supply chain agency--------------------------------------------*/
 
 	// Function To Fetch All Supply chain Agency Record
