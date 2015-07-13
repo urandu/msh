@@ -4,14 +4,14 @@ class Agency extends CI_Model{
 
 	// Function To Fetch All Supply chain Agency Record
 	function show_supply_chain_agencies(){
-	$query = $this->db->get('supply_chain_agency');
+	$query = $this->db->get('supply_chain_agencies');
 	$query_result = $query->result();
 	return $query_result;
 	}
 	// Function To Fetch Selected Supply Chain Agency Record
 	function show_supply_chain_agency_id($data){
 	$this->db->select('*');
-	$this->db->from('supply_chain_agency');
+	$this->db->from('supply_chain_agencies');
 	$this->db->where('supply_chain_agency_id', $data);
 	$query = $this->db->get();
 	$result = $query->result();
@@ -20,12 +20,12 @@ class Agency extends CI_Model{
 	// Update Query For Selected Student
 	function update_supply_chain_agency_id1($id,$data){
 	    $this->db->where('supply_chain_agency_id', $id);
-	    $this->db->update('supply_chain_agency', $data);
+	    $this->db->update('supply_chain_agencies', $data);
 	}
 	// GET THE SUPPLY AGENCY WITH NAME SAME AS THE NAME IN COMMODITY
 	function get_agency_id_with_the_given_name($datas){
 	$this->db->select('supply_chain_agency_id');
-	$this->db->from('supply_chain_agency');
+	$this->db->from('supply_chain_agencies');
 	$this->db->where('supply_chain_agency', $datas);
 	$query = $this->db->get();
 	$result = $query->row()->supply_chain_agency_id;
