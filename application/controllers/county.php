@@ -17,10 +17,50 @@ class County extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+    function __construct()
+    {
+        parent::__construct();
+
+        $this->load->model('county_model');
+
+    }
+
+
 	public function index()
 	{
-		$this->load->view('county');
+		$this->show_county_id();
 	}
+
+
+	public function show_county_id() {
+		$set="";
+		$id = $this->uri->segment(3);//get id from the url
+		$data['counties'] = $this->county_model->show_counties();
+		if ($this->county_model->show_county_id($id)) {$set="set";}
+
+		$data['single_county'] = $this->county_model->show_county_id($id);
+		$data['zones'] = $this->county_model->get_zone();//get zones
+
+		$this->load->view('county',$data);
+	}
+
+
+	function update_county_id1() {
+		$id= $this->input->post('county_id');
+		$data = array(
+			'zone' => $this->input->post('zone_name'),
+			'comment' => $this->input->post('county_comment'),
+		);
+		$Updatecounty=$this->county_model->update_counties_id1($id,$data);
+		$data['status'] =  "";
+		if ($Updatecounty) {
+			$data['status'] =  "Agency updated Successfully!..";
+		}
+		$this->show_county_id();
+	}
+	
+	
+	
 }
 
 /* End of file welcome.php */

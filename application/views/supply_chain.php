@@ -65,7 +65,6 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <i class="fa fa-laptop modal-icon"></i>
                         <h4 class="modal-title">Edit Supply Chain Agency</h4>
-                        <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
                     </div>
                     <div class="modal-body">
 
