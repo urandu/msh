@@ -3,12 +3,12 @@
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Manage forecasts</h2>
+            <h2>Manage Forecast Commodity Data</h2>
             
         </div>
         <div class="col-sm-8">
              <div class="title-action">
-                <div data-toggle="modal" data-target="#save_forecast_data" class="btn btn-primary">Add Forecast Commodity Data</div>
+                <div data-toggle="modal" data-target="#save_forecast_commodity_data" class="btn btn-primary">Add Forecast Commodity Data</div>
             </div>
         </div>
     </div>
@@ -54,9 +54,8 @@ if (isset($period)) {
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" >
-                                    <i class="fa fa-wrench"></i>
-                                </a>
+                                
+                            
                             </div>
                         </div>
                         <div class="ibox-content">
@@ -78,6 +77,9 @@ if (isset($period)) {
             </th>
             <th>
                 Forecast Monthly Consumption
+            </th>
+            <th>
+            Edit
             </th>
         </tr>
                                 </thead>
@@ -127,6 +129,73 @@ if (isset($period)) {
                 ?>
             </td>
 
+          <!--  <td>
+
+     <td data-toggle="modal" data-target="#myModal_<?php echo $period->commodity_forecast_data_id?>" ><i class="fa fa-wrench"></i></td>
+
+        <div class="modal inmodal" id="myModal_<?php echo $period->supply_chain_agency_id ?>" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <i class="fa fa-laptop modal-icon"></i>
+                        <h4 class="modal-title">Edit Forecast Commodities Data</h4>
+                        <small class="font-bold">Edit forecast commodities data here.</small>
+                    </div>
+                    <div class="modal-body">
+
+
+                            <form action="<?= base_url();?>forecast/update_commodity_forecast_data_id" method="post" enctype="multipart/form-data" autocomplete="on">
+
+                                <div class="form-group">
+                                <input type="hidden" name="commodity_forecast_data_id" class="form-control" value="<?php echo $forecast->commodity_forecast_data_id; ?>">
+                                </div>
+
+                               <div class= "form-group">
+                <label>Forecast Start Date:</label>
+              <input type="text" class="form-control" name="forecast_start_date" class="form-control" value="<?php echo $agency->forecast_start_date; ?>">
+                </div>
+
+                                div class "form-group">
+                <label>Forecast Period: </label>
+        
+                  <input type="text" class="form-control" name="forecast_period" class="form-control" value="<?php echo $agency->forecast_period; ?>">
+                                       
+              </div> 
+               
+
+               <div class="form-group">
+               <label> Commodity Name: </label>
+                <select name="commodity_name" class="form-control">
+                  <?php foreach($COMMODITY as $COMM):?>
+                  <option name="commodity_name"> <?php echo $COMM->commodity_name;?> </option>
+                  <?php endforeach; ?> 
+                 </select>
+              
+              </div>
+
+               <div class "form-group">
+                <label>Forecast Monthly Consumption: </label>
+                  <input type="text" class="form-control" name="forecast_monthly_consumption" class="form-control" value="<?php echo $forecast->forecast_monthly_consumption; ?>">
+                                      
+              </div> 
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+            </td>-->
+
 
         <?php
         echo("</tr>");
@@ -161,5 +230,68 @@ if (isset($period)) {
 
 
 </div>
+
+
+
+ <div class="modal inmodal" id="save_forecast_commodity_data" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <i class="fa fa-laptop modal-icon"></i>
+                        <h4 class="modal-title">Add Forecast Commodities Data</h4>
+                        <small class="font-bold">Add forecast commodities data here.</small>
+                    </div>
+                    <div class="modal-body">
+
+
+                 <form action="<?= base_url();?>forecast/save_forecast_commodity_data" method="post" enctype="multipart/form-data" autocomplete="on">
+
+                <div class= "form-group">
+                <label>Forecast Start Date:</label>
+              <input type="text" class="form-control" name="forecast_start_date" placeholder="Forecast start date">
+                </div>
+
+               <div class "form-group">
+                <label>Forecast Period: </label>
+        
+                  <input type="text" class="form-control" name="forecast_period" placeholder="Forecast period">
+                                       
+              </div> 
+               
+
+               <div class="form-group">
+               <label> Commodity Name: </label>
+                <select name="commodity_name" class="form-control">
+                  <?php foreach($COMMODITY as $COMM):?>
+                  <option value="commodity_id"> <?php echo $COMM->commodity_name;?> </option>
+                  <?php endforeach; ?> 
+                 </select>
+              
+              </div>
+
+               <div class "form-group">
+                <label>Forecast Monthly Consumption: </label>
+                  <input type="text" class="form-control" name="forecast_monthly_consumption" placeholder="Forecast Mothly Consupmtion">
+                                      
+              </div> 
+
+              <?php if(isset($message)){?>
+    <div class="col-lg-12"><div class="alert alert-success"><div class="col-lg-3"></div><?=$message?></div></div>
+<?php }?>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
 
 <?php require_once("includes/footer.php"); ?>

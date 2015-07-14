@@ -25,8 +25,8 @@ class Forecast_model extends CI_Model
 	}
 
 
-    function add_commodity_forecast_data($sp=NULL){	
-    $this->db->insert('commodity_forecast_data', $sp);
+    function add_commodity_forecast_data($fore=NULL){	
+    $this->db->insert('commodity_forecast_data', $fore);
     return $this->db->insert_id();						
 	}
 
