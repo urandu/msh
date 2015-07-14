@@ -75,7 +75,7 @@
             </div>
 
     </div>
-
+</div>
 
         <div class="modal inmodal" id="add_funding_agency" tabindex="-1" role="dialog" aria-hidden="true">
                                <div class="modal-dialog">

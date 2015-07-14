@@ -5,6 +5,7 @@
  * Date: 7/9/15
  * Time: 4:49 PM
  */
+class Stocks_model extends CI_Model{
 
 function update_central_data($cdid,$cdData){
     $this->db->where('central_level_stock_id', $cdid);
@@ -39,4 +40,5 @@ function show_central_stock_id($psdata){
     $query = $this->db->get();
     $result = $query->result();
     return $result;
+}
 }

@@ -35,9 +35,9 @@ class Funding_agency extends CI_Controller {
 	public function show_funding_agency() 
 	{
 	
-	$funding_agency_id = $this->uri->segment(3);//get id from the url
+	//$funding_agency_id = $this->uri->segment(3);//get id from the url
 	$data['funding_agency'] = $this->agency_model->show_funding_orgs();
-	$data['single_funding_agency'] = $this->agency_model->show_funding_org_id($funding_agency_id);
+	//$data['single_funding_agency'] = $this->agency_model->show_funding_org_id($funding_agency_id);
 	$this->load->view('funding_agency',$data);	
 			
 }
