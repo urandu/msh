@@ -22,7 +22,7 @@
 
     <div class="wrapper wrapper-content">
         <div class="middle-box text-center animated fadeInRightBig">
-            <h3 class="font-bold">coming soon</h3>
+            <h3 class="font-bold">under migration</h3>
 
 
         </div>

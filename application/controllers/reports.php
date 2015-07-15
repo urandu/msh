@@ -23,10 +23,10 @@ class Reports extends MY_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		//$this->load->view('county');
-	}
+    public function index()
+    {
+        //$this->load->view('county');
+    }
 
     public function facility_mos($period="000000")
     {
@@ -47,7 +47,7 @@ class Reports extends MY_Controller
         $this->load->view('facility_mos',$facility_report);
     }
     public function forecast_mos($period="000000")
-    { 
+    {
 
         $period_post=$this->input->post("date");
         if(isset($period_post))
@@ -80,7 +80,7 @@ class Reports extends MY_Controller
     }
 
     public function national_mos($period="000000")
-    { 
+    {
 
         $period_post=$this->input->post("date");
         if(isset($period_post))
