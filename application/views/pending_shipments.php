@@ -24,12 +24,14 @@
 
 
     <div class="wrapper wrapper-content">
-    <div class="row">
 
-        <div class="col-lg-8">
+        <div class="row">
+
+            <div class="col-lg-12">
 
 
-            <form action="<?= base_url();?>index.php/pending_shipments/show_pending_shipments_from_selected_period" method="post" enctype="multipart/form-data" autocomplete="on">
+             <form action="<?= base_url();?>index.php/pending_shipments/show_pending_shipments_from_selected_period" method="post" enctype="multipart/form-data" autocomplete="on">
+
                 <div class="form-group"><label class="col-sm-2 control-label">Select Period</label>
 
                     <div class="col-sm-5"><select class="form-control m-b" name="pending_shipments_period">
@@ -40,59 +42,65 @@
                         </select></div>
                     <div class="col-sm-5"><button type="submit" class="btn btn-primary">Get Shipments for the selected period</button></div>
 
-            </form>
+
+             </form>
 
 
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Supply Chain </h5>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Supply Chain </h5>
 
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
 
+                        </div>
                     </div>
-                </div>
-                <div class="ibox-content">
+                    <div class="ibox-content">
 
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Commodity</th>
-                            <th>Funding agency</th>
-                            <th>Pending delivery</th>
-                            <th>Expected date of arrival</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Commodity</th>
+                                <th>Funding agency</th>
+                                <th>Pending delivery</th>
+                                <th>Expected date of arrival</th>
+                                <th>Period</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
 
-                        </tr>
-                        </thead>
-                        <tbody>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                        <?php $count=1; ?>
+                            <?php $count=1; ?>
 
-                        <?php if(isset($pending_shipment_successfully_retrieved)){?>  <!--CHECK IF DATA IS THERE-->
+                            <?php if(isset($pending_shipment_successfully_retrieved)){?>  <!--CHECK IF DATA IS THERE-->
 
-                            <?php $done = array() ?>
-                            <?php foreach ($PSTOCKS as $pending_stocks): ?>
+                                <?php $done = array() ?>
+                                <?php foreach ($PSTOCKS as $pending_stocks): ?>
+
 
                                 <tr>
                                     <td><?php echo $count; ?></td>
 
                                     <td>
 
-                                        <?php
-                                        foreach($COMMODITY as $COMM):
-                                            if ($pending_stocks->commodity_id==$COMM->commodity_id){
-                                                echo $COMM->commodity_name;
-                                            }
-                                        endforeach; ?>
+
+                                                 <?php
+                                                foreach($COMMODITY as $COMM):
+
+                                                    if ($pending_stocks->commodity_id==$COMM->commodity_id){
+                                                        echo $COMM->commodity_name;
+                                                    }
+                                                endforeach; ?>
                                     </td>
                                     <td>
                                         <?php foreach($FUNDING as $FA):
-                                            if ($pending_stocks->funding_agency_id==$FA->funding_agency_id)
+                                          if ($pending_stocks->funding_agency_id==$FA->funding_agency_id)
+
                                             {
                                                 echo $FA->funding_agency_name;
                                             }
@@ -100,6 +108,9 @@
                                     </td>
                                     <td><?php echo $pending_stocks->quantity; ?></td>
                                     <td><?php echo $pending_stocks->expected_time_of_arrival; ?></td>
+
+                                    <td><?php echo $pending_stocks->period; ?></td>
+
 
                                     <td data-toggle="modal" data-target="#myModal_<?php echo $pending_stocks->pending_shipment_id?>" ><i class="fa fa-wrench"></i></td>
                                     <td><a href="<?php echo(base_url()."pending_shipments/delete_pending_shipment/".$pending_stocks->pending_shipment_id); ?>"><i class="fa fa-trash"></i></a></td>
@@ -138,6 +149,7 @@
 
                                                         <select name="funding_agency" class="form-control">
                                                             <?php foreach($FUNDING as $FA):?>
+
 
                                                                 <option name="funding_agency" <?php if ($pending_stocks->funding_agency_id==$FA->funding_agency_id) {echo "Selected";
                                                                 } ?> ><?php echo $FA->funding_agency_name;?></option>
@@ -258,12 +270,17 @@
                         </div>
                     </form>
                 </div>
+>
             </div>
         </div>
     </div>
+    </div>
+
+
 
 
 
     </div>
+
 
 <?php require_once("includes/footer.php"); ?>

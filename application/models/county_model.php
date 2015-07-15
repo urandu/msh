@@ -1,6 +1,7 @@
 <?php
 class County_model extends CI_Model
 {
+
     //Function To Fetch Selected County Record
     function show_county_id($data)
     {
@@ -11,6 +12,7 @@ class County_model extends CI_Model
         $result = $query->result();
         return $result;
     }
+
 // Function To Fetch All Counties Record
     function show_counties()
     {
@@ -18,16 +20,19 @@ class County_model extends CI_Model
         $query_result = $query->result();
         return $query_result;
     }
+
     function update_counties_id1($id, $data)
     {
         $this->db->where('county_id', $id);
         $this->db->update('counties', $data);
     }
+
     function get_zone(){
         $this->db->select('*');
         $this->db->from('zones');
         $query = $this->db->get();
         return $query->result();
     }
+
 }
 ?>

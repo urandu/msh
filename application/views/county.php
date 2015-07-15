@@ -20,7 +20,8 @@
         </div>
     </div>
 
-    <div class="wrapper wrapper-content">
+
+
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
 
@@ -28,7 +29,7 @@
 
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Supply Chain </h5>
+                            <h5>All counties </h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -125,6 +126,7 @@
 
 
 
-    </div>
+
+
 
 <?php require_once("includes/footer.php"); ?>
