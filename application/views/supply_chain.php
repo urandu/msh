@@ -23,7 +23,7 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
 
-                <div class="col-lg-8">
+                <div class="col-lg-10">
 
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -65,7 +65,7 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <i class="fa fa-laptop modal-icon"></i>
                         <h4 class="modal-title">Edit Supply Chain Agency</h4>
-                    </div>
+                                            </div>
                     <div class="modal-body">
 
 

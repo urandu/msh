@@ -24,7 +24,7 @@
                <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-10">
 
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
@@ -43,6 +43,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>County Name</th>
+                                        <th>Zone</th>
                                         <th>Edit</th>
 
                                     </tr>
@@ -55,6 +56,7 @@
                                         <tr>
                                             <td><?php echo $count; ?></td>
                                             <td><?php echo $county->county_name; ?></td>
+                                            <td><?php echo $county->zone; ?></td>
                                             <td data-toggle="modal" data-target="#myModal_<?php echo $county->county_id?>" ><i class="fa fa-wrench"></i></td>
 
                                             <div class="modal inmodal" id="myModal_<?php echo $county->county_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">

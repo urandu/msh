@@ -26,7 +26,7 @@
     <div class="wrapper wrapper-content">
         <div class="row">
 
-            <div class="col-lg-8">
+            <div class="col-lg-10">
 
 
              <form action="<?= base_url();?>index.php/pending_shipments/show_pending_shipments_from_selected_period" method="post" enctype="multipart/form-data" autocomplete="on">
@@ -64,6 +64,7 @@
                                 <th>Funding agency</th>
                                 <th>Pending delivery</th>
                                 <th>Expected date of arrival</th>
+                                <th>Period</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
 
@@ -101,6 +102,7 @@
                                     </td>
                                     <td><?php echo $pending_stocks->quantity; ?></td>
                                     <td><?php echo $pending_stocks->expected_time_of_arrival; ?></td>
+                                    <td><?php echo $pending_stocks->period; ?></td>
 
                                     <td data-toggle="modal" data-target="#myModal_<?php echo $pending_stocks->pending_shipment_id?>" ><i class="fa fa-wrench"></i></td>
                                     <td><a href="<?php echo(base_url()."pending_shipments/delete_pending_shipment/".$pending_stocks->pending_shipment_id); ?>"><i class="fa fa-trash"></i></a></td>
@@ -260,5 +262,4 @@
 
 
     </div>
-
 <?php require_once("includes/footer.php"); ?>
