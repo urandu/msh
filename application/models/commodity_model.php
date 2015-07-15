@@ -1,14 +1,14 @@
 <?php
-<<<<<<< HEAD
+
 	// GET THE COMMODITY WITH NAME SAME AS THE NAME IN CENTRAL DATA
-	function get_commodity_id_with_the_given_name($commodity_name){
+	/*function get_commodity_id_with_the_given_name($commodity_name){
 	$this->db->select('commodity_id');
 	$this->db->from('commodities');
 	$this->db->where('commodity_name', $commodity_name);
 	$query = $this->db->get();
 	$result = $query->row()->commodity_id;
 	return $result;
-	}
+	}*/
 	// Function To Fetch All Commodies Record
 	function show_commodities(){
 	$query = $this->db->get('malaria_commodities');
@@ -43,7 +43,7 @@
 		return $query->result();			
 	}
 
-=======
+
 class Commodity_model extends CI_Model{
     // GET THE COMMODITY WITH NAME SAME AS THE NAME IN CENTRAL DATA
     function get_commodity_id_with_the_given_name($commodity_name){
@@ -60,7 +60,7 @@ class Commodity_model extends CI_Model{
         $query_result = $query->result();
         return $query_result;
     }
->>>>>>> master
+
 
     function update_commodity($id,$data){
         $this->db->where('commodity_id', $id);
