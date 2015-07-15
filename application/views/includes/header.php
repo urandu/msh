@@ -62,6 +62,7 @@ require_once("top_includes.php");
                     <li><a href="<?php echo(base_url()); ?>current_stock">Current stock</a></li>
 
 
+
                 </ul>
             </li>
 
@@ -75,13 +76,15 @@ require_once("top_includes.php");
                     <li><a href="<?php echo(base_url()); ?>reports/national_mos">National level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/county_mos">County level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/stocks">Stocks</a></li>
-                    <li><a href="<?php echo(base_url()); ?>reports/commodities">Commodities</a></li>
-                    <li><a href="<?php echo(base_url()); ?>reports/agencies">Agencies</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/commodities">Total pending shipments per commodities</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/agencies">Total pending commodities per agencies</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/individual_commodity">Individual pending commodities</a></li>
                 </ul>
             </li>
             <li>
                 <a href="<?php echo(base_url()); ?>users"><i class="fa fa-user"></i> <span class="nav-label">Manage users</span>
                 </a>
+
 
 
             </li>

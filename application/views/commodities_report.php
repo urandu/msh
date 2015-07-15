@@ -21,11 +21,42 @@
     </div>
 
     <div class="wrapper wrapper-content">
-        <div class="middle-box text-center animated fadeInRightBig">
-            <h3 class="font-bold">coming soon</h3>
 
+       <table class="table">
+ 
+  <thead>
+    <tr >
+     <th>Expected Stocks<br>Expected Shipments Totals</th>
+   </tr>
+  </thead>
+  
+  <thead>
+     <tr>
+    <td><b>commodity</b></td>
+    <td><b>Totals</b></td>
+   </tr>
+  </thead><tbody>
 
-        </div>
+    <?php foreach ($pendingConsignments as $pending_totals): ?>
+   <tr>
+    <td><?php
+foreach($COMMODITY as $COMM):
+
+if ($pending_totals->commodity_id==$COMM->commodity_id){
+  echo $COMM->commodity_name; 
+  }
+  endforeach;   
+  ?>
+
+  </td>
+    <td>
+    <?php echo $pending_totals->quantity;?>
+
+  </td></tr>
+<?php endforeach?>
+</tbody>
+  </table> 
+
     </div>
 
 <?php require_once("includes/footer.php"); ?>

@@ -14,6 +14,22 @@
     </div>
 </div>
 
+
+
+<div class="row">
+    <div class="col-lg-3">
+        <form class="form" method="post" action="<?php echo(base_url()); ?>current_stock/index">
+            <select name="period" class="form-control">
+                <option  selected>--SELECT PERIOD--</option>
+                <?php foreach ($central_level as $cld): ?>
+                    <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <input class="btn btn-primary" type="submit" value="Get Commodities">
+        </form>
+    </div>
+</div>
+
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="col-lg-12">
@@ -176,10 +192,12 @@
                         </table>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+
 
 
 <div class="modal inmodal" id="central_level_data" tabindex="-1" role="dialog" aria-hidden="true">
@@ -191,17 +209,18 @@
                 <i class="fa fa-laptop modal-icon"></i>
                 <h4 class="modal-title">Add to current stock</h4>
                 <small class="font-bold">Add details about stocks currently held at the central level.</small>
+
             </div>
             <form action="<?= base_url(); ?>current_stock/save_central_level" method="post"
                   enctype="multipart/form-data">
                 <div class="modal-body">
 
-                    <div class="form-group datepicker-months"><label>Reporting period: </label>
+                    <!--<div class="form-group datepicker-months"><label>Reporting period: </label>
                         <input type="text" name="report_date" class="form-control"  data-mask="9999-99" placeholder="">
                         <span class="help-block">yyyy-mm</span>
                         <!-- <input type="text" name="earliest_expiry_date"
                                                                                  placeholder="Expiry date"
-                                                                                 class="form-control date datepicker">--></div>
+                                                                                 class="form-control date datepicker"></div>-->
                     <div class="form-group"><input type="hidden" name="central_level_stock_id"
                                                    value="<?php echo $central_level_data->central_level_stock_id; ?>"
                                                    class="form-control"></div>
@@ -262,14 +281,15 @@
                 </div>
             </form>
         </div>
-    </div>
-</div>
+
 
 
 
 
 
 <?php require_once("includes/footer.php"); ?>
+
+
 
 
 <!-- <div class="modal inmodal" id="add_commodity" tabindex="-1" role="dialog" aria-hidden="true">
@@ -281,8 +301,10 @@
                                             <h4 class="modal-title">Malaria commodity</h4>
                                             <small class="font-bold">Add a commodity here.</small>
                                         </div>
+
                                         <form action="<?= base_url(); ?>commodity/save_commodity" method="post" enctype="multipart/form-data">
                                         <div class="modal-body">
+
                  
                                         <div class="form-group"><label>Commodity: </label> <input type="text" name="commodity_name" placeholder="Commodity" class="form-control"></div>
                                         <div class="form-group"><label>Unit of measure: </label> <input type="text" name="unit_of_measure" placeholder="UoM" class="form-control"></div>

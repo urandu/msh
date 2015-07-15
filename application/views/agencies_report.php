@@ -21,11 +21,56 @@
     </div>
 
     <div class="wrapper wrapper-content">
-        <div class="middle-box text-center animated fadeInRightBig">
-            <h3 class="font-bold">coming soon</h3>
+
+        <table  class="table" border="1">
+
+<thead>
+<th>Commodity</th>
+<th>Agency total</th>
+</tr>
+</thead>
+
+<?php foreach($COMMODITY as $COMM):?>
+  <tr>
+    <td>
+      <?php echo $COMM->commodity_name; ?>
+    </td>
+    <td>
+      <table class="table" border="1">
+        <thead>
+            <th>Funding agency</th>
+            
+            <th>Totals</th>
+            </thead>
+            <tbody>
+         <?php foreach($FUNDING as $FA): ?>
+        <tr>
+          <td width="50%">
+            <?php echo $FA->funding_agency_name;?>
+          </td>
+       
+                     <?php 
+          $sum=0;
+          foreach($PSTOCKS as $ps):
+            if (($COMM->commodity_id==$ps->commodity_id) && $FA->funding_agency_id==$ps->funding_agency_id) {
+              $sum=$sum+$ps->quantity;
+                //echo $sum;
+            }
+            endforeach;
+          ?>
+          <td width="50%">
+            <?php echo $sum;?>
+          </td>
+        </tr>
+        <?php endforeach;?>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+<?php endforeach;?>
+</table>
 
 
-        </div>
     </div>
 
 <?php require_once("includes/footer.php"); ?>

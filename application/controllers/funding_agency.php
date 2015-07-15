@@ -33,8 +33,10 @@ class Funding_agency extends MY_Controller
         $this->show_funding_agency();
     }
 
+
     public function show_funding_agency()
     {
+
 
         //$funding_agency_id = $this->uri->segment(3);//get id from the url
         $data['funding_agency'] = $this->agency_model->show_funding_orgs();
