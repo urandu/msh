@@ -14,6 +14,22 @@
     </div>
 </div>
 
+
+
+<div class="row">
+    <div class="col-lg-3">
+        <form class="form" method="post" action="<?php echo(base_url()); ?>current_stock/index">
+            <select name="period" class="form-control">
+                <option  selected>--SELECT PERIOD--</option>
+                <?php foreach ($central_level as $cld): ?>
+                    <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <input class="btn btn-primary" type="submit" value="Get Commodities">
+        </form>
+    </div>
+</div>
+
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="col-lg-12">
@@ -199,12 +215,12 @@
                   enctype="multipart/form-data">
                 <div class="modal-body">
 
-                    <div class="form-group datepicker-months"><label>Reporting period: </label>
+                    <!--<div class="form-group datepicker-months"><label>Reporting period: </label>
                         <input type="text" name="report_date" class="form-control"  data-mask="9999-99" placeholder="">
                         <span class="help-block">yyyy-mm</span>
                         <!-- <input type="text" name="earliest_expiry_date"
                                                                                  placeholder="Expiry date"
-                                                                                 class="form-control date datepicker">--></div>
+                                                                                 class="form-control date datepicker"></div>-->
                     <div class="form-group"><input type="hidden" name="central_level_stock_id"
                                                    value="<?php echo $central_level_data->central_level_stock_id; ?>"
                                                    class="form-control"></div>
