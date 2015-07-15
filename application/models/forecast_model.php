@@ -30,7 +30,7 @@ class Forecast_model extends CI_Model
     return $this->db->insert_id();						
 	}
 
-	function update_commodity_forecast_data_id($id,$data){
+	function update_forecast_commodity_data($id,$data){
     $this->db->where('commodity_forecast_data_id', $id);
     $this->db->update('commodity_forecast_data', $data);
     }
@@ -52,6 +52,16 @@ class Forecast_model extends CI_Model
 	$this->db->from('commodity_forecast_data');				
 	$query = $this->db->get();		
 	return $query->result();			
+	}
+
+	
+function get_commodity_id_with_the_given_name($commodity_name){
+	$this->db->select('commodity_id');
+	$this->db->from('malaria_commodities');
+	$this->db->where('commodity_name', $commodity_name);
+	$query = $this->db->get();
+	$result = $query->row()->commodity_id;
+	return $result;
 	}
 
 

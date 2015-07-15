@@ -34,28 +34,22 @@ class Forecast extends CI_Controller {
 
     
         }
-           $forecast_data['dates']=$this->forecast_model->get_forecast_period();
+      $forecast_data['dates']=$this->forecast_model->get_forecast_period();
+      $forecast_data['selected_period']=$period;
         $forecast_data['period']=$this->forecast_model->show_commodity_forecast_data($period);
         $forecast_data['commodity']=$this->commodity_model->show_malaria_commodities();
-         $this->load->view('forecast',$forecast_data);
+        $this->load->view('forecast',$forecast_data);
+        
 
-       /* $forecast_data['dates']=$this->forecast_model->get_forecast_period();
-        //$forecast_data['period']=$this->forecast_model->show_commodity_forecast_data($period);
-        $forecast_data['commodity']=$this->commodity_model->show_malaria_commodities();
-       $forecast_data['period']=$this->forecast_model->get_commodity_forecast_data();
-
-        //var_dump($forecast_data);
-
-        $this->load->view('forecast',$forecast_data);*/
-
-/**/
+       
     }
     public function save_forecast_commodity_data()
     {
       $start_date=($this->input->post('forecast_start_date'));
       $period=($this->input->post('forecast_period'));
-      $commodity_id=($this->input->post('commodity_id'));
-     // $commodity_name=($this->input->post('commodity_name'));
+      //$commodity_id=($this->input->post('commodity_id'));
+      $commodity_name=($this->input->post('commodity_name'));
+      $commodity_id=$this->forecast_model->get_commodity_id_with_the_given_name($commodity_name);
       $monthly_consumption=($this->input->post('forecast_monthly_consumption'));
 
       $forecast = array(
@@ -66,24 +60,45 @@ class Forecast extends CI_Controller {
 		);
          
      $this->forecast_model->add_commodity_forecast_data($forecast);
-     $this->index();
+     $this->index($period="000000");
+
 
 
     }
 
-    public function update_commodity_forecast_data_id()
+    public function update_forecast_commodity_data()
     {
+      $forecast_id=($this->input->post('id'));
+      $start_date=($this->input->post('forecast_start_date'));
+      $period=($this->input->post('forecast_period'));
+      //$commodity_id=($this->input->post('commodity_id'));
+      $commodity_name=($this->input->post('commodity_name'));
+      $monthly_consumption=($this->input->post('forecast_monthly_consumption'));
+      $commodity_id=$this->forecast_model->get_commodity_id_with_the_given_name($commodity_name);
 
+      $forecast_update = array(
+      'forecast_start_date' => $start_date,
+      'forecast_period' => $period,
+      'commodity_id' => $commodity_id,
+      'forecast_monthly_consumption' => $monthly_consumption
+    );
+
+
+      $this->forecast_model->update_forecast_commodity_data($forecast_id, $forecast_update);
+      $this->index($period="000000");
 
     }
 
-// 	public function show_commodity_forecast_data() {
-// 		$fid = $this->uri->segment(3);//get id from the url
-// 		$data3['staticParams'] = $this->forecast_model->show_commodity_forecast_data($period);
-// 		$data3['single_staticparam'] = $this->forecast_model->show_commodity_forecast_data_id($fid);
-//         $data3['COMMODITY']=$this->commodity_model->show_commodities();
-//         $this->load->view('forecast',$data3);
-// }
+
+    function delete_forecast($id)   {
+  
+   $this->db->where('commodity_forecast_data_id', $id);
+   $deleterecord=$this->db->delete('commodity_forecast_data');
+    
+  $this->index($period="000000");
+  }
+
+
 }
 
 /* End of file welcome.php */
