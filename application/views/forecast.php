@@ -20,7 +20,7 @@
 
 <div class="row">
     <div class="col-lg-3">
-    <form class="form" method="post" action="<?php echo(base_url()); ?>forecast/index">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>forecast">
     <select name="date" class="form-control">
         <option  selected>--SELECT PERIOD--</option>
 
