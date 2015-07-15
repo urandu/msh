@@ -43,17 +43,46 @@ class Reports extends CI_Controller {
 
     public function stocks()
     {
-        $this->load->view('stocks_report');
+
+        $this->load->model('report_model');
+        $commoditycomparison['COMMODITY']=$this->report_model->show_malaria_commodities();
+        $commoditycomparison['FUNDING']=$this->report_model->show_funding_orgs();
+        $commoditycomparison['PSTOCKS']=$this->report_model->show_pending_shipments();
+        $commoditycomparison['CENTRAL']=$this->report_model->show_central_stock();
+
+
+
+        $this->load->view('stocks_report', $commoditycomparison);
     }
     public function commodities()
     {
-        $this->load->view('commodities_report');
+     
+         $this->load->model('report_model');
+        $data['COMMODITY'] = $this->report_model->show_malaria_commodities();
+        $data['pendingConsignments']=$this->report_model->show_pending_shipments();
+        //$data['pending_per_commodity'] = $this->report_model->show_pending_shipment_per_commodity();
+        $this->load->view('commodities_report', $data);
+        
     }
 
     public function agencies()
     {
-        $this->load->view('agencies_report');
+         $this->load->model('report_model');
+        $commodityperagency['COMMODITY']=$this->report_model->show_malaria_commodities();
+        $commodityperagency['FUNDING']=$this->report_model->show_funding_orgs();
+        $commodityperagency['PSTOCKS']=$this->report_model->show_pending_shipments();
+
+
+         $this->load->view('agencies_report', $commodityperagency);
     }
+    public function individual_commodity(){
+       $this->load->model('report_model');
+        $data2['COMMODITY']=$this->report_model->show_malaria_commodities();
+        $data2['FUNDING']=$this->report_model->show_funding_orgs();
+        $data2['PSTOCKS']=$this->report_model->show_pending_shipments();
+
+        $this->load->view('individual_commodities', $data2);
+        }
 }
 
 /* End of file welcome.php */

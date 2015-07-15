@@ -21,15 +21,93 @@
     </div>
 
     <div class="wrapper wrapper-content">
-        <div class="middle-box text-center animated fadeInRightBig">
-            <h3 class="font-bold">This is page content</h3>
+         <table class="table">
+            <thead>
+        <tr><h3>Central level stocks and incoming shipments</h3></tr>
+        <br>
+        <tr>
+            <th>
+                Stock on hand(SOH)
 
-            <div class="error-desc">
-                You can create here any grid layout you want. And any variation layout you imagine:) Check out
-                main dashboard and other site. It use many different layout.
-                <br/><a href="index.html" class="btn btn-primary m-t">Dashboard</a>
-            </div>
-        </div>
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+
+            <th>
+                Pending Consignments
+            </th>
+        </tr>
+        <tr>
+            <th>Commodity</th>
+            <th>Unit</th>
+            <th>Kemsa</th>
+            <th>MOS</th>
+            <th>Total</th>
+            <th>Mos</th>
+            <th>Agency: Quantity</th>
+            </thead>
+        </tr>
+        <tbody>
+        <?php foreach ($COMMODITY as $item): ?>
+            <tr>
+                <td><?php echo $item->commodity_name; ?></td>
+                <td>Unit</td>
+                <?php $total_stock = 0; foreach ($CENTRAL as $central_value): 
+                if ($item->commodity_id == $central_value->commodity_id) {
+                        $stock_available =  $central_value->soh_closing_balance;
+                        $total_stock += $stock_available;
+                    }
+                endforeach;
+                ?>
+                <td>
+                    <?php echo $total_stock; ?>
+                </td>
+                <td></td>
+                <?php $item_total = 0;
+                foreach ($PSTOCKS as $pending_value): 
+                    if ($item->commodity_id == $pending_value->commodity_id) {
+                        $item_total += $pending_value->quantity;}
+                endforeach;
+                ?>
+                <td>
+                    <?php echo $item_total; ?>
+                </td>
+                <td></td>
+                <td>
+                   
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th>Agency</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($FUNDING as $FA): ?><tr>
+                                <td> <?php echo $FA->funding_agency_name; ?></td>
+                                <?php $sum = 0; foreach ($PSTOCKS as $ps):
+                                if (($item->commodity_id == $ps->commodity_id) && $FA->funding_agency_id == $ps->funding_agency_id) {
+                                    $sum = $sum + $ps->quantity;
+                                    //$date = $ps->expected_date_delivery;
+                                    }
+                                endforeach;
+                                ?>
+                                <td>
+                                    <?php echo $sum; ?>
+                                </td>
+
+                            </tr>
+                                <?php endforeach;?>
+
+                            </tbody>
+                        </table>
+                </td>
+                </tr>
+
+        <?php endforeach; ?>
+        </tbody>
+    </table>
     </div>
 
 <?php require_once("includes/footer.php"); ?>

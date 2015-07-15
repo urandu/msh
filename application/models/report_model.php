@@ -289,26 +289,50 @@ ORDER BY drug_id ASC, drug_category_id ASC";
 
     }
 
-    // public function get_facility_level_($period,$commodity)
-    // {
-
-    //     $sql="SELECT staticparameterid,period,commodity_id as cid,(SELECT commodity_name FROM commodities WHERE commodity_id=cid) as cname ,projected_monthly_consumption,reporting_rate ,((projected_monthly_consumption*reporting_rate)/100) as AAC FROM static_parameters WHERE period ='{$period}' AND commodity_id='{$commodity}' ";
-    //     $result=$this->db->query($sql);
-    //     if($result->num_rows>0)
-    //     {
-
-    //         return $result->result()[0];
-
-    //     }else
-    //     {
-    //         $result->result();
-    //     }
+    // Function To Fetch All Commodies Record
+  function show_malaria_commodities(){
+  $query = $this->db->get('malaria_commodities');
+  $query_result = $query->result();
+  return $query_result;
+  }
 
 
-    // }
+  function show_pending_shipments(){
+     $transaction_status = "pending";
+    $this->db->select('*');
+    $this->db->from('pending_shipment_details');
+    $this->db->group_by('commodity_id');
+    $this->db->where('transaction_status', $transaction_status);
+    $query = $this->db->get();
+    $query_result = $query->result();
+    return $query_result;
+  }
 
 
+  function show_pending_shipment_per_commodity(){
 
+   // $transaction_status = "pending";
+    $this->db->group_by('commodity_id');
+    $this->db->select_sum('quantity', 'total_per_commodity');
+    $this->db->from('pending_shipment_details');
+  // $this->db->group_by('commodity_id');
+   // $this->db->where('transaction_status', $transaction_status);
+
+    $query = $this->db->get();
+    $query_result = $query->result();
+    return $query_result;
+}
+  function show_funding_orgs(){
+  $query = $this->db->get('funding_agencies');
+  $query_result = $query->result();
+  return $query_result;
+  }
+function show_central_stock(){
+    $query = $this->db->get('central_level_data');
+    $query_result = $query->result();
+    return $query_result;
+
+}
 
 }
 

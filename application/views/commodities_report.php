@@ -21,15 +21,40 @@
     </div>
 
     <div class="wrapper wrapper-content">
-        <div class="middle-box text-center animated fadeInRightBig">
-            <h3 class="font-bold">This is page content</h3>
+       <table class="table">
+ 
+  <thead>
+    <tr >
+     <th>Expected Stocks<br>Expected Shipments Totals</th>
+   </tr>
+  </thead>
+  
+  <thead>
+     <tr>
+    <td><b>commodity</b></td>
+    <td><b>Totals</b></td>
+   </tr>
+  </thead><tbody>
 
-            <div class="error-desc">
-                You can create here any grid layout you want. And any variation layout you imagine:) Check out
-                main dashboard and other site. It use many different layout.
-                <br/><a href="index.html" class="btn btn-primary m-t">Dashboard</a>
-            </div>
-        </div>
+    <?php foreach ($pendingConsignments as $pending_totals): ?>
+   <tr>
+    <td><?php
+foreach($COMMODITY as $COMM):
+
+if ($pending_totals->commodity_id==$COMM->commodity_id){
+  echo $COMM->commodity_name; 
+  }
+  endforeach;   
+  ?>
+
+  </td>
+    <td>
+    <?php echo $pending_totals->quantity;?>
+
+  </td></tr>
+<?php endforeach?>
+</tbody>
+  </table> 
     </div>
 
 <?php require_once("includes/footer.php"); ?>

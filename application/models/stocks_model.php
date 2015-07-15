@@ -17,13 +17,14 @@ function add_central_stock($central_data=NULL){
     return $this->db->insert_id();
 }
 
-
-function get_central_stock(){
+/*
+function get_central_stock_by_period($period){
     $this->db->select('*');
+    $this->db->where('period', $period)
     $this->db->from('central_level_data');
     $query = $this->db->get();
     return $query->result();
-}
+}*/
 
 
 

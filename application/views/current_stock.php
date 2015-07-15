@@ -140,18 +140,18 @@
                    <div class="form-group"><input type="hidden" name="central_level_stock_id" value="<?php echo $central_level_data->central_level_stock_id; ?>" class="form-control"></div>
                   <div class="form-group"><label>Commodity: </label><select class="form-control m-b" >
                     <?php foreach ($commodity as $malaria_commodity): ?>  
-                      <option name="commodity_name" ><?php  echo $malaria_commodity->commodity_name;?></option>
+                      <option name="commodity_name" value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
                     <?php endforeach; ?>
                                         </select></div>
                    <div class="form-group"><label>Funding agency: </label><select class="form-control m-b"  >
                     <?php foreach ($funding_agency as $agency): ?>  
-                      <option name="funding_agency_name" ><?php echo $agency->funding_agency_name;?></option>
+                      <option name="funding_agency_name" value="<?php echo $agency->funding_agency_name;?>"><?php echo $agency->funding_agency_name;?></option>
                     <?php endforeach; ?>
                                         </select></div>
                    
                 <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b"  >
                     <?php foreach ($supply_chain_agency as $supply): ?>  
-                      <option name="supply_chain_agency" ><?php echo $supply->supply_chain_agency;?></option>
+                      <option name="supply_chain_agency" value="<?php echo $supply->supply_chain_agency;?>" ><?php echo $supply->supply_chain_agency;?></option>
                     <?php endforeach; ?>
                                         </select></div>
                        <div class="form-group"><label>Opening balance: </label> <input type="text" name="opening_balance" placeholder="Opening balance" class="form-control"></div>
@@ -172,7 +172,12 @@
             </div>
         </div>
 
-
+<!--     <div class="form-group" id="data_4">
+                                <label class="font-noraml">Month select</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
+                                </div>
+                            </div> -->
 
 
 
