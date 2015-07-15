@@ -61,6 +61,7 @@ require_once("top_includes.php");
                     <li><a href="<?php echo(base_url()); ?>pending_shipments">Pending shipments</a></li>
                     <li><a href="<?php echo(base_url()); ?>current_stock">Current stock</a></li>
 
+
                 </ul>
             </li>
 
@@ -81,6 +82,7 @@ require_once("top_includes.php");
             <li>
                 <a href="<?php echo(base_url()); ?>users"><i class="fa fa-user"></i> <span class="nav-label">Manage users</span>
                 </a>
+
 
             </li>
 
