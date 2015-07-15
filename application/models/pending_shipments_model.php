@@ -3,8 +3,10 @@ class Pending_shipments_model extends CI_Model
 {
 
 
+
     function show_all_pending_shipment()
     {
+
 
         $this->db->distinct();
         $this->db->group_by('period');
@@ -12,10 +14,12 @@ class Pending_shipments_model extends CI_Model
         $query_result = $query->result();
         return $query_result;
 
+
     }
 
     function show_pending_shipment($period)
     {
+
 
         $this->db->select('*');
         $this->db->from('pending_shipment_details');
@@ -64,7 +68,6 @@ class Pending_shipments_model extends CI_Model
         return $result;
     }
 
-
     function show_fundingorgs(){
         $query = $this->db->get('funding_agencies');
         $query_result = $query->result();
@@ -82,5 +85,6 @@ class Pending_shipments_model extends CI_Model
         return $result;
     }
 
-
 }
+?>
+
