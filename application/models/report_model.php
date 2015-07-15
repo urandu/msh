@@ -133,11 +133,12 @@ ORDER BY drug_id ASC, drug_category_id ASC;";
 
  public function get_facility_level_mos($period)
     {
-
-        $sql="SELECT central_drugs_id,drug_id as ddd ,(SELECT mapping_name FROM mapping_drugs_category WHERE mapping_id=drug_id ) as commodity_name,period,drug_category_id,drug_value,(SELECT reporting_rate_value FROM facility_level_reporting_rates where period ='{$period}') as reporting_rate ,((drug_value/(SELECT reporting_rate_value FROM facility_level_reporting_rates where period ='{$period}'))*100) as AAC ,(((SELECT  drug_value   FROM facility_level_data
-                      WHERE
-                        drug_category_id = 'rPAsF4cpNxm' AND drug_id = ddd AND period = '{$period}'
-                     )/(SELECT reporting_rate_value FROM facility_level_reporting_rates where period ='{$period}'))*100) as SOH FROM facility_level_data where period='{$period}' and (drug_category_id= 'w77uMi1KzOH' ) order by drug_id asc , drug_category_id asc";
+      $period1=$period-1;
+      $period2=$period-2;
+      $period3=$period-3;
+      $period4=$period-4;
+      $period5=$period-5;
+      $sql="SELECT central_drugs_id,drug_id as ddd,(SELECT mapping_name FROM mapping_drugs_category WHERE mapping_id=drug_id ) as commodity_name,period,drug_category_id,drug_value as physical_count,(SELECT reporting_rate_value FROM facility_level_reporting_rates where period ='{$period}') as reporting_rate ,((SELECT  drug_value   FROM facility_level_data WHERE drug_category_id = 'w77uMi1KzOH' AND drug_id = ddd AND period = '{$period}' )/(SELECT reporting_rate_value FROM facility_level_reporting_rates where period ='{$period}')) as adjusted_facility_amc FROM `facility_level_data` where period='{$period}' and (drug_category_id= 'rPAsF4cpNxm' ) order by drug_id asc , drug_category_id asc";
         $result=$this->db->query($sql);
         return $result->result();
 

@@ -9,7 +9,7 @@
 	return $result;
 	}
 	// Function To Fetch All Commodies Record
-	function show_commodities(){
+	function show_malaria_commodities(){
 	$query = $this->db->get('malaria_commodities');
 	$query_result = $query->result();
 	return $query_result;

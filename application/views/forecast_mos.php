@@ -53,7 +53,7 @@ if (isset($period)) {
 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Forecast Commodities Data MOS for period: <?php echo $date->forecast_start_date; ?></h5>
+                            <h5>Forecast Commodities Data MOS for period: <?php echo $p; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>

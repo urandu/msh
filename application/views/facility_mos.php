@@ -44,7 +44,7 @@
 
 if (isset($period)) {
 
-    //print_r($period);
+   // print_r($period);
 
 
 ?>
@@ -53,7 +53,7 @@ if (isset($period)) {
 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Facility Level MOS for period: <?php echo $date->period; ?></h5>
+                            <h5>Facility Level MOS for period: <?php echo $p; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -109,7 +109,7 @@ if (isset($period)) {
             <td>
                 <?php
 
-                echo $p->adjusted_facility_amc;
+                echo (round($p->adjusted_facility_amc,2));
 
                 ?>
             </td>
