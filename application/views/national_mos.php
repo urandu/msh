@@ -21,6 +21,7 @@
     </div>
 
     <div class="wrapper wrapper-content">
+<<<<<<< HEAD
         
 
 <div class="row">
@@ -221,6 +222,13 @@ if (isset($period)) {
 
 
 
+=======
+        <div class="middle-box text-center animated fadeInRightBig">
+            <h3 class="font-bold">coming soon</h3>
+
+
+        </div>
+>>>>>>> master
     </div>
 
 <?php require_once("includes/footer.php"); ?>
