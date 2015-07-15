@@ -12,93 +12,107 @@ require_once("top_includes.php");
 
 <body>
 <div id="wrapper">
-    <nav class="navbar-default navbar-static-side" role="navigation">
-        <div class="sidebar-collapse">
-            <ul class="nav" id="side-menu">
-                <li class="nav-header">
-                    <div class="dropdown profile-element"> <!--<span>
-                            <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */?>assets/img/profile_small.jpg" />
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element"> <!--<span>
+                            <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */ ?>assets/img/profile_small.jpg" />
                              </span>-->
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
-                            <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
-                        </ul>
-                    </div>
-                    <div class="logo-element">
-                        IN+
-                    </div>
-                </li>
-                <li>
-                    <a href="<?php echo(base_url()); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span> </a>
 
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Manage</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="<?php echo(base_url()); ?>funding_agency">Funding agencies</a></li>
-                        <li><a href="<?php echo(base_url()); ?>supply_chain">Supply chain agencies</a></li>
-                        <li><a href="<?php echo(base_url()); ?>commodity">Commodities</a></li>
-                        <li><a href="<?php echo(base_url()); ?>county">Counties</a></li>
-                        <li><a href="<?php echo(base_url()); ?>zone">Zones</a></li>
-                        <li><a href="<?php echo(base_url()); ?>forecast">Forecasts</a></li>
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Stocks</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="pending_shipments">Pending shipments</a></li>
-                        <li><a href="current_stock">Current stock</a></li>
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reports</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="<?php echo(base_url()); ?>reports/central_mos">Central level MOS</a></li>
-                        <li><a href="<?php echo(base_url()); ?>reports/facility_mos">Facility level MOS</a></li>
-                        <li><a href="<?php echo(base_url()); ?>reports/national_mos">National level MOS</a></li>
-                        <li><a href="<?php echo(base_url()); ?>reports/county_mos">County level MOS</a></li>
-                        <li><a href="<?php echo(base_url()); ?>reports/stocks">Stocks</a></li>
-                        <li><a href="<?php echo(base_url()); ?>reports/commodities">Total pendng shipments per commodities</a></li>
-                        <li><a href="<?php echo(base_url()); ?>reports/agencies">Total pending commodities per agencies</a></li>
-                        <li><a href="<?php echo(base_url()); ?>reports/individual_commodity">Individual pending commodities</a></li>
-                    </ul>
-                </li>
-
-
-
-            </ul>
-
-        </div>
-    </nav>
-
-    <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-
-                    <!--<form role="search" class="navbar-form-custom" action="search_results.html">
-                        <div class="form-group">
-                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search"
-                                   id="top-search">
-                        </div>
-                    </form>-->
+                    <a> <span class="clear"> <span class="block m-t-xs">Logged in as, <strong
+                                    class="font-bold"> <?php echo($this->session->userdata('names')); ?></strong>
+                             </span>  </span></a>
+                    <!--<ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="mailbox.html">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="login.html">Logout</a></li>
+                    </ul>-->
                 </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <span class="m-r-sm text-muted welcome-message">Malaria Commodities Stock Monitoring Tool</span>
-                    </li>
-                    <!--<li class="dropdown">
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li>
+                <a href="<?php echo(base_url()); ?>"><i class="fa fa-th-large"></i> <span
+                        class="nav-label">Dashboard</span> </a>
+
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Manage</span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo(base_url()); ?>funding_agency">Funding agencies</a></li>
+                    <li><a href="<?php echo(base_url()); ?>supply_chain">Supply chain agencies</a></li>
+                    <li><a href="<?php echo(base_url()); ?>commodity">Commodities</a></li>
+                    <li><a href="<?php echo(base_url()); ?>county">Counties</a></li>
+                    <li><a href="<?php echo(base_url()); ?>zone">Zones</a></li>
+                    <li><a href="<?php echo(base_url()); ?>forecast">Forecasts</a></li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Stocks</span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo(base_url()); ?>pending_shipments">Pending shipments</a></li>
+                    <li><a href="<?php echo(base_url()); ?>current_stock">Current stock</a></li>
+
+
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reports</span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo(base_url()); ?>reports/central_mos">Central level MOS</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/forecast_mos">Forecast data MOS</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/facility_mos">Facility level MOS</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/national_mos">National level MOS</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/county_mos">County level MOS</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/stocks">Stocks</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/commodities">Total pending shipments per commodities</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/agencies">Total pending commodities per agencies</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/individual_commodity">Individual pending commodities</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="<?php echo(base_url()); ?>users"><i class="fa fa-user"></i> <span class="nav-label">Manage users</span>
+                </a>
+
+
+
+            </li>
+
+
+        </ul>
+
+    </div>
+</nav>
+
+<div id="page-wrapper" class="gray-bg">
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+
+                <!--<form role="search" class="navbar-form-custom" action="search_results.html">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search for something..." class="form-control" name="top-search"
+                               id="top-search">
+                    </div>
+                </form>-->
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Malaria Commodities Stock Monitoring Tool</span>
+                </li>
+                <!--<li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                             <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
                         </a>
@@ -106,7 +120,7 @@ require_once("top_includes.php");
                             <li>
                                 <div class="dropdown-messages-box">
                                     <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */?>assets/img/a7.jpg">
+                                        <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */ ?>assets/img/a7.jpg">
                                     </a>
 
                                     <div class="media-body">
@@ -121,7 +135,7 @@ require_once("top_includes.php");
                             <li>
                                 <div class="dropdown-messages-box">
                                     <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */?>assets/img/a4.jpg">
+                                        <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */ ?>assets/img/a4.jpg">
                                     </a>
 
                                     <div class="media-body ">
@@ -136,7 +150,7 @@ require_once("top_includes.php");
                             <li>
                                 <div class="dropdown-messages-box">
                                     <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */?>assets/img/profile.jpg">
+                                        <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */ ?>assets/img/profile.jpg">
                                     </a>
 
                                     <div class="media-body ">
@@ -200,12 +214,12 @@ require_once("top_includes.php");
                     </li>-->
 
 
-                    <li>
-                        <a href="login.html">
-                            <i class="fa fa-sign-out"></i> Log out
-                        </a>
-                    </li>
-                </ul>
+                <li>
+                    <a href="<?php echo base_url(); ?>login/logout">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
 
-            </nav>
-        </div>
+        </nav>
+    </div>

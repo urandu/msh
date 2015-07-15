@@ -21,6 +21,7 @@
     </div>
 
     <div class="wrapper wrapper-content">
+
        <table class="table">
  
   <thead>
@@ -55,6 +56,7 @@ if ($pending_totals->commodity_id==$COMM->commodity_id){
 <?php endforeach?>
 </tbody>
   </table> 
+
     </div>
 
 <?php require_once("includes/footer.php"); ?>

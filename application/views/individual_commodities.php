@@ -16,7 +16,7 @@
     <div class="wrapper wrapper-content">
         <table  class="table">
  <thead>
-  <tr class="bg-primary">
+  <tr class="">
     <th><b>Commodity</b></th>
     <th><b>Supporting Agency</b></th>
     <th><b>Quantity</b></th>

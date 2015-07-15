@@ -3,6 +3,7 @@ class Agency_model extends CI_Model{
 	/*-----------------------------------Supply chain agency--------------------------------------------*/
 
 	// Function To Fetch All Supply chain Agency Record
+
 	function show_supply_chain_agencies(){
 	$query = $this->db->get('supply_chain_agencies');
 	$query_result = $query->result();
@@ -17,6 +18,12 @@ class Agency_model extends CI_Model{
 	$result = $query->result();
 	return $result;
 	}
+
+	function add_supply_chain_agency($agency=NULL){
+		$this->db->insert('supply_chain_agencies', $agency);
+		return $this->db->insert_id();
+	}
+
 	// Update Query For Selected Student
 	function update_supply_chain_agencies_id1($id,$data){
 	    $this->db->where('supply_chain_agency_id', $id);
@@ -51,18 +58,18 @@ class Agency_model extends CI_Model{
 	}
 
 	/*this function adds a funding agency to the database*/
-	function add_funding_agency($fagency=NULL){		
+	function add_funding_agency($fagency=NULL){
 	$this->db->insert('funding_agencies', $fagency);
-	return $this->db->insert_id();						
+	return $this->db->insert_id();
     }
 
 
     /*this function gets a list of all funding agencies in the datbase*/
-	function get_funding_agency(){	
-	$this->db->select('*');	
-	$this->db->from('funding_agencies');				
-	$query = $this->db->get();		
-	return $query->result();			
+	function get_funding_agency(){
+	$this->db->select('*');
+	$this->db->from('funding_agencies');
+	$query = $this->db->get();
+	return $query->result();
     }
 
     /*this function updates data of a particular agency given its id*/
@@ -70,7 +77,7 @@ class Agency_model extends CI_Model{
     $this->db->where('funding_agency_id', $fid);
     $this->db->update('funding_agencies', $fdata);
 	}
-	
+
 
 	function get_funding_agency_id($dataf){
 	$this->db->select('funding_agency_id');

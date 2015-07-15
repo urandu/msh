@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends MY_Controller
+class Users extends MY_Controller
 {
     private $data;
     protected $before_filter = array(
@@ -25,7 +25,9 @@ class Welcome extends MY_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $this->load->model('user_model');
+        $data['users']=$this->user_model->get_all_users();
+		$this->load->view('users',$data);
 	}
 }
 

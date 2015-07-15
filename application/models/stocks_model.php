@@ -7,6 +7,7 @@
  */
 class Stocks_model extends CI_Model{
 
+
 function update_central_data($cdid,$cdData){
     $this->db->where('central_level_stock_id', $cdid);
     $this->db->update('central_level_data', $cdData);
@@ -42,4 +43,5 @@ function show_central_stock_id($psdata){
     $result = $query->result();
     return $result;
 }
+
 }

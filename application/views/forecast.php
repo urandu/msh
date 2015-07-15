@@ -13,6 +13,7 @@
         </div>
     </div>
 
+
    <div class="wrapper wrapper-content">
         
    
@@ -101,6 +102,7 @@ if (isset($period)) {
                <div class "form-group">
                 <label>Forecast Monthly Consumption: </label>
                   <input type="text" class="form-control" name="forecast_monthly_consumption" value="<?php echo $p->forecast_monthly_consumption; ?>">
+
                                       
               </div> 
 
@@ -117,6 +119,7 @@ if (isset($period)) {
                 </div>
             </div>
         </div>
+
 </div>
 
 
