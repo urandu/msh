@@ -82,13 +82,13 @@
 
                                 <div class="form-group">
                                 <label>Contact Person :</label>
-                                <input type="text" name="contact_person" class="form-control" value="<?php echo $agency->contact_person; ?>">
+                                <input type="text" required="required" name="contact_person" class="form-control" value="<?php echo $agency->contact_person; ?>">
                                 </div>
 
 
                                 <div class="form-group">
                                 <label>Contact Phone :</label>
-                                <input type="text" name="contact_phone" class="form-control" value="<?php echo $agency->contact_phone; ?>">
+                                <input type="tel" name="contact_phone"  class="form-control" value="<?php echo $agency->contact_phone; ?>">
                                 </div>
 
                                 <div class="form-group">
@@ -139,7 +139,7 @@
 
                               <div class= "form-group">
                 <label>Agency Name: </label>
-                   <input type="text" class="form-control" name="supply_agency_name" placeholder="Supply agency name"> <!--the form-control gives the form some styling-->
+                   <input type="text" class="form-control" required name="supply_agency_name" placeholder="Supply agency name"> <!--the form-control gives the form some styling-->
                 </div>
 
                <div class= "form-group">
@@ -149,7 +149,7 @@
 
                <div class= "form-group">
                 <label">Contact Phone </label>
-                  <input id="txtPhone" type="text" class="form-control" name="contact_phone" placeholder="Contact phone"> <!--the form-control gives the form some styling-->
+                  <input type="tel" pattern="^\d{4}-\d{3}-\d{3}$" class="form-control" name="contact_phone" placeholder="Contact phone"> <!--the form-control gives the form some styling-->
                   <span id="spnPhoneStatus"><div></div></span>
               </div>
 

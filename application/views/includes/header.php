@@ -54,6 +54,8 @@ require_once("top_includes.php");
                 <li>
                     <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Stocks</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+
+                        <li><a href="planned_procurements">Planned procurements</a></li>
                         <li><a href="pending_shipments">Pending shipments</a></li>
                         <li><a href="current_stock">Current stock</a></li>
 
