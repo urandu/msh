@@ -3,7 +3,7 @@
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Facility Level MOS</h2>
+            <h2>Forecast Data MOS</h2>
             <!--<ol class="breadcrumb">
                 <li>
                     <a href="index.html">This is</a>
@@ -25,17 +25,17 @@
 
         <div class="row">
             <div class="col-lg-3">
-                <form class="form" method="post" action="<?php echo(base_url()); ?>reports/facility_mos">
+                <form class="form" method="post" action="<?php echo(base_url()); ?>reports/forecast_mos">
                     <select name="date" class="form-control">
                         <option  selected>--SELECT PERIOD--</option>
 
                         <?php foreach ($dates as $date): ?>
-                            <option value="<?php echo $date->period; ?>"  ><?php echo $date->period; ?></option>
+                            <option value="<?php echo $date->forecast_start_date; ?>"  ><?php echo $date->forecast_start_date; ?></option>
                         <?php endforeach; ?>
                     </select>
             </div>
             <div class="col-lg-3">
-                <input class="btn btn-primary" type="submit" value="Get Facility Level MOS Report">
+                <input class="btn btn-primary" type="submit" value="Get Forecast MOS Report">
                 </form>
             </div>
 
@@ -44,7 +44,7 @@
 
         if (isset($period)) {
 
-            // print_r($period);
+            //print_r($period);
 
 
             ?>
@@ -53,7 +53,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Facility Level MOS for period: <?php echo $p; ?></h5>
+                            <h5>Forecast Commodities Data MOS for period: <?php echo $p; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -70,17 +70,17 @@
 
 
                                     <th>
-                                        Commodity Name
+                                        Commodity name
                                     </th>
 
                                     <th>
-                                        Adjusted Facility AMC
+                                        Forecast Monthly Consumption
                                     </th>
                                     <th>
                                         Stock on Hand
                                     </th>
                                     <th>
-                                        Facility Level Month of Stock(mos)
+                                        Forecast Month of Stock(mos)
                                     </th>
 
                                 </tr>
@@ -109,7 +109,7 @@
                                         <td>
                                             <?php
 
-                                            echo (round($p->adjusted_facility_amc,2));
+                                            echo $p->forecast_monthly_consumption;
 
                                             ?>
                                         </td>
@@ -125,7 +125,7 @@
                                             <?php
 
 
-                                            echo(round(($p->physical_count)/($p->adjusted_facility_amc),2));
+                                            echo(round(($p->physical_count)/($p->forecast_monthly_consumption),2));
 
                                             ?>
                                         </td>

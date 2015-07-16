@@ -24,12 +24,14 @@
 
 
     <div class="wrapper wrapper-content">
+
         <div class="row">
 
-            <div class="col-lg-10">
+            <div class="col-lg-12">
 
 
              <form action="<?= base_url();?>index.php/pending_shipments/show_pending_shipments_from_selected_period" method="post" enctype="multipart/form-data" autocomplete="on">
+
                 <div class="form-group"><label class="col-sm-2 control-label">Select Period</label>
 
                     <div class="col-sm-5"><select class="form-control m-b" name="pending_shipments_period">
@@ -39,6 +41,7 @@
                             <?php endforeach; ?>
                         </select></div>
                     <div class="col-sm-5"><button type="submit" class="btn btn-primary">Get Shipments for the selected period</button></div>
+
 
              </form>
 
@@ -79,10 +82,12 @@
                                 <?php $done = array() ?>
                                 <?php foreach ($PSTOCKS as $pending_stocks): ?>
 
+
                                 <tr>
                                     <td><?php echo $count; ?></td>
 
                                     <td>
+
 
                                                  <?php
                                                 foreach($COMMODITY as $COMM):
@@ -95,6 +100,7 @@
                                     <td>
                                         <?php foreach($FUNDING as $FA):
                                           if ($pending_stocks->funding_agency_id==$FA->funding_agency_id)
+
                                             {
                                                 echo $FA->funding_agency_name;
                                             }
@@ -102,7 +108,9 @@
                                     </td>
                                     <td><?php echo $pending_stocks->quantity; ?></td>
                                     <td><?php echo $pending_stocks->expected_time_of_arrival; ?></td>
+
                                     <td><?php echo $pending_stocks->period; ?></td>
+
 
                                     <td data-toggle="modal" data-target="#myModal_<?php echo $pending_stocks->pending_shipment_id?>" ><i class="fa fa-wrench"></i></td>
                                     <td><a href="<?php echo(base_url()."pending_shipments/delete_pending_shipment/".$pending_stocks->pending_shipment_id); ?>"><i class="fa fa-trash"></i></a></td>
@@ -142,118 +150,127 @@
                                                         <select name="funding_agency" class="form-control">
                                                             <?php foreach($FUNDING as $FA):?>
 
+
                                                                 <option name="funding_agency" <?php if ($pending_stocks->funding_agency_id==$FA->funding_agency_id) {echo "Selected";
                                                                 } ?> ><?php echo $FA->funding_agency_name;?></option>
                                                             <?php endforeach; ?>
                                                         </select>
 
                                                         <div class="form-group">
-                                                        <label>Period :</label>
-                                                        <input type="text" name="period" class="form-control" value="<?php echo $pending_stocks->period; ?>"<div class="form-group">
+                                                            <label>Period :</label>
+                                                            <input type="text" required name="period" class="form-control" value="<?php echo $pending_stocks->period; ?>"<div class="form-group">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Quantity :</label>
+                                                                <input type="text" required name="quantity" class="form-control" value="<?php echo $pending_stocks->quantity; ?>">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Expected date of delivery :</label>
+                                                                <input type="text" id="deliverydate" name="expected_date_delivery" class="form-control" value="<?php echo $pending_stocks->expected_time_of_arrival; ?>">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Description :</label>
+                                                                <input type="text" name="pddescription" class="form-control" value="<?php echo $pending_stocks->comments; ?>">
+                                                            </div>
+
+                                                            <!--                                                        <input type="submit" class"btn btn-primary" id="submit" name="dsubmit" value="Update">-->
+
+
+
                                                         </div>
-
-                                                         <div class="form-group">
-                                                         <label>Quantity :</label>
-                                                         <input type="text" name="quantity" class="form-control" value="<?php echo $pending_stocks->quantity; ?>">
-                                                         </div>
-
-                                                         <div class="form-group">
-                                                         <label>Expected date of delivery :</label>
-                                                        <input type="text" id="deliverydate" name="expected_date_delivery" class="form-control" value="<?php echo $pending_stocks->expected_time_of_arrival; ?>">
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                                            <button id="update" type="submit" class="btn btn-primary">Save changes</button>
                                                         </div>
-
-                                                        <div class="form-group">
-                                                        <label>Description :</label>
-                                                        <input type="text" name="pddescription" class="form-control" value="<?php echo $pending_stocks->comments; ?>">
-                                                        </div>
-
-<!--                                                        <input type="submit" class"btn btn-primary" id="submit" name="dsubmit" value="Update">-->
-
-
-
+                                                    </form>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                                </form>
                                             </div>
                                         </div>
-                                    </div>
 
 
                                 </tr>
                                 <?php $count++;endforeach; ?>
-                            <?php }?>
+                        <?php }?>
 
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-<div class="modal inmodal" id="save_pending_shipments" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content animated bounceInRight">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <i class="fa fa-laptop modal-icon"></i>
-                <h4 class="modal-title">Add new shipment</h4>
+    <div class="modal inmodal" id="save_pending_shipments" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-laptop modal-icon"></i>
+                    <h4 class="modal-title">Add new shipment</h4>
 
-            </div>
-            <div class="modal-body">
-
-
-                <form action="<?= base_url();?>index.php/pending_shipments/save_pending_shipment" method="post" enctype="multipart/form-data" autocomplete="on">
-
-                    <label>Commodity Name :</label>
-                    <select name="commodity_name" class="form-control">
-                        <?php foreach($COMMODITY as $COM):?>
-                            <option name="commodity_name"> <?php echo $COM->commodity_name;?> </option>
-                        <?php endforeach; ?>
-                    </select>
+                </div>
+                <div class="modal-body">
 
 
-                    <label>Funding Agency :</label>
-                    <select name="funding_agency" class="form-control">
-                        <?php foreach($FUNDING as $FA):?>
-                            <option name="funding_agency"> <?php echo $FA->funding_agency_name;?> </option>
-                        <?php endforeach; ?>
-                    </select>
+                    <form action="<?= base_url();?>index.php/pending_shipments/save_pending_shipment" method="post" enctype="multipart/form-data" autocomplete="on">
 
-                    <div class="form-group">
-                        <label>Period :</label>
-                        <input type="text" name="period" class="form-control" placeholder="Period" <div class="form-group">
-                        </div>
+                        <label>Commodity Name :</label>
+                        <select name="commodity_name" class="form-control">
+                            <?php foreach($COMMODITY as $COM):?>
+                                <option name="commodity_name"> <?php echo $COM->commodity_name;?> </option>
+                            <?php endforeach; ?>
+                        </select>
+
+
+                        <label>Funding Agency :</label>
+                        <select name="funding_agency" class="form-control">
+                            <?php foreach($FUNDING as $FA):?>
+                                <option name="funding_agency"> <?php echo $FA->funding_agency_name;?> </option>
+                            <?php endforeach; ?>
+                        </select>
 
                         <div class="form-group">
-                            <label>Quantity :</label>
-                            <input type="text" name="quantity" class="form-control" placeholder="Quantity">
+                            <div class="form-group">
+                            <label>Period :</label>
+                            <!--<input type="text" name="period" class="form-control" placeholder="Period" >-->
+                                <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
+                                <span class="help-block">yyyy-mm</span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Quantity :</label>
+                                <input type="text" required name="quantity" class="form-control" placeholder="Quantity">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Expected time of arrival :</label>
+                                <input type="text" id="deliverydate" name="expected_time_of_arrival" class="form-control"  data-mask="9999-99-99" placeholder="Expected time of arrival">
+                                <span class="help-block">yyyy-mm-dd</span>
+                                <!--<input type="text"  class="form-control" >-->
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description :</label>
+                                <input type="text" name="pddescription" class="form-control" placeholder="Description">
+                            </div>
+
+                            <!-- <input type="submit" class"btn btn-primary" id="submit" name="dsubmit" value="Update">-->
+
+
+
                         </div>
-
-                        <div class="form-group">
-                            <label>Expected time of arrival :</label>
-                            <input type="text" id="deliverydate" name="expected_time_of_arrival" class="form-control" placeholder="Expected time of arrival">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button id="submit" type="submit" class="btn btn-primary">Save data</button>
                         </div>
-
-                        <div class="form-group">
-                            <label>Description :</label>
-                            <input type="text" name="pddescription" class="form-control" placeholder="Description">
-                        </div>
-
-                        <!-- <input type="submit" class"btn btn-primary" id="submit" name="dsubmit" value="Update">-->
-
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
+>
             </div>
         </div>
     </div>
@@ -261,5 +278,9 @@
 
 
 
+
+
     </div>
+
+
 <?php require_once("includes/footer.php"); ?>
