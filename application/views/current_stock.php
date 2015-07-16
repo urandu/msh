@@ -82,8 +82,7 @@
                                     <td><?php echo $central_level_data->quantity_expiring; ?></td>
                                     <td data-toggle="modal"
                                         data-target="#myModal_<?php echo $central_level_data->central_level_stock_id; ?>">
-                                        <i
-                                            class="fa fa-wrench"></i>
+                                        <i class="fa fa-wrench"></i>
 
                                         <div class="modal inmodal"
                                              id="myModal_<?php echo $central_level_data->central_level_stock_id; ?>"
@@ -100,7 +99,7 @@
                                                             currently held at the central level.
                                                         </small>
                                                     </div>
-                                                    <form action="<?= base_url(); ?>current_stock/update_central_level"
+                                                    <form action="<?php echo base_url(); ?>current_stock/update_central_level"
                                                           method="post" enctype="multipart/form-data">
                                                         <div class="modal-body">
 
@@ -211,7 +210,7 @@
                 <small class="font-bold">Add details about stocks currently held at the central level.</small>
 
             </div>
-            <form action="<?= base_url(); ?>current_stock/save_central_level" method="post"
+            <form action="<?php echo base_url(); ?>current_stock/save_central_level" method="post"
                   enctype="multipart/form-data">
                 <div class="modal-body">
 
@@ -226,7 +225,7 @@
                                                    class="form-control"></div>
                     <div class="form-group"><label>Commodity: </label><select class="form-control m-b">
                             <?php foreach ($commodity as $malaria_commodity): ?>
-                                <option name="commodity_name"><?php echo $malaria_commodity->commodity_name; ?></option>
+                                <option name="commodity_name" value="<?php echo $malaria_commodity->commodity_name; ?>"><?php echo $malaria_commodity->commodity_name; ?></option>
                             <?php endforeach; ?>
                         </select></div>
                     <div class="form-group"><label>Funding agency: </label><select class="form-control m-b">
@@ -285,6 +284,8 @@
 
 
 
+</div>
+    </div>
 
 
 <?php require_once("includes/footer.php"); ?>

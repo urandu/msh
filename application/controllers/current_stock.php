@@ -41,7 +41,7 @@ class Current_stock extends CI_Controller {
         show_sorted_central_stock*/
 
         $period_post=$this->input->post("period");
-        if(isset($period_post))
+        if(!empty($period_post))
         {
             $period=$period_post;
         }
@@ -89,8 +89,9 @@ class Current_stock extends CI_Controller {
             echo $supply_chain_agency;*/
 
         $this->stocks_model->update_central_data($id,$data);
-        $this->show_central_level_stock();
+      //  $this->show_central_level_stock();
 
+        redirect(base_url()."current_stock");
 
 
     }
@@ -136,10 +137,13 @@ class Current_stock extends CI_Controller {
         );
 
 
+        //print_r($dataArray);
+       // die("mmmmmmmmmmmmmmmmmmmmmmmmmmmm");
         $this->stocks_model->add_central_stock($dataArray);
 
-        $this->show_central_level_stock();
+        //$this->show_central_level_stock();
 
+        redirect(base_url()."current_stock");
 
 
     }

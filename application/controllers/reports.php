@@ -64,18 +64,24 @@ class Reports extends MY_Controller
     public function central_mos($period="000000")
     {
         $period_post=$this->input->post("date");
-        if(isset($period_post))
+        if(!empty($period_post))
         {
             $period=$period_post;
         }
 
         $this->load->model("report_model");
-
+//$central_report=array();
         $central_report['dates']=$this->report_model->get_central_level_periods();
+        if($period!="000000")
+        {
 
-        $central_report['period']=$this->report_model->get_central_level_mos($period);
 
-        $central_report['p']=$period;
+            $central_report['period']=$this->report_model->get_central_level_mos($period);
+            $central_report['p']=$period;
+        }
+
+
+
         $this->load->view('central_mos',$central_report);
     }
 

@@ -137,17 +137,20 @@ if (isset($period)) {
             <td>
                 <?php
 
+if(!empty($p->central_stock) && !empty($p->adjusted_facility_amc))
+{
+    echo(round(($p->central_stock)/($p->adjusted_facility_amc),2));
 
-             echo(round(($p->central_stock)/($p->adjusted_facility_amc),2));
+}
 
                 ?>
             </td>
             <td>
                 <?php
 
-
-             echo(round(($p->pending_shipment)/($p->adjusted_facility_amc),2));
-
+            if(!empty($p->pending_shipment) && !empty($p->adjusted_facility_amc)) {
+                echo(round(($p->pending_shipment) / ($p->adjusted_facility_amc), 2));
+            }
                 ?>
             </td>
 

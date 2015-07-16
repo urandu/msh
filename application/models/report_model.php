@@ -562,6 +562,154 @@ function show_central_stock(){
 
 }
 
+
+    function get_most_recent_county_period()
+    {
+        $query="SELECT period FROM county_level_data ORDER by period DESC LIMIT 1 ";
+
+        $result=$this->db->query($query);
+
+        return $result->result()[0]->period;
+    }
+
+    function get_all_commodities()
+    {
+
+        $query="SELECT DISTINCT drug_id,(SELECT mapping_name FROM mapping_drugs_category WHERE mapping_id = drug_id) AS drug_name FROM county_level_data ORDER by drug_name ASC";
+
+        $result=$this->db->query($query);
+
+        return $result->result();
+    }
+
+
+
+
+
+
+    public function get_mos_of_commodity_in_county($county,$period,$commodity_id)
+    {
+
+        $period1=subtract_date($period,1);
+        $period2=subtract_date($period,2);
+        $period3=subtract_date($period,3);
+        $period4=subtract_date($period,4);
+        $period5=subtract_date($period,5);
+
+        $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        (SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id)
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id)
+      )
+
+      +
+      (
+        (SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period2}' and county_id=coun_id)
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period3}' and county_id=coun_id)
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period4}' and county_id=coun_id)
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period ='{$period5}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period5}' and county_id=coun_id)
+      )
+    )/6
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}' and drug_id='{$commodity_id}'";
+        $result=$this->db->query($sql);
+
+
+        $result=$result->result();
+
+        if(!empty($result[0]->physical_count) && !empty($result[0]->adjusted_county_amc)){
+            $mos=($result[0]->physical_count)/($result[0]->adjusted_county_amc);
+        }
+        else
+        {
+            $mos=null;
+        }
+
+        return $mos;
+
+    }
+
+
+
+
+
+
+
+
 }
 
 ?>

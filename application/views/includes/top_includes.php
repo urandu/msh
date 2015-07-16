@@ -49,4 +49,87 @@
     <link href="<?php echo(base_url()); ?>assets/css/plugins/steps/jquery.steps.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/animate.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/style.css" rel="stylesheet">
+
+
+
+
+    <?php
+    if(!empty($items)) {
+        foreach ($items as $item) {
+            foreach ($item['counties'] as $county) {
+
+                ?>
+
+
+                <style>
+
+
+                    <?php echo("#".$item['commodity_id']);  ?>
+
+                    <?php echo("#".strtolower(trim(str_replace(" ","",str_replace("-","",str_replace("County","",$county["county_name"])))))); ?>
+                    <?php
+                     if($county["mos"]<=3)
+                     {
+                     ?>
+                    {
+                        fill: red
+                    ;
+                        stroke: black
+                    ;
+                    }
+
+                    <?php
+                    }elseif($county["mos"]>3 && $county["mos"]<=6)
+                    {
+
+    ?>
+                    {
+                        fill: green
+                    ;
+                        stroke: black
+                    ;
+                    }
+
+                    <?php
+                    }elseif($county["mos"]>6 && $county["mos"]<=9)
+                    {
+    ?>
+                    {
+                        fill: orange
+                    ;
+                        stroke: black
+                    ;
+                    }
+
+                    <?php
+
+                    }elseif($county["mos"]>9)
+                    {
+
+    ?>
+                    {
+                        fill: yellow
+                    ;
+                        stroke: black
+                    ;
+                    }
+
+                    <?php
+                    }
+
+
+
+
+                    ?>
+
+
+                </style>
+
+
+            <?php
+            }
+        }
+    }
+
+    ?>
 </head>

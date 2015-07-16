@@ -25,7 +25,55 @@ class Welcome extends MY_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+
+        $this->load->model("report_model");
+        $period=$this->input->post("date");
+        if(empty($period))
+        {
+            $period=$this->report_model->get_most_recent_county_period();
+        }
+
+        //$commodities=array();
+        $reports=array();
+        //$period="201409";
+        $commodities=$this->report_model->get_all_commodities();
+        $counties=$this->report_model->get_county_names();
+        $final=array();
+        $coun=array();
+        foreach($commodities as $commodity)
+        {
+            unset($reports);
+            unset($coun);
+            foreach($counties as $county)
+            {
+                unset($temp);
+                $temp=array(
+                    "county_name"=>$county->county_name,
+                    "county_id"=>$county->county_id,
+                    "mos"=>$this->report_model->get_mos_of_commodity_in_county($county->county_id,$period,$commodity->drug_id)
+                );
+                $coun[]=$temp;
+
+            }
+
+            $reports=array(
+                "commodity_name"=>$commodity->drug_name,
+                "commodity_id"=>$commodity->drug_id,
+                "period"=>$period,
+                "counties"=>$coun
+
+            );
+
+            $final[]=$reports;
+        }
+
+
+        $data['dates']=$this->report_model->get_county_periods();
+        $data["items"]=$final;
+        $data['bil']=$period;
+        //print_r($data);
+        //die("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+		$this->load->view('welcome_message',$data);
 	}
 }
 
