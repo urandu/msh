@@ -299,15 +299,38 @@ ORDER BY drug_id ASC, drug_category_id ASC";
 
   function show_pending_shipments(){
      $transaction_status = "pending";
-    $this->db->select('*');
+    $this->db->select('*, SUM(quantity) AS PendingTotal');
+     $this->db->group_by('commodity_id');
     $this->db->from('pending_shipment_details');
-    $this->db->group_by('commodity_id');
-    $this->db->where('transaction_status', $transaction_status);
     $query = $this->db->get();
     $query_result = $query->result();
     return $query_result;
+    /*var_dump($query_result);*/
+
+
+
   }
 
+    function pending_shipments(){
+     $transaction_status = "pending";
+    $this->db->select('*, SUM(quantity) AS PendingTotal');
+     $this->db->group_by('commodity_id');
+     $this->db->group_by('funding_agency_id');
+    $this->db->from('pending_shipment_details');
+    $query = $this->db->get();
+    $query_result = $query->result();
+    return $query_result;
+    /*var_dump($query_result);*/
+    }
+/*public function get_pending_shipment_totals(){
+  $this->db->select('*,SUM(quantity) AS PendingTotal');
+  $this->db->group_by('commodity_id');
+  $this->db->order_by('PendingTotal', 'desc'); 
+  $query=$this->db->get('pending_shipment_details',10);
+  return $query->result();
+  return $query->result();
+
+  }*/
 
   function show_pending_shipment_per_commodity(){
 
@@ -327,7 +350,18 @@ ORDER BY drug_id ASC, drug_category_id ASC";
   $query_result = $query->result();
   return $query_result;
   }
+  /*public function get_pending_shipment_totals(){
+    $this->db->select('*,SUM(quantity) AS PendingTotal');
+    $this->db->group_by('commodity_id');
+    $this->db->order_by('PendingTotal', 'desc'); 
+    $query=$this->db->get('pending_shipment_details',10);
+    return $query->result();
+    return $query->result();
+
+    }*/
 function show_central_stock(){
+  $this->db->select('*, SUM(soh_closing_balance) as central_total');
+  $this->db->group_by('commodity_id');
     $query = $this->db->get('central_level_data');
     $query_result = $query->result();
     return $query_result;

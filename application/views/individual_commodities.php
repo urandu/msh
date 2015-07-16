@@ -43,7 +43,7 @@
           endforeach;?>
     </td>
     <td>
-      <?php echo $pendingstocks->quantity;?>
+      <?php echo $pendingstocks->PendingTotal;?>
     </td>
     <td>
      <?php  echo $pendingstocks->expected_time_of_arrival;?>

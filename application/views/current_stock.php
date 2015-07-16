@@ -12,12 +12,26 @@
             </div>
         </div>
     </div>
+    <div class="row">
+    <div class="col-lg-3">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>current_stock/index">
+    <select name="period" class="form-control">
+        <option  selected>--SELECT PERIOD--</option>
+        <?php foreach ($central_level as $cld): ?>
+            <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+        <?php endforeach; ?>
+    </select>
+        <input class="btn btn-primary" type="submit" value="Get Commodities">
+        </form>
+</div> 
+</div>
 
-   <div class="wrapper wrapper-content">
+<div class="wrapper wrapper-content">
+  <div class="row">
        <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Current Stock</h5>
+                        <h5>Current Stock for: <?php echo $period ?></h5>
                         <div class="ibox-content">
                         <table class="table">
                             <thead>
@@ -35,9 +49,11 @@
                                     <th>Edit</th>                            
                                     </tr>
                             </thead>
+<?php if (isset($central_level_data_by_period)) {?>
+
                             <tbody>
                                 <?php $count=1; ?>
-                                <?php foreach ($central_level as $central_level_data): ?> 
+                                <?php foreach ($central_level_data_by_period as $central_level_data): ?> 
                                  <tr>
                                     <td><?php echo $count; ?></td>
                                       <td>  
@@ -76,20 +92,20 @@
                     <div class="modal-body">
 
                    <div class="form-group"><input type="hidden" name="central_level_stock_id" value="<?php echo $central_level_data->central_level_stock_id; ?>" class="form-control"></div>
-                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" >
+                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name" >
                     <?php foreach ($commodity as $malaria_commodity): ?>  
-                      <option name="commodity_name" <?php if ($malaria_commodity->commodity_id==$central_level_data->commodity_id){echo"selected";} ?>><?php  echo $malaria_commodity->commodity_name;?></option>
+                      <option  value="<?php  echo $malaria_commodity->commodity_name;?>" <?php if ($malaria_commodity->commodity_id==$central_level_data->commodity_id){echo"selected";} ?>><?php  echo $malaria_commodity->commodity_name;?></option>
                     <?php endforeach; ?>
                                         </select></div>
-                   <div class="form-group"><label>Funding agency: </label><select class="form-control m-b"  >
+                   <div class="form-group"><label>Funding agency: </label><select class="form-control m-b" name="funding_agency_name" >
                     <?php foreach ($funding_agency as $agency): ?>  
-                      <option name="funding_agency_name" <?php  if ($agency->funding_agency_id==$central_level_data->funding_agency_id){echo"selected";} ?>><?php echo $agency->funding_agency_name;?></option>
+                      <option  value="<?php echo $agency->funding_agency_name;?>" <?php  if ($agency->funding_agency_id==$central_level_data->funding_agency_id){echo"selected";} ?>><?php echo $agency->funding_agency_name;?></option>
                     <?php endforeach; ?>
                                         </select></div>
                    
-                <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b"  >
+                <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b" name="supply_chain_agency" >
                     <?php foreach ($supply_chain_agency as $supply): ?>  
-                      <option name="supply_chain_agency" <?php if($supply->supply_chain_agency_id==$central_level_data->supply_agency_id){echo"selected";} ?>><?php echo $supply->supply_chain_agency;?></option>
+                      <option value="<?php echo $supply->supply_chain_agency;?>" <?php if($supply->supply_chain_agency_id==$central_level_data->supply_agency_id){echo"selected";} ?>><?php echo $supply->supply_chain_agency;?></option>
                     <?php endforeach; ?>
                                         </select></div>
                        <div class="form-group"><label>Opening balance: </label> <input type="text" name="opening_balance" value="<?php echo $central_level_data->opening_balance; ?>" class="form-control"></div>
@@ -115,11 +131,14 @@
       <?php $count++; endforeach; ?>
       </tbody>
       </table>
+      <?php }?>
+
       </div>
       </div>
       </div>
       </div>
     </div>
+  </div>
 
 
 
@@ -138,20 +157,20 @@
                     <div class="modal-body">
 
                    <div class="form-group"><input type="hidden" name="central_level_stock_id" value="<?php echo $central_level_data->central_level_stock_id; ?>" class="form-control"></div>
-                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" >
+                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name">
                     <?php foreach ($commodity as $malaria_commodity): ?>  
-                      <option name="commodity_name" value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
+                      <option  value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
                     <?php endforeach; ?>
-                                        </select></div>
-                   <div class="form-group"><label>Funding agency: </label><select class="form-control m-b"  >
+                      </select></div>
+                   <div class="form-group"><label>Funding agency: </label><select class="form-control m-b" name="funding_agency_name" >
                     <?php foreach ($funding_agency as $agency): ?>  
-                      <option name="funding_agency_name" value="<?php echo $agency->funding_agency_name;?>"><?php echo $agency->funding_agency_name;?></option>
+                      <option  value="<?php echo $agency->funding_agency_name;?>"><?php echo $agency->funding_agency_name;?></option>
                     <?php endforeach; ?>
                                         </select></div>
                    
-                <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b"  >
+                <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b" name="supply_chain_agency"  >
                     <?php foreach ($supply_chain_agency as $supply): ?>  
-                      <option name="supply_chain_agency" value="<?php echo $supply->supply_chain_agency;?>" ><?php echo $supply->supply_chain_agency;?></option>
+                      <option  value="<?php echo $supply->supply_chain_agency;?>" ><?php echo $supply->supply_chain_agency;?></option>
                     <?php endforeach; ?>
                                         </select></div>
                        <div class="form-group"><label>Opening balance: </label> <input type="text" name="opening_balance" placeholder="Opening balance" class="form-control"></div>
@@ -172,41 +191,7 @@
             </div>
         </div>
 
-<!--     <div class="form-group" id="data_4">
-                                <label class="font-noraml">Month select</label>
-                                <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
-                                </div>
-                            </div> -->
-
 
 
 <?php require_once("includes/footer.php"); ?>
 
-
-<!-- <div class="modal inmodal" id="add_commodity" tabindex="-1" role="dialog" aria-hidden="true">
-                               <div class="modal-dialog">
-                                    <div class="modal-content animated bounceInRight">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <i class="fa fa-laptop modal-icon"></i>
-                                            <h4 class="modal-title">Malaria commodity</h4>
-                                            <small class="font-bold">Add a commodity here.</small>
-                                        </div>
-                                        <form action="<?= base_url();?>commodity/save_commodity" method="post" enctype="multipart/form-data">  
-                                        <div class="modal-body">
-
-                 
-                                        <div class="form-group"><label>Commodity: </label> <input type="text" name="commodity_name" placeholder="Commodity" class="form-control"></div>
-                                        <div class="form-group"><label>Unit of measure: </label> <input type="text" name="unit_of_measure" placeholder="UoM" class="form-control"></div>
-                                       <div class="form-group"><label>Description: </label> <input type="text" name="commodity_description" placeholder="Description" class="form-control"></div>
-                                        </div>
-                                        <div class="modal-footer">
-                                             <button type="submit" class="btn btn-primary">Add commodity</button>
-                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <input type="submit" id="submit" name="dsubmit" value="Update"> 
-                                        </div>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div> -->

@@ -17,7 +17,7 @@
        <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Funding Agency</h5>
+                        <h5>Commodity</h5>
                         <div class="ibox-content">
 
                         <table class="table">
@@ -55,7 +55,7 @@
                                         <div class="modal-body">
 
                                        <div class="form-group"><input type="hidden" name="commodity_id" value="<?php echo $malaria_commodity->commodity_id; ?>" class="form-control"></div>
-                                        <div class="form-group"><label>Funding agency: </label> <input type="text" name="commodity_name" value="<?php echo $malaria_commodity->commodity_name; ?>" class="form-control"></div>
+                                        <div class="form-group"><label>Commodity: </label> <input type="text" name="commodity_name" value="<?php echo $malaria_commodity->commodity_name; ?>" class="form-control"></div>
                                         <div class="form-group"><label>Unit of measure: </label> <input type="text" name="unit_of_measure" value="<?php echo $malaria_commodity->unit_of_measure; ?>" class="form-control"></div>
                                        <div class="form-group"><label>Description: </label> <input type="text" name="commodity_description" value="<?php echo $malaria_commodity->commodity_description; ?>" class="form-control"></div>
                                         </div>

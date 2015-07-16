@@ -60,7 +60,7 @@ class Reports extends CI_Controller {
          $this->load->model('report_model');
         $data['COMMODITY'] = $this->report_model->show_malaria_commodities();
         $data['pendingConsignments']=$this->report_model->show_pending_shipments();
-        //$data['pending_per_commodity'] = $this->report_model->show_pending_shipment_per_commodity();
+        $data['pending_per_commodity'] = $this->report_model->show_pending_shipment_per_commodity();
         $this->load->view('commodities_report', $data);
         
     }
@@ -70,7 +70,7 @@ class Reports extends CI_Controller {
          $this->load->model('report_model');
         $commodityperagency['COMMODITY']=$this->report_model->show_malaria_commodities();
         $commodityperagency['FUNDING']=$this->report_model->show_funding_orgs();
-        $commodityperagency['PSTOCKS']=$this->report_model->show_pending_shipments();
+        $commodityperagency['PSTOCKS']=$this->report_model->pending_shipments();
 
 
          $this->load->view('agencies_report', $commodityperagency);
