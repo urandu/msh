@@ -36,7 +36,7 @@
             <th></th>
 
             <th>
-                Pending Consignments
+                Pending Shipments
             </th>
         </tr>
         <tr>

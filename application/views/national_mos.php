@@ -31,7 +31,7 @@
         <option  selected>--SELECT PERIOD--</option>
 
         <?php foreach ($dates as $date): ?>
-            <option value="<?php echo $date->report_date; ?>"  ><?php echo $date->report_date; ?></option>
+            <option value="<?php echo $date->period; ?>"  ><?php echo $date->period; ?></option>
         <?php endforeach; ?>
     </select>
     </div>
@@ -54,7 +54,7 @@ if (isset($period)) {
 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>National Level MOS for period: <?php echo $date->report_date; ?></h5>
+                            <h5>National Level MOS for period: <?php echo $p; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>

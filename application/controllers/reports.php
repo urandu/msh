@@ -83,20 +83,24 @@ class Reports extends MY_Controller
     {
 
         $period_post=$this->input->post("date");
-        if(isset($period_post))
+        if(!empty($period_post))
         {
             $period=$period_post;
         }
         $this->load->model("report_model");
         $national_report['dates']=$this->report_model->get_central_level_periods();
+if($period!="000000")
+{
+    $national_report['period']=$this->report_model->get_national_level_mos($period);
+    $national_report['p']=$period;
+}
 
-        $national_report['period']=$this->report_model->get_national_level_mos($period);
-        $national_report['p']=$period;
         $this->load->view('national_mos',$national_report);
     }
 
     public function county_mos($period="000000",$county_id="ahwTMNAJvrL")
     {
+
         $period_post=$this->input->post("date");
         $county_post=$this->input->post("county");
 
@@ -109,13 +113,21 @@ class Reports extends MY_Controller
         {
             $county_id=$county_post;
         }
+        //echo($period);
+        //echo($county_id);
         $this->load->model("report_model");
         $county_report['dates']=$this->report_model->get_county_periods();
         $county_report['names']=$this->report_model->get_county_names();
+if($period!="000000")
+{
+    $county_report['period']=$this->report_model->get_county_mos($period,$county_id);
+    $county_report['p']=$period;
+    $county_report['c']=$county_id;
 
-        $county_report['period']=$this->report_model->get_county_mos($period,$county_id);
-        $county_report['p']=$period;
-        $county_report['c']=$county_id;
+    /*print_r($county_report);
+    die("ddddddddddddddddddddddd");*/
+}
+
         $this->load->view('county_mos',$county_report);
 
         //print_r($county_report);
