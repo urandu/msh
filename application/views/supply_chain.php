@@ -158,7 +158,7 @@
 
 
 
-    <div class="modal inmodal" id="save_supply_chain_agency" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal inmodal" id="save_supply_chain_agency" tabindex="-1" role="dialog" aria-hidden="true" onsubmit="return validateSupplyAgency()">
         <div class="modal-dialog">
             <div class="modal-content animated bounceInRight">
                 <div class="modal-header">
