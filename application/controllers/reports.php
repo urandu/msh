@@ -47,10 +47,9 @@ class Reports extends CI_Controller {
         $this->load->model('report_model');
         $commoditycomparison['COMMODITY']=$this->report_model->show_malaria_commodities();
         $commoditycomparison['FUNDING']=$this->report_model->show_funding_orgs();
-        $commoditycomparison['PSTOCKS']=$this->report_model->show_pending_shipments();
+        $commoditycomparison['PSTOCKS']=$this->report_model->pending_shipments();
+        $commoditycomparison['SORTED']=$this->report_model->show_pending_shipments();
         $commoditycomparison['CENTRAL']=$this->report_model->show_central_stock();
-
-
 
         $this->load->view('stocks_report', $commoditycomparison);
     }
@@ -79,7 +78,8 @@ class Reports extends CI_Controller {
        $this->load->model('report_model');
         $data2['COMMODITY']=$this->report_model->show_malaria_commodities();
         $data2['FUNDING']=$this->report_model->show_funding_orgs();
-        $data2['PSTOCKS']=$this->report_model->show_pending_shipments();
+        $data2['PSTOCKS']=$this->report_model->show_shipments();
+        $data2['SORTED']=$this->report_model->pending_shipments();
 
         $this->load->view('individual_commodities', $data2);
         }

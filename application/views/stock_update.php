@@ -3,7 +3,7 @@
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Recieved stocks</h2>
+            <h2>Update stocks</h2>
             </div>
         <div class="col-sm-8">
             <div class="title-action">
@@ -12,36 +12,23 @@
             </div>
         </div>
     </div>
-    <div class="row">
-    <div class="col-lg-3">
-    <form class="form" method="post" action="<?php echo(base_url()); ?>current_stock/index">
-    <select name="period" class="form-control">
-        <option  selected>--SELECT PERIOD--</option>
-        <?php foreach ($central_level as $cld): ?>
-            <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
-        <?php endforeach; ?>
-    </select>
-        <input class="btn btn-primary" type="submit" value="Get Commodities">
-        </form>
-</div> 
-</div>
-
+   
 <div class="wrapper wrapper-content">
   <div class="row">
        <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Received Stock(s) for: <?php echo $period ?></h5>
+                       <!--  <h5>Received Stock(s) for: <?php echo $period ?></h5> -->
                         <div class="ibox-content">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Comodity</th>                            
-                                    <th>Supply agency</th>
-                                    <th>Funding agency</th>
-                                    <th>Quantity received</th>
-                                    <th>Period</th>
+                                    <th>Unit of measure</th>
+                                    <th>Qty Received</th>
+                                    <th>Qty Issued</th>
+                                    <th>Stock on hand</th>
                                     <th>Edit</th>                            
                                     <th>Remove</th>                            
                                     </tr>

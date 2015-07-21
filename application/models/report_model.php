@@ -368,6 +368,17 @@ function show_central_stock(){
 
 }
 
+function show_shipments(){
+
+    $transaction_status = "pending";
+    $this->db->select('*');
+    $this->db->from('pending_shipment_details');
+    $this->db->where('transaction_status', $transaction_status);
+    $query = $this->db->get();
+    $query_result = $query->result();
+    return $query_result;
+}
+
 }
 
 ?>

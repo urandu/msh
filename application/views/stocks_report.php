@@ -42,9 +42,9 @@
             <th>Commodity</th>
             <th>Unit</th>
             <th>Kemsa</th>
-            <th>MOS</th>
+            
             <th>Total</th>
-            <th>Mos</th>
+          
             <th>Agency: Quantity</th>
             </thead>
         </tr>
@@ -60,10 +60,9 @@
                     }
                 endforeach;
                 ?></td>
-                <td></td>
-                 <td>
+                   <td>
                 <?php
-                foreach ($PSTOCKS as $pending_value): 
+                foreach ($SORTED as $pending_value): 
                     if ($item->commodity_id == $pending_value->commodity_id) {
                         $item_total = $pending_value->PendingTotal;
                         echo($item_total);
@@ -74,8 +73,9 @@
                 ?>      
                     
                 </td>
-                 <td></td>
-                 <td><table class="table" border="1">
+               
+                 <td>
+                    <table class="table" border="1">
         <thead>
             <th>Funding agency</th>            
             <th>Totals</th>
@@ -84,7 +84,7 @@
               <?php foreach($FUNDING as $FA): ?>
               <tr><td><?php echo $FA->funding_agency_name;?></td>
                 <td> <?php foreach($PSTOCKS as $ps):
-                if (($item->commodity_id==$ps->commodity_id) && ($FA->funding_agency_id==$ps->funding_agency_id)) {
+                if (($ps->commodity_id==$item->commodity_id) && ($FA->funding_agency_id==$ps->funding_agency_id)) {
                   echo $ps->PendingTotal;
                   }                
                     endforeach;
