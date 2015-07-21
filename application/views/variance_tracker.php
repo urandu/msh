@@ -3,7 +3,7 @@
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Forecast Data MOS</h2>
+            <h2>Forecast Variance Tracker</h2>
             <!--<ol class="breadcrumb">
                 <li>
                     <a href="index.html">This is</a>
@@ -25,17 +25,17 @@
 
         <div class="row">
             <div class="col-lg-3">
-                <form class="form" method="post" action="<?php echo(base_url()); ?>reports/forecast_mos">
+                <form class="form" method="post" action="<?php echo(base_url()); ?>reports/variance_tracker">
                     <select name="date" class="form-control">
                         <option  selected>--SELECT PERIOD--</option>
-
                         <?php foreach ($dates as $date): ?>
-                            <option value="<?php echo $date->forecast_start_date; ?>"  ><?php echo $date->forecast_start_date; ?></option>
+                            <option value="<?php echo $date->period; ?>"  ><?php echo $date->period; ?></option>
                         <?php endforeach; ?>
                     </select>
             </div>
+            
             <div class="col-lg-3">
-                <input class="btn btn-primary" type="submit" value="Get Forecast MOS Report">
+                <input class="btn btn-primary" type="submit" value="Get Forecast Variance">
                 </form>
             </div>
 
@@ -44,7 +44,7 @@
 
         if (isset($period)) {
 
-            //print_r($period);
+            // print_r($period);
 
 
             ?>
@@ -53,7 +53,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Forecast Commodities Data MOS for period: <?php echo $p; ?></h5>
+                            <h5>Forecast Variance for period: <?php echo $p; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -70,17 +70,29 @@
 
 
                                     <th>
-                                        Commodity name
+                                        Commodity Name
                                     </th>
-
+                                    
                                     <th>
-                                        Forecast Monthly Consumption
-                                    </th>
-                                    <th>
-                                        Stock on Hand
+                                     
                                     </th>
                                     <th>
-                                        Forecast Month of Stock(mos)
+                                      <?php echo $p; ?>  
+                                    </th>
+                                    <th>
+                                     <?php echo $p-1; ?>   
+                                    </th>
+                                    <th>
+                                       <?php echo $p-2; ?> 
+                                    </th>
+                                    <th>
+                                       <?php echo $p-3; ?> 
+                                    </th>
+                                    <th>
+                                       <?php echo $p-4; ?> 
+                                    </th>
+                                    <th>
+                                       <?php echo $p-5; ?> 
                                     </th>
 
                                 </tr>
@@ -105,18 +117,25 @@
 
                                             ?>
                                         </td>
+                                        <td>
+                                       <td> Forecasted Consumption</td>
+                                       <td> Actual Consumption</td>
+                                       <td> Variance : quantity</td>
+                                       <td> Variance : percentage</td>
+                                       
+                                        </td>
 
                                         <td>
                                             <?php
 
-                                            echo $p->forecast_monthly_consumption;
+                                            
 
                                             ?>
                                         </td>
 
                                         <td>
                                             <?php
-                                            echo $p->physical_count;
+                                           
 
 
                                             ?>
@@ -125,7 +144,7 @@
                                             <?php
 
 
-                                            echo(round(($p->physical_count)/($p->forecast_monthly_consumption),1));
+                                            
 
                                             ?>
                                         </td>

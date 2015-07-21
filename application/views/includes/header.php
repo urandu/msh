@@ -37,18 +37,18 @@ require_once("top_includes.php");
             </li>
             <li>
                 <a href="<?php echo(base_url()); ?>"><i class="fa fa-th-large"></i> <span
-                        class="nav-label">Dashboard</span> </a>
+                        class="nav-label">Home</span> </a>
 
             </li>
             <li>
-                <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Manage</span><span
+                <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Home</span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo(base_url()); ?>funding_agency">Funding agencies</a></li>
                     <li><a href="<?php echo(base_url()); ?>supply_chain">Supply chain agencies</a></li>
                     <li><a href="<?php echo(base_url()); ?>commodity">Commodities</a></li>
-                    <li><a href="<?php echo(base_url()); ?>county">Counties</a></li>
                     <li><a href="<?php echo(base_url()); ?>zone">Zones</a></li>
+                    <li><a href="<?php echo(base_url()); ?>county">Counties</a></li>
                     <li><a href="<?php echo(base_url()); ?>forecast">Forecasts</a></li>
 
                 </ul>
@@ -75,16 +75,21 @@ require_once("top_includes.php");
                     <li><a href="<?php echo(base_url()); ?>reports/facility_mos">Facility level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/national_mos">National level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/county_mos">County level MOS</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/variance_tracker">Forecast Variance Tracker</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/stocks">Stocks</a></li>
-                    <li><a href="<?php echo(base_url()); ?>reports/commodities">Total pending shipments per commodities</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/commodities">Pending Shipments Report</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/agencies">Total pending commodities per agencies</a></li>
-                    <li><a href="<?php echo(base_url()); ?>reports/individual_commodity">Individual pending commodities</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/individual_commodity">Individual Shipments</a></li>
                 </ul>
             </li>
             <li>
-                <a href="<?php echo(base_url()); ?>users"><i class="fa fa-user"></i> <span class="nav-label">Manage users</span>
-                </a>
-
+            <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">Settings</span><span
+                        class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">          
+               <!-- <a href="<?php echo(base_url()); ?>settings/users"><i class="fa fa-user"></i> <span class="nav-label">Settings</span>
+                </a>-->
+                <li> <a href="<?php echo(base_url()); ?>users">Manage Users</a></li>
+             </ul>
 
 
             </li>

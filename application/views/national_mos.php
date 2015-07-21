@@ -156,7 +156,7 @@ if (isset($period)) {
                 <?php
 
                 $central_mos=($p->central_stock)/($p->adjusted_facility_amc);
-             echo(round($central_mos,2));
+             echo(round($central_mos,1));
 
                 ?>
             </td>
@@ -164,7 +164,7 @@ if (isset($period)) {
                 <?php
                $pending_mos=($p->pending_shipment)/($p->adjusted_facility_amc);
 
-             echo(round($pending_mos,2));
+             echo(round($pending_mos,1));
 
                 ?>
             </td>
@@ -172,7 +172,7 @@ if (isset($period)) {
                 <?php
 
                $facility_mos=($p->physical_count)/($p->adjusted_facility_amc);
-             echo(round($facility_mos,2));
+             echo(round($facility_mos,1));
 
                 ?>
             </td>

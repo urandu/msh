@@ -155,7 +155,7 @@
                                             <?php
 
 
-                                            echo(round(($p->physical_count) / ($p->adjusted_county_amc), 2));
+                                            echo(round(($p->physical_count) / ($p->adjusted_county_amc), 1));
 
                                             ?>
                                         </td>

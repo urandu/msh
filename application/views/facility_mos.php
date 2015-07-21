@@ -109,7 +109,7 @@
                                         <td>
                                             <?php
 
-                                            echo (round($p->adjusted_facility_amc,2));
+                                            echo (round($p->adjusted_facility_amc,1));
 
                                             ?>
                                         </td>
@@ -125,7 +125,7 @@
                                             <?php
 
 
-                                            echo(round(($p->physical_count)/($p->adjusted_facility_amc),2));
+                                            echo(round(($p->physical_count)/($p->adjusted_facility_amc),1));
 
                                             ?>
                                         </td>
