@@ -1,5 +1,6 @@
 <?php require_once("includes/header.php"); ?>
 
+    
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
@@ -30,7 +31,7 @@
                         <option  selected>--SELECT PERIOD--</option>
 
                         <?php foreach ($dates as $date): ?>
-                            <option value="<?php echo $date->forecast_start_date; ?>"  ><?php echo $date->forecast_start_date; ?></option>
+                            <option value="<?php echo $date->period; ?>"  ><?php echo $date->period; ?></option>
                         <?php endforeach; ?>
                     </select>
             </div>
@@ -89,9 +90,12 @@
                                 <?php
 
                                 if(!empty($period)) {
-
+                                 
                                     foreach($period as $p)
-                                    {
+                                    {  
+                                      //$pd=add_date($p->forecast_start_date,$p->forecast_period * 12)
+                                        //echo $pd;
+                                       //if($date->period<=$pd) 
 
 
                                         echo("<tr>");

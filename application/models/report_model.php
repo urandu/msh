@@ -25,7 +25,7 @@ class Report_model extends CI_Model
         $period4=subtract_date($period,4);
         $period5=subtract_date($period,5);
      
-        $query="SELECT commodity_id as cid,forecast_monthly_consumption,(SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,(SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption FROM `commodity_forecast_data` WHERE forecast_start_date ='{$period}' order by cid";
+        $query="SELECT commodity_id as cid,forecast_start_date,forecast_period,forecast_monthly_consumption,(SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,(SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption FROM `commodity_forecast_data` order by cid";
 
         
      }
@@ -511,7 +511,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
     {
 
 
-        $query="SELECT DISTINCT forecast_start_date FROM commodity_forecast_data ORDER by forecast_start_date DESC";
+        $query="SELECT DISTINCT period FROM facility_level_data ORDER by period DESC";
 
         $result=$this->db->query($query);
 
@@ -521,7 +521,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
     public function get_forecast_commodity_data_mos($period)
     {
 
-        $sql="SELECT commodity_forecast_data_id,forecast_start_date,forecast_period,commodity_id as cid,(SELECT mapping_name FROM mapping_drugs_category WHERE mapping_id=cid) as commodity_name,forecast_monthly_consumption,(SELECT drug_value  FROM facility_level_data WHERE drug_category_id='rPAsF4cpNxm' AND period='{$period}' AND drug_id=cid )as physical_count FROM commodity_forecast_data WHERE forecast_start_date ='{$period}' order by cid";
+        $sql="SELECT commodity_forecast_data_id,forecast_start_date,forecast_period,commodity_id as cid,(SELECT mapping_name FROM mapping_drugs_category WHERE mapping_id=cid) as commodity_name,forecast_monthly_consumption,(SELECT drug_value  FROM facility_level_data WHERE drug_category_id='rPAsF4cpNxm' AND period='{$period}' AND drug_id=cid )as physical_count FROM commodity_forecast_data order by cid";
         $result=$this->db->query($sql);
         return $result->result();
 
