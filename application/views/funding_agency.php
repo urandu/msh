@@ -46,7 +46,7 @@
                                             <h4 class="modal-title">Edit agency</h4>
                                             <small class="font-bold">Update and delete details about a particular funding agency.</small>
                                         </div>
-                                        <form action="<?= base_url();?>funding_agency/update_funding_agency" method="post" enctype="multipart/form-data">  
+                                        <form action="<?= base_url();?>funding_agency/update_funding_agency" method="post" name="funding_agency" onsubmit="return validateFundingAgency()" enctype="multipart/form-data" >
                                         <div class="modal-body">
 
                                        <div class="form-group"><input type="hidden" name="funding_agency_id" value="<?php echo $agency->funding_agency_id; ?>" class="form-control"></div>
@@ -86,7 +86,7 @@
                                             <h4 class="modal-title">Funding agency</h4>
                                             <small class="font-bold">Add a funding agency here.</small>
                                         </div>
-                                        <form action="<?= base_url();?>funding_agency/save_funding_agency" method="post" enctype="multipart/form-data">  
+                                        <form action="<?= base_url();?>funding_agency/save_funding_agency" method="post" name="fundingagency" onsubmit="return validateFundingAgency()" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                  

@@ -127,7 +127,7 @@
                                                 <div class="modal-body">
 
 
-                                                    <form action="<?= base_url();?>index.php/pending_shipments/update_pending_shipment_id" method="post" enctype="multipart/form-data" autocomplete="on">
+                                                    <form action="<?= base_url();?>index.php/pending_shipments/update_pending_shipment_id" method="post" name="Pendingshipment" onsubmit="return validatePendingshipment() enctype="multipart/form-data" autocomplete="on">
 
                                                         <input type="hidden" name="pending_sipment_id" value="<?php echo $pending_stocks->pending_shipment_id; ?>">
 
@@ -168,7 +168,7 @@
 
                                                             <div class="form-group">
                                                                 <label>Expected date of delivery :</label>
-                                                                <input type="text" id="deliverydate" name="expected_date_delivery" class="form-control" value="<?php echo $pending_stocks->expected_time_of_arrival; ?>">
+                                                                <input type="text" required name="expected_date_delivery" class="form-control" value="<?php echo $pending_stocks->expected_time_of_arrival; ?>">
                                                             </div>
 
                                                             <div class="form-group">
@@ -216,7 +216,7 @@
                 <div class="modal-body">
 
 
-                    <form action="<?= base_url();?>index.php/pending_shipments/save_pending_shipment" method="post" enctype="multipart/form-data" autocomplete="on">
+                    <form action="<?= base_url();?>index.php/pending_shipments/save_pending_shipment" method="post"  id="form" name="Pendingshipment" onsubmit="return validatePendingshipment() enctype="multipart/form-data" autocomplete="on">
 
                         <label>Commodity Name :</label>
                         <select name="commodity_name" class="form-control">
@@ -249,7 +249,7 @@
 
                             <div class="form-group">
                                 <label>Expected time of arrival :</label>
-                                <input type="text" id="deliverydate" name="expected_time_of_arrival" class="form-control"  data-mask="9999-99-99" placeholder="Expected time of arrival">
+                                <input type="text" required name="expected_time_of_arrival" class="form-control"  data-mask="9999-99-99" placeholder="Expected time of arrival">
                                 <span class="help-block">yyyy-mm-dd</span>
                                 <!--<input type="text"  class="form-control" >-->
                             </div>

@@ -107,8 +107,8 @@ class Pending_shipments extends MY_Controller
         //$this->show_pending_shipments_from_selected_period();
         redirect(base_url()."pending_shipments");
     }
-    public function delete_pending_shipment(){
-        $id= $this->input->post('pendingstockid');
+    public function delete_pending_shipment($id){
+        //$id= $this->input->post('pendingstockid');
         $this->db->where('pending_shipment_id', $id);
         $deleterecord=$this->db->delete('pending_shipment_details');
         $data['status'] =  "";

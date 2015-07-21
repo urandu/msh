@@ -48,6 +48,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Contact person</th>
+                                <th>Email</th>
                                 <th>Phone number</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -64,6 +65,7 @@
                                     <td><?php echo $count; ?></td>
                                     <td><?php echo $agency->supply_chain_agency; ?></td>
                                     <td><?php echo $agency->contact_person; ?></td>
+                                    <td><?php echo $agency->email; ?></td>
                                     <td><?php echo $agency->contact_phone; ?></td>
                                     <td data-toggle="modal"
                                         data-target="#myModal_<?php echo $agency->supply_chain_agency_id ?>"><i
@@ -92,7 +94,7 @@
 
                                                     <form
                                                         action="<?= base_url(); ?>index.php/supply_chain/update_agency_id1"
-                                                        method="post" enctype="multipart/form-data" autocomplete="on">
+                                                        method="post" name="supplychain" onsubmit="return validateSupplyAgency() enctype="multipart/form-data" autocomplete="on">
 
                                                         <div class="form-group">
                                                             <input type="hidden" name="supply_agency_id"
@@ -113,6 +115,15 @@
                                                                    class="form-control"
                                                                    value="<?php echo $agency->contact_person; ?>">
                                                         </div>
+
+                                                        <div class="form-group">
+                                                            <label>Email :</label>
+                                                            <input type="email" name="email"
+                                                                   class="form-control"
+                                                                   value="<?php echo $agency->email; ?>">
+                                                        </div>
+
+
 
 
                                                         <div class="form-group">
@@ -158,7 +169,7 @@
 
 
 
-    <div class="modal inmodal" id="save_supply_chain_agency" tabindex="-1" role="dialog" aria-hidden="true" onsubmit="return validateSupplyAgency()">
+    <div class="modal inmodal" id="save_supply_chain_agency" tabindex="-1" role="dialog" aria-hidden="true" name="supplychain" onsubmit="return validateSupplyAgency()">
         <div class="modal-dialog">
             <div class="modal-content animated bounceInRight">
                 <div class="modal-header">
@@ -189,6 +200,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label">Email: </label>
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <!--the form-control gives the form some styling-->
+                        </div>
+
+
+                        <div class="form-group">
                             <label">Contact Phone </label>
                             <input id="txtPhone" type="text" class="form-control" name="contact_phone"
                                    placeholder="Contact phone">
@@ -211,8 +229,8 @@
 
             </div>
             <div class="modal-footer">
-                <button id="submit" type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                <button id="submit" type="submit" class="btn btn-primary">Save changes</button>
             </div>
             </form>
         </div>

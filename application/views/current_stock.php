@@ -211,7 +211,7 @@
                 <small class="font-bold">Add details about stocks currently held at the central level.</small>
 
             </div>
-            <form action="<?= base_url(); ?>current_stock/save_central_level" method="post"
+            <form action="<?= base_url(); ?>current_stock/save_central_level" name="Pendingshipment" onsubmit="return validatePendingshipment() method="post"
                   enctype="multipart/form-data">
                 <div class="modal-body">
 

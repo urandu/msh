@@ -16,6 +16,7 @@ class County_model extends CI_Model
 // Function To Fetch All Counties Record
     function show_counties()
     {
+        $this->db->order_by('county_name', 'asc');
         $query = $this->db->get('counties');
         $query_result = $query->result();
         return $query_result;
