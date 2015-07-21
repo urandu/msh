@@ -17,6 +17,18 @@ class Report_model extends CI_Model
         return $result->result();
 
     }
+     public function forecast_variance_tracker($period)
+     {
+       $period1=subtract_date($period,1);
+        $period2=subtract_date($period,2);
+        $period3=subtract_date($period,3);
+        $period4=subtract_date($period,4);
+        $period5=subtract_date($period,5);
+     
+        $query="SELECT commodity_id as cid,forecast_monthly_consumption,(SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,(SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption FROM `commodity_forecast_data` WHERE forecast_start_date ='{$period}' order by cid";
+
+        
+     }
 
     function get_national_level_mos($period)
     {

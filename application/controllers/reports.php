@@ -138,6 +138,26 @@ if($period!="000000")
 
         //print_r($county_report);
     }
+     public function variance_tracker($period="000000")
+     {
+       $period_post=$this->input->post("date");
+        if(!empty($period_post))
+        {
+            $period=$period_post;
+        }
+        $this->load->model("report_model");
+        $variance['dates']=$this->report_model->get_facility_level_periods();
+if($period!="000000")
+{
+    $variance['period']=$this->report_model->forecast_variance_tracker($period);
+    $variance['p']=$period;
+}
+
+        $this->load->view('variance_tracker',$variance);
+
+
+        
+     }
 
     public function stocks()
     {
