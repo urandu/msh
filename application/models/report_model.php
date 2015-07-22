@@ -26,7 +26,8 @@ class Report_model extends CI_Model
         $period5=subtract_date($period,5);
      
         $query="SELECT commodity_id as cid,forecast_start_date,forecast_period,forecast_monthly_consumption,(SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,(SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption FROM `commodity_forecast_data` order by cid";
-
+        $result=$this->db->query($query);
+        return $result->result();
         
      }
 
@@ -504,7 +505,17 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
     }
 
 
+ function forecast_variance_periods()
+    {
 
+
+        $query="SELECT DISTINCT period FROM facility_level_data WHERE period >='201411' ORDER by period DESC";
+
+        $result=$this->db->query($query);
+
+        return $result->result();
+
+    }
 
 
     function get_forecast_commodity_data_periods()

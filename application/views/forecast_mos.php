@@ -93,11 +93,11 @@
                                  
                                     foreach($period as $p)
                                     {  
-                                      //$pd=add_date($p->forecast_start_date,$p->forecast_period * 12)
-                                        //echo $pd;
-                                       //if($date->period<=$pd) 
+                                      $pd=add_date($p->forecast_start_date,$p->forecast_period * 12);
+                                       
+                                       if($date->period<=$pd) 
 
-
+                                        {
                                         echo("<tr>");
                                         ?>
 
@@ -136,17 +136,23 @@
 
                                         <?php
                                         echo("</tr>");
+                                    }
+                                     else
+                                    echo "The forecast data period has expired";
 
                                     }
                                     // endforeach;
-
+                                     
 
                                     ?>
 
 
                                 <?php
+
                                 }
+
                                 ?>
+
 
                                 </tbody>
                             </table>
@@ -159,8 +165,7 @@
 
         }
 
-
-
+       
 
 
         ?>

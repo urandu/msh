@@ -53,7 +53,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Forecast Variance for period: <?php echo $p; ?></h5>
+                            <h5>Forecast Variance from period: <?php echo $p; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -109,21 +109,20 @@
                                         echo("<tr>");
                                         ?>
 
-                                        <td>
+                                        <td rowspan="4" scope="rowgroup">
                                             <?php
 
                                             echo $p->commodity_name;
 
 
                                             ?>
+                                            <td scope="row"> Forecasted Consumption</td>
+                                            <tr><td scope="row"> Actual Consumption</td></tr>
+                                           <tr><td scope="row"> Variance : quantity</td></tr>
+                                           <tr> <td scope="row"> Variance : percentage</td></tr>
+                                            
                                         </td>
-                                        <td>
-                                       <td> Forecasted Consumption</td>
-                                       <td> Actual Consumption</td>
-                                       <td> Variance : quantity</td>
-                                       <td> Variance : percentage</td>
-                                       
-                                        </td>
+                                        
 
                                         <td>
                                             <?php
