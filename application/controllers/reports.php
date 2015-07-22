@@ -140,7 +140,7 @@ if($period!="000000")
     }
      public function variance_tracker($period="000000")
      {
-       $period_post=$this->input->post("date");
+        $period_post=$this->input->post("date");
         if(!empty($period_post))
         {
             $period=$period_post;
@@ -154,7 +154,7 @@ if($period!="000000")
 }
 
         $this->load->view('variance_tracker',$variance);
-
+       
 
         
      }

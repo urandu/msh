@@ -19,13 +19,21 @@ class Report_model extends CI_Model
     }
      public function forecast_variance_tracker($period)
      {
-       $period1=subtract_date($period,1);
+        $period1=subtract_date($period,1);
         $period2=subtract_date($period,2);
         $period3=subtract_date($period,3);
         $period4=subtract_date($period,4);
         $period5=subtract_date($period,5);
      
-        $query="SELECT commodity_id as cid,forecast_start_date,forecast_period,forecast_monthly_consumption,(SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,(SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption FROM `commodity_forecast_data` order by cid";
+        $query="SELECT commodity_id as cid,forecast_start_date,forecast_period,forecast_monthly_consumption,
+        (SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,
+        (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption,
+        (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period1}' AND drug_id=cid )as actual_consumption1,
+        (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period2}' AND drug_id=cid )as actual_consumption2,
+        (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period3}' AND drug_id=cid )as actual_consumption3,
+        (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period4}' AND drug_id=cid )as actual_consumption4,
+        (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period5}' AND drug_id=cid )as actual_consumption5 
+        FROM `commodity_forecast_data` order by cid";
         $result=$this->db->query($query);
         return $result->result();
         

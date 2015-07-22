@@ -136,16 +136,14 @@
 
                                         <?php
                                         echo("</tr>");
+                                       
                                     }
-                                     else
-                                    echo "The forecast data period has expired";
+                                     else echo " <font color='red'> The forecast period has expired,please adjust the period and forecast start date in the forecast option under home.</font>";
 
                                     }
                                     // endforeach;
-                                     
 
                                     ?>
-
 
                                 <?php
 
