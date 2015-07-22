@@ -3255,6 +3255,13 @@ img.circle-border {
   border: 6px solid #FFFFFF;
   border-radius: 50%;
 }
+
+.center {
+
+   margin-left: -380px;
+
+}
+
 .branding {
   float: left;
   color: #FFFFFF;
