@@ -64,9 +64,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Commodity</th>
-                                <th>Funding agency</th>
-                                <th>Planned procurement Quantity</th>
                                 <th>Unit of measure</th>
+                                <th>Funding agency</th>
+                                <th>Quantity</th>
                                 <th>Planned procurement date</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -88,7 +88,6 @@
 
             <td>
 
-
                 <?php
                 foreach($COMMODITY as $COMM):
 
@@ -97,6 +96,20 @@
                     }
                 endforeach; ?>
             </td>
+
+
+            <td>
+                <?php
+                foreach($COMMODITY as $COMM):
+
+                    if ($planned_procurements->commodity_id==$COMM->commodity_id){
+                        echo $COMM->unit_of_measure;
+                    }
+                endforeach; ?>
+            </td>
+
+
+
             <td>
                 <?php foreach($FUNDING as $FA):
                     if ($planned_procurements->funding_agency_id==$FA->funding_agency_id)
@@ -107,7 +120,6 @@
                 endforeach; ?>
             </td>
             <td><?php echo $planned_procurements->quantity; ?></td>
-            <td><?php echo $planned_procurements->unit_of_measure; ?></td>
 
             <td><?php echo $planned_procurements->planned_delivery_date; ?></td>
 
@@ -140,6 +152,16 @@
                                         } ?> ><?php echo $COM->commodity_name;?></option>
                                     <?php endforeach; ?>
                                 </select>
+
+                                <div class="form-group">
+                                    <label>Unit of measure :</label>
+
+                                    <input type="text" readonly name="unit_of_measure" class="form-control"
+                                        <?php foreach($COMMODITY as $COM):?>
+                                        <?php if ($planned_procurements->commodity_id==$COM->commodity_id){?> value="<?php echo $COM->unit_of_measure;}?>"                                                                "
+                                    <?php endforeach; ?>
+                                    >
+                                </div>
 
 
 

@@ -35,5 +35,15 @@ class County_model extends CI_Model
         return $query->result();
     }
 
+
+    function get_zone_id($zone_name)
+    {
+        $this->db->select('zone_id');
+        $this->db->from('zones');
+        $this->db->where('zone', $zone_name);
+        $query = $this->db->get();
+        $result = $query->row()->zone_id;
+        return $result;
+    }
+
 }
-?>

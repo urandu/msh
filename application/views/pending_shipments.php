@@ -30,14 +30,14 @@
             <div class="col-lg-12">
 
 
-             <form action="<?= base_url();?>index.php/pending_shipments/show_pending_shipments_from_selected_period" method="post" enctype="multipart/form-data" autocomplete="on">
+             <form action="<?= base_url();?>pending_shipments/show_pending_shipments" method="post" enctype="multipart/form-data" autocomplete="on">
 
                 <div class="form-group"><label class="col-sm-2 control-label">Select Period</label>
 
                     <div class="col-sm-5"><select class="form-control m-b" name="pending_shipments_period">
-                            <option>--SELECT PERIOD--</option>
+                            <option selected>--SELECT PERIOD--</option>
                             <?php foreach ($ALL_SHIPMENTS as $pending_shipment):?>
-                                <option name="pending_shipments_period"> <?php echo $pending_shipment->period;?></option>
+                                <option> <?php echo $pending_shipment->period;?></option>
                             <?php endforeach; ?>
                         </select></div>
                     <div class="col-sm-5"><button type="submit" class="btn btn-primary">Get Shipments for the selected period</button></div>
@@ -64,6 +64,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Commodity</th>
+                                <th>Unit of measure</th>
                                 <th>Funding agency</th>
                                 <th>Pending delivery</th>
                                 <th>Expected date of arrival</th>
@@ -78,6 +79,7 @@
                             <?php $count=1; ?>
 
                             <?php if(isset($pending_shipment_successfully_retrieved)){?>  <!--CHECK IF DATA IS THERE-->
+                            <?php //if(isset($period)){?>  <!--CHECK IF DATA IS THERE-->
 
                                 <?php $done = array() ?>
                                 <?php foreach ($PSTOCKS as $pending_stocks): ?>
@@ -87,9 +89,7 @@
                                     <td><?php echo $count; ?></td>
 
                                     <td>
-
-
-                                                 <?php
+                                              <?php
                                                 foreach($COMMODITY as $COMM):
 
                                                     if ($pending_stocks->commodity_id==$COMM->commodity_id){
@@ -97,6 +97,21 @@
                                                     }
                                                 endforeach; ?>
                                     </td>
+
+
+                                    <td>
+                                        <?php
+                                        foreach($COMMODITY as $COMM):
+
+                                            if ($pending_stocks->commodity_id==$COMM->commodity_id){
+                                                echo $COMM->unit_of_measure;
+                                            }
+                                        endforeach; ?>
+                                    </td>
+
+
+
+
                                     <td>
                                         <?php foreach($FUNDING as $FA):
                                           if ($pending_stocks->funding_agency_id==$FA->funding_agency_id)
@@ -141,7 +156,15 @@
                                                             <?php endforeach; ?>
                                                         </select>
 
+                                                        <div class="form-group">
+                                                            <label>Unit of measure :</label>
 
+                                                            <input type="text" readonly name="unit_of_measure" class="form-control"
+                                                                <?php foreach($COMMODITY as $COM):?>
+                                                                   <?php if ($pending_stocks->commodity_id==$COM->commodity_id){?> value="<?php echo $COM->unit_of_measure;}?>"                                                                "
+                                                               <?php endforeach; ?>
+                                                            >
+                                                        </div>
 
 
                                                         <label>Funding Agency :</label>
@@ -248,7 +271,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Expected time of arrival :</label>
+                                <label>Expected date of arrival :</label>
                                 <input type="text" required name="expected_time_of_arrival" class="form-control"  data-mask="9999-99-99" placeholder="Expected time of arrival">
                                 <span class="help-block">yyyy-mm-dd</span>
                                 <!--<input type="text"  class="form-control" >-->

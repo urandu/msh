@@ -57,7 +57,13 @@
                                     <tr>
                                         <td><?php echo $count; ?></td>
                                         <td><?php echo $county->county_name; ?></td>
-                                        <td><?php echo $county->zone; ?></td>
+
+                                        <td>
+                                        <?php foreach ($zones as $zone):?>
+                                            <?php if($zone->zone_id==$county->zone) echo $zone->zone;?>
+                                        <?php endforeach; ?>
+                                        </td>
+
                                         <td data-toggle="modal" data-target="#myModal_<?php echo $county->county_id?>" ><i class="fa fa-wrench"></i></td>
 
                                         <div class="modal inmodal" id="myModal_<?php echo $county->county_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -88,8 +94,8 @@
                                                             <select class="form-control m-b" name="zone_name">
 
                                                                 <option>--SELECT ZONE--</option>
-                                                                <?php foreach ($zones as $zone_name):?>
-                                                                    <option name="zone_name" <?php if($zone_name->zone==$county->zone){echo"selected";} ?>><?php echo $zone_name->zone;?></option>
+                                                                <?php foreach ($zones as $zone):?>
+                                                                    <option name="zone_name" <?php if($zone->zone_id==$county->zone){echo"selected";} ?>><?php echo $zone->zone;?></option>
                                                                 <?php endforeach; ?>
 
                                                             </select>

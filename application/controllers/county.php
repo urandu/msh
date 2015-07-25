@@ -45,20 +45,13 @@ class County extends MY_Controller
     function update_county_id1() {
         $id= $this->input->post('county_id');
         $data = array(
-            'zone' => $this->input->post('zone_name'),
+            'zone' => $this->county_model->get_zone_id($this->input->post('zone_name')),
             'comment' => $this->input->post('county_comment'),
         );
-        $Updatecounty=$this->county_model->update_counties_id1($id,$data);
-        $data['status'] =  "";
-        if ($Updatecounty) {
-            $data['status'] =  "Agency updated Successfully!..";
-        }
-        //$this->show_county_id();
+        $this->county_model->update_counties_id1($id,$data);
+
         redirect(base_url()."county");
     }
-
-
-
 
 }
 /* End of file welcome.php */

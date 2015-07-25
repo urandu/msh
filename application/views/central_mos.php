@@ -43,10 +43,6 @@
        <?php
 
 if (isset($period)) {
-
-    //print_r($period);
-
-
 ?>
 
 <div class="row">
