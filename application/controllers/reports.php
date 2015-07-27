@@ -50,7 +50,7 @@ class Reports extends MY_Controller
     {
 
         $period_post=$this->input->post("date");
-        if(isset($period_post))
+        if(!empty($period_post))
         {
             $period=$period_post;
         }

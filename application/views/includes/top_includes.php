@@ -49,6 +49,7 @@
     <link href="<?php echo(base_url()); ?>assets/css/plugins/steps/jquery.steps.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/animate.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/style.css" rel="stylesheet">
+    <link  id='GoogleFontsLink' href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
 
 
 
