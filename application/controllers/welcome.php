@@ -28,11 +28,21 @@ class Welcome extends MY_Controller
 
         $this->load->model("report_model");
         $period=$this->input->post("date");
+        $county_period=$this->input->post("county_date");
+        $county_id=$this->input->post("county_id");
+
         if(empty($period))
         {
             $period=$this->report_model->get_most_recent_county_period();
         }
-
+if(empty($county_period))
+        {
+            $county_period="000000";
+        }
+        if(empty($county_id))
+        {
+            $county_id="ahwTMNAJvrL";
+        }
         //$commodities=array();
         $reports=array();
         //$period="201409";
@@ -67,10 +77,33 @@ class Welcome extends MY_Controller
             $final[]=$reports;
         }
 
+        $data['names']=$this->report_model->get_county_names();
+        if($county_period!="000000")
+        {
+            $data['period']=$this->report_model->get_county_mos($county_period,$county_id);
+            $data['p1']=$county_period;
+            $data['c']=$county_id;
+
+            /*print_r($county_report);
+            die("ddddddddddddddddddddddd");*/
+        }
 
         $data['dates']=$this->report_model->get_county_periods();
         $data["items"]=$final;
         $data['bil']=$period;
+
+
+        $national_period_post=$this->input->post("national_date");
+        if(empty($national_period_post))
+        {
+            $national_period_post="000000";
+        }
+        $this->load->model("report_model");
+        $data['national_dates']=$this->report_model->get_central_level_periods();
+        if($national_period_post!="000000") {
+            $data['national_period'] = $this->report_model->get_national_level_mos($national_period_post);
+            $data['national_p'] = $national_period_post;
+        }
         //print_r($data);
         //die("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
 		$this->load->view('welcome_message',$data);

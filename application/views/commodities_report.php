@@ -50,7 +50,7 @@ if ($pending_totals->commodity_id==$COMM->commodity_id){
 
   </td>
     <td>
-    <?php echo $pending_totals->quantity;?>
+    <?php echo $pending_totals->PendingTotal;?>
 
   </td></tr>
 <?php endforeach?>
