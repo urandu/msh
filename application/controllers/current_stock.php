@@ -41,7 +41,7 @@ class Current_stock extends CI_Controller {
         show_sorted_central_stock*/
 
         $period_post=$this->input->post("period");
-        if(!empty($period_post))
+        if(isset($period_post))
         {
             $period=$period_post;
         }
@@ -68,30 +68,21 @@ class Current_stock extends CI_Controller {
         $supply_chain_agency= ($this->input->post('supply_chain_agency'));
         $id= $this->input->post('central_level_stock_id');//central_level_stock_id
         $f_agency_name= ($this->input->post('funding_agency_name'));
+        $today = date("Ym");
 
         $data = array(
+            'period'=>$today,
             'commodity_id' => $this->commodity_model->get_commodity_id_with_the_given_name($this->input->post('commodity_name')),
-            //'pack_size' => $this->input->post('pack_size'),
+            'soh_closing_balance'=>$this->input->post('soh_closing_balance'),
             'supply_agency_id' =>$this->agency_model->get_agency_id_with_the_given_name($supply_chain_agency),
             'funding_agency_id' => $this->agency_model->get_funding_agency_id($f_agency_name),
-            'opening_balance' => $this->input->post('opening_balance'),
-            'total_receipts_from_suppliers'=>$this->input->post('total_receipts_from_suppliers'),
-            'soh_closing_balance'=>$this->input->post('soh_closing_balance'),
-            'total_issues_to_facilities'=>$this->input->post('total_issues_to_facilities'),
-            'earliest_expiry_date'=>$this->input->post('earliest_expiry_date'),
-            'quantity_expiring'=>$this->input->post('quantity_expiring'),
-            //'report_date'=>$this->input->post('report_date'),
+
         );
 
-        /*
-            print_r($data);
-            echo $f_agency_name;
-            echo $supply_chain_agency;*/
 
         $this->stocks_model->update_central_data($id,$data);
-      //  $this->show_central_level_stock();
+        $this->show_central_level_stock();
 
-        redirect(base_url()."current_stock");
 
 
     }
@@ -123,27 +114,19 @@ class Current_stock extends CI_Controller {
         $time = date("F j, Y, g:i a");
 
         $dataArray = array(
-            'report_date'=>$time,
             'period'=>$today,
             'funding_agency_id' => $this->agency_model->get_funding_agency_id($f_agency_name),
             'commodity_id' => $this->commodity_model->get_commodity_id_with_the_given_name($this->input->post('commodity_name')),	//GET THE COMODITIES ID
             'supply_agency_id' =>$this->agency_model->get_agency_id_with_the_given_name($supply_chain_agency),
-            'opening_balance' => $this->input->post('opening_balance'),
-            'total_receipts_from_suppliers'=>$this->input->post('total_receipts_from_suppliers'),
             'soh_closing_balance'=>$this->input->post('soh_closing_balance'),
-            'total_issues_to_facilities'=>$this->input->post('total_issues_to_facilities'),
-            'earliest_expiry_date'=>$this->input->post('earliest_expiry_date'),
-            'quantity_expiring'=>$this->input->post('quantity_expiring'),
+
+
         );
 
-
-        //print_r($dataArray);
-       // die("mmmmmmmmmmmmmmmmmmmmmmmmmmmm");
         $this->stocks_model->add_central_stock($dataArray);
 
-        //$this->show_central_level_stock();
+        $this->show_central_level_stock();
 
-        redirect(base_url()."current_stock");
 
 
     }

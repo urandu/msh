@@ -43,71 +43,62 @@
             <th>Commodity</th>
             <th>Unit</th>
             <th>Kemsa</th>
-            <th>MOS</th>
+            
             <th>Total</th>
-            <th>Mos</th>
+          
             <th>Agency: Quantity</th>
             </thead>
         </tr>
-        <tbody>
+       <tbody>
         <?php foreach ($COMMODITY as $item): ?>
-            <tr>
+        <tr> 
                 <td><?php echo $item->commodity_name; ?></td>
                 <td>Unit</td>
-                <?php $total_stock = 0; foreach ($CENTRAL as $central_value): 
+                <td> <?php $total_stock = 0; foreach ($CENTRAL as $central_value): 
                 if ($item->commodity_id == $central_value->commodity_id) {
-                        $stock_available =  $central_value->soh_closing_balance;
-                        $total_stock += $stock_available;
+                        $stock_available =  $central_value->central_total;
+                        echo($stock_available);                   
                     }
                 endforeach;
-                ?>
-                <td>
-                    <?php echo $total_stock; ?>
-                </td>
-                <td></td>
-                <?php $item_total = 0;
-                foreach ($PSTOCKS as $pending_value): 
+                ?></td>
+                   <td>
+                <?php
+                foreach ($SORTED as $pending_value): 
                     if ($item->commodity_id == $pending_value->commodity_id) {
-                        $item_total += $pending_value->quantity;}
+                        $item_total = $pending_value->PendingTotal;
+                        echo($item_total);
+
+                    }
+
                 endforeach;
+                ?>      
+                    
+                </td>
+               
+                 <td>
+                    <table class="table" border="1">
+        <thead>
+            <th>Funding agency</th>            
+            <th>Totals</th>
+            </thead>
+            <tbody>
+              <?php foreach($FUNDING as $FA): ?>
+              <tr><td><?php echo $FA->funding_agency_name;?></td>
+                <td> <?php foreach($PSTOCKS as $ps):
+                if (($ps->commodity_id==$item->commodity_id) && ($FA->funding_agency_id==$ps->funding_agency_id)) {
+                  echo $ps->PendingTotal;
+                  }                
+                    endforeach;
                 ?>
-                <td>
-                    <?php echo $item_total; ?>
                 </td>
-                <td></td>
-                <td>
-                   
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                <th>Agency</th>
-                                <th>Total</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($FUNDING as $FA): ?><tr>
-                                <td> <?php echo $FA->funding_agency_name; ?></td>
-                                <?php $sum = 0; foreach ($PSTOCKS as $ps):
-                                if (($item->commodity_id == $ps->commodity_id) && $FA->funding_agency_id == $ps->funding_agency_id) {
-                                    $sum = $sum + $ps->quantity;
-                                    //$date = $ps->expected_date_delivery;
-                                    }
-                                endforeach;
-                                ?>
-                                <td>
-                                    <?php echo $sum; ?>
-                                </td>
-
-                            </tr>
-                                <?php endforeach;?>
-
-                            </tbody>
-                        </table>
-                </td>
-                </tr>
-
-        <?php endforeach; ?>
-        </tbody>
+              </tr>
+            <?php endforeach;?>
+            </tbody>
+            
+          </table></td>
+            </tr>
+            <?php endforeach;?>
+       </tbody>
     </table>
 
     </div>

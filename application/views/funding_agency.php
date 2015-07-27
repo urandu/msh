@@ -50,8 +50,8 @@
                                         <div class="modal-body">
 
                                        <div class="form-group"><input type="hidden" name="funding_agency_id" value="<?php echo $agency->funding_agency_id; ?>" class="form-control"></div>
-                                        <div class="form-group"><label>Funding agency: </label> <input type="text" name="funding_agency_name" value="<?php echo $agency->funding_agency_name; ?>" class="form-control"></div>
-                                       <div class="form-group"><label>Description: </label> <input type="text" name="funding_agency_description" value="<?php echo $agency->comment; ?>" class="form-control"></div>
+                                        <div class="form-group"><label>Commodity: </label> <input type="text" name="funding_agency_name" value="<?php echo $agency->funding_agency_name; ?>" class="form-control"></div>
+                                       <div class="form-group"><label>Description: </label> <input type="textarea" name="funding_agency_description" value="<?php echo $agency->comment; ?>" class="form-control"></div>
                                         </div>
                                         <div class="modal-footer">
                                              <button type="submit" class="btn btn-primary">Save changes</button>
@@ -91,7 +91,7 @@
 
                  
                                         <div class="form-group"><label>Funding agency: </label> <input type="text" name="funding_agency_name" placeholder="Funding agency"  class="form-control"></div>
-                                       <div class="form-group"><label>Description: </label> <input type="text" name="funding_agency_description" placeholder="Description" class="form-control"></div>
+                                       <div class="form-group"><label>Description: </label> <input type="textarea" name="funding_agency_description" placeholder="Description" class="form-control"></div>
                                         </div>
                                         <div class="modal-footer">
                                              <button type="submit" class="btn btn-primary">Add agency</button>

@@ -8,6 +8,10 @@
 
     <title><?php if(!empty($title)){ echo($title); }?></title>
 
+<!--  <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script> -->
+
+
+
     <link href="<?php echo(base_url()); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <!-- Morris -->
@@ -49,6 +53,13 @@
     <link href="<?php echo(base_url()); ?>assets/css/plugins/steps/jquery.steps.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/animate.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/style.css" rel="stylesheet">
+
+
+
+    <!-- date-picker -->
+    
+    <link href="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js" rel="stylesheet">
+
     <link  id='GoogleFontsLink' href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
 
 
@@ -133,4 +144,5 @@
     }
 
     ?>
+
 </head>
