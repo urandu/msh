@@ -47,7 +47,6 @@
                                     </tr>
                             </thead>
 <?php if (isset($central_level_data_by_period)) {?>
-
                             <tbody>
                                 <?php $count=1; ?>
                                 <?php foreach ($central_level_data_by_period as $central_level_data): ?> 

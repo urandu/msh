@@ -25,6 +25,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Comodity</th>
+                                    <th>Alt name</th>
                                     <th>Unit of Measure</th>
                                     <th>Description</th>
                                     <th>Edit</th>
@@ -37,6 +38,7 @@
                                 <tr>
                                     <td><?php echo $count; ?></td>
                                     <td><?php echo $malaria_commodity->commodity_name; ?></td>
+                                    <td><?php echo $malaria_commodity->alt_name;?></td>
                                     <td><?php echo $malaria_commodity->unit_of_measure;?></td>
                                     <td><?php echo $malaria_commodity->commodity_description; ?></td>
                                     <td data-toggle="modal" data-target="#myModal_<?php echo $malaria_commodity->commodity_id; ?>"><i class="fa fa-wrench"></i>
@@ -56,6 +58,7 @@
 
                                        <div class="form-group"><input type="hidden" name="commodity_id" value="<?php echo $malaria_commodity->commodity_id; ?>" class="form-control"></div>
                                         <div class="form-group"><label>Commodity: </label> <input type="text" name="commodity_name" value="<?php echo $malaria_commodity->commodity_name; ?>" class="form-control"></div>
+                                        <div class="form-group"><label>Alternative name: </label> <input type="text" name="alt_name" value="<?php echo $malaria_commodity->alt_name; ?>" class="form-control"></div>
                                         <div class="form-group"><label>Unit of measure: </label> <input type="text" name="unit_of_measure" value="<?php echo $malaria_commodity->unit_of_measure; ?>" class="form-control"></div>
                                        <div class="form-group"><label>Description: </label> <input type="text" name="commodity_description" value="<?php echo $malaria_commodity->commodity_description; ?>" class="form-control"></div>
                                         </div>
@@ -98,6 +101,8 @@
 
                  
                                         <div class="form-group"><label>Commodity: </label> <input type="text" name="commodity_name" placeholder="Commodity" class="form-control"></div>
+                                        <div class="form-group"><label>Alternative name: </label> <input type="text" name="alt_name" placeholder="Alternative name" class="form-control"></div>
+
                                         <div class="form-group"><label>Unit of measure: </label> <input type="text" name="unit_of_measure" placeholder="UoM" class="form-control"></div>
                                        <div class="form-group"><label>Description: </label> <input type="text" name="commodity_description" placeholder="Description" class="form-control"></div>
                                         </div>

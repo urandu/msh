@@ -39,6 +39,7 @@ class Commodity extends CI_Controller {
 	function update_commodity() {
 	$id= $this->input->post('commodity_id');
 		$data = array(
+		'alt_name' =>$this->input->post('alt_name'),
 		'commodity_name' => $this->input->post('commodity_name'),
 	 	'unit_of_measure' => $this->input->post('unit_of_measure'),
 		'commodity_description' => $this->input->post('commodity_description'),
@@ -67,6 +68,7 @@ class Commodity extends CI_Controller {
 		$commodity_comment= ($this->input->post('commodity_description'));
 
 		$commodity = array(
+			'alt_name' =>$this->input->post('alt_name'),
 			'commodity_name' => $commodity_name,
 			'unit_of_measure' => $uom,			
 			'commodity_description' => $commodity_comment,
