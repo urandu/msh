@@ -21,6 +21,7 @@
     </div>
 
     <div class="wrapper wrapper-content">
+
          <table class="table">
             <thead>
         <tr><h3>Central level stocks and incoming shipments</h3></tr>
@@ -35,7 +36,7 @@
             <th></th>
 
             <th>
-                Pending Consignments
+                Pending Shipments
             </th>
         </tr>
         <tr>
@@ -99,6 +100,7 @@
             <?php endforeach;?>
        </tbody>
     </table>
+
     </div>
 
 <?php require_once("includes/footer.php"); ?>

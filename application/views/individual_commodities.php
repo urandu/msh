@@ -16,8 +16,10 @@
     <div class="wrapper wrapper-content">
         <table  class="table">
  <thead>
+
   <tr>
     <th><b>#</b></th>
+
     <th><b>Commodity</b></th>
     <th><b>Source</b></th>
     <th><b>Quantity</b></th>

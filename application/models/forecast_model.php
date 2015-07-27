@@ -41,9 +41,11 @@ class Forecast_model extends CI_Model
 
         $query="SELECT DISTINCT forecast_start_date FROM commodity_forecast_data ORDER by forecast_start_date DESC";
 
+
         $result=$this->db->query($query);
 
         return $result->result();
+
 
     }
     

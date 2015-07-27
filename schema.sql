@@ -5733,21 +5733,24 @@ INSERT INTO `supply_chain_agencies` (`supply_chain_agency_id`, `supply_chain_age
 CREATE TABLE IF NOT EXISTS `user_table` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT,
   `password` varchar(255) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
+  `names` varchar(255) NOT NULL,
+  `email` varchar(70) NOT NULL,
   `national_id` varchar(255) NOT NULL,
   `phone_number` varchar(255) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `role` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `national_id` (`national_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `user_table`
 --
 
-INSERT INTO `user_table` (`user_id`, `password`, `first_name`, `last_name`, `national_id`, `phone_number`) VALUES
-(5, 'root', 'SDRGA', 'ags', '243426', 'root'),
-(6, '63a9f0ea7bb98050796b649e85481845', '5', 'ewr', '5323', 'root'),
-(7, '63a9f0ea7bb98050796b649e85481845', 'Antony', 'Wanjohi', '30442011', 'root');
+INSERT INTO `user_table` (`user_id`, `password`, `names`, `email`, `national_id`, `phone_number`, `role`) VALUES
+(8, '63a9f0ea7bb98050796b649e85481845', 'default user ', 'root@msh.com', '29364156', '0722167368', 0),
+(9, '63a9f0ea7bb98050796b649e85481845', 'user2', 'user1@msh.com', '25685324', '0722167368', 0),
+(10, '63a9f0ea7bb98050796b649e85481845', 'enock sibuor', 'enock@msh.com', '31458745', '0700124578', 0);
 
 -- --------------------------------------------------------
 

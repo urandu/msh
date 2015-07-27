@@ -1,6 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Forecast extends CI_Controller {
+class Forecast extends MY_Controller
+{
+    private $data;
+    protected $before_filter = array(
+        'action' => '_check_if_logged_in',
+        'except' => array()
+    );
 
 	/**
 	 * Index Page for this controller.
@@ -18,6 +24,7 @@ class Forecast extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
+
 	function __construct()
     {
        parent::__construct();
@@ -25,12 +32,14 @@ class Forecast extends CI_Controller {
      $this->load->model("commodity_model");
       $this->load->model("forecast_model");
     }
+
     public function index($period="000000"){
 
         $period_post=$this->input->post("date");
         if(isset($period_post))
         {
             $period=$period_post;
+
 
     
         }
@@ -42,14 +51,17 @@ class Forecast extends CI_Controller {
         
 
        
+
     }
     public function save_forecast_commodity_data()
     {
       $start_date=($this->input->post('forecast_start_date'));
       $period=($this->input->post('forecast_period'));
+
       //$commodity_id=($this->input->post('commodity_id'));
       $commodity_name=($this->input->post('commodity_name'));
       $commodity_id=$this->forecast_model->get_commodity_id_with_the_given_name($commodity_name);
+
       $monthly_consumption=($this->input->post('forecast_monthly_consumption'));
 
       $forecast = array(
@@ -58,13 +70,16 @@ class Forecast extends CI_Controller {
 			'commodity_id' => $commodity_id,
 			'forecast_monthly_consumption' => $monthly_consumption
 		);
+
          
      $this->forecast_model->add_commodity_forecast_data($forecast);
      $this->index($period="000000");
 
 
 
+
     }
+
 
     public function update_forecast_commodity_data()
     {
@@ -99,8 +114,11 @@ class Forecast extends CI_Controller {
   }
 
 
+
 }
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
+
 ?>
+

@@ -21,6 +21,7 @@
     </div>
 
     <div class="wrapper wrapper-content">
+
         <table  class="table" border="1">
 
 <thead>
@@ -58,6 +59,7 @@
   </tr>
 <?php endforeach;?>
 </table>
+
 
     </div>
 
