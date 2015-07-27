@@ -24,7 +24,7 @@
 
          <table class="table">
             <thead>
-        <tr><h3>Central level stocks and incoming shipments</h3></tr>
+        <tr><h3>Central level stocks and Pending shipments</h3></tr>
         <br>
         <tr>
             <th>
@@ -42,11 +42,11 @@
         <tr>
             <th>Commodity</th>
             <th>Unit</th>
-            <th>Kemsa</th>
-            
+
+            <th>Central SOH</th>
             <th>Total</th>
-          
-            <th>Agency: Quantity</th>
+            <th>Source: Quantity</th>
+
             </thead>
         </tr>
        <tbody>
