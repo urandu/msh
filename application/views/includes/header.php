@@ -16,9 +16,9 @@ require_once("top_includes.php");
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
             <li class="nav-header">
-                <div class="dropdown profile-element"> <!--<span>
-                            <img alt="image" class="img-circle" src="<?php /*echo(base_url()); */ ?>assets/img/profile_small.jpg" />
-                             </span>-->
+                <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img image" src="<?php echo(base_url()); ?>assets/img/moh.jpg" />
+                             </span>
 
                     <a> <span class="clear"> <span class="block m-t-xs">Logged in as, <strong
                                     class="font-bold"> <?php echo($this->session->userdata('names')); ?></strong>
@@ -40,7 +40,7 @@ require_once("top_includes.php");
                         class="nav-label">Home</span> </a>
 
             </li>
-            <li>
+           <!-- <li>
                 <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Home</span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -52,7 +52,7 @@ require_once("top_includes.php");
                     <li><a href="<?php echo(base_url()); ?>forecast">Forecasts</a></li>
 
                 </ul>
-            </li>
+            </li>-->
 
             <li>
                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Stocks</span><span
@@ -85,10 +85,17 @@ require_once("top_includes.php");
             <li>
             <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">Settings</span><span
                         class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">          
+                        <ul class="nav nav-second-level">
+                    <li><a href="<?php echo(base_url()); ?>funding_agency">Funding agencies</a></li>
+                    <li><a href="<?php echo(base_url()); ?>supply_chain">Supply chain agencies</a></li>
+                    <li><a href="<?php echo(base_url()); ?>commodity">Commodities</a></li>
+                    <li><a href="<?php echo(base_url()); ?>zone">Zones</a></li>
+                    <li><a href="<?php echo(base_url()); ?>county">Counties</a></li>
+                    <li><a href="<?php echo(base_url()); ?>forecast">Forecasts</a></li>
+                    <li> <a href="<?php echo(base_url()); ?>users">Manage Users</a></li>
                <!-- <a href="<?php echo(base_url()); ?>settings/users"><i class="fa fa-user"></i> <span class="nav-label">Settings</span>
                 </a>-->
-                <li> <a href="<?php echo(base_url()); ?>users">Manage Users</a></li>
+                
              </ul>
 
 
