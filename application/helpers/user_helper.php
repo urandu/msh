@@ -20,6 +20,19 @@ function subtract_date($date,$interval)
 
     return str_replace("-",null,$newdate);
 }
+/*date("Y/m/d")*/
+
+function get_months($date){
+$d1 = new DateTime($date);
+$current_time = date("Y-m-d");
+$d2 = new DateTime($current_time);
+       
+
+        //var_dump($d1->diff($d2)->m); // int(4)
+return ($d1->diff($d2)->m + ($d1->diff($d2)->y*12));
+
+
+}
 
 function add_date($date,$interval)
 {
