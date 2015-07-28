@@ -90,8 +90,10 @@ if (isset($period)) {
                   <form action="<?= base_url();?>forecast/update_forecast_commodity_data" method="post" enctype="multipart/form-data" autocomplete="on">
                 <!-- commodity_forecast_data_id -->
                  <div class="form-group"><input type="hidden" name="id" value="<?php echo $p->commodity_forecast_data_id; ?>" class="form-control"></div>
+
                 <div class= "form-group"><label>Forecast Start Date:</label><input type="text" class="form-control" name="forecast_start_date" value="<?php echo $p->forecast_start_date; ?>"></div>
                 <div class "form-group"><label>Forecast Period: </label><input type="text" class="form-control" name="forecast_period" value="<?php echo $p->forecast_period;?>"></div> 
+
                 <div class="form-group"><label> Commodity Name: </label><select class="form-control m-b" name="commodity_name">
                   <?php foreach($commodity as $COMM):?>
                   <option name="<?php echo $COMM->commodity_name;?>" <?php if ($COMM->commodity_id==$p->cid){ echo "selected";}?>><?php echo $COMM->commodity_name;?></option>
@@ -101,7 +103,9 @@ if (isset($period)) {
           
                <div class "form-group">
                 <label>Forecast Monthly Consumption: </label>
+
                   <input type="text" class="form-control" name="forecast_monthly_consumption" value="<?php echo $p->forecast_monthly_consumption; ?>">
+
 
                                       
               </div> 
@@ -113,7 +117,9 @@ if (isset($period)) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+
                         <button type="submit" class="btn btn-primary">Save changes</button>
+
                     </div>
                     </form>
                 </div>
@@ -175,11 +181,13 @@ if (isset($period)) {
 
                 <div class= "form-group">
                 <label>Forecast Start Date:</label>
+
               <input type="text" class="form-control" name="forecast_start_date" placeholder="Forecast start date">
                 </div>
                <div class "form-group">
                 <label>Forecast Period: </label>        
                   <input type="text" class="form-control" name="forecast_period" placeholder="Forecast period">
+
                </div> 
                
 
@@ -195,7 +203,9 @@ if (isset($period)) {
 
                <div class "form-group">
                 <label>Forecast Monthly Consumption: </label>
+
                   <input type="text" class="form-control" name="forecast_monthly_consumption" placeholder="Forecast Mothly Consupmtion">
+
                                       
               </div> 
 
@@ -206,7 +216,9 @@ if (isset($period)) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+
                         <button type="submit" class="btn btn-primary">Save changes</button>
+
                     </div>
                     </form>
                 </div>

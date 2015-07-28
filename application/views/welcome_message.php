@@ -3,7 +3,7 @@
 <?php /*print_r($period);*/?>
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Dashboard</h2>
+            <h2>Home</h2>
             <!--<ol class="breadcrumb">
                 <li>
                     <a href="index.html">This is</a>
@@ -21,6 +21,7 @@
     </div>
 
     <div class="wrapper wrapper-content">
+
         <!--<div class="middle-box text-center animated fadeInRightBig">-->
 
 
@@ -93,6 +94,7 @@
     <div class="col-lg-3">
         <input class="btn btn-primary" type="submit" value="Get County Level MOS Report">
         </form>
+
     </div>
 
 </div>

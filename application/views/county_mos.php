@@ -43,6 +43,7 @@
                         <option value="<?php echo $name->county_id; ?>"><?php echo $name->county_name; ?></option>
                     <?php endforeach; ?>
                 </select>
+
             </div>
 
 
@@ -299,8 +300,17 @@
                     </div>
 
                 </div>
+
             </div>
+
+
+            <div class="col-lg-3">
+                <input class="btn btn-primary" type="submit" value="Get County Level MOS Report">
+                </form>
+            </div>
+
         </div>
+
 
     </div>
 

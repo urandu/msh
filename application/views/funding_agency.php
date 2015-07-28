@@ -46,6 +46,7 @@
                                             <h4 class="modal-title">Edit agency</h4>
                                             <small class="font-bold">Update and delete details about a particular funding agency.</small>
                                         </div>
+
                                         <form action="<?= base_url();?>funding_agency/update_funding_agency" method="post" enctype="multipart/form-data">  
                                         <div class="modal-body">
 
@@ -55,6 +56,7 @@
                                         </div>
                                         <div class="modal-footer">
                                              <button type="submit" class="btn btn-primary">Save changes</button>
+
                                              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                            <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
                                         </div>
@@ -64,7 +66,9 @@
                             </div>
                             </td> 
                             <td>
+
                                 <a href="<?php echo(base_url()."funding_agency/delete_funding_agency/".$agency->funding_agency_id); ?>"><i class="fa fa-trash"></i></a>    
+
                              </td></tr>
                                 <?php $count++; endforeach; ?>
                                  </tbody>
@@ -86,6 +90,7 @@
                                             <h4 class="modal-title">Funding agency</h4>
                                             <small class="font-bold">Add a funding agency here.</small>
                                         </div>
+
                                         <form action="<?= base_url();?>funding_agency/save_funding_agency" method="post" enctype="multipart/form-data">  
                                         <div class="modal-body">
 
@@ -95,6 +100,7 @@
                                         </div>
                                         <div class="modal-footer">
                                              <button type="submit" class="btn btn-primary">Add agency</button>
+
                                              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                            <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
                                         </div>

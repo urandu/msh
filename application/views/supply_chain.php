@@ -48,6 +48,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Contact person</th>
+                                <th>Email</th>
                                 <th>Phone number</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -64,6 +65,7 @@
                                     <td><?php echo $count; ?></td>
                                     <td><?php echo $agency->supply_chain_agency; ?></td>
                                     <td><?php echo $agency->contact_person; ?></td>
+                                    <td><?php echo $agency->email; ?></td>
                                     <td><?php echo $agency->contact_phone; ?></td>
                                     <td data-toggle="modal"
                                         data-target="#myModal_<?php echo $agency->supply_chain_agency_id ?>"><i
@@ -92,48 +94,57 @@
 
                                                     <form
                                                         action="<?= base_url(); ?>index.php/supply_chain/update_agency_id1"
-                                                        method="post" enctype="multipart/form-data" autocomplete="on">
+                                                        method="post" name="supplychain" onsubmit="return validateSupplyAgency() enctype="multipart/form-data" autocomplete="on">
 
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="supply_agency_id"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->supply_chain_agency_id; ?>">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="supply_agency_id"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->supply_chain_agency_id; ?>">
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label>Agency Name :</label>
-                                                            <input type="text" name="supply_agency_name"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->supply_chain_agency; ?>">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label>Agency Name :</label>
+                                                        <input type="text" required name="supply_agency_name"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->supply_chain_agency; ?>">
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label>Contact Person :</label>
-                                                            <input type="text" name="contact_person"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->contact_person; ?>">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label>Contact Person :</label>
+                                                        <input type="text" name="contact_person"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->contact_person; ?>">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Email :</label>
+                                                        <input type="email" name="email"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->email; ?>">
+                                                    </div>
 
 
-                                                        <div class="form-group">
-                                                            <label>Contact Phone :</label>
-                                                            <input type="text" name="contact_phone" class="form-control"
-                                                                   value="<?php echo $agency->contact_phone; ?>">
-                                                        </div>
 
-                                                        <div class="form-group">
-                                                            <label>Description :</label>
-                                                            <input type="text" name="supply_agency_description"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->comment; ?>">
-                                                        </div>
+
+                                                    <div class="form-group">
+                                                        <label>Contact Phone :</label>
+                                                        <input type="text" name="contact_phone" class="form-control"
+                                                               value="<?php echo $agency->contact_phone; ?>">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Description :</label>
+                                                        <input type="text" name="supply_agency_description"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->comment; ?>">
+                                                    </div>
 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-white" data-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button id="update" type="submit" class="btn btn-primary">Save changes</button>
                                                 </div>
                                                 </form>
                                             </div>
@@ -158,14 +169,14 @@
 
 
 
-    <div class="modal inmodal" id="save_supply_chain_agency" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal inmodal" id="save_supply_chain_agency" tabindex="-1" role="dialog" aria-hidden="true" name="supplychain" onsubmit="return validateSupplyAgency()">
         <div class="modal-dialog">
             <div class="modal-content animated bounceInRight">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
                             aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <i class="fa fa-laptop modal-icon"></i>
-                    <h4 class="modal-title">Edit Supply Chain Agency</h4>
+                    <h4 class="modal-title">Add Supply Chain Agency</h4>
                     <!--<small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting
                         industry.
                     </small>-->
@@ -178,7 +189,7 @@
 
                         <div class="form-group">
                             <label>Agency Name: </label>
-                            <input type="text" class="form-control" name="supply_agency_name"
+                            <input type="text" required class="form-control" name="supply_agency_name"
                                    placeholder="Supply agency name"> <!--the form-control gives the form some styling-->
                         </div>
 
@@ -189,9 +200,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label">Email: </label>
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <!--the form-control gives the form some styling-->
+                        </div>
+
+
+                        <div class="form-group">
                             <label">Contact Phone </label>
                             <input id="txtPhone" type="text" class="form-control" name="contact_phone"
-                                   placeholder="Contact phone"> <!--the form-control gives the form some styling-->
+                                   placeholder="Contact phone">
                             <span id="spnPhoneStatus"><div></div></span>
                         </div>
 
@@ -212,7 +230,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button id="submit" type="submit" class="btn btn-primary">Save changes</button>
             </div>
             </form>
         </div>

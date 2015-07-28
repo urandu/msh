@@ -31,33 +31,33 @@ class Pending_shipments extends MY_Controller
     }
     public function index()
     {
+
+
         $this->show_pending_shipments();
     }
+
     public function show_pending_shipments() {
-        $data2['ALL_SHIPMENTS'] = $this->pending_shipments_model->show_all_pending_shipment();
-        $data2['COMMODITY']=$this->pending_shipments_model->show_commodities();
-        $data2['FUNDING']=$this->pending_shipments_model->show_fundingorgs();
-        $this->load->view('pending_shipments',$data2);
-    }
-    public function show_pending_shipments_from_selected_period() {
-        $period= ($this->input->post('pending_shipments_period'));
-        $psid = $this->uri->segment(3);//get id from the url
-        $data2['PSTOCKS'] = $this->pending_shipments_model->show_pending_shipment($period);
-        $data2['single_PSTOCKS'] = $this->pending_shipments_model->show_pending_shipment_id($psid);
+        $period_posted= ($this->input->post('pending_shipments_period'));
+
+        if(isset($period_posted))
+        {
+            $data2['PSTOCKS'] = $this->pending_shipments_model->show_pending_shipment($period_posted);
+            $data2['pending_shipment_successfully_retrieved'] = "retrieved";// display in view only if data is retrieved
+
+        }
         $data2['COMMODITY']=$this->pending_shipments_model->show_commodities();
         $data2['FUNDING']=$this->pending_shipments_model->show_fundingorgs();
         $data2['pending_shipment_successfully_retrieved'] = "";
         $data2['ALL_SHIPMENTS'] = $this->pending_shipments_model->show_all_pending_shipment();
-        if ($data2['PSTOCKS'] = $this->pending_shipments_model->show_pending_shipment($period)){
-            $data2['pending_shipment_successfully_retrieved'] = "retrieved";// display in view only if data is retrieved
-        }
+
+
         $this->load->view('pending_shipments',$data2);
     }
     public function save_pending_shipment(){
         $period= (str_replace("-",null,$this->input->post('period')));
 
         $commodity_name= ($this->input->post('commodity_name'));
-        $pack_size= ($this->input->post('pack_size'));
+        //$pack_size= ($this->input->post('pack_size'));
         $funding_agency= ($this->input->post('funding_agency'));
         $quantity= ($this->input->post('quantity'));
         $expected_time_of_arrival= ($this->input->post('expected_time_of_arrival'));
@@ -107,8 +107,10 @@ class Pending_shipments extends MY_Controller
         //$this->show_pending_shipments_from_selected_period();
         redirect(base_url()."pending_shipments");
     }
-    public function delete_pending_shipment(){
-        $id= $this->input->post('pendingstockid');
+
+    public function delete_pending_shipment($id){
+        //$id= $this->input->post('pendingstockid');
+
         $this->db->where('pending_shipment_id', $id);
         $deleterecord=$this->db->delete('pending_shipment_details');
         $data['status'] =  "";

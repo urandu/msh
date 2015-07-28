@@ -38,6 +38,8 @@
     <td>
       <table class="table" border="1">
         <thead>
+
+
             <th>Funding agency</th>            
             <th>Totals</th>
             </thead>
@@ -55,6 +57,7 @@
             <?php endforeach;?>
             </tbody>
           </table>
+
     </td>
   </tr>
 <?php endforeach;?>

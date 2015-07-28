@@ -5785,7 +5785,11 @@ CREATE TABLE IF NOT EXISTS `user_table` (
 INSERT INTO `user_table` (`user_id`, `password`, `names`, `email`, `national_id`, `phone_number`, `role`) VALUES
 (8, '63a9f0ea7bb98050796b649e85481845', 'default user ', 'root@msh.com', '29364156', '0722167368', 0),
 (9, '63a9f0ea7bb98050796b649e85481845', 'user2', 'user1@msh.com', '25685324', '0722167368', 0),
+<<<<<<< HEAD
+(10, '63a9f0ea7bb98050796b649e85481845', 'enock sibuor', 'enock@msh.com', '31458745', '0700124578', 0);
+=======
 (10, '63a9f0ea7bb98050796b649e85481845', 'Enock Oloo', 'enock@msh.com', '30442011', '0701058958', 0);
+>>>>>>> master
 
 -- --------------------------------------------------------
 

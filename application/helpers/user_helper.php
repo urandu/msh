@@ -20,6 +20,7 @@ function subtract_date($date,$interval)
 
     return str_replace("-",null,$newdate);
 }
+
 function add_date($date,$interval)
 {
     $date = $date;
@@ -30,6 +31,7 @@ function add_date($date,$interval)
 
     return str_replace("-",null,$newdate);
 }
+
 
 
 

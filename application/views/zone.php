@@ -81,7 +81,7 @@
 
                                                             <div class="form-group">
                                                                 <label>zone Name :</label>
-                                                                <input type="text" name="zone_name" class="form-control" value="<?php echo $zone->zone; ?>">
+                                                                <input type="text" required name="zone_name" class="form-control" value="<?php echo $zone->zone; ?>">
                                                             </div>
 
                                                             <div class="form-group">
@@ -92,7 +92,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        <button id="update" type="submit" class="btn btn-primary">Save changes</button>
                                                     </div>
                                                     </form>
                                                 </div>
@@ -136,7 +136,7 @@
 
                             <div class="form-group">
                                 <label>zone Name :</label>
-                                <input type="text" name="zone_name" class="form-control" placeholder="Zone name">
+                                <input type="text" required name="zone_name" class="form-control" placeholder="Zone name">
                             </div>
 
                             <div class="form-group">
@@ -147,7 +147,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>

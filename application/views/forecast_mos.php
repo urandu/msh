@@ -1,6 +1,6 @@
 <?php require_once("includes/header.php"); ?>
 
-    
+
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
@@ -31,7 +31,9 @@
                         <option  selected>--SELECT PERIOD--</option>
 
                         <?php foreach ($dates as $date): ?>
+
                             <option value="<?php echo $date->period; ?>"  ><?php echo $date->period; ?></option>
+
                         <?php endforeach; ?>
                     </select>
             </div>
@@ -90,6 +92,7 @@
                                 <?php
 
                                 if(!empty($period)) {
+
                                  
                                     foreach($period as $p)
                                     {  
@@ -98,6 +101,7 @@
                                        if($date->period<=$pd) 
 
                                         {
+
                                         echo("<tr>");
                                         ?>
 
@@ -129,19 +133,24 @@
                                             <?php
 
 
+
                                             echo(round(($p->physical_count)/($p->forecast_monthly_consumption),1));
+
 
                                             ?>
                                         </td>
 
                                         <?php
                                         echo("</tr>");
+
                                        
                                     }
                                      else echo " <font color='red'> The forecast period has expired,please adjust the period and forecast start date in the forecast option under home.</font>";
 
+
                                     }
                                     // endforeach;
+
 
                                     ?>
 
@@ -150,6 +159,7 @@
                                 }
 
                                 ?>
+
 
 
                                 </tbody>
@@ -163,7 +173,7 @@
 
         }
 
-       
+
 
 
         ?>

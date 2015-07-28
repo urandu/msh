@@ -44,6 +44,7 @@
 
 if (isset($period)) {
 
+
     //print_r($period);
 
 
@@ -53,7 +54,9 @@ if (isset($period)) {
 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
+
                             <h5>Central Level MOS for period: <?php echo $p; ?></h5>
+
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -137,20 +140,24 @@ if (isset($period)) {
             <td>
                 <?php
 
+
 if(!empty($p->central_stock) && !empty($p->adjusted_facility_amc))
 {
     echo(round(($p->central_stock)/($p->adjusted_facility_amc),1));
 
 }
 
+
                 ?>
             </td>
             <td>
                 <?php
 
+
             if(!empty($p->pending_shipment) && !empty($p->adjusted_facility_amc)) {
                 echo(round(($p->pending_shipment) / ($p->adjusted_facility_amc), 1));
             }
+
                 ?>
             </td>
 

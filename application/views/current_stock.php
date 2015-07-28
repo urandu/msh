@@ -55,6 +55,7 @@
                                 <?php foreach ($central_level_data_by_period as $central_level_data): ?> 
                                  <tr>
 
+
                                     <td><?php echo $count; ?></td>
                                     <td>
                                         <?php foreach ($commodity as $malaria_commodity):
@@ -118,6 +119,7 @@
                     </div>
                 </div>
 
+
             </div>
         </div>
 
@@ -135,83 +137,13 @@
       </div>
       </div>
     </div>
+
   </div>
 
 
 
 
-<div class="modal inmodal" id="central_level_data" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content animated bounceInRight">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <i class="fa fa-laptop modal-icon"></i>
-                <h4 class="modal-title">Add to current stock</h4>
-                <small class="font-bold">Add details about stocks currently held at the central level.</small>
 
-            </div>
-            <form action="<?php echo base_url(); ?>current_stock/save_central_level" method="post"
-                  enctype="multipart/form-data">
-                <div class="modal-body">
-
-                    <!--<div class="form-group datepicker-months"><label>Reporting period: </label>
-                        <input type="text" name="report_date" class="form-control"  data-mask="9999-99" placeholder="">
-                        <span class="help-block">yyyy-mm</span>
-                        <!-- <input type="text" name="earliest_expiry_date"
-                                                                                 placeholder="Expiry date"
-                                                                                 class="form-control date datepicker"></div>-->
-                    <div class="form-group"><input type="hidden" name="central_level_stock_id"
-                                                   value="<?php echo $central_level_data->central_level_stock_id; ?>"
-                                                   class="form-control"></div>
-                    <div class="form-group"><label>Commodity: </label><select class="form-control m-b">
-                            <?php foreach ($commodity as $malaria_commodity): ?>
-                                <option name="commodity_name" value="<?php echo $malaria_commodity->commodity_name; ?>"><?php echo $malaria_commodity->commodity_name; ?></option>
-                            <?php endforeach; ?>
-                        </select></div>
-                    <div class="form-group"><label>Funding agency: </label><select class="form-control m-b">
-                            <?php foreach ($funding_agency as $agency): ?>
-                                <option name="funding_agency_name"><?php echo $agency->funding_agency_name; ?></option>
-                            <?php endforeach; ?>
-                        </select></div>
-
-                    <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b">
-                            <?php foreach ($supply_chain_agency as $supply): ?>
-                                <option name="supply_chain_agency"><?php echo $supply->supply_chain_agency; ?></option>
-                            <?php endforeach; ?>
-                        </select></div>
-                    <div class="form-group"><label>Opening balance: </label> <input type="text" name="opening_balance"
-                                                                                    placeholder="Opening balance"
-                                                                                    class="form-control"></div>
-
-
-
-
-                    <div class="form-group"><label>Supplier receipts: </label> <input type="text"
-                                                                                      name="total_receipts_from_suppliers"
-                                                                                      placeholder="Supplier receipts"
-                                                                                      class="form-control"></div>
-                    <div class="form-group"><label>Total issues: </label> <input type="text"
-                                                                                 name="total_issues_to_facilities"
-                                                                                 placeholder="Total issues"
-                                                                                 class="form-control"></div>
-                    <div class="form-group"><label>Closing balance: </label> <input type="text"
-                                                                                    name="soh_closing_balance"
-                                                                                    placeholder="Closing balance"
-                                                                                    class="form-control"></div>
-                    <div class="form-group"><label>Batch number: </label> <input type="text" name="batch_number"
-                                                                                    placeholder="Batch number"
-                                                                                    class="form-control"></div>
-                    <div class="form-group datepicker-months"><label>Expiry date: </label>
-                        <input type="text" name="earliest_expiry_date" class="form-control" pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" data-mask="99-99-9999" placeholder="">
-                        <span class="help-block">dd-mm-yyyy</span>
-                       <!-- <input type="text" name="earliest_expiry_date"
-                                                                                placeholder="Expiry date"
-                                                                                class="form-control date datepicker">--></div>
-                    <div class="form-group"><label>Quantity expiring: </label> <input type="text"
-                                                                                      name="quantity_expiring"
-                                                                                      placeholder="Quantity expiring"
-                                                                                      class="form-control"></div>
 
 
 <div class="modal inmodal" id="central_level_data" tabindex="-1" role="dialog" aria-hidden="true">
@@ -255,6 +187,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Save changes</button>
+
                     <button type="button" class="btn btn-white" data-dismiss="modal">cancel</button>
                     <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
                 </div>
@@ -268,6 +201,6 @@
     </div>
 
 
-<?php require_once("includes/footer.php"); ?>
 
+<?php require_once("includes/footer.php"); ?>
 

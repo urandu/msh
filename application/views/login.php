@@ -21,8 +21,10 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
+
                  <!--<img border="0" src="/img/moh.jpg" width="61" height="133">-->
                 <span> <img alt="image" class="img image" src="assets/img/moh.jpg" /></span>
+
                 <!--<h1 class="logo-name">MSH</h1>-->
 
             </div>
@@ -44,6 +46,7 @@
                <!-- <p class="text-muted text-center"><small>Do not have an account?</small></p>-->
                 <!--<a class="btn btn-sm btn-white btn-block" href="<?php /*base_url(); */?>register">Create an account</a>-->
             </form>
+
             <br>
             <br>
             <br>
@@ -56,6 +59,7 @@
                 <img alt="image" class="center" class="img image" src="assets/img/logo.jpg" />
              
             
+
             <p class="m-t"> <small>MSH &copy; <?php echo(date("Y")); ?></small> </p>
         </div>
     </div>

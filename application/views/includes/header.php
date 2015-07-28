@@ -15,9 +15,11 @@ require_once("top_includes.php");
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
             <li class="nav-header">
+
                 <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img image" src="<?php echo(base_url()); ?>assets/img/moh.jpg" />
                              </span>
+
 
                     <a> <span class="clear"> <span class="block m-t-xs">Logged in as, <strong
                                     class="font-bold"> <?php echo($this->session->userdata('names')); ?></strong>
@@ -31,7 +33,7 @@ require_once("top_includes.php");
                     </ul>-->
                 </div>
                 <div class="logo-element">
-                    IN+
+                    MSH
                 </div>
             </li>
             <li>
@@ -41,11 +43,13 @@ require_once("top_includes.php");
             </li>
            <!-- <li>
                 <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Home</span><span
+
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo(base_url()); ?>funding_agency">Funding agencies</a></li>
                     <li><a href="<?php echo(base_url()); ?>supply_chain">Supply chain agencies</a></li>
                     <li><a href="<?php echo(base_url()); ?>commodity">Commodities</a></li>
+
                     <li><a href="<?php echo(base_url()); ?>zone">Zones</a></li>
                     <li><a href="<?php echo(base_url()); ?>county">Counties</a></li>
                     <li><a href="<?php echo(base_url()); ?>forecast">Forecasts</a></li>
@@ -65,6 +69,7 @@ require_once("top_includes.php");
 
 
 
+
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reports</span><span
                         class="fa arrow"></span></a>
@@ -74,6 +79,7 @@ require_once("top_includes.php");
                     <li><a href="<?php echo(base_url()); ?>reports/facility_mos">Facility level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/national_mos">National level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/county_mos">County level MOS</a></li>
+
                     <li><a href="<?php echo(base_url()); ?>reports/variance_tracker">Forecast Variance Tracker</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/stocks">Stocks</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/commodities">Pending Shipments Report</a></li>
@@ -96,6 +102,7 @@ require_once("top_includes.php");
                 </a>-->
                 
              </ul>
+
 
 
             </li>

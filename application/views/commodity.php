@@ -16,6 +16,7 @@
     </div>
 
 
+
      <div class="wrapper wrapper-content">
        <div class="col-lg-12">
                 <div class="ibox float-e-margins">
@@ -62,6 +63,7 @@
                                              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                            <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
 
+
                                         </div>
                                     </td>
                                     <td>
@@ -96,6 +98,7 @@
                                         <div class="modal-body">
 
                  
+
                                         <div class="form-group"><label>Commodity: </label> <input type="text" name="commodity_name" placeholder="Commodity" class="form-control"></div>
                                         <div class="form-group"><label>Alternative name: </label> <input type="text" name="alt_name" placeholder="Alternative name" class="form-control"></div>
 
@@ -104,6 +107,7 @@
                                         </div>
                                         <div class="modal-footer">
                                              <button type="submit" class="btn btn-primary">Add commodity</button>
+
                                              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                            <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
                                         </div>
@@ -113,6 +117,7 @@
                             </div>
        
      
+
 
 
     <div class="modal inmodal" id="add_commodity" tabindex="-1" role="dialog" aria-hidden="true">
@@ -141,6 +146,7 @@
             </div>
         </div>
     </div>
+
 
 
 

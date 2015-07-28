@@ -17,14 +17,14 @@ class Report_model extends CI_Model
         return $result->result();
 
     }
-     public function forecast_variance_tracker($period)
-     {
+    public function forecast_variance_tracker($period)
+    {
         $period1=subtract_date($period,1);
         $period2=subtract_date($period,2);
         $period3=subtract_date($period,3);
         $period4=subtract_date($period,4);
         $period5=subtract_date($period,5);
-     
+
         $query="SELECT commodity_id as cid,forecast_start_date,forecast_period,forecast_monthly_consumption,
         (SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,
         (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption,
@@ -36,8 +36,8 @@ class Report_model extends CI_Model
         FROM `commodity_forecast_data` order by cid";
         $result=$this->db->query($query);
         return $result->result();
-        
-     }
+
+    }
 
     function get_national_level_mos($period)
     {
@@ -382,7 +382,7 @@ WHERE period = '{$period}'";
 FROM county_level_data
 WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'";
         $result=$this->db->query($sql);
-       // print_r($result);
+        // print_r($result);
         //die("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
         return $result->result();
 
@@ -513,7 +513,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
     }
 
 
- function forecast_variance_periods()
+    function forecast_variance_periods()
     {
 
 
@@ -548,96 +548,96 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
 
 
     // Function To Fetch All Commodies Record
-  function show_malaria_commodities(){
-  $query = $this->db->get('malaria_commodities');
-  $query_result = $query->result();
-  return $query_result;
-  }
+    function show_malaria_commodities(){
+        $query = $this->db->get('malaria_commodities');
+        $query_result = $query->result();
+        return $query_result;
+    }
 
 
-  function show_pending_shipments(){
-     $transaction_status = "pending";
-    $this->db->select('*, SUM(quantity) AS PendingTotal');
-     $this->db->group_by('commodity_id');
-    $this->db->from('pending_shipment_details');
-    $query = $this->db->get();
-    $query_result = $query->result();
-    return $query_result;
-    /*var_dump($query_result);*/
+    function show_pending_shipments(){
+        $transaction_status = "pending";
+        $this->db->select('*, SUM(quantity) AS PendingTotal');
+        $this->db->group_by('commodity_id');
+        $this->db->from('pending_shipment_details');
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+        /*var_dump($query_result);*/
 
 
 
-  }
+    }
 
     function pending_shipments(){
-     $transaction_status = "pending";
-    $this->db->select('*, SUM(quantity) AS PendingTotal');
-     $this->db->group_by('commodity_id');
-     $this->db->group_by('funding_agency_id');
-    $this->db->from('pending_shipment_details');
-    $query = $this->db->get();
-    $query_result = $query->result();
-    return $query_result;
-    /*var_dump($query_result);*/
+        $transaction_status = "pending";
+        $this->db->select('*, SUM(quantity) AS PendingTotal');
+        $this->db->group_by('commodity_id');
+        $this->db->group_by('funding_agency_id');
+        $this->db->from('pending_shipment_details');
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+        /*var_dump($query_result);*/
     }
-/*public function get_pending_shipment_totals(){
-  $this->db->select('*,SUM(quantity) AS PendingTotal');
-  $this->db->group_by('commodity_id');
-  $this->db->order_by('PendingTotal', 'desc'); 
-  $query=$this->db->get('pending_shipment_details',10);
-  return $query->result();
-  return $query->result();
+    /*public function get_pending_shipment_totals(){
+      $this->db->select('*,SUM(quantity) AS PendingTotal');
+      $this->db->group_by('commodity_id');
+      $this->db->order_by('PendingTotal', 'desc');
+      $query=$this->db->get('pending_shipment_details',10);
+      return $query->result();
+      return $query->result();
 
-  }*/
+      }*/
 
-  function show_pending_shipment_per_commodity(){
+    function show_pending_shipment_per_commodity(){
 
-   // $transaction_status = "pending";
-    $this->db->group_by('commodity_id');
-    $this->db->select_sum('quantity', 'total_per_commodity');
-    $this->db->from('pending_shipment_details');
-  // $this->db->group_by('commodity_id');
-   // $this->db->where('transaction_status', $transaction_status);
-
-
-    $query = $this->db->get();
-    $query_result = $query->result();
-    return $query_result;
-}
-  function show_funding_orgs(){
-  $query = $this->db->get('funding_agencies');
-  $query_result = $query->result();
-  return $query_result;
-  }
-  /*public function get_pending_shipment_totals(){
-    $this->db->select('*,SUM(quantity) AS PendingTotal');
-    $this->db->group_by('commodity_id');
-    $this->db->order_by('PendingTotal', 'desc'); 
-    $query=$this->db->get('pending_shipment_details',10);
-    return $query->result();
-    return $query->result();
-
-    }*/
-function show_central_stock(){
-  $this->db->select('*, SUM(soh_closing_balance) as central_total');
-  $this->db->group_by('commodity_id');
-    $query = $this->db->get('central_level_data');
-    $query_result = $query->result();
-    return $query_result;
-
-}
+        // $transaction_status = "pending";
+        $this->db->group_by('commodity_id');
+        $this->db->select_sum('quantity', 'total_per_commodity');
+        $this->db->from('pending_shipment_details');
+        // $this->db->group_by('commodity_id');
+        // $this->db->where('transaction_status', $transaction_status);
 
 
-function show_shipments(){
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+    }
+    function show_funding_orgs(){
+        $query = $this->db->get('funding_agencies');
+        $query_result = $query->result();
+        return $query_result;
+    }
+    /*public function get_pending_shipment_totals(){
+      $this->db->select('*,SUM(quantity) AS PendingTotal');
+      $this->db->group_by('commodity_id');
+      $this->db->order_by('PendingTotal', 'desc');
+      $query=$this->db->get('pending_shipment_details',10);
+      return $query->result();
+      return $query->result();
 
-    $transaction_status = "pending";
-    $this->db->select('*');
-    $this->db->from('pending_shipment_details');
-    $this->db->where('transaction_status', $transaction_status);
-    $query = $this->db->get();
-    $query_result = $query->result();
-    return $query_result;
-}
+      }*/
+    function show_central_stock(){
+        $this->db->select('*, SUM(soh_closing_balance) as central_total');
+        $this->db->group_by('commodity_id');
+        $query = $this->db->get('central_level_data');
+        $query_result = $query->result();
+        return $query_result;
+
+    }
+
+
+    function show_shipments(){
+
+        $transaction_status = "pending";
+        $this->db->select('*');
+        $this->db->from('pending_shipment_details');
+        $this->db->where('transaction_status', $transaction_status);
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+    }
 
 
     function get_most_recent_county_period()

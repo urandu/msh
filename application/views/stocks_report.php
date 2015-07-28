@@ -24,7 +24,9 @@
 
          <table class="table">
             <thead>
+
         <tr><h3>Central level stocks and Pending shipments</h3></tr>
+
         <br>
         <tr>
             <th>
@@ -99,6 +101,7 @@
             </tr>
             <?php endforeach;?>
        </tbody>
+
     </table>
 
     </div>

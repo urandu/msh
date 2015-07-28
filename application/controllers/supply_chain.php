@@ -55,6 +55,7 @@ class Supply_chain extends MY_Controller
 			'CONTACT_PERSON' => $this->input->post('contact_person'),
 			'CONTACT_PHONE' => $this->input->post('contact_phone'),
 			'COMMENT' => $this->input->post('supply_agency_description'),
+			'EMAIL' => $this->input->post('email')
 
 		);
 		$updaterecord=$this->agency_model->update_supply_chain_agencies_id1($id,$data);
@@ -98,13 +99,15 @@ class Supply_chain extends MY_Controller
 		$person = ($this->input->post('contact_person'));
 		$contact = ($this->input->post('contact_phone'));
 		$phone = ($this->input->post('supply_chain_description'));
+		$email = ($this->input->post('email'));
 
 
 		$agency = array(
 			'SUPPLY_CHAIN_AGENCY' => $agency_name,
 			'CONTACT_PERSON' => $person,
 			'CONTACT_PHONE' => $contact,
-			'COMMENT' => $phone
+			'COMMENT' => $phone,
+			'EMAIL' => $email
 		);
 
 		$agencyId = $this->agency_model->add_supply_chain_agency($agency);

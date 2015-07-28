@@ -16,6 +16,7 @@ class County_model extends CI_Model
 // Function To Fetch All Counties Record
     function show_counties()
     {
+        $this->db->order_by('county_name', 'asc');
         $query = $this->db->get('counties');
         $query_result = $query->result();
         return $query_result;
@@ -34,5 +35,17 @@ class County_model extends CI_Model
         return $query->result();
     }
 
+
+
+    function get_zone_id($zone_name)
+    {
+        $this->db->select('zone_id');
+        $this->db->from('zones');
+        $this->db->where('zone', $zone_name);
+        $query = $this->db->get();
+        $result = $query->row()->zone_id;
+        return $result;
+    }
+
+
 }
-?>

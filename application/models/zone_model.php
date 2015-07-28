@@ -16,6 +16,7 @@ class zone_model extends CI_Model
 // Function To Fetch All zones Record
     function show_zones()
     {
+        $this->db->order_by('zone', 'asc');
         $query = $this->db->get('zones');
         $query_result = $query->result();
         return $query_result;

@@ -68,6 +68,7 @@ class Current_stock extends CI_Controller {
         $supply_chain_agency= ($this->input->post('supply_chain_agency'));
         $id= $this->input->post('central_level_stock_id');//central_level_stock_id
         $f_agency_name= ($this->input->post('funding_agency_name'));
+
         $today = date("Ym");
 
         $data = array(
@@ -78,6 +79,7 @@ class Current_stock extends CI_Controller {
             'funding_agency_id' => $this->agency_model->get_funding_agency_id($f_agency_name),
 
         );
+
 
 
         $this->stocks_model->update_central_data($id,$data);
@@ -114,14 +116,18 @@ class Current_stock extends CI_Controller {
         $time = date("F j, Y, g:i a");
 
         $dataArray = array(
+
+
             'period'=>$today,
             'funding_agency_id' => $this->agency_model->get_funding_agency_id($f_agency_name),
             'commodity_id' => $this->commodity_model->get_commodity_id_with_the_given_name($this->input->post('commodity_name')),	//GET THE COMODITIES ID
             'supply_agency_id' =>$this->agency_model->get_agency_id_with_the_given_name($supply_chain_agency),
+
             'soh_closing_balance'=>$this->input->post('soh_closing_balance'),
 
 
         );
+
 
         $this->stocks_model->add_central_stock($dataArray);
 
