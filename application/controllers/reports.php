@@ -96,6 +96,7 @@ class Reports extends MY_Controller
     public function national_mos($period="000000")
     {
 
+        $no_reporting_rate=$this->input->post("no_reporting_rate");
         $period_post=$this->input->post("date");
         if(!empty($period_post))
         {
@@ -105,7 +106,16 @@ class Reports extends MY_Controller
         $national_report['dates']=$this->report_model->get_central_level_periods();
 if($period!="000000")
 {
-    $national_report['period']=$this->report_model->get_national_level_mos($period);
+    if(empty($no_reporting_rate))
+    {
+        $national_report['period']=$this->report_model->get_national_level_mos($period);
+    }
+    else
+    {
+        $national_report['period']=$this->report_model->get_national_level_mos_no_reporting_rate($period);
+        $national_report['reporting_rate']="no reporting rate";
+    }
+
     $national_report['p']=$period;
 }
 

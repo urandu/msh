@@ -98,8 +98,10 @@ class Register extends CI_Controller {
         $national_id=$this->input->post('national_id');
         $password=$this->input->post('password');
         $email=$this->input->post('email');
+        $role=$this->input->post('role');
         $this->load->model('user_model');
-        if($this->user_model->new_user($names,$phone_number,$national_id,$password,$email))
+
+        if($this->user_model->new_user($names,$phone_number,$national_id,$password,$email,$role))
         {
             $data['flash_message']=TRUE;
             //$this->load->view('register', $data);

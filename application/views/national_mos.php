@@ -32,8 +32,10 @@
 
                     <?php foreach ($dates as $date): ?>
                         <option value="<?php echo $date->period; ?>"><?php echo $date->period; ?></option>
+
                     <?php endforeach; ?>
                 </select>
+                <input type="checkbox" name="no_reporting_rate" value="true"> without reporting rate
         </div>
         <div class="col-lg-3">
             <input class="btn btn-primary" type="submit" value="Get National Level MOS Report">
@@ -54,7 +56,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>National Level MOS for period: <?php echo $p; ?></h5>
+                        <h5>National Level MOS for period: <?php echo $p; ?> <?php if(!empty($reporting_rate)){echo(" without reporting rate");} ?></h5>
 
                         <div class="ibox-tools">
                             <a class="collapse-link">

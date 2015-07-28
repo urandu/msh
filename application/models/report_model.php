@@ -148,6 +148,97 @@ WHERE period = '{$period}'";
 
     }
 
+ function get_national_level_mos_no_reporting_rate($period)
+    {
+
+
+        $period1=subtract_date($period,1);
+        $period2=subtract_date($period,2);
+        $period3=subtract_date($period,3);
+        $period4=subtract_date($period,4);
+        $period5=subtract_date($period,5);
+
+        $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}')
+      )
+
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period5}')
+      )
+    )/6
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        $result=$this->db->query($query);
+        return $result->result();
+
+
+    }
+
 
 
     function get_central_level_mos($period)

@@ -174,6 +174,14 @@
                             <input name="national_id" type="number" class="form-control" placeholder="National ID number" required="">
                         </div>
                         <div class="form-group">
+                            <label>User level</label>
+                            <select name="role">
+                                <option value="0">Regular user</option>
+                                <option value="1">Editor</option>
+                                <option value="-1">Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <input name="phone_number" type="tel" class="form-control" placeholder="Phone Number" required="">
                         </div>
                         <!--<div class="form-group">
