@@ -7,6 +7,7 @@
  */
 class Stocks_model extends CI_Model{
 
+
     function update_central_data($cdid,$cdData){
         $this->db->where('central_level_stock_id', $cdid);
         $this->db->update('central_level_data', $cdData);
@@ -18,29 +19,44 @@ class Stocks_model extends CI_Model{
     }
 
 
-    /* function show_all_planned_procurement()
-        {
+/* function show_all_planned_procurement()
+    {
 
-            $this->db->distinct();
-            $this->db->group_by('planned_delivery_date');
-            $query =$this->db->get('planned_procurement_details');
-            $query_result = $query->result();
-            return $query_result;
-
-        }
-    */
-    function show_sorted_central_stock(){
         $this->db->distinct();
-        $this->db->group_by('period DESC' );
-        $query = $this->db->get('central_level_data');
+        $this->db->group_by('planned_delivery_date');
+        $query =$this->db->get('planned_procurement_details');
         $query_result = $query->result();
         return $query_result;
+
+    }   
+*/
+    function show_sorted_central_stock(){
+    $this->db->distinct();
+    $this->db->group_by('period DESC' );
+    $query = $this->db->get('central_level_data');
+    $query_result = $query->result();
+    return $query_result;
+
+}
+    function show_current_stock_by_period($period){
+    $this->db->select('*');
+    $this->db->from('central_level_data');
+    $this->db->where('period', $period);
+
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+}
+
+
+
 
     }
     function show_current_stock_by_period($period){
         $this->db->select('*');
         $this->db->from('central_level_data');
         $this->db->where('period', $period);
+
 
         $query = $this->db->get();
         $result = $query->result();
@@ -63,4 +79,4 @@ class Stocks_model extends CI_Model{
         $result = $query->result();
         return $result;
     }
-}
+

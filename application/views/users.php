@@ -188,7 +188,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
-                    <input type="button" class="btn btn-primary" value="Create user" >
+
+                    <input type="submit" class="btn btn-primary" value="Create user" >
+
                 </div>
                 </form>
             </div>

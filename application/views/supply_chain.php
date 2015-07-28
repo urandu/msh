@@ -96,48 +96,48 @@
                                                         action="<?= base_url(); ?>index.php/supply_chain/update_agency_id1"
                                                         method="post" name="supplychain" onsubmit="return validateSupplyAgency() enctype="multipart/form-data" autocomplete="on">
 
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="supply_agency_id"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->supply_chain_agency_id; ?>">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="supply_agency_id"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->supply_chain_agency_id; ?>">
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label>Agency Name :</label>
-                                                            <input type="text" required name="supply_agency_name"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->supply_chain_agency; ?>">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label>Agency Name :</label>
+                                                        <input type="text" required name="supply_agency_name"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->supply_chain_agency; ?>">
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label>Contact Person :</label>
-                                                            <input type="text" name="contact_person"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->contact_person; ?>">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label>Contact Person :</label>
+                                                        <input type="text" name="contact_person"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->contact_person; ?>">
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label>Email :</label>
-                                                            <input type="email" name="email"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->email; ?>">
-                                                        </div>
-
-
+                                                    <div class="form-group">
+                                                        <label>Email :</label>
+                                                        <input type="email" name="email"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->email; ?>">
+                                                    </div>
 
 
-                                                        <div class="form-group">
-                                                            <label>Contact Phone :</label>
-                                                            <input type="text" name="contact_phone" class="form-control"
-                                                                   value="<?php echo $agency->contact_phone; ?>">
-                                                        </div>
 
-                                                        <div class="form-group">
-                                                            <label>Description :</label>
-                                                            <input type="text" name="supply_agency_description"
-                                                                   class="form-control"
-                                                                   value="<?php echo $agency->comment; ?>">
-                                                        </div>
+
+                                                    <div class="form-group">
+                                                        <label>Contact Phone :</label>
+                                                        <input type="text" name="contact_phone" class="form-control"
+                                                               value="<?php echo $agency->contact_phone; ?>">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Description :</label>
+                                                        <input type="text" name="supply_agency_description"
+                                                               class="form-control"
+                                                               value="<?php echo $agency->comment; ?>">
+                                                    </div>
 
                                                 </div>
                                                 <div class="modal-footer">
@@ -210,7 +210,7 @@
                             <label">Contact Phone </label>
                             <input id="txtPhone" type="text" class="form-control" name="contact_phone"
                                    placeholder="Contact phone">
-                             <span id="spnPhoneStatus"><div></div></span>
+                            <span id="spnPhoneStatus"><div></div></span>
                         </div>
 
                         <div class

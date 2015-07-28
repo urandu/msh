@@ -37,11 +37,13 @@ class Reports extends MY_Controller
             $period=$period_post;
         }
 
+
         $this->load->model("report_model");
 
         $facility_report['dates']=$this->report_model->get_facility_level_periods();
 
         $facility_report['period']=$this->report_model->get_facility_level_mos($period);
+
 
         $facility_report['p']=$period;
         $this->load->view('facility_mos',$facility_report);
@@ -50,7 +52,9 @@ class Reports extends MY_Controller
     {
 
         $period_post=$this->input->post("date");
-        if(isset($period_post))
+
+        if(!empty($period_post))
+
         {
             $period=$period_post;
         }
@@ -64,18 +68,28 @@ class Reports extends MY_Controller
     public function central_mos($period="000000")
     {
         $period_post=$this->input->post("date");
-        if(isset($period_post))
+
+        if(!empty($period_post))
+
         {
             $period=$period_post;
         }
 
         $this->load->model("report_model");
 
+//$central_report=array();
         $central_report['dates']=$this->report_model->get_central_level_periods();
+        if($period!="000000")
+        {
 
-        $central_report['period']=$this->report_model->get_central_level_mos($period);
 
-        $central_report['p']=$period;
+            $central_report['period']=$this->report_model->get_central_level_mos($period);
+            $central_report['p']=$period;
+        }
+
+
+
+
         $this->load->view('central_mos',$central_report);
     }
 
@@ -132,6 +146,26 @@ if($period!="000000")
 
         //print_r($county_report);
     }
+     public function variance_tracker($period="000000")
+     {
+        $period_post=$this->input->post("date");
+        if(!empty($period_post))
+        {
+            $period=$period_post;
+        }
+        $this->load->model("report_model");
+        $variance['dates']=$this->report_model->forecast_variance_periods();
+if($period!="000000")
+{
+    $variance['period']=$this->report_model->forecast_variance_tracker($period);
+    $variance['p']=$period;
+}
+
+        $this->load->view('variance_tracker',$variance);
+       
+
+        
+     }
 
     public function stocks()
     {
@@ -139,9 +173,10 @@ if($period!="000000")
         $this->load->model('report_model');
         $commoditycomparison['COMMODITY']=$this->report_model->show_malaria_commodities();
         $commoditycomparison['FUNDING']=$this->report_model->show_funding_orgs();
-        $commoditycomparison['PSTOCKS']=$this->report_model->show_pending_shipments();
-        $commoditycomparison['CENTRAL']=$this->report_model->show_central_stock();
 
+        $commoditycomparison['PSTOCKS']=$this->report_model->pending_shipments();
+        $commoditycomparison['SORTED']=$this->report_model->show_pending_shipments();
+        $commoditycomparison['CENTRAL']=$this->report_model->show_central_stock();
 
 
         $this->load->view('stocks_report', $commoditycomparison);
@@ -152,7 +187,9 @@ if($period!="000000")
          $this->load->model('report_model');
         $data['COMMODITY'] = $this->report_model->show_malaria_commodities();
         $data['pendingConsignments']=$this->report_model->show_pending_shipments();
-        //$data['pending_per_commodity'] = $this->report_model->show_pending_shipment_per_commodity();
+
+        $data['pending_per_commodity'] = $this->report_model->show_pending_shipment_per_commodity();
+
         $this->load->view('commodities_report', $data);
         
     }
@@ -162,7 +199,9 @@ if($period!="000000")
          $this->load->model('report_model');
         $commodityperagency['COMMODITY']=$this->report_model->show_malaria_commodities();
         $commodityperagency['FUNDING']=$this->report_model->show_funding_orgs();
-        $commodityperagency['PSTOCKS']=$this->report_model->show_pending_shipments();
+
+        $commodityperagency['PSTOCKS']=$this->report_model->pending_shipments();
+
 
 
          $this->load->view('agencies_report', $commodityperagency);
@@ -171,7 +210,10 @@ if($period!="000000")
        $this->load->model('report_model');
         $data2['COMMODITY']=$this->report_model->show_malaria_commodities();
         $data2['FUNDING']=$this->report_model->show_funding_orgs();
-        $data2['PSTOCKS']=$this->report_model->show_pending_shipments();
+
+        $data2['PSTOCKS']=$this->report_model->show_shipments();
+        $data2['SORTED']=$this->report_model->pending_shipments();
+
 
         $this->load->view('individual_commodities', $data2);
         }

@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2015 at 02:50 PM
--- Server version: 5.5.43-0ubuntu0.14.04.1
+-- Generation Time: Jul 27, 2015 at 03:11 PM
+-- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,6 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `msh_db`
 --
+
 CREATE DATABASE msh_db;
 USE msh_db;
 -- --------------------------------------------------------
@@ -29,34 +30,31 @@ USE msh_db;
 
 CREATE TABLE IF NOT EXISTS `central_level_data` (
   `central_level_stock_id` int(25) NOT NULL AUTO_INCREMENT,
-  `report_date` varchar(55) NOT NULL,
   `supply_agency_id` int(25) NOT NULL,
   `commodity_id` varchar(25) NOT NULL,
-  `unit_of_measure` varchar(15) NOT NULL,
-  `opening_balance` varchar(20) NOT NULL,
-  `total_receipts_from_suppliers` varchar(20) NOT NULL,
-  `total_issues_to_facilities` varchar(20) NOT NULL,
+  `period` varchar(25) NOT NULL,
   `soh_closing_balance` varchar(20) NOT NULL,
-  `earliest_expiry_date` date NOT NULL,
-  `quantity_expiring` varchar(20) NOT NULL,
   `funding_agency_id` int(25) NOT NULL,
   PRIMARY KEY (`central_level_stock_id`),
   KEY `supply_agency_id` (`supply_agency_id`),
   KEY `commodity_id` (`commodity_id`),
   KEY `funding_agency_id` (`funding_agency_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `central_level_data`
 --
 
-INSERT INTO `central_level_data` (`central_level_stock_id`, `report_date`, `supply_agency_id`, `commodity_id`, `unit_of_measure`, `opening_balance`, `total_receipts_from_suppliers`, `total_issues_to_facilities`, `soh_closing_balance`, `earliest_expiry_date`, `quantity_expiring`, `funding_agency_id`) VALUES
-(9, '0', 4, 'c0MB4RmVjxk', '', '0', '53345', '54354377', '435435', '0000-00-00', '545435', 1),
-(14, '0', 4, 'BnGDrFwyQp9', '', '0', '', '20000', '50000', '0000-00-00', '', 1),
-(38, '0', 32, 'cPlWFYbBacW', '', '0', '200000', '3725272', '4863452', '0000-00-00', '2', 4),
-(39, '0', 4, 'gVp1KSFI69G', '', '0', '35965', '30000', '5586500', '0000-00-00', '23', 6),
-(40, '0', 4, 'qnZmg5tNSMy', '', '0', '456564', '350', '2679326', '0000-00-00', '20', 1),
-(41, '0', 32, 'c0MB4RmVjxk', '', '0', '0', '0', '1', '0000-00-00', '0', 1);
+INSERT INTO `central_level_data` (`central_level_stock_id`, `supply_agency_id`, `commodity_id`, `period`, `soh_closing_balance`, `funding_agency_id`) VALUES
+(46, 34, 'qnZmg5tNSMy', '201505', '453345`', 5),
+(47, 32, 'c0MB4RmVjxk', '201507', '8600', 6),
+(48, 4, 'c0MB4RmVjxk', '201507', '86', 6),
+(50, 34, 'c0MB4RmVjxk', '201508', '86', 6),
+(51, 32, 'c0MB4RmVjxk', '201507', '86', 6),
+(52, 32, 'c0MB4RmVjxk', '201507', '86', 6),
+(53, 4, 'cPlWFYbBacW', '201507', '56', 4),
+(54, 34, 'cPlWFYbBacW', '201507', '3456321', 6),
+(55, 4, 'cPlWFYbBacW', '201507', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -73,18 +71,17 @@ CREATE TABLE IF NOT EXISTS `commodity_forecast_data` (
   PRIMARY KEY (`commodity_forecast_data_id`),
   KEY `commodity_id` (`commodity_id`),
   KEY `commodity_id_2` (`commodity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `commodity_forecast_data`
 --
 
 INSERT INTO `commodity_forecast_data` (`commodity_forecast_data_id`, `forecast_start_date`, `forecast_period`, `commodity_id`, `forecast_monthly_consumption`) VALUES
-(5, '201406', 2, 'cPlWFYbBacW', '1245'),
-(7, '201406', 2, 'BnGDrFwyQp9', '380'),
+(5, '201407', 2, 'cPlWFYbBacW', '1245'),
+(7, '201406', 5, 'BnGDrFwyQp9', '380'),
 (8, '201406', 2, 'c0MB4RmVjxk', '600'),
-(9, '201406', 2, 'qnZmg5tNSMy', '700'),
-(10, '201406', 2, 'gVp1KSFI69G', '800');
+(9, '201406', 2, 'qnZmg5tNSMy', '700');
 
 -- --------------------------------------------------------
 
@@ -106,14 +103,14 @@ CREATE TABLE IF NOT EXISTS `counties` (
 --
 
 INSERT INTO `counties` (`county_id`, `county_name`, `zone`, `comment`) VALUES
-('ahwTMNAJvrL', 'Muranga County', 'Epidemic', ''),
-('BjC1xL40gHo', 'Kakamega County', 'Endemic', ''),
+('ahwTMNAJvrL', 'Muranga County', '', ''),
+('BjC1xL40gHo', 'Kakamega County', '', ''),
 ('BoDytkJQ4Qi', 'Makueni County', '', ''),
 ('bzOfj0iwfDH', 'Isiolo County', '', ''),
-('CeLsrJOH0g9', 'Wajir County', 'Epidemic', 'dr'),
+('CeLsrJOH0g9', 'Wajir County', '', ''),
 ('Eey8fT4Im3y', 'Marsabit County', '', ''),
 ('fVra3Pwta0Q', 'Migori County', '', ''),
-('HMNARUV2CW4', 'Bomet County', '', ''),
+('HMNARUV2CW4', 'Bomet County', '4', ''),
 ('Hsk1YV8kHkT', 'Kajiado County', '', ''),
 ('ihZsJ8alvtb', 'Kericho County', '', ''),
 ('j8o6iO4Njsi', 'Kitui County', '', ''),
@@ -5294,6 +5291,33 @@ CREATE TABLE IF NOT EXISTS `county_level_soh` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `current_stock`
+--
+
+CREATE TABLE IF NOT EXISTS `current_stock` (
+  `current_stock_id` int(25) NOT NULL AUTO_INCREMENT,
+  `commodity_id` varchar(255) NOT NULL,
+  `quantity_received` int(255) NOT NULL,
+  `quantity_issued` int(255) NOT NULL,
+  `soh` int(255) NOT NULL,
+  PRIMARY KEY (`current_stock_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `current_stock`
+--
+
+INSERT INTO `current_stock` (`current_stock_id`, `commodity_id`, `quantity_received`, `quantity_issued`, `soh`) VALUES
+(4, 'cPlWFYbBacW', 76, 65, 7),
+(5, 'cPlWFYbBacW', 89, 54, 2),
+(6, 'gVp1KSFI69G', 600, 765, 5),
+(7, 'c0MB4RmVjxk', 65, 569, 11),
+(8, 'qnZmg5tNSMy', 65, 67, 6),
+(9, 'gVp1KSFI69G', 543, 432, 9);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `facility_level_data`
 --
 
@@ -5504,7 +5528,7 @@ INSERT INTO `funding_agencies` (`funding_agency_id`, `funding_agency_name`, `com
 (4, 'Global Fund', 'A partner of choice'),
 (5, 'IPCA (PMI)', 'main  donors'),
 (6, 'Norvatis (PMI)', 'Another donor'),
-(13, 'ukaid', 'From the queen''s people');
+(13, 'Ukaid', 'From the queen''s people');
 
 -- --------------------------------------------------------
 
@@ -5515,24 +5539,23 @@ INSERT INTO `funding_agencies` (`funding_agency_id`, `funding_agency_name`, `com
 CREATE TABLE IF NOT EXISTS `malaria_commodities` (
   `commodity_id` varchar(25) NOT NULL,
   `commodity_name` varchar(60) NOT NULL,
+  `alt_name` varchar(255) NOT NULL,
   `unit_of_measure` varchar(15) NOT NULL,
-  `funding_agency_id` int(25) NOT NULL,
   `commodity_description` varchar(100) NOT NULL,
   PRIMARY KEY (`commodity_id`),
-  KEY `pack_size` (`unit_of_measure`),
-  KEY `funding_agency_id` (`funding_agency_id`)
+  KEY `pack_size` (`unit_of_measure`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `malaria_commodities`
 --
 
-INSERT INTO `malaria_commodities` (`commodity_id`, `commodity_name`, `unit_of_measure`, `funding_agency_id`, `commodity_description`) VALUES
-('BnGDrFwyQp9', 'Artemether-Lumefantrine (6s)', ' 5-14 kgs', 4, ''),
-('c0MB4RmVjxk', 'Artemether-Lumefantrine (12s)', ' 15-25 Kgs', 2, ''),
-('cPlWFYbBacW', 'Malaria Rapid Diagnostic Test (RDTs)', '8', 2, ''),
-('gVp1KSFI69G', 'Artemether-Lumefantrine (24s)', '35+ Kgs', 2, ''),
-('qnZmg5tNSMy', 'Artemether-Lumefantrine (18s)', '25-34 Kgs', 2, '');
+INSERT INTO `malaria_commodities` (`commodity_id`, `commodity_name`, `alt_name`, `unit_of_measure`, `commodity_description`) VALUES
+('BnGDrFwyQp9', 'Artemether-Lumefantrine (6s)', 'AL(6s)', ' 5-14 kgs', ''),
+('c0MB4RmVjxk', 'Artemether-Lumefantrine (12s)', 'AL(12s)', ' 15-25 Kgs', ''),
+('cPlWFYbBacW', 'Malaria Rapid Diagnostic Test (RDTs)', 'MRDT', '8', ''),
+('gVp1KSFI69G', 'Artemether-Lumefantrine (24s)', 'AL(24s)', '35+ Kgs', ''),
+('qnZmg5tNSMy', 'Artemether-Lumefantrine (18s)', 'AL(18s)', '25-34 Kgs', '');
 
 -- --------------------------------------------------------
 
@@ -5664,24 +5687,26 @@ CREATE TABLE IF NOT EXISTS `pending_shipment_details` (
   PRIMARY KEY (`pending_shipment_id`),
   KEY `commodity_id` (`commodity_id`),
   KEY `funding_agency_id` (`funding_agency_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `pending_shipment_details`
 --
 
 INSERT INTO `pending_shipment_details` (`pending_shipment_id`, `period`, `commodity_id`, `funding_agency_id`, `quantity`, `expected_time_of_arrival`, `comments`, `transaction_status`) VALUES
-(3, 0, 'cPlWFYbBacW', 1, '408888', '0000-00-00', '', 'pending'),
-(4, 0, 'BnGDrFwyQp9', 1, '600000', '0000-00-00', '', 'received'),
-(5, 0, 'c0MB4RmVjxk', 1, '20000', '0000-00-00', '', 'pending'),
-(6, 0, 'qnZmg5tNSMy', 1, '67800', '0000-00-00', 'hgfhgfhgf', 'pending'),
-(7, 0, 'qnZmg5tNSMy', 1, '204567', '0000-00-00', 'Artemether 18s', 'received'),
-(11, 189913, 'BnGDrFwyQp9', 1, '56', '2012-02-15', 'e', 'pending'),
-(12, 0, 'gVp1KSFI69G', 1, '4800000', '0000-00-00', '', 'pending'),
-(13, 201501, 'c0MB4RmVjxk', 1, '1143413', '2015-01-30', '', 'pending'),
-(14, 201501, 'c0MB4RmVjxk', 1, '1143413', '2015-01-30', 'brief', 'pending'),
-(15, 201501, 'c0MB4RmVjxk', 1, '1143413', '2015-01-30', 'brief', 'received'),
-(16, 201501, 'c0MB4RmVjxk', 1, '1800000', '2015-01-30', 'PMI', 'pending');
+(11, 189913, 'qnZmg5tNSMy', 5, '5000', '2012-02-15', 'e', 'pending'),
+(13, 201501, 'c0MB4RmVjxk', 13, '10000', '2015-01-30', '', 'pending'),
+(14, 201501, 'c0MB4RmVjxk', 1, '500', '2015-01-30', 'brief', 'pending'),
+(15, 201501, 'gVp1KSFI69G', 4, '700', '2015-01-30', 'brief', 'received'),
+(16, 201509, 'BnGDrFwyQp9', 6, '7800', '2015-07-31', 'just another shipment', 'pending'),
+(17, 201510, 'BnGDrFwyQp9', 6, '9000', '2015-09-30', 'test data', 'pending'),
+(18, 201511, 'cPlWFYbBacW', 2, '4000', '2015-07-14', 'well wel', 'pending'),
+(19, 201612, 'cPlWFYbBacW', 5, '6000', '2015-07-28', 'mmmh!', 'pending'),
+(20, 201701, 'cPlWFYbBacW', 13, '3000', '2016-04-22', 'ghai!', 'pending'),
+(21, 201702, 'gVp1KSFI69G', 5, '8000', '2016-03-31', 'kama wewe unajipenda', 'pending'),
+(22, 201511, 'c0MB4RmVjxk', 1, '4500', '2015-04-07', 'mikono juu', 'pending'),
+(23, 201510, 'qnZmg5tNSMy', 1, '500', '2015-11-26', 'yeah!', 'pending'),
+(24, 201602, 'qnZmg5tNSMy', 5, '8000', '2016-09-30', 'siku moja', 'pending');
 
 -- --------------------------------------------------------
 
@@ -5698,7 +5723,17 @@ CREATE TABLE IF NOT EXISTS `planned_procurement_details` (
   `funding_agency_id` int(25) NOT NULL,
   `comment` varchar(100) NOT NULL,
   PRIMARY KEY (`planned_procurement_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `planned_procurement_details`
+--
+
+INSERT INTO `planned_procurement_details` (`planned_procurement_id`, `commodity_id`, `unit_of_measure`, `quantity`, `planned_delivery_date`, `funding_agency_id`, `comment`) VALUES
+(1, 'BnGDrFwyQp9', '', '4443', '2015-09-09', 1, 's'),
+(2, 'BnGDrFwyQp9', '', '8709860', '2015-09-07', 4, 'fast'),
+(3, 'BnGDrFwyQp9', '5', '796860', '2015-09-05', 6, 's'),
+(4, 'BnGDrFwyQp9', '56', '8709860', '2015-09-23', 1, 'me');
 
 -- --------------------------------------------------------
 
@@ -5710,19 +5745,19 @@ CREATE TABLE IF NOT EXISTS `supply_chain_agencies` (
   `supply_chain_agency_id` int(5) NOT NULL AUTO_INCREMENT,
   `supply_chain_agency` varchar(60) NOT NULL,
   `contact_person` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `contact_phone` int(55) NOT NULL,
   `comment` varchar(1000) NOT NULL,
   PRIMARY KEY (`supply_chain_agency_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `supply_chain_agencies`
 --
 
-INSERT INTO `supply_chain_agencies` (`supply_chain_agency_id`, `supply_chain_agency`, `contact_person`, `contact_phone`, `comment`) VALUES
-(4, 'CHAI', 'Mary', 720646080, 'chai main contact person'),
-(32, 'KEMSA', 'patrick nk', 724441239, 'kemsa contact person'),
-(34, 'meds', 'Jane', 721456786, 'The main contractor');
+INSERT INTO `supply_chain_agencies` (`supply_chain_agency_id`, `supply_chain_agency`, `contact_person`, `email`, `contact_phone`, `comment`) VALUES
+(4, 'CHAI', 'Mary', 'enockoloo6@gmail.com', 720646080, 'chai main contact person'),
+(32, 'KEMSA', 'patrick nk', 'root@msh.com', 724441239, 'kemsa contact person');
 
 -- --------------------------------------------------------
 
@@ -5750,7 +5785,11 @@ CREATE TABLE IF NOT EXISTS `user_table` (
 INSERT INTO `user_table` (`user_id`, `password`, `names`, `email`, `national_id`, `phone_number`, `role`) VALUES
 (8, '63a9f0ea7bb98050796b649e85481845', 'default user ', 'root@msh.com', '29364156', '0722167368', 0),
 (9, '63a9f0ea7bb98050796b649e85481845', 'user2', 'user1@msh.com', '25685324', '0722167368', 0),
+<<<<<<< HEAD
 (10, '63a9f0ea7bb98050796b649e85481845', 'enock sibuor', 'enock@msh.com', '31458745', '0700124578', 0);
+=======
+(10, '63a9f0ea7bb98050796b649e85481845', 'Enock Oloo', 'enock@msh.com', '30442011', '0701058958', 0);
+>>>>>>> master
 
 -- --------------------------------------------------------
 
@@ -5784,7 +5823,6 @@ INSERT INTO `zones` (`zone`, `comment`, `zone_id`) VALUES
 --
 ALTER TABLE `central_level_data`
   ADD CONSTRAINT `central_level_data_ibfk_1` FOREIGN KEY (`funding_agency_id`) REFERENCES `funding_agencies` (`funding_agency_id`),
-  ADD CONSTRAINT `central_level_data_ibfk_3` FOREIGN KEY (`supply_agency_id`) REFERENCES `supply_chain_agencies` (`supply_chain_agency_id`),
   ADD CONSTRAINT `central_level_data_ibfk_4` FOREIGN KEY (`commodity_id`) REFERENCES `malaria_commodities` (`commodity_id`);
 
 --

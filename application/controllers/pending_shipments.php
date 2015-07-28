@@ -32,6 +32,7 @@ class Pending_shipments extends MY_Controller
     public function index()
     {
 
+
         $this->show_pending_shipments();
     }
 
@@ -48,6 +49,7 @@ class Pending_shipments extends MY_Controller
         $data2['FUNDING']=$this->pending_shipments_model->show_fundingorgs();
         $data2['pending_shipment_successfully_retrieved'] = "";
         $data2['ALL_SHIPMENTS'] = $this->pending_shipments_model->show_all_pending_shipment();
+
 
         $this->load->view('pending_shipments',$data2);
     }
@@ -105,8 +107,10 @@ class Pending_shipments extends MY_Controller
         //$this->show_pending_shipments_from_selected_period();
         redirect(base_url()."pending_shipments");
     }
+
     public function delete_pending_shipment($id){
         //$id= $this->input->post('pendingstockid');
+
         $this->db->where('pending_shipment_id', $id);
         $deleterecord=$this->db->delete('pending_shipment_details');
         $data['status'] =  "";

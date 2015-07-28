@@ -25,6 +25,7 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
 
+
                 <div class="col-lg-8">
 
                     <div class="ibox float-e-margins">
@@ -66,6 +67,7 @@
 
                                         <td data-toggle="modal" data-target="#myModal_<?php echo $county->county_id?>" ><i class="fa fa-wrench"></i></td>
 
+
                                         <div class="modal inmodal" id="myModal_<?php echo $county->county_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content animated bounceInRight">
@@ -94,8 +96,10 @@
                                                             <select class="form-control m-b" name="zone_name">
 
                                                                 <option>--SELECT ZONE--</option>
+
                                                                 <?php foreach ($zones as $zone):?>
                                                                     <option name="zone_name" <?php if($zone->zone_id==$county->zone){echo"selected";} ?>><?php echo $zone->zone;?></option>
+
                                                                 <?php endforeach; ?>
 
                                                             </select>
@@ -108,7 +112,9 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+
                                                         <button id="update" type="submit" class="btn btn-primary">Save changes</button>
+
                                                     </div>
                                                     </form>
                                                 </div>

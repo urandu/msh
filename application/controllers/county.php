@@ -45,6 +45,7 @@ class County extends MY_Controller
     function update_county_id1() {
         $id= $this->input->post('county_id');
         $data = array(
+
             'zone' => $this->county_model->get_zone_id($this->input->post('zone_name')),
             'comment' => $this->input->post('county_comment'),
         );
@@ -52,6 +53,7 @@ class County extends MY_Controller
 
         redirect(base_url()."county");
     }
+
 
 }
 /* End of file welcome.php */

@@ -46,15 +46,17 @@
                                             <h4 class="modal-title">Edit agency</h4>
                                             <small class="font-bold">Update and delete details about a particular funding agency.</small>
                                         </div>
-                                        <form action="<?= base_url();?>funding_agency/update_funding_agency" method="post" name="funding_agency" onsubmit="return validateFundingAgency()" enctype="multipart/form-data" >
+
+                                        <form action="<?= base_url();?>funding_agency/update_funding_agency" method="post" enctype="multipart/form-data">  
                                         <div class="modal-body">
 
                                        <div class="form-group"><input type="hidden" name="funding_agency_id" value="<?php echo $agency->funding_agency_id; ?>" class="form-control"></div>
-                                        <div class="form-group"><label>Funding agency: </label> <input type="text" name="funding_agency_name" value="<?php echo $agency->funding_agency_name; ?>" class="form-control"></div>
-                                       <div class="form-group"><label>Description: </label> <input type="text" name="funding_agency_description" value="<?php echo $agency->comment; ?>" class="form-control"></div>
+                                        <div class="form-group"><label>Commodity: </label> <input type="text" name="funding_agency_name" value="<?php echo $agency->funding_agency_name; ?>" class="form-control"></div>
+                                       <div class="form-group"><label>Description: </label> <input type="textarea" name="funding_agency_description" value="<?php echo $agency->comment; ?>" class="form-control"></div>
                                         </div>
                                         <div class="modal-footer">
-                                             <button id="update" type="submit" class="btn btn-primary">Save changes</button>
+                                             <button type="submit" class="btn btn-primary">Save changes</button>
+
                                              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                            <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
                                         </div>
@@ -64,7 +66,9 @@
                             </div>
                             </td> 
                             <td>
-                                <a href="<?php echo(base_url()."funding_agency/delete_funding_agency/".$agency->funding_agency_id); ?>"><i class="fa fa-trash"></i></a>
+
+                                <a href="<?php echo(base_url()."funding_agency/delete_funding_agency/".$agency->funding_agency_id); ?>"><i class="fa fa-trash"></i></a>    
+
                              </td></tr>
                                 <?php $count++; endforeach; ?>
                                  </tbody>
@@ -86,15 +90,17 @@
                                             <h4 class="modal-title">Funding agency</h4>
                                             <small class="font-bold">Add a funding agency here.</small>
                                         </div>
-                                        <form action="<?= base_url();?>funding_agency/save_funding_agency" method="post" name="fundingagency" onsubmit="return validateFundingAgency()" enctype="multipart/form-data">
+
+                                        <form action="<?= base_url();?>funding_agency/save_funding_agency" method="post" enctype="multipart/form-data">  
                                         <div class="modal-body">
 
                  
-                                        <div class="form-group"><label>Funding agency: </label> <input type="text" required name="funding_agency_name" placeholder="Funding agency"  class="form-control"></div>
-                                       <div class="form-group"><label>Description: </label> <input type="text" name="funding_agency_description" placeholder="Description" class="form-control"></div>
+                                        <div class="form-group"><label>Funding agency: </label> <input type="text" name="funding_agency_name" placeholder="Funding agency"  class="form-control"></div>
+                                       <div class="form-group"><label>Description: </label> <input type="textarea" name="funding_agency_description" placeholder="Description" class="form-control"></div>
                                         </div>
                                         <div class="modal-footer">
-                                             <button id="submit" type="submit" class="btn btn-primary">Add agency</button>
+                                             <button type="submit" class="btn btn-primary">Add agency</button>
+
                                              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                            <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
                                         </div>
