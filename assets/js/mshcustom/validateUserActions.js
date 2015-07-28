@@ -47,28 +47,3 @@ function validatePhone(txtPhone) {
     }
 }
 /* *****************end validate phone no********************** */
-
-function validateFundingAgency()
-{
-
-    var x=document.forms["fundingagency"]["funding_agency_name"].value;
-    var y=document.forms["fundingagency"]["funding_agency_description"].value;
-
-    if ((x==null || x=="") && (y==null || y==""))
-    {
-        alert("All Field must be filled out");
-        return false;
-    }
-    if (x==null || x=="")
-    {
-        alert("Input the funding agency name");
-        return false;
-    }
-    if (y==null || y=="")
-    {
-        alert("Include decription");
-        return false;
-    }
-}
-
-
