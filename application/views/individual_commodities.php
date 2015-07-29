@@ -24,6 +24,7 @@
             <th><b>Source</b></th>
             <th><b>Quantity</b></th>
             <th><b>E.T.A</b></th>
+            <th><b>Color code</b></th>
         </tr>
         </thead>
         <tbody>
@@ -53,6 +54,17 @@
                 <td>
                     <?php  echo $pendingstocks->expected_time_of_arrival;?>
                 </td>
+                
+                <?php if (get_months($pendingstocks->expected_time_of_arrival) < 3 || get_months($pendingstocks->expected_time_of_arrival) ==3) {
+                    echo "<td style='background-color: #FF0000'>".""."</td>";  
+
+                  }else if (get_months($pendingstocks->expected_time_of_arrival)> 3 && get_months($pendingstocks->expected_time_of_arrival) < 6 || get_months($pendingstocks->expected_time_of_arrival) ==6 ) {
+                      echo "<td style='background-color: #008000'>".""."</td>";
+                  }else if (get_months($pendingstocks->expected_time_of_arrival) >6 && get_months($pendingstocks->expected_time_of_arrival) < 9 || get_months($pendingstocks->expected_time_of_arrival) ==9) {
+                  echo "<td style='background-color: #FFA500'>".""."</td>";
+                  } else{
+                    echo "<td style='background-color: #FFFF00'>".""."</td>";
+                  }?>
             </tr>
 
             <?php
