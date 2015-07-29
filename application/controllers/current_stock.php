@@ -74,7 +74,7 @@ class Current_stock extends MY_Controller
         $id= $this->input->post('central_level_stock_id');//central_level_stock_id
         $f_agency_name= ($this->input->post('funding_agency_name'));
 
-        $today = date("Ym");
+        $today = $this->input->post('period');
 
         $data = array(
             'period'=>$today,
@@ -117,7 +117,7 @@ class Current_stock extends MY_Controller
         $commodity_name=($this->input->post('commodity_name'));
         $supply_chain_agency= ($this->input->post('supply_chain_agency'));
         $f_agency_name= ($this->input->post('funding_agency_name'));
-        $today = date("Ym");
+        $today = $this->input->post('period');
         $time = date("F j, Y, g:i a");
 
         $dataArray = array(

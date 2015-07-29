@@ -56,7 +56,7 @@ class Update_stocks extends MY_Controller
 		$soh=$this->input->post('soh');
 		$name=$this->input->post('commodity_name');
 		$commodity_id=$this->update_stocks_model->get_commodity_id_with_the_given_name($name);
-		$today = date("Ym");
+		$today = $this->input->post('period');
 
 		$my_array= array(
 		'period'=>$today,
@@ -77,8 +77,9 @@ class Update_stocks extends MY_Controller
 		$soh=$this->input->post('soh');
 		$name=$this->input->post('commodity_name');
 		$commodity_id=$this->update_stocks_model->get_commodity_id_with_the_given_name($name);
-
+		$today = $this->input->post('period');
 		$my_array= array(
+			'period'=>$today,
 		'quantity_received' =>$qr,
 		'quantity_issued'=>$qi,
 		'soh'=>$soh,

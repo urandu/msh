@@ -108,7 +108,11 @@
                     <?php endforeach; ?>
                                         </select></div>
                   <div class="form-group"><label>Quantity received: </label> <input type="text" name="soh_closing_balance" value="<?php echo $central_level_data->soh_closing_balance; ?>" class="form-control"></div>
+                  <div class="form-group"><label>Period :</label>
+                    <input type="text" required name="period" class="form-control"  data-mask="9999-99" value="<?php echo $central_level_data->period; ?>">
+                    <span class="help-block">yyyy-mm</span>
 
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -175,7 +179,11 @@
                     <?php endforeach; ?>
                                         </select></div>
                   <div class="form-group"><label>Quantity received: </label> <input type="text" name="soh_closing_balance"  placeholder="Closing balance" class="form-control"></div>
+                      <div class="form-group"><label>Period :</label>
+                            <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
+                            <span class="help-block">yyyy-mm</span>
 
+                        </div> 
                      </div>
                     <div class="modal-footer">
                          <button type="submit" class="btn btn-primary">Save changes</button>
@@ -185,22 +193,51 @@
                 </form>
 
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-
-                    <button type="button" class="btn btn-white" data-dismiss="modal">cancel</button>
-                    <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
-                </div>
-            </form>
+             
         </div>
 
 
 
 
 </div>
-    </div>
+  
 
 
 
 <?php require_once("includes/footer.php"); ?>
 
+<!-- <div class="modal inmodal" id="central_level_data" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <i class="fa fa-laptop modal-icon"></i>
+                        <h4 class="modal-title">Add to current stock</h4>
+                        <small class="font-bold">Add details about stocks currently held at the central level.</small>
+                    </div>
+                    <form action="<?= base_url();?>update_stocks/save_current_data" method="post" enctype="multipart/form-data">  
+                    <div class="modal-body">
+
+                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name">
+                    <?php foreach ($commodity as $malaria_commodity): ?>  
+                      <option  value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
+                    <?php endforeach; ?>
+                      </select></div>                   
+                  <div class="form-group"><label>Quantity received: </label> <input type="text" name="quantity_received" placeholder="Quantity received"  class="form-control"></div>
+                  <div class="form-group"><label>Quantity Issued: </label> <input type="text" name="quantity_issued" placeholder="Quantity issued" class="form-control"></div>
+                  <div class="form-group"><label>Stock on hand: </label> <input type="text" name="soh"  placeholder="Stock on hannd" class="form-control"></div>
+                    <div class="form-group"><label>Period :</label>
+                            <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
+                            <span class="help-block">yyyy-mm</span>
+
+                        </div>                     
+                       </div>
+                    <div class="modal-footer">
+                         <button type="submit" class="btn btn-primary">Save</button>
+                           <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                       <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> 
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div> -->

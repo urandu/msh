@@ -89,6 +89,11 @@
                  <div class="form-group"><label>Quantity received: </label> <input type="text" name="quantity_received" value="<?php echo $central_level_data->quantity_received; ?>" class="form-control"></div>
                   <div class="form-group"><label>Quantity Issued: </label> <input type="text" name="quantity_issued" value="<?php echo $central_level_data->quantity_issued; ?>" class="form-control"></div>
                   <div class="form-group"><label>Stock on hand: </label> <input type="text" name="soh" value="<?php echo $central_level_data->soh; ?>" class="form-control"></div>
+                   <div class="form-group"><label>Period :</label>
+                    <input type="text" required name="period" class="form-control"  data-mask="9999-99" value="<?php echo $central_level_data->period; ?>">
+                    <span class="help-block">yyyy-mm</span>
+
+                        </div>
                   </div>
                     <div class="modal-footer">
                          <button type="submit" class="btn btn-primary">Save</button>
@@ -136,8 +141,12 @@
                   <div class="form-group"><label>Quantity received: </label> <input type="text" name="quantity_received" placeholder="Quantity received"  class="form-control"></div>
                   <div class="form-group"><label>Quantity Issued: </label> <input type="text" name="quantity_issued" placeholder="Quantity issued" class="form-control"></div>
                   <div class="form-group"><label>Stock on hand: </label> <input type="text" name="soh"  placeholder="Stock on hannd" class="form-control"></div>
-                  
-                     </div>
+                    <div class="form-group"><label>Period :</label>
+                            <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
+                            <span class="help-block">yyyy-mm</span>
+
+                        </div>                     
+                       </div>
                     <div class="modal-footer">
                          <button type="submit" class="btn btn-primary">Save</button>
                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
@@ -151,4 +160,5 @@
 
 
 <?php require_once("includes/footer.php"); ?>
+
 
