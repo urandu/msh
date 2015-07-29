@@ -36,9 +36,17 @@ class Update_stocks extends MY_Controller
 	{
 		$this->show_current_stock();
 	}
-	public function show_current_stock(){
+
+	
+	public function show_current_stock($period="000000"){
+		$period_post=$this->input->post("period");
+		 if(isset($period_post))
+        {
+            $period=$period_post;
+        }
+        $data['update_stock']=$this->update_stocks_model->show_current_stock_by_period($period);
 		$data['commodity']=$this->update_stocks_model->show_malaria_commodities();
-		$data['update_stock']=$this->update_stocks_model->show_current_stock();
+		$data['stock']=$this->update_stocks_model->show_current_stock();
 		$this->load->view('stock_update',$data);
 	}
 
@@ -48,8 +56,10 @@ class Update_stocks extends MY_Controller
 		$soh=$this->input->post('soh');
 		$name=$this->input->post('commodity_name');
 		$commodity_id=$this->update_stocks_model->get_commodity_id_with_the_given_name($name);
+		$today = date("Ym");
 
 		$my_array= array(
+		'period'=>$today,
 		'quantity_received' =>$qr,
 		'quantity_issued'=>$qi,
 		'soh'=>$soh,
