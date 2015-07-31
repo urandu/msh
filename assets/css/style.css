@@ -3439,6 +3439,11 @@ table.table-mail tr td {
   background-color: #1ab394;
   color: #ffffff;
 }
+
+.barclays-bg {
+  background-color: #00AEEF;
+
+}
 .blue-bg {
   background-color: #1c84c6;
   color: #ffffff;
@@ -3736,6 +3741,7 @@ a.close-canvas-menu:hover {
 }
 .m-t {
   margin-top: 15px;
+ color: #FFFFFF;
 }
 .m-t-md {
   margin-top: 20px;
