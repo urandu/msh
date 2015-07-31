@@ -2,6 +2,36 @@
 
 
 
+
+<script>
+  function myFunction() 
+  {
+      var base_url = "<?= base_url();?>";
+      var item = document.getElementById("test");
+      var itemIndex = item.selectedIndex;
+      var itemSelected = item[itemIndex].value;
+     var url = base_url+"current_stock/get_by_id";
+     $.getJSON
+      (
+        url,
+        {pending_shipment_id:itemSelected},
+        function(dataReceived)
+        {
+          /*NOTES:
+            0 - funding agency id
+            1 - funding agency name
+            2 - commodity id
+            3 - commodity name
+          */
+          $("#selected_agency").html(dataReceived[1]);
+          $("#selected_commodity").html(dataReceived[3]);
+        }
+
+      );
+  }
+</script>
+
+
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Recieved stocks</h2>
@@ -90,6 +120,7 @@
                     <form action="<?= base_url();?>current_stock/update_central_level" method="post" enctype="multipart/form-data">  
                     <div class="modal-body">
 
+
                    <div class="form-group"><input type="hidden" name="central_level_stock_id" value="<?php echo $central_level_data->central_level_stock_id; ?>" class="form-control"></div>
                   <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name" >
                     <?php foreach ($commodity as $malaria_commodity): ?>  
@@ -108,7 +139,11 @@
                     <?php endforeach; ?>
                                         </select></div>
                   <div class="form-group"><label>Quantity received: </label> <input type="text" name="soh_closing_balance" value="<?php echo $central_level_data->soh_closing_balance; ?>" class="form-control"></div>
+                  <div class="form-group"><label>Period :</label>
+                    <input type="text" required name="period" class="form-control"  data-mask="9999-99" value="<?php echo $central_level_data->period; ?>">
+                    <span class="help-block">yyyy-mm</span>
 
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -158,24 +193,43 @@
                     <form action="<?= base_url();?>current_stock/save_central_level" method="post" enctype="multipart/form-data">  
                     <div class="modal-body">
 
-                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name">
-                    <?php foreach ($commodity as $malaria_commodity): ?>  
-                      <option  value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
+                    <div class="form-group"><label>Pending shipment: </label>
+                      <span>Commodity name--period--quantity</span>
+                      <select class="form-control m-b" name="pending_shipment_id" id="test" onchange = "javascript:myFunction();" required>
+                    <option value = "">[Select]</option>
+                    <?php foreach ($pending_shipment as $pending): ?>  
+                    <option  value="<?php echo $pending->pending_shipment_id;?>">  <table border='1'> 
+                      <tr><td><?php foreach ($commodity as $malaria_commodity):
+                       if ($malaria_commodity->commodity_id == $pending->commodity_id){echo $malaria_commodity->commodity_name;}
+                       endforeach;?>
+                     </td><td>--</td><td> <?php echo($pending->period);?></td><td>--</td><td><?php echo $pending->quantity;?></td></tr></table></option>
                     <?php endforeach; ?>
-                      </select></div>
-                   <div class="form-group"><label>Funding agency: </label><select class="form-control m-b" name="funding_agency_name" >
-                    <?php foreach ($funding_agency as $agency): ?>  
-                      <option  value="<?php echo $agency->funding_agency_name;?>"><?php echo $agency->funding_agency_name;?></option>
-                    <?php endforeach; ?>
-                                        </select></div>
+                    </select>
+                  
+                </div>
+
+
+                  <div class="form-group"><label>Commodity: </label>
+                      <div class="form-control m-b" id="selected_commodity"name="commodity_name">                  
+                      </div>
+                    </div>
+                   <div class="form-group"><label>Funding agency: </label>
+                      <div class="form-control m-b" id="selected_agency"name="funding_agency_name" >
+                      </div>
+                  </div>
                    
                 <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b" name="supply_chain_agency"  >
                     <?php foreach ($supply_chain_agency as $supply): ?>  
                       <option  value="<?php echo $supply->supply_chain_agency;?>" ><?php echo $supply->supply_chain_agency;?></option>
                     <?php endforeach; ?>
                                         </select></div>
-                  <div class="form-group"><label>Quantity received: </label> <input type="text" name="soh_closing_balance"  placeholder="Closing balance" class="form-control"></div>
+                  <div class="form-group"><label>Quantity received:</label>
+                   <input type="text" name="soh_closing_balance"  placeholder="Closing balance" class="form-control"></div>
+                      <div class="form-group"><label>Period :</label>
+                            <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
+                            <span class="help-block">yyyy-mm</span>
 
+                        </div> 
                      </div>
                     <div class="modal-footer">
                          <button type="submit" class="btn btn-primary">Save changes</button>
@@ -185,22 +239,21 @@
                 </form>
 
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-
-                    <button type="button" class="btn btn-white" data-dismiss="modal">cancel</button>
-                    <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
-                </div>
-            </form>
+             
         </div>
 
 
 
 
 </div>
-    </div>
+  
 
 
 
 <?php require_once("includes/footer.php"); ?>
 
+<!--   <div class="form-group"><label>Pending shipment: </label><select class="form-control m-b" name="pending_shipment_id" >
+                    <?php foreach ($pending_shipment as $pending): ?>  
+                      <option  value="<?php echo $pending->pending_shipment_id;?>"><?php echo "<table><tr><td>".$pending->period."</td><tr></table>";?></option>
+                    <?php endforeach; ?>
+                                        </select></div> -->

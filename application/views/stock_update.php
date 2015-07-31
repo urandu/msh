@@ -12,6 +12,21 @@
             </div>
         </div>
     </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>update_stocks/show_current_stock">
+    <select name="period" class="form-control">
+        <option  selected>--SELECT PERIOD--</option>
+        <?php foreach ($stock as $stck): ?>
+            <option value="<?php echo $stck->period; ?>"  ><?php echo $stck->period; ?></option>
+        <?php endforeach; ?>
+    </select>
+        <input class="btn btn-primary" type="submit" value="Get Commodities">
+        </form>
+</div> 
+</div>
+
    
 <div class="wrapper wrapper-content">
   <div class="row">
@@ -24,17 +39,17 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Comodity</th>                            
-                                   <!--  <th>Unit of measure</th> -->
                                     <th>Qty Received</th>
                                     <th>Qty Issued</th>
                                     <th>Stock on hand</th>
-                                    <!-- <th>color code</th> -->
+                                    <th>period</th>
                                     <th>Edit</th>                            
                                     <th>Remove</th>                            
                                     </tr>
                             </thead>
 
-                            <tbody>
+<?php if (isset($update_stock)) {?>
+<tbody>
                                 <?php $count=1; ?>
                                 <?php foreach ($update_stock as $central_level_data): ?> 
                                  <tr>
@@ -45,9 +60,10 @@
                                       }
                                          endforeach;
                                       ?></td>
-                                         <td><?php echo $central_level_data->quantity_received;?></td>
-                                        <td><?php echo $central_level_data->quantity_issued;?></td>
+                                         <td><?php echo $central_level_data->PendingTotal;?></td>
+                                        <td><?php echo $central_level_data->sum_issued;?></td>
                   <td><?php echo $central_level_data->soh;?></td>
+                  <td><?php echo $central_level_data->period;?></td>
                                  
               
                   <td data-toggle="modal" data-target="#myModal_<?php echo $central_level_data->current_stock_id; ?>"><i class="fa fa-wrench"></i>
@@ -73,6 +89,11 @@
                  <div class="form-group"><label>Quantity received: </label> <input type="text" name="quantity_received" value="<?php echo $central_level_data->quantity_received; ?>" class="form-control"></div>
                   <div class="form-group"><label>Quantity Issued: </label> <input type="text" name="quantity_issued" value="<?php echo $central_level_data->quantity_issued; ?>" class="form-control"></div>
                   <div class="form-group"><label>Stock on hand: </label> <input type="text" name="soh" value="<?php echo $central_level_data->soh; ?>" class="form-control"></div>
+                   <div class="form-group"><label>Period :</label>
+                    <input type="text" required name="period" class="form-control"  data-mask="9999-99" value="<?php echo $central_level_data->period; ?>">
+                    <span class="help-block">yyyy-mm</span>
+
+                        </div>
                   </div>
                     <div class="modal-footer">
                          <button type="submit" class="btn btn-primary">Save</button>
@@ -91,7 +112,7 @@
       endforeach; ?>
       </tbody>
       </table>
-      <?php ?>
+        <?php }?>
 
       </div>
       </div>
@@ -99,10 +120,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
 <div class="modal inmodal" id="central_level_data" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -124,8 +141,12 @@
                   <div class="form-group"><label>Quantity received: </label> <input type="text" name="quantity_received" placeholder="Quantity received"  class="form-control"></div>
                   <div class="form-group"><label>Quantity Issued: </label> <input type="text" name="quantity_issued" placeholder="Quantity issued" class="form-control"></div>
                   <div class="form-group"><label>Stock on hand: </label> <input type="text" name="soh"  placeholder="Stock on hannd" class="form-control"></div>
-                  
-                     </div>
+                    <div class="form-group"><label>Period :</label>
+                            <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
+                            <span class="help-block">yyyy-mm</span>
+
+                        </div>                     
+                       </div>
                     <div class="modal-footer">
                          <button type="submit" class="btn btn-primary">Save</button>
                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
@@ -139,4 +160,5 @@
 
 
 <?php require_once("includes/footer.php"); ?>
+
 
