@@ -637,7 +637,6 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
 
     }
 
-
     // Function To Fetch All Commodies Record
     function show_malaria_commodities(){
         $query = $this->db->get('malaria_commodities');
@@ -872,7 +871,49 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
     }
 
 
+    function show_sorted_pending_stock(){
+    $this->db->distinct();
+    $this->db->group_by('period DESC' );
+    $query = $this->db->get('pending_shipment_details');
+    $query_result = $query->result();
+    return $query_result;
 
+}
+        function show_shipments_by_period($period){
+
+        $this->db->select('*, SUM(quantity) AS PendingTotal');
+         $this->db->group_by('commodity_id');
+        $this->db->group_by('funding_agency_id');
+        $this->db->from('pending_shipment_details');
+        $this->db->where('period', $period);
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+    }
+
+      function show_pending_shipments_per_period($period){
+        $this->db->select('*, SUM(quantity) AS PendingTotal');
+        $this->db->group_by('commodity_id');
+        $this->db->where('period', $period);
+        $this->db->from('pending_shipment_details');
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+        /*var_dump($query_result);*/
+
+
+
+    }
+
+      function show_central_stock_by_period($period){
+        $this->db->select('*, SUM(soh_closing_balance) as central_total');
+        $this->db->group_by('commodity_id');
+        $this->db->where('period', $period);
+        $query = $this->db->get('central_level_data');
+        $query_result = $query->result();
+        return $query_result;
+
+    }
 
 
 

@@ -13,9 +13,24 @@
     </div>
 </div>
 
+     <div class="row">
+    <div class="col-lg-3">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>reports/individual_commodity">
+    <select name="period" class="form-control">
+        <option  selected>--SELECT PERIOD--</option>
+        <?php foreach ($select_period as $cld): ?>
+            <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+        <?php endforeach; ?>
+    </select>
+        <input class="btn btn-primary" type="submit" value="Get period">
+        </form>
+      </div> 
+      </div>
+
 <div class="wrapper wrapper-content">
     <table  class="table">
         <thead>
+            <tr>Period: <?php echo $period;?></tr>
 
         <tr>
             <th><b>#</b></th>
@@ -56,12 +71,12 @@
                 </td>
                 
                 <?php if (get_months($pendingstocks->expected_time_of_arrival) < 3 || get_months($pendingstocks->expected_time_of_arrival) ==3) {
-                    echo "<td style='background-color: #FF0000'>".""."</td>";  
+                    echo "<td style='background-color: #00FF00'>".""."</td>";  
 
                   }else if (get_months($pendingstocks->expected_time_of_arrival)> 3 && get_months($pendingstocks->expected_time_of_arrival) < 6 || get_months($pendingstocks->expected_time_of_arrival) ==6 ) {
-                      echo "<td style='background-color: #008000'>".""."</td>";
+                      echo "<td style='background-color: #FFFF00'>".""."</td>";
                   }else if (get_months($pendingstocks->expected_time_of_arrival) >6 && get_months($pendingstocks->expected_time_of_arrival) < 9 || get_months($pendingstocks->expected_time_of_arrival) ==9) {
-                  echo "<td style='background-color: #FFA500'>".""."</td>";
+                  echo "<td style='background-color: #008000'>".""."</td>";
                   } else{
                     echo "<td style='background-color: #FFFF00'>".""."</td>";
                   }?>

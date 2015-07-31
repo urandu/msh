@@ -90,6 +90,7 @@
                     <form action="<?= base_url();?>current_stock/update_central_level" method="post" enctype="multipart/form-data">  
                     <div class="modal-body">
 
+
                    <div class="form-group"><input type="hidden" name="central_level_stock_id" value="<?php echo $central_level_data->central_level_stock_id; ?>" class="form-control"></div>
                   <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name" >
                     <?php foreach ($commodity as $malaria_commodity): ?>  
@@ -162,6 +163,21 @@
                     <form action="<?= base_url();?>current_stock/save_central_level" method="post" enctype="multipart/form-data">  
                     <div class="modal-body">
 
+                    <div class="form-group"><label>Pending shipment: </label>
+                      <span>Commodity name--period--quantity</span>
+                      <select class="form-control m-b" name="pending_shipment_id" >
+                    <?php foreach ($pending_shipment as $pending): ?>  
+                    <option  value="<?php echo $pending->pending_shipment_id;?>">  <table border='1'> 
+                      <tr><td><?php foreach ($commodity as $malaria_commodity):
+                       if ($malaria_commodity->commodity_id == $pending->commodity_id){echo $malaria_commodity->commodity_name;}
+                       endforeach;?>
+                     </td><td>--</td><td> <?php echo($pending->period);?></td><td>--</td><td><?php echo $pending->quantity;?></td></tr></table></option>
+                    <?php endforeach; ?>
+                    </select>
+                  
+                </div>
+
+
                   <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name">
                     <?php foreach ($commodity as $malaria_commodity): ?>  
                       <option  value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
@@ -178,7 +194,8 @@
                       <option  value="<?php echo $supply->supply_chain_agency;?>" ><?php echo $supply->supply_chain_agency;?></option>
                     <?php endforeach; ?>
                                         </select></div>
-                  <div class="form-group"><label>Quantity received: </label> <input type="text" name="soh_closing_balance"  placeholder="Closing balance" class="form-control"></div>
+                  <div class="form-group"><label>Quantity received:</label>
+                   <input type="text" name="soh_closing_balance"  placeholder="Closing balance" class="form-control"></div>
                       <div class="form-group"><label>Period :</label>
                             <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
                             <span class="help-block">yyyy-mm</span>
@@ -206,38 +223,8 @@
 
 <?php require_once("includes/footer.php"); ?>
 
-<!-- <div class="modal inmodal" id="central_level_data" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content animated bounceInRight">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <i class="fa fa-laptop modal-icon"></i>
-                        <h4 class="modal-title">Add to current stock</h4>
-                        <small class="font-bold">Add details about stocks currently held at the central level.</small>
-                    </div>
-                    <form action="<?= base_url();?>update_stocks/save_current_data" method="post" enctype="multipart/form-data">  
-                    <div class="modal-body">
-
-                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name">
-                    <?php foreach ($commodity as $malaria_commodity): ?>  
-                      <option  value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
+<!--   <div class="form-group"><label>Pending shipment: </label><select class="form-control m-b" name="pending_shipment_id" >
+                    <?php foreach ($pending_shipment as $pending): ?>  
+                      <option  value="<?php echo $pending->pending_shipment_id;?>"><?php echo "<table><tr><td>".$pending->period."</td><tr></table>";?></option>
                     <?php endforeach; ?>
-                      </select></div>                   
-                  <div class="form-group"><label>Quantity received: </label> <input type="text" name="quantity_received" placeholder="Quantity received"  class="form-control"></div>
-                  <div class="form-group"><label>Quantity Issued: </label> <input type="text" name="quantity_issued" placeholder="Quantity issued" class="form-control"></div>
-                  <div class="form-group"><label>Stock on hand: </label> <input type="text" name="soh"  placeholder="Stock on hannd" class="form-control"></div>
-                    <div class="form-group"><label>Period :</label>
-                            <input type="text" required name="period" class="form-control"  data-mask="9999-99" placeholder="Period">
-                            <span class="help-block">yyyy-mm</span>
-
-                        </div>                     
-                       </div>
-                    <div class="modal-footer">
-                         <button type="submit" class="btn btn-primary">Save</button>
-                           <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                       <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> 
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div> -->
+                                        </select></div> -->

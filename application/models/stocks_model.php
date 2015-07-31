@@ -18,18 +18,6 @@ class Stocks_model extends CI_Model{
         return $this->db->insert_id();
     }
 
-
-/* function show_all_planned_procurement()
-    {
-
-        $this->db->distinct();
-        $this->db->group_by('planned_delivery_date');
-        $query =$this->db->get('planned_procurement_details');
-        $query_result = $query->result();
-        return $query_result;
-
-    }   
-*/
     function show_sorted_central_stock(){
     $this->db->distinct();
     $this->db->group_by('period DESC' );
@@ -48,35 +36,36 @@ class Stocks_model extends CI_Model{
     return $result;
 }
 
-
-
-
-    }
-    function show_current_stock_by_period($period){
-        $this->db->select('*');
-        $this->db->from('central_level_data');
-        $this->db->where('period', $period);
-
-
-        $query = $this->db->get();
-        $result = $query->result();
-        return $result;
-    }
-
-
-
-    function show_central_stock(){
-        $query = $this->db->get('central_level_data');
+        function show_pending_shipments(){
+        $query = $this->db->get('pending_shipment_details');
         $query_result = $query->result();
         return $query_result;
-
     }
-    function show_central_stock_id($psdata){
-        $this->db->select('*');
-        $this->db->from('central_level_data');
-        $this->db->where('central_level_stock_id', $psdata);
+
+     function update_pending_shipment($psid,$pendingdata)
+    {
+        $this->db->where('pending_shipment_id', $psid);
+        $this->db->update('pending_shipment_details', $pendingdata);
+    }
+
+
+     function show_pending_shipment($pid)
+    {
+        $this->db->select('quantity');
+        $this->db->from('pending_shipment_details');
+        $this->db->where('pending_shipment_id', $pid);
         $query = $this->db->get();
-        $result = $query->result();
-        return $result;
+        $query_result = $query->result();
+        return $query_result;
+     
     }
 
+
+     public function delete_pending_data($id){
+        $this->db->where('pending_shipment_id', $id);
+        $deleterecord=$this->db->delete('pending_shipment_details');
+    }
+
+
+}
+   

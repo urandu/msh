@@ -57,6 +57,9 @@ class Current_stock extends MY_Controller
         $datacl['supply_chain_agency'] = $this->agency_model->show_supply_chain_agencies();
         $datacl['funding_agency'] = $this->agency_model->show_funding_orgs();
         $datacl['period']=$period;
+        $datacl['pending_shipment'] = $this->stocks_model->show_pending_shipments();
+
+        /*show_pending_shipments*/
 
         $this->load->view('current_stock',$datacl);
 
@@ -118,25 +121,38 @@ class Current_stock extends MY_Controller
         $supply_chain_agency= ($this->input->post('supply_chain_agency'));
         $f_agency_name= ($this->input->post('funding_agency_name'));
         $today = $this->input->post('period');
-        $time = date("F j, Y, g:i a");
+        $quantity_received=$this->input->post('soh_closing_balance');
+        $pid=$this->input->post('pending_shipment_id');
 
-        $dataArray = array(
-
-
+        $data_array = array(
+            'pending_stock_id'=>$pid,
             'period'=>$today,
             'funding_agency_id' => $this->agency_model->get_funding_agency_id($f_agency_name),
             'commodity_id' => $this->commodity_model->get_commodity_id_with_the_given_name($this->input->post('commodity_name')),	//GET THE COMODITIES ID
             'supply_agency_id' =>$this->agency_model->get_agency_id_with_the_given_name($supply_chain_agency),
-
-            'soh_closing_balance'=>$this->input->post('soh_closing_balance'),
+            'soh_closing_balance'=>$quantity_received,
 
 
         );
+        $this->stocks_model->add_central_stock($data_array);
+        $fetched_data=$this->stocks_model->show_pending_shipment($pid);
+        foreach ($fetched_data as $value) {
+            $quantity_on_hand=$value->quantity;
+        }
+        $quantity_remaining=$quantity_on_hand-$quantity_received;
 
+        if($quantity_remaining!=0){
 
-        $this->stocks_model->add_central_stock($dataArray);
+            $second_array= array('quantity' =>$quantity_remaining);
+       $this->stocks_model->update_pending_shipment($pid, $second_array);
+       $this->show_central_level_stock();
 
-        $this->show_central_level_stock();
+        }else{
+            $this->stocks_model->delete_pending_data($pid);
+            $this->show_central_level_stock();
+        }
+
+       
 
 
 

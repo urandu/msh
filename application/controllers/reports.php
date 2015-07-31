@@ -177,52 +177,81 @@ if($period!="000000")
         
      }
 
-    public function stocks()
+    public function stocks($period=000000)
     {
 
-        $this->load->model('report_model');
+         $period_post=$this->input->post('period');
+
+        if(isset($period_post))
+        {
+            $period=$period_post;
+
+            $this->load->model('report_model');
         $commoditycomparison['COMMODITY']=$this->report_model->show_malaria_commodities();
         $commoditycomparison['FUNDING']=$this->report_model->show_funding_orgs();
 
-        $commoditycomparison['PSTOCKS']=$this->report_model->pending_shipments();
-        $commoditycomparison['SORTED']=$this->report_model->show_pending_shipments();
-        $commoditycomparison['CENTRAL']=$this->report_model->show_central_stock();
+        $commoditycomparison['PSTOCKS']=$this->report_model->show_shipments_by_period($period);
+        $commoditycomparison['SORTED']=$this->report_model->show_pending_shipments_per_period($period);
+        $commoditycomparison['CENTRAL']=$this->report_model->show_central_stock_by_period($period);
+        $commoditycomparison['select_period']=$this->report_model->show_sorted_pending_stock();
 
 
         $this->load->view('stocks_report', $commoditycomparison);
+        }
+        
     }
-    public function commodities()
+    public function commodities($period=000000)
     {
-     
+        $period_post=$this->input->post('period');
+
+        if(isset($period_post))
+        {
+            $period=$period_post;
+        }
          $this->load->model('report_model');
         $data['COMMODITY'] = $this->report_model->show_malaria_commodities();
-        $data['pendingConsignments']=$this->report_model->show_pending_shipments();
-
-        $data['pending_per_commodity'] = $this->report_model->show_pending_shipment_per_commodity();
-
+        $data['pendingConsignments']=$this->report_model->show_pending_shipments_per_period($period);
+        $data['select_period']=$this->report_model->show_sorted_pending_stock();
+        $data['period']=$period;
         $this->load->view('commodities_report', $data);
         
     }
 
-    public function agencies()
+    public function agencies($period="000000")
     {
-         $this->load->model('report_model');
+        $period_post=$this->input->post('period');
+
+        if(isset($period_post))
+        {
+            $period=$period_post;
+        }
+        $this->load->model('report_model');
+        $commodityperagency['PSTOCKS']=$this->report_model->show_shipments_by_period($period);
         $commodityperagency['COMMODITY']=$this->report_model->show_malaria_commodities();
         $commodityperagency['FUNDING']=$this->report_model->show_funding_orgs();
+        $commodityperagency['period']=$this->report_model->show_sorted_pending_stock();
+        $commodityperagency['selected_period']=$period;
 
-        $commodityperagency['PSTOCKS']=$this->report_model->pending_shipments();
 
-
+        
 
          $this->load->view('agencies_report', $commodityperagency);
     }
-    public function individual_commodity(){
+    public function individual_commodity($period=000000){
+        $period_post=$this->input->post('period');
+
+        if(isset($period_post))
+        {
+            $period=$period_post;
+        }
+
+
        $this->load->model('report_model');
         $data2['COMMODITY']=$this->report_model->show_malaria_commodities();
         $data2['FUNDING']=$this->report_model->show_funding_orgs();
-
-        $data2['PSTOCKS']=$this->report_model->show_shipments();
-        $data2['SORTED']=$this->report_model->pending_shipments();
+        $data2['select_period']=$this->report_model->show_sorted_pending_stock();
+        $data2['PSTOCKS']=$this->report_model->show_shipments_by_period($period);
+        $data2['period']=$period;
 
 
         $this->load->view('individual_commodities', $data2);
