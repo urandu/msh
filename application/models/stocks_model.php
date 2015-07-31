@@ -67,5 +67,39 @@ class Stocks_model extends CI_Model{
     }
 
 
+
+     function show_pending_shipment_by_id($pid)
+    {
+        $this->db->select('*');
+        $this->db->from('pending_shipment_details');
+        $this->db->where('pending_shipment_id', $pid);
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+     
+    }
+
+    
+       function get_commodity_id_with_the_given_id($commodity_id)
+    {
+        $this->db->select('commodity_name');
+        $this->db->from('malaria_commodities');
+        $this->db->where('commodity_id', $commodity_id);
+        $query = $this->db->get();
+        $result = $query->row()->commodity_name;
+        return $result;
+    }
+
+        function get_funding_agency_name($agency_id){
+        $this->db->select('funding_agency_name');
+        $this->db->from('funding_agencies');
+        $this->db->where('funding_agency_id', $agency_id);
+        $query = $this->db->get();
+        $result = $query->row()->funding_agency_name;
+        return $result;
+        }
+
+
+
 }
    

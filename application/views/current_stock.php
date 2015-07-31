@@ -2,6 +2,36 @@
 
 
 
+
+<script>
+  function myFunction() 
+  {
+      var base_url = "<?= base_url();?>";
+      var item = document.getElementById("test");
+      var itemIndex = item.selectedIndex;
+      var itemSelected = item[itemIndex].value;
+     var url = base_url+"current_stock/get_by_id";
+     $.getJSON
+      (
+        url,
+        {pending_shipment_id:itemSelected},
+        function(dataReceived)
+        {
+          /*NOTES:
+            0 - funding agency id
+            1 - funding agency name
+            2 - commodity id
+            3 - commodity name
+          */
+          $("#selected_agency").html(dataReceived[1]);
+          $("#selected_commodity").html(dataReceived[3]);
+        }
+
+      );
+  }
+</script>
+
+
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Recieved stocks</h2>
@@ -165,7 +195,8 @@
 
                     <div class="form-group"><label>Pending shipment: </label>
                       <span>Commodity name--period--quantity</span>
-                      <select class="form-control m-b" name="pending_shipment_id" >
+                      <select class="form-control m-b" name="pending_shipment_id" id="test" onchange = "javascript:myFunction();" required>
+                    <option value = "">[Select]</option>
                     <?php foreach ($pending_shipment as $pending): ?>  
                     <option  value="<?php echo $pending->pending_shipment_id;?>">  <table border='1'> 
                       <tr><td><?php foreach ($commodity as $malaria_commodity):
@@ -178,16 +209,14 @@
                 </div>
 
 
-                  <div class="form-group"><label>Commodity: </label><select class="form-control m-b" name="commodity_name">
-                    <?php foreach ($commodity as $malaria_commodity): ?>  
-                      <option  value="<?php  echo $malaria_commodity->commodity_name;?>"><?php  echo $malaria_commodity->commodity_name;?></option>
-                    <?php endforeach; ?>
-                      </select></div>
-                   <div class="form-group"><label>Funding agency: </label><select class="form-control m-b" name="funding_agency_name" >
-                    <?php foreach ($funding_agency as $agency): ?>  
-                      <option  value="<?php echo $agency->funding_agency_name;?>"><?php echo $agency->funding_agency_name;?></option>
-                    <?php endforeach; ?>
-                                        </select></div>
+                  <div class="form-group"><label>Commodity: </label>
+                      <div class="form-control m-b" id="selected_commodity"name="commodity_name">                  
+                      </div>
+                    </div>
+                   <div class="form-group"><label>Funding agency: </label>
+                      <div class="form-control m-b" id="selected_agency"name="funding_agency_name" >
+                      </div>
+                  </div>
                    
                 <div class="form-group"><label>Supply chain agency: </label><select class="form-control m-b" name="supply_chain_agency"  >
                     <?php foreach ($supply_chain_agency as $supply): ?>  

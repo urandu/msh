@@ -1,9 +1,4 @@
 <?php
-
-
-
-
-
 class Commodity_model extends CI_Model
 {
     // GET THE COMMODITY WITH NAME SAME AS THE NAME IN CENTRAL DATA

@@ -60,8 +60,8 @@
                                       }
                                          endforeach;
                                       ?></td>
-                                         <td><?php echo $central_level_data->quantity_received;?></td>
-                                        <td><?php echo $central_level_data->quantity_issued;?></td>
+                                         <td><?php echo $central_level_data->PendingTotal;?></td>
+                                        <td><?php echo $central_level_data->sum_issued;?></td>
                   <td><?php echo $central_level_data->soh;?></td>
                   <td><?php echo $central_level_data->period;?></td>
                                  

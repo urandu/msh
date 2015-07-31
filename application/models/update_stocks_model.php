@@ -17,7 +17,7 @@ class Update_stocks_model extends CI_Model{
     }
 
     function show_current_stock_by_period($period){
-        $this->db->select('*');
+        $this->db->select('*, SUM(quantity_received) AS PendingTotal, SUM(quantity_issued) AS sum_issued');
         $this->db->from('current_stock');
         $this->db->where('period', $period);
         $query = $this->db->get();

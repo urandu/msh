@@ -70,16 +70,11 @@
                     <?php  echo $pendingstocks->expected_time_of_arrival;?>
                 </td>
                 
-                <?php if (get_months($pendingstocks->expected_time_of_arrival) < 3 || get_months($pendingstocks->expected_time_of_arrival) ==3) {
+                <?php if (get_months($pendingstocks->expected_time_of_arrival) < 3 ) {
                     echo "<td style='background-color: #00FF00'>".""."</td>";  
 
-                  }else if (get_months($pendingstocks->expected_time_of_arrival)> 3 && get_months($pendingstocks->expected_time_of_arrival) < 6 || get_months($pendingstocks->expected_time_of_arrival) ==6 ) {
-                      echo "<td style='background-color: #FFFF00'>".""."</td>";
-                  }else if (get_months($pendingstocks->expected_time_of_arrival) >6 && get_months($pendingstocks->expected_time_of_arrival) < 9 || get_months($pendingstocks->expected_time_of_arrival) ==9) {
-                  echo "<td style='background-color: #008000'>".""."</td>";
-                  } else{
-                    echo "<td style='background-color: #FFFF00'>".""."</td>";
-                  }?>
+                  }
+                  ?>
             </tr>
 
             <?php
