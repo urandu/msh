@@ -28,7 +28,7 @@
                                     <th>Qty Received</th>
                                     <th>Qty Issued</th>
                                     <th>Stock on hand</th>
-                                    <th>color code</th>
+                                    <!-- <th>color code</th> -->
                                     <th>Edit</th>                            
                                     <th>Remove</th>                            
                                     </tr>
@@ -48,17 +48,7 @@
                                          <td><?php echo $central_level_data->quantity_received;?></td>
                                         <td><?php echo $central_level_data->quantity_issued;?></td>
                   <td><?php echo $central_level_data->soh;?></td>
-                  <?php if ($central_level_data->soh < 3 || $central_level_data->soh ==3) {
-                    echo "<td style='background-color: #FF0000'>".""."</td>";  
-
-                  }else if ($central_level_data->soh > 3 && $central_level_data->soh < 6 || $central_level_data->soh ==6 ) {
-                      echo "<td style='background-color: #008000'>".""."</td>";
-                  }else if ($central_level_data->soh >6 && $central_level_data->soh < 9 || $central_level_data->soh ==9) {
-                  echo "<td style='background-color: #FFA500'>".""."</td>";
-                  } else{
-                    echo "<td style='background-color: #FFFF00'>".""."</td>";
-                  }?>
-                 
+                                 
               
                   <td data-toggle="modal" data-target="#myModal_<?php echo $central_level_data->current_stock_id; ?>"><i class="fa fa-wrench"></i>
 

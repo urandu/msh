@@ -226,6 +226,8 @@ if($period!="000000")
 
 
         $this->load->view('individual_commodities', $data2);
+
+
         }
 }
 

@@ -47,6 +47,7 @@ require_once("top_includes.php");
                 <li>
                     <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Stocks</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+                        <li><a href="<?php echo(base_url()); ?>planned_procurements">Planned procurements</a></li>
                         <li><a href="<?php echo(base_url()); ?>pending_shipments">Pending shipments</a></li>
                         <li><a href="<?php echo(base_url()); ?>current_stock">Received stock</a></li>
                         <li><a href="<?php echo(base_url()); ?>update_stocks">Update stock</a></li>
@@ -108,7 +109,7 @@ require_once("top_includes.php");
     </div>
 </nav>
 
-<div id="page-wrapper" class="gray-bg">
+<div id="page-wrapper" class="barclays-bg">
     <div class="row border-bottom">
         <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
