@@ -59,7 +59,9 @@
              
                 <!--<img alt="image" class="center" class="img image" src="assets/img/logo.jpg" />-->
             <!-- <div><marquee>This tool was developed for the Ministry of Health by USAID- funded Health Commodities & Services Management Program implemented by Management Sciences for Health. Contents do not necessarily reflect the views of USAID or the United States Government.</marquee></div>-->
-            <p class="m-t">This tool was developed for the Ministry of Health by USAID- funded Health Commodities & Services Management Program implemented by Management Sciences for Health. Contents do not necessarily reflect the views of USAID or the United States Government.</p> 
+            <p class="m-t">This tool was developed for the Ministry of Health by USAID- funded Health Commodities 
+               & Services Management Program implemented by Management Sciences for Health. 
+               Contents do not necessarily reflect the views of USAID or the United States Government.</p> 
 
             <p class="m-t"> <small>MSH &copy; <?php echo(date("Y")); ?></small> </p>
         </div>

@@ -64,10 +64,10 @@ require_once("top_includes.php");
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo(base_url()); ?>reports/central_mos">Central level MOS</a></li>
-                    <li><a href="<?php echo(base_url()); ?>reports/forecast_mos">Forecast data MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/facility_mos">Facility level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/national_mos">National level MOS</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/county_mos">County level MOS</a></li>
+                    <li><a href="<?php echo(base_url()); ?>reports/forecast_mos">Forecast data MOS</a></li>
 
                     <li><a href="<?php echo(base_url()); ?>reports/variance_tracker">Forecast Variance Tracker</a></li>
                     <li><a href="<?php echo(base_url()); ?>reports/stocks">Stocks</a></li>
