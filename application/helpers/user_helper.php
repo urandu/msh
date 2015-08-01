@@ -47,6 +47,13 @@ function add_date($date,$interval)
 
 
 
+function get_color($color_id)
+{
+    $CI=get_instance();
+    $CI->db->where('color_id',$color_id);
+    $colors=$CI->db->get('mos_color_codes');
+    return $colors->result()[0]->color;
+}
 
 function get_county_name($county_id)
 {

@@ -84,7 +84,7 @@
                      {
                      ?>
                     {
-                        fill: red
+                        fill: <?php echo(get_color(1)); ?>
                     ;
                         stroke: black
                     ;
@@ -96,7 +96,7 @@
 
     ?>
                     {
-                        fill: green
+                        fill: <?php echo(get_color(2)); ?>
                     ;
                         stroke: black
                     ;
@@ -107,7 +107,7 @@
                     {
     ?>
                     {
-                        fill: orange
+                        fill: <?php echo(get_color(3)); ?>
                     ;
                         stroke: black
                     ;
@@ -120,7 +120,7 @@
 
     ?>
                     {
-                        fill: yellow
+                        fill: <?php echo(get_color(4)); ?>
                     ;
                         stroke: black
                     ;

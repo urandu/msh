@@ -53,7 +53,7 @@
     <h5 class="font-bold">MOS Status (Facility Level) (<?php echo($bil); ?>)
         <br>
 
-        <span > <i style="color:red;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:green;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:orange;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:yellow;" class="fa fa-square"></i>  >9</span>
+        <span > <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >9</span>
 
 
         <br></h5>

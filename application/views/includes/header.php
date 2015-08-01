@@ -91,6 +91,7 @@ require_once("top_includes.php");
                     <li><a href="<?php echo(base_url()); ?>zone">Zones</a></li>
                     <li><a href="<?php echo(base_url()); ?>county">Counties</a></li>
                     <li><a href="<?php echo(base_url()); ?>forecast">Forecasts</a></li>
+                    <li> <a href="<?php echo(base_url()); ?>mos_color_codes">Manage MOS color codes</a></li>
                     <li> <a href="<?php echo(base_url()); ?>users">Manage Users</a></li>
                <!-- <a href="<?php echo(base_url()); ?>settings/users"><i class="fa fa-user"></i> <span class="nav-label">Settings</span>
                 </a>-->
