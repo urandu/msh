@@ -12,7 +12,7 @@
         </div>-->
     </div>
 </div>
-
+</br>
      <div class="row">
     <div class="col-lg-3">
     <form class="form" method="post" action="<?php echo(base_url()); ?>reports/individual_commodity">
@@ -22,7 +22,8 @@
             <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
         <?php endforeach; ?>
     </select>
-        <input class="btn btn-primary" type="submit" value="Get period">
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get individual pending shipments report">
         </form>
       </div> 
       </div>
@@ -42,6 +43,7 @@
             <th><b>Color code</b></th>
         </tr>
         </thead>
+        <?php if($period>0){?>
         <tbody>
         <?php $count=1;
         foreach ($PSTOCKS as $pendingstocks):?>
@@ -70,9 +72,17 @@
                     <?php  echo $pendingstocks->expected_time_of_arrival;?>
                 </td>
                 
-                <?php if (get_months($pendingstocks->expected_time_of_arrival) < 3 ) {
+                <?php if (get_months($pendingstocks->expected_time_of_arrival) < 3 ||get_months($pendingstocks->expected_time_of_arrival)==3) {
                     echo "<td style='background-color: #00FF00'>".""."</td>";  
 
+                  }elseif (get_months($pendingstocks->expected_time_of_arrival)> 3 && get_months($pendingstocks->expected_time_of_arrival) < 6 || get_months($pendingstocks->expected_time_of_arrival)==6) {
+                    echo "<td style='background-color: #FFFF00'>".""."</td>";
+
+                  }elseif (get_months($pendingstocks->expected_time_of_arrival) >6 && get_months($pendingstocks->expected_time_of_arrival) < 9|| get_months($pendingstocks->expected_time_of_arrival)==9) {
+                     echo "<td style='background-color: #FF9900'>".""."</td>";
+                  }else
+                  {
+                        echo "<td style='background-color: #FF0000 '>".""."</td>";
                   }
                   ?>
             </tr>
@@ -81,6 +91,7 @@
             $count++;
         endforeach;?>
         </tbody>
+        <?php } ?>
     </table>
 </div>
 

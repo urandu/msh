@@ -11,7 +11,7 @@
             </div>-->
         </div>
     </div>
-
+ </br>
         <div class="row">
     <div class="col-lg-3">
     <form class="form" method="post" action="<?php echo(base_url()); ?>reports/agencies">
@@ -21,10 +21,12 @@
             <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
         <?php endforeach; ?>
     </select>
-        <input class="btn btn-primary" type="submit" value="Get period">
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get pending commodities per agency report">
         </form>
       </div> 
       </div>
+
 
     <div class="wrapper wrapper-content">
 
@@ -34,7 +36,7 @@
             <th>Commodity</th>
             <th>Agency total</th>
           </thead>
-<?php if (isset($PSTOCKS)){?>
+<?php if ($selected_period>0){?>
 
 <?php foreach($COMMODITY as $COMM):?>
   <tr>

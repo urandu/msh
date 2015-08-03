@@ -19,10 +19,8 @@
             </div>-->
         </div>
     </div>
-
-
-
-        <div class="row">
+    </br>
+    <div class="row">
     <div class="col-lg-3">
     <form class="form" method="post" action="<?php echo(base_url()); ?>reports/stocks">
     <select name="period" class="form-control">
@@ -31,7 +29,8 @@
             <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
         <?php endforeach; ?>
     </select>
-        <input class="btn btn-primary" type="submit" value="Get period">
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get stocks report">
         </form>
       </div> 
       </div>
@@ -68,7 +67,8 @@
             </thead>
         </tr>
 
-        <?php if (isset($PSTOCKS) && isset($CENTRAL)){?>
+        <?php if ($period>0){?>
+        <tr>Period:<b><?php echo $period; ?></b></tr>
        <tbody>
         <?php foreach ($COMMODITY as $item): ?>
         <tr> 

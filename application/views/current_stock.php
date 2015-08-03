@@ -38,11 +38,12 @@
             </div>
         <div class="col-sm-8">
             <div class="title-action">
-              <a href="#"  data-toggle="modal" data-target="#central_level_data" class="btn btn-primary">Add current stock</a>
+              <a href="#"  data-toggle="modal" data-target="#central_level_data" class="btn btn-primary">Add received stock </a>
                
             </div>
         </div>
     </div>
+    </br>
     <div class="row">
     <div class="col-lg-3">
     <form class="form" method="post" action="<?php echo(base_url()); ?>current_stock/index">
@@ -52,7 +53,8 @@
             <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
         <?php endforeach; ?>
     </select>
-        <input class="btn btn-primary" type="submit" value="Get Commodities">
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get received stock(s) report">
         </form>
 </div> 
 </div>
@@ -78,7 +80,7 @@
                                     </tr>
 
                             </thead>
-<?php if (isset($central_level_data_by_period)) {?>
+<?php if (isset($period)) {?>
                             <tbody>
 
                                 <?php $count=1; ?>
