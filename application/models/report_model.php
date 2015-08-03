@@ -64,7 +64,7 @@ class Report_model extends CI_Model
   (
     (
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -72,11 +72,11 @@ class Report_model extends CI_Model
                AND period = '{$period}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period}')
+                                       WHERE period = '{$period}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -84,12 +84,12 @@ class Report_model extends CI_Model
                AND period = '{$period1}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period1}')
+                                       WHERE period = '{$period1}'))*100
       )
 
       +
       (
-        (SELECT
+       ( (SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -97,11 +97,11 @@ class Report_model extends CI_Model
                AND period = '{$period2}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period2}')
+                                       WHERE period = '{$period2}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -109,11 +109,11 @@ class Report_model extends CI_Model
                AND period = '{$period3}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period3}')
+                                       WHERE period = '{$period3}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -121,11 +121,11 @@ class Report_model extends CI_Model
                AND period = '{$period4}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period4}')
+                                       WHERE period = '{$period4}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -133,7 +133,7 @@ class Report_model extends CI_Model
                AND period = '{$period5}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period5}')
+                                       WHERE period = '{$period5}'))*100
       )
     )/6
   )
@@ -264,7 +264,7 @@ WHERE period = '{$period}'";
   (
     (
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -272,11 +272,11 @@ WHERE period = '{$period}'";
                AND period = '{$period}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period}')
+                                       WHERE period = '{$period}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -284,12 +284,12 @@ WHERE period = '{$period}'";
                AND period = '{$period1}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period1}')
+                                       WHERE period = '{$period1}'))*100
       )
 
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -297,11 +297,11 @@ WHERE period = '{$period}'";
                AND period = '{$period2}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period2}')
+                                       WHERE period = '{$period2}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -309,11 +309,11 @@ WHERE period = '{$period}'";
                AND period = '{$period3}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period3}')
+                                       WHERE period = '{$period3}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -321,11 +321,11 @@ WHERE period = '{$period}'";
                AND period = '{$period4}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period4}')
+                                       WHERE period = '{$period4}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -333,7 +333,7 @@ WHERE period = '{$period}'";
                AND period = '{$period5}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period5}')
+                                       WHERE period = '{$period5}'))*100
       )
     )/6
   )
@@ -394,7 +394,7 @@ WHERE period = '{$period}'";
   (
     (
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -402,11 +402,11 @@ WHERE period = '{$period}'";
                AND period = '{$period}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                             FROM county_level_reporting_rates
-                                            WHERE period = '{$period}' and county_id=coun_id)
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -414,12 +414,12 @@ WHERE period = '{$period}'";
                AND period = '{$period1}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period1}' and county_id=coun_id)
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
       )
 
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -427,11 +427,11 @@ WHERE period = '{$period}'";
                AND period = '{$period2}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period2}' and county_id=coun_id)
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -439,11 +439,11 @@ WHERE period = '{$period}'";
                AND period = '{$period3}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period3}' and county_id=coun_id)
+                                                             WHERE period = '{$period3}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -451,11 +451,11 @@ WHERE period = '{$period}'";
                AND period = '{$period4}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period4}' and county_id=coun_id)
+                                                             WHERE period = '{$period4}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -463,7 +463,7 @@ WHERE period = '{$period}'";
                AND period ='{$period5}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period5}' and county_id=coun_id)
+                                                             WHERE period = '{$period5}' and county_id=coun_id))*100
       )
     )/6
   )
@@ -500,7 +500,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (
     (
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -508,11 +508,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                AND period = '{$period}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period}')
+                                       WHERE period = '{$period}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -520,12 +520,12 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                AND period = '{$period1}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period1}')
+                                       WHERE period = '{$period1}'))*100
       )
 
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -533,11 +533,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                AND period = '{$period2}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period2}')
+                                       WHERE period = '{$period2}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -545,11 +545,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                AND period = '{$period3}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period3}')
+                                       WHERE period = '{$period3}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -557,11 +557,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                AND period = '{$period4}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period4}')
+                                       WHERE period = '{$period4}'))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM facility_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -569,7 +569,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                AND period = '{$period5}') / (SELECT
   facility_level_reporting_rates.reporting_rate_value
                                        FROM facility_level_reporting_rates
-                                       WHERE period = '{$period5}')
+                                       WHERE period = '{$period5}'))*100
       )
     )/6
   )
@@ -636,7 +636,6 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
         return $result->result();
 
     }
-
 
     // Function To Fetch All Commodies Record
     function show_malaria_commodities(){
@@ -776,7 +775,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
   (
     (
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -784,11 +783,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
                AND period = '{$period}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                             FROM county_level_reporting_rates
-                                            WHERE period = '{$period}' and county_id=coun_id)
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -796,12 +795,12 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
                AND period = '{$period1}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period1}' and county_id=coun_id)
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
       )
 
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -809,11 +808,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
                AND period = '{$period2}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period2}' and county_id=coun_id)
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -821,11 +820,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
                AND period = '{$period3}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period3}' and county_id=coun_id)
+                                                             WHERE period = '{$period3}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -833,11 +832,11 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
                AND period = '{$period4}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period4}' and county_id=coun_id)
+                                                             WHERE period = '{$period4}' and county_id=coun_id))*100
       )
       +
       (
-        (SELECT
+        ((SELECT
   drug_value
          FROM county_level_data
          WHERE drug_category_id = 'w77uMi1KzOH'
@@ -845,7 +844,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
                AND period ='{$period5}' and county_id=coun_id) / (SELECT
   county_level_reporting_rates.reporting_rate_value
                                                              FROM county_level_reporting_rates
-                                                             WHERE period = '{$period5}' and county_id=coun_id)
+                                                             WHERE period = '{$period5}' and county_id=coun_id))*100
       )
     )/6
   )
@@ -872,7 +871,49 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
     }
 
 
+    function show_sorted_pending_stock(){
+    $this->db->distinct();
+    $this->db->group_by('period DESC' );
+    $query = $this->db->get('pending_shipment_details');
+    $query_result = $query->result();
+    return $query_result;
 
+}
+        function show_shipments_by_period($period){
+
+        $this->db->select('*, SUM(quantity) AS PendingTotal');
+         $this->db->group_by('commodity_id');
+        $this->db->group_by('funding_agency_id');
+        $this->db->from('pending_shipment_details');
+        $this->db->where('period', $period);
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+    }
+
+      function show_pending_shipments_per_period($period){
+        $this->db->select('*, SUM(quantity) AS PendingTotal');
+        $this->db->group_by('commodity_id');
+        $this->db->where('period', $period);
+        $this->db->from('pending_shipment_details');
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+        /*var_dump($query_result);*/
+
+
+
+    }
+
+      function show_central_stock_by_period($period){
+        $this->db->select('*, SUM(soh_closing_balance) as central_total');
+        $this->db->group_by('commodity_id');
+        $this->db->where('period', $period);
+        $query = $this->db->get('central_level_data');
+        $query_result = $query->result();
+        return $query_result;
+
+    }
 
 
 

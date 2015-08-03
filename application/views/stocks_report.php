@@ -20,6 +20,22 @@
         </div>
     </div>
 
+
+
+        <div class="row">
+    <div class="col-lg-3">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>reports/stocks">
+    <select name="period" class="form-control">
+        <option  selected>--SELECT PERIOD--</option>
+        <?php foreach ($select_period as $cld): ?>
+            <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+        <?php endforeach; ?>
+    </select>
+        <input class="btn btn-primary" type="submit" value="Get period">
+        </form>
+      </div> 
+      </div>
+
     <div class="wrapper wrapper-content">
 
          <table class="table">
@@ -51,6 +67,8 @@
 
             </thead>
         </tr>
+
+        <?php if (isset($PSTOCKS) && isset($CENTRAL)){?>
        <tbody>
         <?php foreach ($COMMODITY as $item): ?>
         <tr> 
@@ -101,6 +119,7 @@
             </tr>
             <?php endforeach;?>
        </tbody>
+       <?php }?>
 
     </table>
 
