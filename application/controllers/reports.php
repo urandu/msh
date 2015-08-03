@@ -194,6 +194,7 @@ if($period!="000000")
         $commoditycomparison['SORTED']=$this->report_model->show_pending_shipments_per_period($period);
         $commoditycomparison['CENTRAL']=$this->report_model->show_central_stock_by_period($period);
         $commoditycomparison['select_period']=$this->report_model->show_sorted_pending_stock();
+        $commoditycomparison['period']=$period;
 
 
         $this->load->view('stocks_report', $commoditycomparison);
