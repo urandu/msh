@@ -120,13 +120,14 @@ class Current_stock extends MY_Controller
         //$commodity_name=($this->input->post('commodity_name'));
         $supply_chain_agency= ($this->input->post('supply_chain_agency'));
         //$f_agency_name= ($this->input->post('funding_agency_name'));
-        $today = $this->input->post('period');
+        $date = $this->input->post('period');
         $quantity_received=$this->input->post('soh_closing_balance');
         $pid=$this->input->post('pending_shipment_id');
         $values=$this->stocks_model->show_pending_shipment_by_id($pid);
         foreach ($values as $key) {
             $commodity_id=$key->commodity_id;
             $funding_agency_id=$key->funding_agency_id;
+            $today=str_replace("-", null, $date);
         }
 
         $data_array = array(
