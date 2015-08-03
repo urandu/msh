@@ -17,8 +17,12 @@ class Report_model extends CI_Model
         return $result->result();
 
     }
+
+
+
     public function forecast_variance_tracker($period)
     {
+
         $period1=subtract_date($period,1);
         $period2=subtract_date($period,2);
         $period3=subtract_date($period,3);
