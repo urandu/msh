@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 27, 2015 at 03:11 PM
--- Server version: 5.5.44-0ubuntu0.14.04.1
+-- Generation Time: Aug 03, 2015 at 09:36 AM
+-- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 -- Database: `msh_db`
 --
 
-CREATE DATABASE msh_db;
-USE msh_db;
 -- --------------------------------------------------------
 
 --
@@ -35,26 +33,40 @@ CREATE TABLE IF NOT EXISTS `central_level_data` (
   `period` varchar(25) NOT NULL,
   `soh_closing_balance` varchar(20) NOT NULL,
   `funding_agency_id` int(25) NOT NULL,
+  `pending_stock_id` varchar(255) NOT NULL,
   PRIMARY KEY (`central_level_stock_id`),
   KEY `supply_agency_id` (`supply_agency_id`),
   KEY `commodity_id` (`commodity_id`),
   KEY `funding_agency_id` (`funding_agency_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
 
 --
 -- Dumping data for table `central_level_data`
 --
 
-INSERT INTO `central_level_data` (`central_level_stock_id`, `supply_agency_id`, `commodity_id`, `period`, `soh_closing_balance`, `funding_agency_id`) VALUES
-(46, 34, 'qnZmg5tNSMy', '201505', '453345`', 5),
-(47, 32, 'c0MB4RmVjxk', '201507', '8600', 6),
-(48, 4, 'c0MB4RmVjxk', '201507', '86', 6),
-(50, 34, 'c0MB4RmVjxk', '201508', '86', 6),
-(51, 32, 'c0MB4RmVjxk', '201507', '86', 6),
-(52, 32, 'c0MB4RmVjxk', '201507', '86', 6),
-(53, 4, 'cPlWFYbBacW', '201507', '56', 4),
-(54, 34, 'cPlWFYbBacW', '201507', '3456321', 6),
-(55, 4, 'cPlWFYbBacW', '201507', '0', 1);
+INSERT INTO `central_level_data` (`central_level_stock_id`, `supply_agency_id`, `commodity_id`, `period`, `soh_closing_balance`, `funding_agency_id`, `pending_stock_id`) VALUES
+(46, 34, 'qnZmg5tNSMy', '201505', '453345`', 5, ''),
+(53, 4, 'cPlWFYbBacW', '201507', '56', 4, ''),
+(54, 34, 'cPlWFYbBacW', '201507', '3456321', 6, ''),
+(56, 32, 'gVp1KSFI69G', '201507', '700', 13, ''),
+(57, 4, 'BnGDrFwyQp9', '201507', '20', 1, ''),
+(58, 32, 'qnZmg5tNSMy', '2015-09', '5000', 5, ''),
+(63, 32, 'qnZmg5tNSMy', '2015-09', '6000', 4, '24'),
+(64, 32, 'c0MB4RmVjxk', '2015-12', '4000', 4, '13'),
+(65, 32, 'c0MB4RmVjxk', '2015-12', '4000', 4, '13'),
+(66, 32, 'c0MB4RmVjxk', '2015-12', '4000', 4, '13'),
+(67, 4, 'BnGDrFwyQp9', '2016-02', '700', 1, '0'),
+(69, 4, 'BnGDrFwyQp9', '2015-09', '5000', 1, '11'),
+(70, 4, 'BnGDrFwyQp9', '2015-09', '-4000', 1, '13'),
+(71, 4, 'BnGDrFwyQp9', '2015-03', '250', 1, '14'),
+(72, 4, 'BnGDrFwyQp9', '2015-05', '230', 1, '23'),
+(73, 32, 'BnGDrFwyQp9', '2015-08', '4000', 1, '18'),
+(74, 4, 'BnGDrFwyQp9', '2016-01', '70', 1, '23'),
+(75, 4, 'BnGDrFwyQp9', '2016-01', '70', 1, '23'),
+(76, 4, 'BnGDrFwyQp9', '2016-02', '800', 1, '20'),
+(77, 4, 'BnGDrFwyQp9', '2017-01', '50', 1, '14'),
+(78, 4, 'gVp1KSFI69G', '2015-08', '5000', 5, '21'),
+(79, 32, 'c0MB4RmVjxk', '2016-01', '50', 1, '14');
 
 -- --------------------------------------------------------
 
@@ -5300,20 +5312,24 @@ CREATE TABLE IF NOT EXISTS `current_stock` (
   `quantity_received` int(255) NOT NULL,
   `quantity_issued` int(255) NOT NULL,
   `soh` int(255) NOT NULL,
+  `period` varchar(255) NOT NULL,
   PRIMARY KEY (`current_stock_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `current_stock`
 --
 
-INSERT INTO `current_stock` (`current_stock_id`, `commodity_id`, `quantity_received`, `quantity_issued`, `soh`) VALUES
-(4, 'cPlWFYbBacW', 76, 65, 7),
-(5, 'cPlWFYbBacW', 89, 54, 2),
-(6, 'gVp1KSFI69G', 600, 765, 5),
-(7, 'c0MB4RmVjxk', 65, 569, 11),
-(8, 'qnZmg5tNSMy', 65, 67, 6),
-(9, 'gVp1KSFI69G', 543, 432, 9);
+INSERT INTO `current_stock` (`current_stock_id`, `commodity_id`, `quantity_received`, `quantity_issued`, `soh`, `period`) VALUES
+(4, 'cPlWFYbBacW', 76, 65, 7, '201501'),
+(5, 'cPlWFYbBacW', 89, 54, 2, '201501'),
+(6, 'gVp1KSFI69G', 600, 765, 5, '201503'),
+(7, 'c0MB4RmVjxk', 65, 569, 11, '201504'),
+(8, 'qnZmg5tNSMy', 65, 67, 6, '201504'),
+(9, 'gVp1KSFI69G', 543, 432, 9, '201502'),
+(10, 'cPlWFYbBacW', 450, 450, 500, '201507'),
+(11, 'BnGDrFwyQp9', 500, 600, 50, '1999-02'),
+(12, 'qnZmg5tNSMy', 600, 800, 700, '2000-02');
 
 -- --------------------------------------------------------
 
@@ -5555,6 +5571,7 @@ INSERT INTO `malaria_commodities` (`commodity_id`, `commodity_name`, `alt_name`,
 ('c0MB4RmVjxk', 'Artemether-Lumefantrine (12s)', 'AL(12s)', ' 15-25 Kgs', ''),
 ('cPlWFYbBacW', 'Malaria Rapid Diagnostic Test (RDTs)', 'MRDT', '8', ''),
 ('gVp1KSFI69G', 'Artemether-Lumefantrine (24s)', 'AL(24s)', '35+ Kgs', ''),
+('INuURVjwtHIgMxqQ', 'Artesunate Injection', '', 'vials', 'artesunate'),
 ('qnZmg5tNSMy', 'Artemether-Lumefantrine (18s)', 'AL(18s)', '25-34 Kgs', '');
 
 -- --------------------------------------------------------
@@ -5694,18 +5711,15 @@ CREATE TABLE IF NOT EXISTS `pending_shipment_details` (
 --
 
 INSERT INTO `pending_shipment_details` (`pending_shipment_id`, `period`, `commodity_id`, `funding_agency_id`, `quantity`, `expected_time_of_arrival`, `comments`, `transaction_status`) VALUES
-(11, 189913, 'qnZmg5tNSMy', 5, '5000', '2012-02-15', 'e', 'pending'),
-(13, 201501, 'c0MB4RmVjxk', 13, '10000', '2015-01-30', '', 'pending'),
-(14, 201501, 'c0MB4RmVjxk', 1, '500', '2015-01-30', 'brief', 'pending'),
-(15, 201501, 'gVp1KSFI69G', 4, '700', '2015-01-30', 'brief', 'received'),
-(16, 201509, 'BnGDrFwyQp9', 6, '7800', '2015-07-31', 'just another shipment', 'pending'),
+(14, 201511, 'c0MB4RmVjxk', 1, '150', '2015-11-30', 'brief', 'pending'),
+(15, 201501, 'gVp1KSFI69G', 4, '700', '2016-01-01', 'brief', 'received'),
+(16, 201510, 'BnGDrFwyQp9', 6, '7800', '2015-07-31', 'just another shipment', 'pending'),
 (17, 201510, 'BnGDrFwyQp9', 6, '9000', '2015-09-30', 'test data', 'pending'),
-(18, 201511, 'cPlWFYbBacW', 2, '4000', '2015-07-14', 'well wel', 'pending'),
 (19, 201612, 'cPlWFYbBacW', 5, '6000', '2015-07-28', 'mmmh!', 'pending'),
-(20, 201701, 'cPlWFYbBacW', 13, '3000', '2016-04-22', 'ghai!', 'pending'),
-(21, 201702, 'gVp1KSFI69G', 5, '8000', '2016-03-31', 'kama wewe unajipenda', 'pending'),
-(22, 201511, 'c0MB4RmVjxk', 1, '4500', '2015-04-07', 'mikono juu', 'pending'),
-(23, 201510, 'qnZmg5tNSMy', 1, '500', '2015-11-26', 'yeah!', 'pending'),
+(20, 201701, 'cPlWFYbBacW', 13, '2200', '2016-03-22', 'ghai!', 'pending'),
+(21, 201702, 'gVp1KSFI69G', 5, '3000', '2015-12-29', 'kama wewe unajipenda', 'pending'),
+(22, 201511, 'c0MB4RmVjxk', 1, '4500', '2015-09-07', 'mikono juu', 'pending'),
+(23, 201510, 'qnZmg5tNSMy', 1, '130', '2015-11-26', 'yeah!', 'pending'),
 (24, 201602, 'qnZmg5tNSMy', 5, '8000', '2016-09-30', 'siku moja', 'pending');
 
 -- --------------------------------------------------------
@@ -5749,7 +5763,7 @@ CREATE TABLE IF NOT EXISTS `supply_chain_agencies` (
   `contact_phone` int(55) NOT NULL,
   `comment` varchar(1000) NOT NULL,
   PRIMARY KEY (`supply_chain_agency_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `supply_chain_agencies`
@@ -5784,7 +5798,8 @@ CREATE TABLE IF NOT EXISTS `user_table` (
 
 INSERT INTO `user_table` (`user_id`, `password`, `names`, `email`, `national_id`, `phone_number`, `role`) VALUES
 (8, '63a9f0ea7bb98050796b649e85481845', 'default user ', 'root@msh.com', '29364156', '0722167368', -1),
-(9, '63a9f0ea7bb98050796b649e85481845', 'user2', 'user1@msh.com', '25685324', '0722167368', 0);
+(9, '63a9f0ea7bb98050796b649e85481845', 'user2', 'user1@msh.com', '25685324', '0722167368', 0),
+(10, '63a9f0ea7bb98050796b649e85481845', 'Enock Oloo', 'enock@msh.com', '30442011', '0701058958', 0);
 
 -- --------------------------------------------------------
 

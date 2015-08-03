@@ -3739,6 +3739,14 @@ a.close-canvas-menu:hover {
 .m-t-sm {
   margin-top: 10px;
 }
+.login
+{
+  width:40%;
+  height:15%;
+  margin-left:410px;
+  margin-top:350px;
+  color: #FFFFFF;
+}
 .m-t {
   margin-top: 15px;
  color: #FFFFFF;
