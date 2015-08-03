@@ -885,7 +885,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
          $this->db->group_by('commodity_id');
         $this->db->group_by('funding_agency_id');
         $this->db->from('pending_shipment_details');
-        $this->db->where('period', $period);
+        /*$this->db->where('period', $period);*/
         $query = $this->db->get();
         $query_result = $query->result();
         return $query_result;
@@ -894,7 +894,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
       function show_pending_shipments_per_period($period){
         $this->db->select('*, SUM(quantity) AS PendingTotal');
         $this->db->group_by('commodity_id');
-        $this->db->where('period', $period);
+       /* $this->db->where('period', $period);*/
         $this->db->from('pending_shipment_details');
         $query = $this->db->get();
         $query_result = $query->result();

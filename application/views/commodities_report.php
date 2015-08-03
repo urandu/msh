@@ -11,6 +11,7 @@
             </div>-->
         </div>
     </div>
+  </br>
 
      <div class="row">
     <div class="col-lg-3">
@@ -21,7 +22,9 @@
             <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
         <?php endforeach; ?>
     </select>
-        <input class="btn btn-primary" type="submit" value="Get period">
+    
+  </br>
+        <input class="btn btn-primary" type="submit" value="Get commodities report">
         </form>
       </div> 
       </div>
@@ -42,7 +45,9 @@
     <td><b>commodity</b></td>
     <td><b>Totals</b></td>
    </tr>
-  </thead><tbody>
+  </thead>
+<?php if($period>0){?>
+  <tbody>
 
     <?php foreach ($pendingConsignments as $pending_totals): ?>
    <tr>
@@ -64,6 +69,7 @@ if ($pending_totals->commodity_id==$COMM->commodity_id){
   </td></tr>
 <?php endforeach?>
 </tbody>
+<?php } ?>
   </table> 
 
     </div>

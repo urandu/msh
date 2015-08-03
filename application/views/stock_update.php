@@ -12,6 +12,7 @@
             </div>
         </div>
     </div>
+    </br>
 
   <div class="row">
     <div class="col-lg-3">
@@ -22,7 +23,8 @@
             <option value="<?php echo $stck->period; ?>"  ><?php echo $stck->period; ?></option>
         <?php endforeach; ?>
     </select>
-        <input class="btn btn-primary" type="submit" value="Get Commodities">
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get current stock report">
         </form>
 </div> 
 </div>
