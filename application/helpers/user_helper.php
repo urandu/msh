@@ -61,3 +61,38 @@ function get_county_name($county_id)
     $CI->load->model("report_model");
     return $CI->report_model->get_county_name($county_id);
 }
+
+function facility_level_period_exists($date)
+{
+    $CI=get_instance();
+    $CI->db->where("period",$date);
+    $result=$CI->db->get("facility_level_data");
+
+    if($result->num_rows()>0)
+    {
+        return true;
+    }
+    else
+    {
+
+        return false;
+    }
+}
+
+
+function central_level_period_exists($date)
+{
+    $CI=get_instance();
+    $CI->db->where("period",$date);
+    $result=$CI->db->get("central_level_data");
+
+    if($result->num_rows()>0)
+    {
+        return true;
+    }
+    else
+    {
+
+        return false;
+    }
+}

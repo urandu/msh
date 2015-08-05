@@ -78,6 +78,321 @@ class Report_model extends CI_Model
                                        FROM facility_level_reporting_rates
                                        WHERE period = '{$period}'))*100
       )
+
+    )/1
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+
+
+
+        if(central_level_period_exists($period1)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+
+    )/2
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period2)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+       ( (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+
+    )/3
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period3)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+       ( (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period3}'))*100
+      )
+
+    )/4
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period4)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+       ( (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period3}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period4}'))*100
+      )
+
+
+    )/5
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period5)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
       +
       (
         ((SELECT
@@ -146,6 +461,10 @@ class Report_model extends CI_Model
 
 FROM central_level_data
 WHERE period = '{$period}'";
+        }
+
+
+
         $result=$this->db->query($query);
         return $result->result();
 
@@ -162,7 +481,205 @@ WHERE period = '{$period}'";
         $period4=subtract_date($period,4);
         $period5=subtract_date($period,5);
 
+
         $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}')
+      )
+
+    )/1
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+
+
+
+        if(central_level_period_exists($period1)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}')
+      )
+
+
+    )/2
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period2)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}')
+      )
+
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}')
+      )
+
+    )/3
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period3)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}')
+      )
+
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}')
+      )
+
+    )/4
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period4)==true)
+        {
+            $query="SELECT
   commodity_id                      AS com_id,
   soh_closing_balance               AS central_stock,
   (SELECT
@@ -221,6 +738,79 @@ WHERE period = '{$period}'";
                AND drug_id = com_id
                AND period = '{$period4}')
       )
+
+
+    )/5
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+        if(central_level_period_exists($period5)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (select drug_value from facility_level_data where drug_category_id='rPAsF4cpNxm' and drug_id=com_id and period='{$period}') as physical_count,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}')
+      )
+
+      +
+      (
+       (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}')
+      )
+      +
+      (
+        (SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}')
+      )
       +
       (
         (SELECT
@@ -237,9 +827,12 @@ WHERE period = '{$period}'";
 
 FROM central_level_data
 WHERE period = '{$period}'";
+        }
+
+
+
         $result=$this->db->query($query);
         return $result->result();
-
 
     }
 
@@ -255,6 +848,320 @@ WHERE period = '{$period}'";
         $period5=subtract_date($period,5);
 
         $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+
+    )/1
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+
+
+
+        if(central_level_period_exists($period1)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+
+
+    )/2
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+
+        if(central_level_period_exists($period2)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+
+    )/3
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+
+        if(central_level_period_exists($period3)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period3}'))*100
+      )
+
+    )/4
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+
+        if(central_level_period_exists($period4)==true)
+        {
+            $query="SELECT
+  commodity_id                      AS com_id,
+  soh_closing_balance               AS central_stock,
+  (SELECT
+  sum(quantity)
+   FROM pending_shipment_details
+   WHERE commodity_id = com_id)     AS pending_shipment,
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = commodity_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period3}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period4}'))*100
+      )
+
+    )/5
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM central_level_data
+WHERE period = '{$period}'";
+        }
+
+
+
+        if(central_level_period_exists($period5)==true)
+        {
+            $query="SELECT
   commodity_id                      AS com_id,
   soh_closing_balance               AS central_stock,
   (SELECT
@@ -346,6 +1253,11 @@ WHERE period = '{$period}'";
 
 FROM central_level_data
 WHERE period = '{$period}'";
+        }
+
+
+
+
         $result=$this->db->query($query);
         return $result->result();
 
@@ -487,13 +1399,92 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
 
     public function get_facility_level_mos($period)
     {
+        $count=1;
+        $query="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+
+    )/1
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM facility_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
+
         $period1=subtract_date($period,1);
         $period2=subtract_date($period,2);
         $period3=subtract_date($period,3);
         $period4=subtract_date($period,4);
         $period5=subtract_date($period,5);
 
-        $query="SELECT
+        if(facility_level_period_exists($period1)==true)
+        {
+
+            $query="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+    )/2
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM facility_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
+
+        }
+       if(facility_level_period_exists($period2)==true)
+       {
+           $query="SELECT
   drug_id                      AS com_id,
   drug_value               AS physical_count,
 
@@ -539,7 +1530,64 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                                        FROM facility_level_reporting_rates
                                        WHERE period = '{$period2}'))*100
       )
+
+    )/3
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM facility_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
+       }
+       if(facility_level_period_exists($period3)==true)
+       {
+           $query="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
       +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+       +
       (
         ((SELECT
   drug_value
@@ -551,7 +1599,76 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                                        FROM facility_level_reporting_rates
                                        WHERE period = '{$period3}'))*100
       )
+
+    )/4
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM facility_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
+       }
+       if(facility_level_period_exists($period4)==true)
+       {
+           $query="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
       +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+       +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period3}'))*100
+      )
+       +
       (
         ((SELECT
   drug_value
@@ -563,7 +1680,90 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                                        FROM facility_level_reporting_rates
                                        WHERE period = '{$period4}'))*100
       )
+
+    )/5
+  )
+                                    AS adjusted_facility_amc
+
+
+FROM facility_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
+       }
+
+        if(facility_level_period_exists($period5)==true)
+        {
+            $query="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period}'))*100
+      )
       +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period1}'))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period2}'))*100
+      )
+       +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period3}'))*100
+      )
+       +
+      (
+        ((SELECT
+  drug_value
+         FROM facility_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}') / (SELECT
+  facility_level_reporting_rates.reporting_rate_value
+                                       FROM facility_level_reporting_rates
+                                       WHERE period = '{$period4}'))*100
+      )
+
+       +
       (
         ((SELECT
   drug_value
@@ -575,6 +1775,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
                                        FROM facility_level_reporting_rates
                                        WHERE period = '{$period5}'))*100
       )
+
     )/6
   )
                                     AS adjusted_facility_amc
@@ -582,6 +1783,8 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
 
 FROM facility_level_data
 WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
+        }
+
         $result=$this->db->query($query);
         return $result->result();
 
@@ -606,6 +1809,8 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
         return $result->result();
 
     }
+
+
 
 
     function forecast_variance_periods()

@@ -276,10 +276,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-3">
-                <input class="btn btn-primary" type="submit" value="Get Facility Level MOS Report">
-                </form>
-            </div>
+
 
         </div>
         <?php
@@ -291,107 +288,7 @@
 
             ?>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Facility Level MOS for period: <?php echo $p; ?></h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
 
-
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-
-
-                                    <th>
-                                        Commodity Name
-                                    </th>
-
-                                    <th>
-                                        Adjusted Facility AMC
-                                    </th>
-                                    <th>
-                                        Stock on Hand
-                                    </th>
-                                    <th>
-                                        Facility Level Month of Stock(mos)
-                                    </th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-
-                                if(!empty($period)) {
-
-                                    foreach($period as $p)
-                                    {
-
-
-                                        echo("<tr>");
-                                        ?>
-
-                                        <td>
-                                            <?php
-
-                                            echo $p->commodity_name;
-
-
-                                            ?>
-                                        </td>
-
-                                        <td>
-                                            <?php
-
-                                            echo (round($p->adjusted_facility_amc,2));
-
-                                            ?>
-                                        </td>
-
-                                        <td>
-                                            <?php
-                                            echo $p->physical_count;
-
-
-                                            ?>
-                                        </td>
-                                        <td>
-                                            <?php
-
-
-                                            echo(round(($p->physical_count)/($p->adjusted_facility_amc),2));
-
-                                            ?>
-                                        </td>
-
-                                        <?php
-                                        echo("</tr>");
-
-                                    }
-                                    // endforeach;
-
-
-                                    ?>
-
-
-                                <?php
-                                }
-                                ?>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         <?php
 
