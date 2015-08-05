@@ -82,7 +82,7 @@
                                         <h4 class="modal-title">Edit details for <strong><?php echo($user->names); ?></strong> </h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="m-t" method="post" role="form" action="<?php echo(base_url()); ?>register/edit_user">
+                                        <form style="color: black;" class="m-t" method="post" role="form" action="<?php echo(base_url()); ?>register/edit_user">
                                             <div class="form-group">
                                                 <input name="names" type="text" class="form-control" placeholder="Names" value="<?php echo($user->names); ?>" required="">
                                             </div>
@@ -160,7 +160,7 @@
                     <h4 class="modal-title">Create new user</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="m-t" method="post" role="form" action="<?php echo(base_url()); ?>register/create_user">
+                    <form style="color: black;" class="m-t" method="post" role="form" action="<?php echo(base_url()); ?>register/create_user">
                         <div class="form-group">
                             <input name="names" type="text" class="form-control" placeholder="Names" required="">
                         </div>
