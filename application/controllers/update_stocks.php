@@ -56,7 +56,8 @@ class Update_stocks extends MY_Controller
 		$soh=$this->input->post('soh');
 		$name=$this->input->post('commodity_name');
 		$commodity_id=$this->update_stocks_model->get_commodity_id_with_the_given_name($name);
-		$today = $this->input->post('period');
+		$date = $this->input->post('period');
+		$today=str_replace("-", null, $date);
 
 		$my_array= array(
 		'period'=>$today,

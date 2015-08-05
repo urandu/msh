@@ -196,7 +196,7 @@
                     <div class="modal-body">
 
                     <div class="form-group"><label>Pending shipment: </label>
-                      <span>Commodity name--period--quantity</span>
+                      <span>Commodity name--source--period--quantity</span>
                       <select class="form-control m-b" name="pending_shipment_id" id="test" onchange = "javascript:myFunction();" required>
                     <option value = "">[Select]</option>
                     <?php foreach ($pending_shipment as $pending): ?>  
@@ -204,7 +204,13 @@
                       <tr><td><?php foreach ($commodity as $malaria_commodity):
                        if ($malaria_commodity->commodity_id == $pending->commodity_id){echo $malaria_commodity->commodity_name;}
                        endforeach;?>
-                     </td><td>--</td><td> <?php echo($pending->period);?></td><td>--</td><td><?php echo $pending->quantity;?></td></tr></table></option>
+                     </td><td>--</td><td>
+                     <?php foreach ($funding_agency as $agency): 
+                      if ($agency->funding_agency_id==$pending->funding_agency_id){
+                      echo $agency->funding_agency_name;
+                      }
+                     endforeach;?> 
+                    </td>--<td> <?php echo($pending->period);?></td><td>--</td><td><?php echo $pending->quantity;?></td></tr></table></option>
                     <?php endforeach; ?>
                     </select>
                   
