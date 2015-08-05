@@ -10,7 +10,7 @@ class Report_model extends CI_Model
     }
     function get_central_level_periods()
     {
-        $query="SELECT DISTINCT period FROM central_level_data ORDER by period DESC";
+        $query="SELECT DISTINCT period FROM current_stock ORDER by period DESC";
 
         $result=$this->db->query($query);
 
@@ -55,7 +55,7 @@ class Report_model extends CI_Model
 
         $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -84,7 +84,7 @@ class Report_model extends CI_Model
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
 
 
@@ -93,7 +93,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -135,7 +135,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -144,7 +144,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -198,7 +198,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -207,7 +207,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -273,7 +273,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -282,7 +282,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -361,7 +361,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -370,7 +370,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -459,7 +459,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -484,7 +484,7 @@ WHERE period = '{$period}'";
 
         $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -510,7 +510,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
 
 
@@ -519,7 +519,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -555,7 +555,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -564,7 +564,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -609,7 +609,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -618,7 +618,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -672,7 +672,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -681,7 +681,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -745,7 +745,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -754,7 +754,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -825,7 +825,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -849,7 +849,7 @@ WHERE period = '{$period}'";
 
         $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -877,7 +877,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
 
 
@@ -886,7 +886,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -928,7 +928,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -938,7 +938,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -991,7 +991,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -1001,7 +1001,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -1066,7 +1066,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -1076,7 +1076,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -1153,7 +1153,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -1163,7 +1163,7 @@ WHERE period = '{$period}'";
         {
             $query="SELECT
   commodity_id                      AS com_id,
-  soh_closing_balance               AS central_stock,
+  soh               AS central_stock,
   (SELECT
   sum(quantity)
    FROM pending_shipment_details
@@ -1251,7 +1251,7 @@ WHERE period = '{$period}'";
                                     AS adjusted_facility_amc
 
 
-FROM central_level_data
+FROM current_stock
 WHERE period = '{$period}'";
         }
 
@@ -2226,9 +2226,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
 
       }*/
     function show_central_stock(){
-        $this->db->select('*, SUM(soh_closing_balance) as central_total');
+        $this->db->select('*, SUM(soh) as central_total');
         $this->db->group_by('commodity_id');
-        $query = $this->db->get('central_level_data');
+        $query = $this->db->get('current_stock');
         $query_result = $query->result();
         return $query_result;
 
@@ -2735,10 +2735,10 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
     }
 
       function show_central_stock_by_period($period){
-        $this->db->select('*, SUM(soh_closing_balance) as central_total');
+        $this->db->select('*, SUM(soh) as central_total');
         $this->db->group_by('commodity_id');
         $this->db->where('period', $period);
-        $query = $this->db->get('central_level_data');
+        $query = $this->db->get('current_stock');
         $query_result = $query->result();
         return $query_result;
 
