@@ -14,13 +14,13 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
+           <!-- <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
             </div>-->
         </div>
     </div>
 
-    <div class="wrapper wrapper-content">
+    <div  class="wrapper wrapper-content">
 
 
 <div class="row">
@@ -61,8 +61,9 @@ if (isset($period)) {
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
-                                
-                            
+
+
+
                             </div>
                         </div>
                         <div class="ibox-content">
@@ -194,17 +195,15 @@ if(!empty($p->central_stock) && !empty($p->adjusted_facility_amc))
 
 
 <div class="row">
-    <div class="col-lg-12">
-        <div class="ibox float-e-margins">
+    <div  class="col-lg-12">
+        <div  class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Central Level months of stock chart</h5>
-                <!--<div class="pull-right">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-xs btn-white active">Today</button>
-                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
-                        <button type="button" class="btn btn-xs btn-white">Annual</button>
-                    </div>
-                </div>-->
+                <div class="pull-right">
+
+                </div>
+
+
             </div>
             <div class="ibox-content">
                 <div class="row">

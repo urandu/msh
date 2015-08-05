@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/msh/';
+$config['base_url'] = 'http://192.168.1.12/msh/';
 
 /*
 |--------------------------------------------------------------------------
