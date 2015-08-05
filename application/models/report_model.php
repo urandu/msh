@@ -1320,6 +1320,310 @@ WHERE period = '{$period}'";
                                             FROM county_level_reporting_rates
                                             WHERE period = '{$period}' and county_id=coun_id))*100
       )
+
+    )/1
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'";
+
+
+
+
+        if(county_level_period_exists($period1)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+
+    )/2
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'";
+        }
+
+
+
+        if(county_level_period_exists($period2)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
+      )
+
+    )/3
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'";
+        }
+
+
+
+        if(county_level_period_exists($period3)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period3}' and county_id=coun_id))*100
+      )
+
+    )/4
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'";
+        }
+
+
+
+        if(county_level_period_exists($period4)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period3}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period4}' and county_id=coun_id))*100
+      )
+
+    )/5
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'";
+        }
+
+
+
+        if(county_level_period_exists($period5)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
       +
       (
         ((SELECT
@@ -1388,6 +1692,10 @@ WHERE period = '{$period}'";
 
 FROM county_level_data
 WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'";
+        }
+
+
+
         $result=$this->db->query($sql);
         // print_r($result);
         //die("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
@@ -1972,7 +2280,316 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
         $period4=subtract_date($period,4);
         $period5=subtract_date($period,5);
 
+
+
+
+
+
         $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+
+    )/1
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}' and drug_id='{$commodity_id}'";
+
+
+
+
+        if(county_level_period_exists($period1)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+
+    )/2
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}'  and drug_id='{$commodity_id}' ";
+        }
+
+
+
+        if(county_level_period_exists($period2)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
+      )
+
+    )/3
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}' and drug_id='{$commodity_id}' ";
+        }
+
+
+
+        if(county_level_period_exists($period3)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period3}' and county_id=coun_id))*100
+      )
+
+    )/4
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}' and drug_id='{$commodity_id}'  ";
+        }
+
+
+
+        if(county_level_period_exists($period4)==true)
+        {
+            $sql="SELECT
+  drug_id                      AS com_id,
+  drug_value               AS physical_count,
+  county_id as coun_id,
+
+  (SELECT
+  mapping_name
+   FROM mapping_drugs_category
+   WHERE mapping_id = com_id) AS commodity_name,
+  (
+    (
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                            FROM county_level_reporting_rates
+                                            WHERE period = '{$period}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period1}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period1}' and county_id=coun_id))*100
+      )
+
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period2}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period2}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period3}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period3}' and county_id=coun_id))*100
+      )
+      +
+      (
+        ((SELECT
+  drug_value
+         FROM county_level_data
+         WHERE drug_category_id = 'w77uMi1KzOH'
+               AND drug_id = com_id
+               AND period = '{$period4}' and county_id=coun_id) / (SELECT
+  county_level_reporting_rates.reporting_rate_value
+                                                             FROM county_level_reporting_rates
+                                                             WHERE period = '{$period4}' and county_id=coun_id))*100
+      )
+
+    )/5
+  )
+                               AS adjusted_county_amc
+
+
+FROM county_level_data
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}' and drug_id='{$commodity_id}' ";
+        }
+
+
+
+        if(county_level_period_exists($period5)==true)
+        {
+            $sql="SELECT
   drug_id                      AS com_id,
   drug_value               AS physical_count,
   county_id as coun_id,
@@ -2061,7 +2678,10 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
 
 
 FROM county_level_data
-WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}' and drug_id='{$commodity_id}'";
+WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$county}' and drug_id='{$commodity_id}' ";
+        }
+
+
         $result=$this->db->query($sql);
 
 

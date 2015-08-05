@@ -96,3 +96,20 @@ function central_level_period_exists($date)
         return false;
     }
 }
+
+function county_level_period_exists($date)
+{
+    $CI=get_instance();
+    $CI->db->where("period",$date);
+    $result=$CI->db->get("county_level_data");
+
+    if($result->num_rows()>0)
+    {
+        return true;
+    }
+    else
+    {
+
+        return false;
+    }
+}
