@@ -14,9 +14,9 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-           <!-- <div class="title-action">
+            <div class="title-action">
                 <a class="word-export" href="javascript:void(0)"> Export to word </a>
-            </div>-->
+            </div>
         </div>
     </div>
 
@@ -51,7 +51,7 @@ if (isset($period)) {
 ?>
 
 <div class="row">
-<div class="col-lg-12">
+<div id="page-content" class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
 

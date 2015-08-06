@@ -15,9 +15,9 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
         </div>
     </div>
 
@@ -65,7 +65,7 @@
 
 
             <div class="row">
-                <div class="col-lg-12">
+                <div id="page-content" class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h4> County MOS Report for period <?php
