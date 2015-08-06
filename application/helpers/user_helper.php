@@ -84,7 +84,7 @@ function central_level_period_exists($date)
 {
     $CI=get_instance();
     $CI->db->where("period",$date);
-    $result=$CI->db->get("central_level_data");
+    $result=$CI->db->get("current_stock");
 
     if($result->num_rows()>0)
     {

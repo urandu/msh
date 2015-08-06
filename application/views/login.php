@@ -64,6 +64,7 @@
                Contents do not necessarily reflect the views of USAID or the United States Government.</p> 
 
             <p class="m-t"> <small>MSH &copy; <?php echo(date("Y")); ?></small> </p>
+            
         </div>
     </div>
 
