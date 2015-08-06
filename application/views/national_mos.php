@@ -128,7 +128,7 @@
                                     <td>
                                         <?php
 
-                                        echo $p->adjusted_facility_amc;
+                                        echo(round($p->adjusted_facility_amc,1));
 
                                         ?>
                                     </td>
@@ -182,7 +182,7 @@
                                         <?php
 
                                         $national_mos = ($central_mos + $pending_mos + $facility_mos);
-                                        echo $national_mos;
+                                        echo(round( $national_mos,1));
 
                                         ?>
                                     </td>

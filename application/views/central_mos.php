@@ -119,7 +119,7 @@ if (isset($period)) {
             <td>
                 <?php
 
-                echo $p->adjusted_facility_amc;
+                echo (round($p->adjusted_facility_amc,1));
 
                 ?>
             </td>
