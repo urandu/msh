@@ -230,12 +230,12 @@
 
                                            </th></tr>
                                            <tr style="background-color: #33CC99"> <th scope="row"> Variance : percentage
-                                           <td scope="row"> <?php echo(round(((($p->actual_consumption-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round(((($p->actual_consumption1-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round(((($p->actual_consumption2-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round(((($p->actual_consumption3-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round(((($p->actual_consumption4-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round(((($p->actual_consumption5-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption/$p->reporting_rate_value)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption1/$p->reporting_rate_value1)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption2/$p->reporting_rate_value2)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption3/$p->reporting_rate_value3)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption4/$p->reporting_rate_value4)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption5/$p->reporting_rate_value5)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
 
                                            </th></tr>
                                             
