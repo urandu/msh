@@ -1,6 +1,6 @@
 <?php require_once("includes/header.php"); ?>
 
-<?php /*print_r($period);*/?>
+<?php /*print_r($national_period);*/?>
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Home</h2>
@@ -14,9 +14,9 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a href="#national_chart" class="btn btn-primary">view national MOS chart</a> <a href="#county_stock" class="btn btn-primary">view county stocks</a>
+            </div>
         </div>
     </div>
 
@@ -51,12 +51,12 @@
 <div class="ibox float-e-margins">
 <div class="ibox-title">
     <h5 class="font-bold">National Stock Status Map for Period: (<?php echo "<font color= #33CC99>$bil</font>" ;?>)
-        <br>
+        <!--<br>
 
-        <span > <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >9</span>
+        <span > <i style="color:<?php /*echo(get_color(1)); */?>;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:<?php /*echo(get_color(2)); */?>;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:<?php /*echo(get_color(3)); */?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php /*echo(get_color(4)); */?>;" class="fa fa-square"></i>  >9</span>
 
 
-        <br></h5>
+        <br>--></h5>&nbsp; To view map, select period, click on "Get County Level MOS Report" button then click on the commodity name.
     <!--  <div class="ibox-tools">
           <a class="collapse-link">
               <i class="fa fa-chevron-up"></i>
@@ -77,6 +77,13 @@
 </div>
 <div class="ibox-content">
 <div class="panel-body">
+
+<h5>
+
+    <span > <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >9</span>
+
+</h5>
+
 <div class="col-lg-6">
     <div class="col-lg-6">
         <form class="form" method="post" action="<?php echo(base_url()); ?>">
@@ -551,7 +558,7 @@ if(!empty($items)){
 </div>
         <div class="row">
 
-            <div class="col-lg-12">
+            <div id="national_chart" class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>National Stock Status for period: <?php if(!empty($national_p)){echo "<font color= #33CC99>$national_p</font>";} ?></h5>
@@ -576,14 +583,14 @@ if(!empty($items)){
                                     </select>
                             </div>
                             <div class="col-lg-3">
-                                <input class="btn btn-primary" type="submit" value="Display chart Title">
+                                <input class="btn btn-primary" type="submit" value="Display chart">
                                 </form>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-
+                                <h5>National Stock chart</h5>
                                 <script>
                                     WebFontConfig = {
                                         google: {families: ["Open Sans", ]}, active: function () {
@@ -626,9 +633,12 @@ if(!empty($items)){
 
 
                                        // echo $p->commodity_name;
-                                        $y_axisn=$y_axisn.'"'.$p->commodity_name.'"'.",";
+                                        $y_axisn=$y_axisn.'"'.get_commodity_alias($p->com_id).'"'.",";
 
-
+                                             if($p->adjusted_facility_amc==0)
+                                            {
+                                                $p->adjusted_facility_amc=1;
+                                            }
 
                                     $central_mos = ($p->central_stock) / ($p->adjusted_facility_amc);
                                     //echo(round($central_mos, 1));
@@ -665,15 +675,16 @@ if(!empty($items)){
                                         labels: [<?php if(!empty($national_period)){echo($y_axisn);unset($y_axisn);}  ?> ],
                                         datasets: [
 
+                                            {fillColor: "rgba(255,0,255,1)", strokeColor: "rgba(71,115,250,1)", pointColor: "rgba(71,115,250,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
+                                                data: [<?php if(!empty($national_period)){echo($x_axis3n);unset($x_axis3n);}  ?> ], title: "FACILITY MOS"},
                                             {fillColor: "rgba(171,56,56,0.99)", strokeColor: "rgba(209,12,12,0.93)", pointColor: "rgba(52,152,219,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
                                                 data: [<?php if(!empty($national_period)){echo($x_axis1n);unset($x_axis1n);}  ?> ], title: "STOCKS AT CENTRAL LEVEL"},
                                             {fillColor: "rgba(49,95,212,0.91)", strokeColor: "rgba(36,141,240,1)", pointColor: "rgba(46,204,113,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
-                                                data: [<?php if(!empty($national_period)){echo($x_axis2n);unset($x_axis2n);}  ?>], title: "PENDING SHIPMENTS"},
+                                                data: [<?php if(!empty($national_period)){echo($x_axis2n);unset($x_axis2n);}  ?>], title: "PENDING SHIPMENTS"}
 
-                                            {fillColor: "rgba(71,21,120,0.97)", strokeColor: "rgba(71,115,250,1)", pointColor: "rgba(71,115,250,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
-                                                data: [<?php if(!empty($national_period)){echo($x_axis3n);unset($x_axis3n);}  ?> ], title: "Facility MOS"}
+
                                         ]};
-                                    ChartOptions = {canvasBackgroundColor: 'rgba(255,255,255,1.00)', spaceLeft: 12, spaceRight: 12, spaceTop: 12, spaceBottom: 12, canvasBorders: false, canvasBordersWidth: 1, canvasBordersStyle: "solid", canvasBordersColor: "rgba(0,0,0,1)", yAxisMinimumInterval: 'none', scaleShowLabels: true, scaleShowLine: true, scaleLineStyle: "solid", scaleLineWidth: 1, scaleLineColor: "rgba(0,0,0,1)", scaleOverlay: false, scaleOverride: false, scaleSteps: 100, scaleStepWidth: 10, scaleStartValue: 0, inGraphDataShow: true, inGraphDataTmpl: '<%=v3%>', inGraphDataFontFamily: "'Open Sans'", inGraphDataFontStyle: "normal bold", inGraphDataFontColor: "rgba(0,0,0,1)", inGraphDataFontSize: 12, inGraphDataPaddingX: 0, inGraphDataPaddingY: -0, inGraphDataAlign: "center", inGraphDataVAlign: "middle", inGraphDataXPosition: 2, inGraphDataYPosition: 2, inGraphDataAnglePosition: 2, inGraphDataRadiusPosition: 2, inGraphDataRotate: 0, inGraphDataPaddingAngle: 0, inGraphDataPaddingRadius: 0, inGraphDataBorders: false, inGraphDataBordersXSpace: 1, inGraphDataBordersYSpace: 1, inGraphDataBordersWidth: 1, inGraphDataBordersStyle: "solid", inGraphDataBordersColor: "rgba(0,0,0,1)", legend: true, maxLegendCols: 5, legendBlockSize: 15, legendFillColor: 'rgba(255,255,255,0.00)', legendColorIndicatorStrokeWidth: 1, legendPosX: -2, legendPosY: 4, legendXPadding: 0, legendYPadding: 0, legendBorders: false, legendBordersWidth: 1, legendBordersStyle: "solid", legendBordersColors: "rgba(102,102,102,1)", legendBordersSpaceBefore: 5, legendBordersSpaceLeft: 5, legendBordersSpaceRight: 5, legendBordersSpaceAfter: 5, legendSpaceBeforeText: 5, legendSpaceLeftText: 5, legendSpaceRightText: 5, legendSpaceAfterText: 5, legendSpaceBetweenBoxAndText: 5, legendSpaceBetweenTextHorizontal: 5, legendSpaceBetweenTextVertical: 5, legendFontFamily: "'Open Sans'", legendFontStyle: "normal normal", legendFontColor: "rgba(0,0,0,1)", legendFontSize: 14, showYAxisMin: false, rotateLabels: "smart", xAxisBottom: true, yAxisLeft: true, yAxisRight: false, scaleFontFamily: "'Open Sans'", scaleFontStyle: "normal normal", scaleFontColor: "rgba(0,0,0,1)", scaleFontSize: 10, pointLabelFontFamily: "'Open Sans'", pointLabelFontStyle: "normal normal", pointLabelFontColor: "rgba(102,102,102,1)", pointLabelFontSize: 12, angleShowLineOut: true, angleLineStyle: "solid", angleLineWidth: 1, angleLineColor: "rgba(0,0,0,0.1)", percentageInnerCutout: 50, scaleShowGridLines: false, scaleGridLineStyle: "solid", scaleGridLineWidth: 1, scaleGridLineColor: "rgba(0,0,0,0.08)", scaleXGridLinesStep: 1, scaleYGridLinesStep: 0, segmentShowStroke: true, segmentStrokeStyle: "solid", segmentStrokeWidth: 2, segmentStrokeColor: "rgba(255,255,255,1.00)", datasetStroke: true, datasetFill: true, datasetStrokeStyle: "solid", datasetStrokeWidth: 2, bezierCurve: true, bezierCurveTension: 0.4, pointDotStrokeStyle: "solid", pointDotStrokeWidth: 1, pointDotRadius: 3, pointDot: true, barShowStroke: true, barBorderRadius: 0, barStrokeStyle: "solid", barStrokeWidth: 1, barValueSpacing: 3, barDatasetSpacing: 0, scaleShowLabelBackdrop: true, scaleBackdropColor: 'rgba(255,255,255,0.75)', scaleBackdropPaddingX: 2, scaleBackdropPaddingY: 2, animation: true, onAnimationComplete: function () {
+                                    ChartOptions = {canvasBackgroundColor: 'rgba(255,255,255,1.00)', spaceLeft: 12, spaceRight: 12, spaceTop: 12, spaceBottom: 12, canvasBorders: false, canvasBordersWidth: 1, canvasBordersStyle: "solid", canvasBordersColor: "rgba(0,0,0,1)", yAxisMinimumInterval: 'none', scaleShowLabels: true, scaleShowLine: true, scaleLineStyle: "solid", scaleLineWidth: 1, scaleLineColor: "rgba(0,0,0,1)", scaleOverlay: false, scaleOverride: true, scaleSteps: 12, scaleStepWidth: 2, scaleStartValue: 0, inGraphDataShow: true, inGraphDataTmpl: '<%=v3%>', inGraphDataFontFamily: "'Open Sans'", inGraphDataFontStyle: "normal bold", inGraphDataFontColor: "rgba(0,0,0,1)", inGraphDataFontSize: 12, inGraphDataPaddingX: 0, inGraphDataPaddingY: -0, inGraphDataAlign: "center", inGraphDataVAlign: "middle", inGraphDataXPosition: 2, inGraphDataYPosition: 2, inGraphDataAnglePosition: 2, inGraphDataRadiusPosition: 2, inGraphDataRotate: 0, inGraphDataPaddingAngle: 0, inGraphDataPaddingRadius: 0, inGraphDataBorders: false, inGraphDataBordersXSpace: 1, inGraphDataBordersYSpace: 1, inGraphDataBordersWidth: 1, inGraphDataBordersStyle: "solid", inGraphDataBordersColor: "rgba(0,0,0,1)", legend: true, maxLegendCols: 5, legendBlockSize: 15, legendFillColor: 'rgba(255,255,255,0.00)', legendColorIndicatorStrokeWidth: 1, legendPosX: -2, legendPosY: 4, legendXPadding: 0, legendYPadding: 0, legendBorders: false, legendBordersWidth: 1, legendBordersStyle: "solid", legendBordersColors: "rgba(102,102,102,1)", legendBordersSpaceBefore: 5, legendBordersSpaceLeft: 5, legendBordersSpaceRight: 5, legendBordersSpaceAfter: 5, legendSpaceBeforeText: 5, legendSpaceLeftText: 5, legendSpaceRightText: 5, legendSpaceAfterText: 5, legendSpaceBetweenBoxAndText: 5, legendSpaceBetweenTextHorizontal: 5, legendSpaceBetweenTextVertical: 5, legendFontFamily: "'Open Sans'", legendFontStyle: "normal normal", legendFontColor: "rgba(0,0,0,1)", legendFontSize: 14, showYAxisMin: false, rotateLabels: "smart", xAxisBottom: true, yAxisLeft: true, yAxisRight: false, scaleFontFamily: "'Open Sans'", scaleFontStyle: "normal normal", scaleFontColor: "rgba(0,0,0,1)", scaleFontSize: 10, pointLabelFontFamily: "'Open Sans'", pointLabelFontStyle: "normal normal", pointLabelFontColor: "rgba(102,102,102,1)", pointLabelFontSize: 12, angleShowLineOut: true, angleLineStyle: "solid", angleLineWidth: 1, angleLineColor: "rgba(0,0,0,0.1)", percentageInnerCutout: 50, scaleShowGridLines: false, scaleGridLineStyle: "solid", scaleGridLineWidth: 1, scaleGridLineColor: "rgba(0,0,0,0.08)", scaleXGridLinesStep: 1, scaleYGridLinesStep: 0, segmentShowStroke: true, segmentStrokeStyle: "solid", segmentStrokeWidth: 2, segmentStrokeColor: "rgba(255,255,255,1.00)", datasetStroke: true, datasetFill: true, datasetStrokeStyle: "solid", datasetStrokeWidth: 2, bezierCurve: true, bezierCurveTension: 0.4, pointDotStrokeStyle: "solid", pointDotStrokeWidth: 1, pointDotRadius: 3, pointDot: true, barShowStroke: true, barBorderRadius: 0, barStrokeStyle: "solid", barStrokeWidth: 1, barValueSpacing: 3, barDatasetSpacing: 0, scaleShowLabelBackdrop: true, scaleBackdropColor: 'rgba(255,255,255,0.75)', scaleBackdropPaddingX: 2, scaleBackdropPaddingY: 2, animation: true, onAnimationComplete: function () {
                                         MoreChartOptions()
                                     }};
                                     DrawTheChart(ChartData, ChartOptions, "chart-02", "HorizontalStackedBar");</script>
@@ -692,7 +703,7 @@ if(!empty($items)){
 
 
         <div class="row">
-            <div class="col-lg-12">
+            <div id="county_stock" class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>County Stock Status</h5>
@@ -780,13 +791,17 @@ if(!empty($items)){
 
 
                                        // echo $p->commodity_name;
-                                        $y_axis=$y_axis.'"'.$p->commodity_name.'"'.",";
+                                        $y_axis=$y_axis.'"'.get_commodity_alias($p->com_id).'"'.",";
 
 
 
                                     //$central_mos = ($p->central_stock) / ($p->adjusted_facility_amc);
                                     //echo(round($central_mos, 1));
 
+ if($p->adjusted_county_amc==0)
+                                            {
+                                                $p->adjusted_county_amc=1;
+                                            }
     $x_axis1=$x_axis1.(round(($p->physical_count) / ($p->adjusted_county_amc), 1)).",";
 
 
@@ -818,7 +833,7 @@ if(!empty($items)){
                                             {fillColor: "rgba(171,56,56,0.99)", strokeColor: "rgba(209,12,12,0.93)", pointColor: "rgba(52,152,219,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
                                                 data: [<?php if(!empty($period)){echo($x_axis1);}  ?> ], title: "months of stock"}
                                         ]};
-                                    ChartOptions = {canvasBackgroundColor: 'rgba(255,255,255,1.00)', spaceLeft: 12, spaceRight: 12, spaceTop: 12, spaceBottom: 12, canvasBorders: false, canvasBordersWidth: 1, canvasBordersStyle: "solid", canvasBordersColor: "rgba(0,0,0,1)", yAxisMinimumInterval: 'none', scaleShowLabels: true, scaleShowLine: true, scaleLineStyle: "solid", scaleLineWidth: 1, scaleLineColor: "rgba(0,0,0,1)", scaleOverlay: false, scaleOverride: false, scaleSteps: 100, scaleStepWidth: 10, scaleStartValue: 0, inGraphDataShow: true, inGraphDataTmpl: '<%=v3%>', inGraphDataFontFamily: "'Open Sans'", inGraphDataFontStyle: "normal bold", inGraphDataFontColor: "rgba(0,0,0,1)", inGraphDataFontSize: 12, inGraphDataPaddingX: 0, inGraphDataPaddingY: -0, inGraphDataAlign: "center", inGraphDataVAlign: "middle", inGraphDataXPosition: 2, inGraphDataYPosition: 2, inGraphDataAnglePosition: 2, inGraphDataRadiusPosition: 2, inGraphDataRotate: 0, inGraphDataPaddingAngle: 0, inGraphDataPaddingRadius: 0, inGraphDataBorders: false, inGraphDataBordersXSpace: 1, inGraphDataBordersYSpace: 1, inGraphDataBordersWidth: 1, inGraphDataBordersStyle: "solid", inGraphDataBordersColor: "rgba(0,0,0,1)", legend: true, maxLegendCols: 5, legendBlockSize: 15, legendFillColor: 'rgba(255,255,255,0.00)', legendColorIndicatorStrokeWidth: 1, legendPosX: -2, legendPosY: 4, legendXPadding: 0, legendYPadding: 0, legendBorders: false, legendBordersWidth: 1, legendBordersStyle: "solid", legendBordersColors: "rgba(102,102,102,1)", legendBordersSpaceBefore: 5, legendBordersSpaceLeft: 5, legendBordersSpaceRight: 5, legendBordersSpaceAfter: 5, legendSpaceBeforeText: 5, legendSpaceLeftText: 5, legendSpaceRightText: 5, legendSpaceAfterText: 5, legendSpaceBetweenBoxAndText: 5, legendSpaceBetweenTextHorizontal: 5, legendSpaceBetweenTextVertical: 5, legendFontFamily: "'Open Sans'", legendFontStyle: "normal normal", legendFontColor: "rgba(0,0,0,1)", legendFontSize: 14, showYAxisMin: false, rotateLabels: "smart", xAxisBottom: true, yAxisLeft: true, yAxisRight: false, scaleFontFamily: "'Open Sans'", scaleFontStyle: "normal normal", scaleFontColor: "rgba(0,0,0,1)", scaleFontSize: 10, pointLabelFontFamily: "'Open Sans'", pointLabelFontStyle: "normal normal", pointLabelFontColor: "rgba(102,102,102,1)", pointLabelFontSize: 12, angleShowLineOut: true, angleLineStyle: "solid", angleLineWidth: 1, angleLineColor: "rgba(0,0,0,0.1)", percentageInnerCutout: 50, scaleShowGridLines: false, scaleGridLineStyle: "solid", scaleGridLineWidth: 1, scaleGridLineColor: "rgba(0,0,0,0.08)", scaleXGridLinesStep: 1, scaleYGridLinesStep: 0, segmentShowStroke: true, segmentStrokeStyle: "solid", segmentStrokeWidth: 2, segmentStrokeColor: "rgba(255,255,255,1.00)", datasetStroke: true, datasetFill: true, datasetStrokeStyle: "solid", datasetStrokeWidth: 2, bezierCurve: true, bezierCurveTension: 0.4, pointDotStrokeStyle: "solid", pointDotStrokeWidth: 1, pointDotRadius: 3, pointDot: true, barShowStroke: true, barBorderRadius: 0, barStrokeStyle: "solid", barStrokeWidth: 1, barValueSpacing: 3, barDatasetSpacing: 0, scaleShowLabelBackdrop: true, scaleBackdropColor: 'rgba(255,255,255,0.75)', scaleBackdropPaddingX: 2, scaleBackdropPaddingY: 2, animation: true, onAnimationComplete: function () {
+                                    ChartOptions = {canvasBackgroundColor: 'rgba(255,255,255,1.00)', spaceLeft: 12, spaceRight: 12, spaceTop: 12, spaceBottom: 12, canvasBorders: false, canvasBordersWidth: 1, canvasBordersStyle: "solid", canvasBordersColor: "rgba(0,0,0,1)", yAxisMinimumInterval: 'none', scaleShowLabels: true, scaleShowLine: true, scaleLineStyle: "solid", scaleLineWidth: 1, scaleLineColor: "rgba(0,0,0,1)", scaleOverlay: false, scaleOverride: true, scaleSteps: 12, scaleStepWidth: 2, scaleStartValue: 0, inGraphDataShow: true, inGraphDataTmpl: '<%=v3%>', inGraphDataFontFamily: "'Open Sans'", inGraphDataFontStyle: "normal bold", inGraphDataFontColor: "rgba(0,0,0,1)", inGraphDataFontSize: 12, inGraphDataPaddingX: 0, inGraphDataPaddingY: -0, inGraphDataAlign: "center", inGraphDataVAlign: "middle", inGraphDataXPosition: 2, inGraphDataYPosition: 2, inGraphDataAnglePosition: 2, inGraphDataRadiusPosition: 2, inGraphDataRotate: 0, inGraphDataPaddingAngle: 0, inGraphDataPaddingRadius: 0, inGraphDataBorders: false, inGraphDataBordersXSpace: 1, inGraphDataBordersYSpace: 1, inGraphDataBordersWidth: 1, inGraphDataBordersStyle: "solid", inGraphDataBordersColor: "rgba(0,0,0,1)", legend: true, maxLegendCols: 5, legendBlockSize: 15, legendFillColor: 'rgba(255,255,255,0.00)', legendColorIndicatorStrokeWidth: 1, legendPosX: -2, legendPosY: 4, legendXPadding: 0, legendYPadding: 0, legendBorders: false, legendBordersWidth: 1, legendBordersStyle: "solid", legendBordersColors: "rgba(102,102,102,1)", legendBordersSpaceBefore: 5, legendBordersSpaceLeft: 5, legendBordersSpaceRight: 5, legendBordersSpaceAfter: 5, legendSpaceBeforeText: 5, legendSpaceLeftText: 5, legendSpaceRightText: 5, legendSpaceAfterText: 5, legendSpaceBetweenBoxAndText: 5, legendSpaceBetweenTextHorizontal: 5, legendSpaceBetweenTextVertical: 5, legendFontFamily: "'Open Sans'", legendFontStyle: "normal normal", legendFontColor: "rgba(0,0,0,1)", legendFontSize: 14, showYAxisMin: false, rotateLabels: "smart", xAxisBottom: true, yAxisLeft: true, yAxisRight: false, scaleFontFamily: "'Open Sans'", scaleFontStyle: "normal normal", scaleFontColor: "rgba(0,0,0,1)", scaleFontSize: 12, pointLabelFontFamily: "'Open Sans'", pointLabelFontStyle: "normal normal", pointLabelFontColor: "rgba(102,102,102,1)", pointLabelFontSize: 12, angleShowLineOut: true, angleLineStyle: "solid", angleLineWidth: 1, angleLineColor: "rgba(0,0,0,0.1)", percentageInnerCutout: 50, scaleShowGridLines: false, scaleGridLineStyle: "solid", scaleGridLineWidth: 1, scaleGridLineColor: "rgba(0,0,0,0.08)", scaleXGridLinesStep: 24, scaleYGridLinesStep: 0, segmentShowStroke: true, segmentStrokeStyle: "solid", segmentStrokeWidth: 2, segmentStrokeColor: "rgba(255,255,255,1.00)", datasetStroke: true, datasetFill: true, datasetStrokeStyle: "solid", datasetStrokeWidth: 2, bezierCurve: true, bezierCurveTension: 0.4, pointDotStrokeStyle: "solid", pointDotStrokeWidth: 1, pointDotRadius: 3, pointDot: true, barShowStroke: true, barBorderRadius: 0, barStrokeStyle: "solid", barStrokeWidth: 1, barValueSpacing: 3, barDatasetSpacing: 0, scaleShowLabelBackdrop: true, scaleBackdropColor: 'rgba(255,255,255,0.75)', scaleBackdropPaddingX: 2, scaleBackdropPaddingY: 2, animation: true, onAnimationComplete: function () {
                                         MoreChartOptions()
                                     }};
                                     DrawTheChart(ChartData, ChartOptions, "chart-01", "HorizontalStackedBar");</script>
