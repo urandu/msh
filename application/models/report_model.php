@@ -30,6 +30,12 @@ class Report_model extends CI_Model
         $period5=subtract_date($period,5);
 
         $query="SELECT commodity_id as cid,forecast_start_date,forecast_period,forecast_monthly_consumption,
+         (SELECT reporting_rate_value FROM `facility_level_reporting_rates`where period='{$period}')as reporting_rate_value,
+         (SELECT reporting_rate_value FROM `facility_level_reporting_rates`where period='{$period1}')as reporting_rate_value1,
+         (SELECT reporting_rate_value FROM `facility_level_reporting_rates`where period='{$period2}')as reporting_rate_value2,
+         (SELECT reporting_rate_value FROM `facility_level_reporting_rates`where period='{$period3}')as reporting_rate_value3,
+         (SELECT reporting_rate_value FROM `facility_level_reporting_rates`where period='{$period4}')as reporting_rate_value4,
+         (SELECT reporting_rate_value FROM `facility_level_reporting_rates`where period='{$period5}')as reporting_rate_value5,
         (SELECT commodity_name FROM malaria_commodities WHERE commodity_id = cid)as commodity_name,
         (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period}' AND drug_id=cid )as actual_consumption,
         (SELECT drug_value FROM facility_level_data WHERE drug_category_id='w77uMi1KzOH' AND period='{$period1}' AND drug_id=cid )as actual_consumption1,

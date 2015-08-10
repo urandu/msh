@@ -50,7 +50,7 @@
 
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5 class="font-bold">MOS Status (Facility Level) (<?php echo($bil); ?>)
+    <h5 class="font-bold">National Stock Status Map for Period: (<?php echo "<font color= #33CC99>$bil</font>" ;?>)
         <br>
 
         <span > <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >9</span>
@@ -554,7 +554,7 @@ if(!empty($items)){
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>National Level months of stock chart, period: <?php if(!empty($national_p)){echo($national_p);} ?></h5>
+                        <h5>National Stock Status for period: <?php if(!empty($national_p)){echo "<font color= #33CC99>$national_p</font>";} ?></h5>
                         <!--<div class="pull-right">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-xs btn-white active">Today</button>
@@ -576,7 +576,7 @@ if(!empty($items)){
                                     </select>
                             </div>
                             <div class="col-lg-3">
-                                <input class="btn btn-primary" type="submit" value="Get National Level MOS chart">
+                                <input class="btn btn-primary" type="submit" value="Display chart Title">
                                 </form>
                             </div>
 
@@ -591,9 +591,9 @@ if(!empty($items)){
                                         }
                                     };
                                 </script>
-                                <script asyn src="http://charts.livegap.com/js/webfont.js">
+                                <script asyn src="<?php echo(base_url()); ?>assets/js/webfont.js">
                                 </script>
-                                <script src="http://charts.livegap.com/js/Chart.min.js"></script>
+                                <script src="<?php echo(base_url()); ?>assets/js/Chart.min.js"></script>
                                 <script>
                                     function DrawTheChart(ChartData, ChartOptions, ChartId, ChartType) {
                                         eval('var myLine = new Chart(document.getElementById(ChartId).getContext("2d")).' + ChartType + '(ChartData,ChartOptions);document.getElementById(ChartId).getContext("2d").stroke();')
@@ -666,7 +666,7 @@ if(!empty($items)){
                                         datasets: [
 
                                             {fillColor: "rgba(171,56,56,0.99)", strokeColor: "rgba(209,12,12,0.93)", pointColor: "rgba(52,152,219,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
-                                                data: [<?php if(!empty($national_period)){echo($x_axis1n);unset($x_axis1n);}  ?> ], title: "STOCKS AT KEMSA"},
+                                                data: [<?php if(!empty($national_period)){echo($x_axis1n);unset($x_axis1n);}  ?> ], title: "STOCKS AT CENTRAL LEVEL"},
                                             {fillColor: "rgba(49,95,212,0.91)", strokeColor: "rgba(36,141,240,1)", pointColor: "rgba(46,204,113,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
                                                 data: [<?php if(!empty($national_period)){echo($x_axis2n);unset($x_axis2n);}  ?>], title: "PENDING SHIPMENTS"},
 
@@ -695,7 +695,7 @@ if(!empty($items)){
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>County level</h5>
+                        <h5>County Stock Status</h5>
                         <!--<div class="pull-right">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-xs btn-white active">Today</button>
@@ -728,7 +728,7 @@ if(!empty($items)){
 
 
                             <div class="col-lg-3">
-                                <input class="btn btn-primary" type="submit" value="Get County Level MOS">
+                                <input class="btn btn-primary" type="submit" value="Display Chart Title">
                                 </form>
                             </div>
 
@@ -736,7 +736,7 @@ if(!empty($items)){
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <h4>County level months of stock chart for <?php if(!empty($c)){echo(get_county_name($c));}  ?>, period: <?php if(!empty($p1)){ echo($p1);} ?></h4>
+                                    <h4>County level months of stock chart for <?php if(!empty($c)){echo(get_county_name($c));}  ?>, period: <?php if(!empty($p1)){ echo "<font color= #33CC99>$p1</font>";} ?></h4>
                                 </div>
 
                                 <script>

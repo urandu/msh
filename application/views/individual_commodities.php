@@ -3,7 +3,7 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Individual pending commodities</h2>
+        <h2>Individual pending Shipments</h2>
 
     </div>
     <div class="col-sm-8">

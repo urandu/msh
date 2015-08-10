@@ -56,7 +56,7 @@
                 <div id="page-content" class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Forecast Commodities Data MOS for period: <?php echo $p; ?></h5>
+                            <h5>Forecast Commodities Data MOS for period: <?php echo "<font color= #33CC99>$p</font>"; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -67,22 +67,22 @@
                         </div>
                         <div class="ibox-content">
 
-                            <table class="table table-hover">
+                            <table class="table table-hover" style="text-align:right">
                                 <thead>
                                 <tr>
 
 
-                                    <th>
+                                    <th style="text-align:right">
                                         Commodity name
                                     </th>
 
-                                    <th>
+                                    <th style="text-align:right">
                                         Forecast Monthly Consumption
                                     </th>
-                                    <th>
+                                    <th style="text-align:right">
                                         Stock on Hand
                                     </th>
-                                    <th>
+                                    <th style="text-align:right">
                                         Forecast Month of Stock(mos)
                                     </th>
 
@@ -98,7 +98,7 @@
                                     {  
                                       $pd=add_date($p->forecast_start_date,$p->forecast_period * 12);
                                        
-                                       if($date->period<=$pd) 
+                                       if(($date->period)<=$pd) 
 
                                         {
 
@@ -117,15 +117,15 @@
                                         <td>
                                             <?php
 
-                                            echo $p->forecast_monthly_consumption;
-
+                                            $fmc=ceil($p->forecast_monthly_consumption);
+                                            echo(number_format($fmc));
                                             ?>
                                         </td>
 
                                         <td>
                                             <?php
-                                            echo $p->physical_count;
-
+                                            $pc=ceil($p->physical_count);
+                                            echo(number_format($pc));
 
                                             ?>
                                         </td>
@@ -145,13 +145,13 @@
 
                                        
                                     }
-                                     else echo " <font color='red'> The forecast period has expired,please adjust the period and forecast start date in the forecast option under home.</font>";
-
+                                     
+                                     else  echo (" <font color='red'> The forecast period has expired,please adjust the period and forecast start date in the forecast option under settings.</font>");
 
                                     }
                                     // endforeach;
 
-
+                                    
                                     ?>
 
                                 <?php

@@ -54,7 +54,7 @@
                 <div id="page-content" class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Facility Level MOS for period: <?php echo $p; ?></h5>
+                            <h5>Facility Level MOS for period: <?php echo"<font color= #33CC99> $p</font>"; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -65,22 +65,22 @@
                         </div>
                         <div class="ibox-content">
 
-                            <table class="table table-hover">
+                            <table class="table table-hover" style="text-align:right">
                                 <thead>
                                 <tr>
 
 
-                                    <th>
+                                    <th style="text-align:right">
                                         Commodity Name
                                     </th>
 
-                                    <th>
+                                    <th style="text-align:right">
                                         Adjusted Facility AMC
                                     </th>
-                                    <th>
+                                    <th style="text-align:right">
                                         Stock on Hand
                                     </th>
-                                    <th>
+                                    <th style="text-align:right">
                                         Facility Level Month of Stock(mos)
                                     </th>
 
@@ -110,15 +110,15 @@
                                         <td>
                                             <?php
 
-                                            echo (round($p->adjusted_facility_amc,1));
-
+                                            $amc=ceil($p->adjusted_facility_amc);
+                                             echo(number_format($amc));
                                             ?>
                                         </td>
 
                                         <td>
                                             <?php
-                                            echo $p->physical_count;
-
+                                            $pc=ceil($p->physical_count);
+                                            echo(number_format($pc));
 
                                             ?>
                                         </td>
@@ -191,9 +191,9 @@
                                         }
                                     };
                                 </script>
-                                <script asyn src="http://charts.livegap.com/js/webfont.js">
+                                 <script asyn src="<?php echo(base_url()); ?>assets/js/webfont.js">
                                 </script>
-                                <script src="http://charts.livegap.com/js/Chart.min.js"></script>
+                                <script src="<?php echo(base_url()); ?>assets/js/Chart.min.js"></script>
                                 <script>
                                     function DrawTheChart(ChartData, ChartOptions, ChartId, ChartType) {
                                         eval('var myLine = new Chart(document.getElementById(ChartId).getContext("2d")).' + ChartType + '(ChartData,ChartOptions);document.getElementById(ChartId).getContext("2d").stroke();')
