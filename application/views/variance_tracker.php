@@ -78,38 +78,15 @@
                                     <th>
                                      
                                     </th>
+                            
                                     <th style="text-align:right">
+                                       <?php
+                                       $month = subtract_date($p,5); 
+                                      $date = DateTime::createFromFormat('Ym', $month);  
+                                      $monthName = $date->format('MY'); // will get Month name
+                                      echo $monthName; 
 
-                                      <?php 
-                                      $month = $p; 
-                                      $date = DateTime::createFromFormat('Ym', $month);  
-                                      $monthName = $date->format('MY'); // will get Month name
-                                      echo $monthName; ?>  
-                                    </th>
-                                    <th style="text-align:right">
-                                     <?php 
-                                     $month = subtract_date($p,1); 
-                                      $date = DateTime::createFromFormat('Ym', $month);  
-                                      $monthName = $date->format('MY'); // will get Month name
-                                      echo $monthName;?>
-  
-                                    </th>
-                                    <th style="text-align:right">
-                                    <?php 
-                                    $month = subtract_date($p,2); 
-                                      $date = DateTime::createFromFormat('Ym', $month);  
-                                      $monthName = $date->format('MY'); // will get Month name
-                                      echo $monthName;
-                                      ?> 
-                                    </th>
-                                    <th style="text-align:right">
-                                       <?php 
-                                       $month = subtract_date($p,3);
-                                      $date = DateTime::createFromFormat('Ym', $month);  
-                                      $monthName = $date->format('MY'); // will get Month name
-                                      echo $monthName;
-
-                                      ?> 
+                                       ?> 
                                     </th>
                                     <th style="text-align:right">
                                        <?php 
@@ -121,13 +98,37 @@
                                         ?> 
                                     </th>
                                     <th style="text-align:right">
-                                       <?php
-                                       $month = subtract_date($p,5); 
+                                       <?php 
+                                       $month = subtract_date($p,3);
                                       $date = DateTime::createFromFormat('Ym', $month);  
                                       $monthName = $date->format('MY'); // will get Month name
-                                      echo $monthName; 
+                                      echo $monthName;
 
-                                       ?> 
+                                      ?> 
+                                    </th>
+                                    <th style="text-align:right">
+                                    <?php 
+                                    $month = subtract_date($p,2); 
+                                      $date = DateTime::createFromFormat('Ym', $month);  
+                                      $monthName = $date->format('MY'); // will get Month name
+                                      echo $monthName;
+                                      ?> 
+                                    </th>
+                                    <th style="text-align:right">
+                                     <?php 
+                                     $month = subtract_date($p,1); 
+                                      $date = DateTime::createFromFormat('Ym', $month);  
+                                      $monthName = $date->format('MY'); // will get Month name
+                                      echo $monthName;?>
+  
+                                    </th>
+                                    <th style="text-align:right">
+
+                                      <?php 
+                                      $month = $p; 
+                                      $date = DateTime::createFromFormat('Ym', $month);  
+                                      $monthName = $date->format('MY'); // will get Month name
+                                      echo $monthName; ?>  
                                     </th>
 
                                 </tr>
@@ -174,69 +175,71 @@
                                             </th>
 
                                             <tr><th scope="row"> Actual Consumption
+                                
                                              <td scope="row"> <?php 
-                                             $ac=ceil( ($p->actual_consumption/$p->reporting_rate_value)*100);
-                                              echo(number_format($ac));
-                                             ?></td>
-                                             <td scope="row"> <?php 
-                                             $ac1=ceil( ($p->actual_consumption1/$p->reporting_rate_value1)*100);
-                                              echo(number_format($ac1));
-                                             ?></td>
-                                             <td scope="row"> <?php 
-                                             $ac2=ceil(( $p->actual_consumption2/$p->reporting_rate_value2)*100);
-                                             echo(number_format($ac2));
-                                             ?></td>
-                                             <td scope="row"> <?php 
-                                             $ac3=ceil( ($p->actual_consumption3/$p->reporting_rate_value3)*100);
-                                              echo(number_format($ac3));
+                                             $ac5=ceil(( $p->actual_consumption5/$p->reporting_rate_value5)*100);
+                                             echo(number_format($ac5));
                                              ?></td>
                                              <td scope="row"> <?php 
                                              $ac4=ceil( ($p->actual_consumption4/$p->reporting_rate_value4)*100);
                                               echo(number_format($ac4));
                                              ?></td>
                                              <td scope="row"> <?php 
-                                             $ac5=ceil(( $p->actual_consumption5/$p->reporting_rate_value5)*100);
-                                             echo(number_format($ac5));
+                                             $ac3=ceil( ($p->actual_consumption3/$p->reporting_rate_value3)*100);
+                                              echo(number_format($ac3));
+                                             ?></td>
+                                             <td scope="row"> <?php 
+                                             $ac2=ceil(( $p->actual_consumption2/$p->reporting_rate_value2)*100);
+                                             echo(number_format($ac2));
+                                             ?></td>
+                                             <td scope="row"> <?php 
+                                             $ac1=ceil( ($p->actual_consumption1/$p->reporting_rate_value1)*100);
+                                              echo(number_format($ac1));
+                                             ?></td>
+                                             <td scope="row"> <?php 
+                                             $ac=ceil( ($p->actual_consumption/$p->reporting_rate_value)*100);
+                                              echo(number_format($ac));
                                              ?></td>
 
                                             </th></tr>
                                            <tr><th scope="row"> Variance : quantity
+                                         
                                            <td scope="row"> <?php 
-                                           $vq=ceil((($p->actual_consumption/$p->reporting_rate_value)*100)-$p->forecast_monthly_consumption);
-                                           echo(number_format($vq));
-                                           ?></td>
-                                           <td scope="row"> <?php 
-                                           $vq1=ceil( (($p->actual_consumption1/$p->reporting_rate_value1)*100)-$p->forecast_monthly_consumption);
-                                           echo(number_format($vq1));
-                                           ?></td>
-                                           <td scope="row"> <?php 
-                                           $vq2=ceil( (($p->actual_consumption2/$p->reporting_rate_value2)*100)-$p->forecast_monthly_consumption);
-                                           echo(number_format($vq2));
-                                           ?></td>
-                                           <td scope="row"> <?php 
-                                           $vq3=ceil( (($p->actual_consumption3/$p->reporting_rate_value3)*100)-$p->forecast_monthly_consumption);
-                                           echo(number_format($vq3));
+                                           $vq5=ceil((($p->actual_consumption5/$p->reporting_rate_value5)*100)-$p->forecast_monthly_consumption);
+                                           echo(number_format($vq5));
                                            ?></td>
                                            <td scope="row"> <?php 
                                            $vq4=ceil( (($p->actual_consumption4/$p->reporting_rate_value4)*100)-$p->forecast_monthly_consumption);
                                            echo(number_format($vq4));
                                            ?></td>
                                            <td scope="row"> <?php 
-                                           $vq5=ceil((($p->actual_consumption5/$p->reporting_rate_value5)*100)-$p->forecast_monthly_consumption);
-                                           echo(number_format($vq5));
+                                           $vq3=ceil( (($p->actual_consumption3/$p->reporting_rate_value3)*100)-$p->forecast_monthly_consumption);
+                                           echo(number_format($vq3));
+                                           ?></td>
+                                           <td scope="row"> <?php 
+                                           $vq2=ceil( (($p->actual_consumption2/$p->reporting_rate_value2)*100)-$p->forecast_monthly_consumption);
+                                           echo(number_format($vq2));
+                                           ?></td>
+                                           <td scope="row"> <?php 
+                                           $vq1=ceil( (($p->actual_consumption1/$p->reporting_rate_value1)*100)-$p->forecast_monthly_consumption);
+                                           echo(number_format($vq1));
+                                           ?></td>
+                                           <td scope="row"> <?php 
+                                           $vq=ceil((($p->actual_consumption/$p->reporting_rate_value)*100)-$p->forecast_monthly_consumption);
+                                           echo(number_format($vq));
                                            ?></td>
 
 
 
                                            </th></tr>
                                            <tr style="background-color: #33CC99"> <th scope="row"> Variance : percentage
-                                           <td scope="row"> <?php echo(round((((($p->actual_consumption/$p->reporting_rate_value)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round((((($p->actual_consumption1/$p->reporting_rate_value1)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round((((($p->actual_consumption2/$p->reporting_rate_value2)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round((((($p->actual_consumption3/$p->reporting_rate_value3)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-                                           <td scope="row"> <?php echo(round((((($p->actual_consumption4/$p->reporting_rate_value4)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                     
                                            <td scope="row"> <?php echo(round((((($p->actual_consumption5/$p->reporting_rate_value5)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
-
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption4/$p->reporting_rate_value4)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption3/$p->reporting_rate_value3)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption2/$p->reporting_rate_value2)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption1/$p->reporting_rate_value1)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
+                                           <td scope="row"> <?php echo(round((((($p->actual_consumption/$p->reporting_rate_value)*100-$p->forecast_monthly_consumption)/($p->forecast_monthly_consumption))* 100),1));?><?php echo "%"?></td>
                                            </th></tr>
                                             
                                         </th>
