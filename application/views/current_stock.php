@@ -76,7 +76,7 @@
                                     <th>Quantity received</th>
                                     <th>Period</th>
                                     <th>Edit</th>                            
-                                    <th>Remove</th>                            
+                                    <th>Delete</th>                            
                                     </tr>
 
                             </thead>
