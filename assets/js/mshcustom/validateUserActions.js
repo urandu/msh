@@ -47,3 +47,40 @@ function validatePhone(txtPhone) {
     }
 }
 /* *****************end validate phone no********************** */
+
+/* *****************validate the Date  ********************* */
+$(document).ready(function() {
+    $('#txtDate').blur(function(e) {
+
+        if (validateDate('txtDate')) {
+            //alert("correct date")
+           }
+        else {
+            alert("Please enter valid Expected date of arrival ")
+        }
+    });
+});
+
+function validateDate(txtDate) {
+    var a = document.getElementById(txtDate).value;
+    var today = new Date();
+    var year =today.getFullYear();
+    var month=today.getMonth();
+    var day=today.getDate();
+    var today2=new Date(year,month,day);
+
+   a = a.split("-")
+    var time=new Date(a[0],a[1]-1,a[2]);
+
+   // alert(today2);
+    //alert(time);
+
+
+    if (time.getTime()> today2.getTime()) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+/* *****************end validate Date ********************** */

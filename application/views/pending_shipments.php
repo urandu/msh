@@ -262,8 +262,9 @@
 
                         <div class="form-group">
                             <label>Expected date of arrival :</label>
-                            <input type="text" required name="expected_time_of_arrival" class="form-control"  data-mask="9999-99-99" placeholder="Expected time of arrival">
+                            <input id="txtDate" type="text" required name="expected_time_of_arrival" class="form-control"  data-mask="9999-99-99" placeholder="Expected time of arrival">
                             <span class="help-block">yyyy-mm-dd</span>
+
                             <!--<input type="text"  class="form-control" >-->
                         </div>
 
