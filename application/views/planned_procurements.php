@@ -98,16 +98,7 @@
             </td>
 
 
-            <td>
-                <?php
-                foreach($COMMODITY as $COMM):
-
-                    if ($planned_procurements->commodity_id==$COMM->commodity_id){
-                        echo $COMM->unit_of_measure;
-                    }
-                endforeach; ?>
-            </td>
-
+            <td><?php echo $planned_procurements->unit_of_measure; ?></td>
 
 
             <td>
@@ -155,16 +146,9 @@
 
                                 <div class="form-group">
                                     <label>Unit of measure :</label>
+                                    <input type="text" name="unit_of_measure" class="form-control" value="<?php echo $planned_procurements->unit_of_measure; ?>">
 
-                                    <input type="text" readonly name="unit_of_measure" class="form-control"
-                                        <?php foreach($COMMODITY as $COM):?>
-                                        <?php if ($planned_procurements->commodity_id==$COM->commodity_id){?> value="<?php echo $COM->unit_of_measure;}?>"                                                                "
-                                    <?php endforeach; ?>
-                                    >
                                 </div>
-
-
-
 
                                 <label>Funding Agency :</label>
 
@@ -189,7 +173,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Description :</label>
+                                        <label>Comment :</label>
                                         <input type="text" name="ppdescription" class="form-control" value="<?php echo $planned_procurements->comment; ?>">
                                     </div>
 
@@ -241,6 +225,13 @@
     <option name="commodity_name"> <?php echo $COM->commodity_name;?> </option>
 <?php endforeach; ?>
                         </select>
+
+
+                     <div class="form-group">
+                       <label>Unit of measure :</label>
+                       <input type="text" name="unit_of_measure" class="form-control" placeholder="unit of measure">
+
+                    </div>
 
 
                         <label>Funding Agency :</label>

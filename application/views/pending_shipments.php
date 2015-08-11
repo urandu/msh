@@ -48,7 +48,7 @@
 
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Supply Chain </h5>
+                    <h5>Pending Shipments </h5>
 
                     <div class="ibox-tools">
                         <a class="collapse-link">
@@ -98,19 +98,7 @@
                                         endforeach; ?>
                                     </td>
 
-
-                                    <td>
-                                        <?php
-                                        foreach($COMMODITY as $COMM):
-
-                                            if ($pending_stocks->commodity_id==$COMM->commodity_id){
-                                                echo $COMM->unit_of_measure;
-                                            }
-                                        endforeach; ?>
-                                    </td>
-
-
-
+                                    <td><?php echo $pending_stocks->unit_of_measure; ?></td>
 
                                     <td>
                                         <?php foreach($FUNDING as $FA):
@@ -158,12 +146,8 @@
 
                                                     <div class="form-group">
                                                         <label>Unit of measure :</label>
+                                                        <input type="text" name="unit_of_measure" class="form-control" value="<?php echo $pending_stocks->unit_of_measure; ?>">
 
-                                                        <input type="text" readonly name="unit_of_measure" class="form-control"
-                                                            <?php foreach($COMMODITY as $COM):?>
-                                                            <?php if ($pending_stocks->commodity_id==$COM->commodity_id){?> value="<?php echo $COM->unit_of_measure;}?>"                                                                "
-                                                        <?php endforeach; ?>
-                                                        >
                                                     </div>
 
 
@@ -195,7 +179,7 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label>Description :</label>
+                                                            <label>Comment :</label>
                                                             <input type="text" name="pddescription" class="form-control" value="<?php echo $pending_stocks->comments; ?>">
                                                         </div>
 
@@ -248,6 +232,12 @@
                         <?php endforeach; ?>
                     </select>
 
+                    <div class="form-group">
+                       <label>Unit of measure :</label>
+                       <input type="text" name="unit_of_measure" class="form-control" placeholder="unit of measure">
+
+                    </div>
+
 
                     <label>Funding Agency :</label>
                     <select name="funding_agency" class="form-control">
@@ -278,8 +268,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Description :</label>
-                            <input type="text" name="pddescription" class="form-control" placeholder="Description">
+                            <label>Comment :</label>
+                            <input type="text" name="pddescription" class="form-control" placeholder="Comment">
                         </div>
 
                         <!-- <input type="submit" class"btn btn-primary" id="submit" name="dsubmit" value="Update">-->

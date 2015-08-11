@@ -1312,7 +1312,9 @@ WHERE period = '{$period}'";
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1348,7 +1350,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1397,7 +1401,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1458,7 +1464,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1531,7 +1539,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1616,7 +1626,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1721,7 +1733,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1760,7 +1774,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1805,7 +1821,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1862,7 +1880,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -1931,7 +1951,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -2013,7 +2035,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -2299,7 +2323,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm'";
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -2335,7 +2361,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -2384,7 +2412,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -2445,7 +2475,9 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
+
   (
     (
       (
@@ -2518,7 +2550,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
   (
     (
       (
@@ -2603,7 +2635,7 @@ WHERE period = '{$period}' and drug_category_id='rPAsF4cpNxm' and county_id='{$c
   (SELECT
   mapping_name
    FROM mapping_drugs_category
-   WHERE mapping_id = com_id) AS commodity_name,
+   WHERE mapping_id = com_id) AS commodity_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,(SELECT   alt_name    FROM malaria_commodities    WHERE commodity_id = com_id) AS alt_name,
   (
     (
       (

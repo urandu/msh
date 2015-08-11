@@ -55,7 +55,7 @@ class Forecast extends MY_Controller
     }
     public function save_forecast_commodity_data()
     {
-      $start_date=($this->input->post('forecast_start_date'));
+      $date=($this->input->post('forecast_start_date'));
       $period=($this->input->post('forecast_period'));
 
       //$commodity_id=($this->input->post('commodity_id'));
@@ -63,6 +63,7 @@ class Forecast extends MY_Controller
       $commodity_id=$this->forecast_model->get_commodity_id_with_the_given_name($commodity_name);
 
       $monthly_consumption=($this->input->post('forecast_monthly_consumption'));
+      $start_date=str_replace("-", null, $date);
 
       $forecast = array(
 			'forecast_start_date' => $start_date,
