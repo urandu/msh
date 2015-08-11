@@ -5708,10 +5708,11 @@ CREATE TABLE IF NOT EXISTS `pending_shipment_details` (
   `expected_time_of_arrival` date NOT NULL,
   `comments` varchar(100) NOT NULL,
   `transaction_status` varchar(20) NOT NULL DEFAULT 'pending',
+  `unit_of_measure` varchar(15) NOT NULL,
   PRIMARY KEY (`pending_shipment_id`),
   KEY `commodity_id` (`commodity_id`),
   KEY `funding_agency_id` (`funding_agency_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `pending_shipment_details`
