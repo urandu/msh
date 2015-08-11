@@ -60,8 +60,9 @@ class Login extends CI_Controller
 
         } else // incorrect username or password
         {
-            $data['error_message'] = TRUE;
-            $this->load->view('login', $data);
+            redirect(base_url());
+            //$data['error_message'] = TRUE;
+            //$this->load->view('login', $data);
         }
     }
 

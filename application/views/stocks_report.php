@@ -14,9 +14,10 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
+
         </div>
     </div>
     </br>
@@ -35,7 +36,10 @@
       </div> 
       </div>
 
-    <div class="wrapper wrapper-content">
+
+      <div class="ibox-content">
+
+    <div id="page-content" class="wrapper wrapper-content">
 
          <table class="table">
             <thead>
@@ -68,7 +72,7 @@
         </tr>
 
         <?php if ($period>0){?>
-        <tr>Period:<b><?php echo $period; ?></b></tr>
+        <tr>Period:<b><?php echo "<font color= #33CC99> $period </font>"; ?></b></tr>
        <tbody>
         <?php foreach ($COMMODITY as $item): ?>
         <tr> 
@@ -124,5 +128,6 @@
     </table>
 
     </div>
+</div>
 
 <?php require_once("includes/footer.php"); ?>

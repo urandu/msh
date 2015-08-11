@@ -127,14 +127,16 @@ class Current_stock extends MY_Controller
         foreach ($values as $key) {
             $commodity_id=$key->commodity_id;
             $funding_agency_id=$key->funding_agency_id;
-            $today=str_replace("-", null, $date);
+            $expected_quantity=$key->quantity;
+            
         }
-
+        if($quantity_received < $expected_quantity || $quantity_received==$expected_quantity){
+             $today=str_replace("-", null, $date);
         $data_array = array(
             'pending_stock_id'=>$pid,
             'period'=>$today,
             'funding_agency_id' => $funding_agency_id,
-            'commodity_id' => $commodity_id,	//GET THE COMODITIES ID
+            'commodity_id' => $commodity_id,    //GET THE COMODITIES ID
             'supply_agency_id' =>$this->agency_model->get_agency_id_with_the_given_name($supply_chain_agency),
             'soh_closing_balance'=>$quantity_received,
 
@@ -157,6 +159,14 @@ class Current_stock extends MY_Controller
             $this->stocks_model->delete_pending_data($pid);
             $this->show_central_level_stock();
         }
+    }else{
+        /*$data['msg']="The quantity you entered as received is more than the quantity expected.";
+        $this->show_central_level_stock();*/
+        echo " <font color= #FF0000 ><b> Error! Quantity received is more than quantity expected</b></font>";
+        $this->show_central_level_stock();
+
+    }
+       
 
        
 

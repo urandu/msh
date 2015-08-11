@@ -6,9 +6,9 @@
             <h2>Commodities per agency</h2>
           </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
         </div>
     </div>
  </br>
@@ -27,11 +27,12 @@
       </div> 
       </div>
 
+      <div class="ibox-content">
 
-    <div class="wrapper wrapper-content">
+    <div id="page-content" class="wrapper wrapper-content">
 
-        <table  class="table" border="1">
-          <tr>Pending Stock(s) for: <?php echo $selected_period ?></tr>
+        <table  class="table table-hover" style="text-align:right" border="1">
+          <tr>Pending Stock(s) for: <?php echo "<font color= #33CC99> $selected_period </font>"; ?></tr>
           <thead>
             <th>Commodity</th>
             <th>Agency total</th>
@@ -73,5 +74,6 @@
  <?php }?>
 </table>
     </div>
+  </div>
 
 <?php require_once("includes/footer.php"); ?>

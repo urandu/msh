@@ -18,6 +18,8 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `msh_db`
+CREATE DATABASE msh_db;
+ USE msh_db;
 --
 
 -- --------------------------------------------------------

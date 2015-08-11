@@ -265,8 +265,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Description :</label>
-                                <input type="text" name="ppdescription" class="form-control" placeholder="Description">
+                                <label>Comment :</label>
+                                <input type="text" name="ppdescription" class="form-control" placeholder="Comment">
                             </div>
 
                             <!-- <input type="submit" class"btn btn-primary" id="submit" name="dsubmit" value="Update">-->

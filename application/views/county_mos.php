@@ -15,9 +15,9 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
         </div>
     </div>
 
@@ -65,21 +65,22 @@
 
 
             <div class="row">
-                <div class="col-lg-12">
+                <div id="page-content" class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h4> County MOS Report for period <?php
+                            <h4> County MOS Report for period: <?php
 
                                 //echo($p);
 
                                 if ($p != "000000") {
-                                    echo($p);
+                                    echo("<font color= #33CC99>$p</font>");
                                 }
 
                                 ?> || County name :<?php
 
                                 if ($p != "000000") {
-                                    echo(get_county_name($c));
+                                   $cname= get_county_name($c);
+                                    echo("<font color= #33CC99>$cname</font>");
                                 }
 
 
@@ -140,15 +141,15 @@
                                         <td>
                                             <?php
 
-                                            echo round($p->adjusted_county_amc,1);
-
+                                            $amc=ceil($p->adjusted_county_amc);
+                                            echo(number_format($amc));
                                             ?>
                                         </td>
 
                                         <td>
                                             <?php
-                                            echo $p->physical_count;
-
+                                            $pc=ceil($p->physical_count);
+                                            echo(number_format($pc));
 
                                             ?>
                                         </td>
@@ -217,9 +218,9 @@
                                         }
                                     };
                                 </script>
-                                <script asyn src="http://charts.livegap.com/js/webfont.js">
+                                 <script asyn src="<?php echo(base_url()); ?>assets/js/webfont.js">
                                 </script>
-                                <script src="http://charts.livegap.com/js/Chart.min.js"></script>
+                                <script src="<?php echo(base_url()); ?>assets/js/Chart.min.js"></script>
                                 <script>
                                     function DrawTheChart(ChartData, ChartOptions, ChartId, ChartType) {
                                         eval('var myLine = new Chart(document.getElementById(ChartId).getContext("2d")).' + ChartType + '(ChartData,ChartOptions);document.getElementById(ChartId).getContext("2d").stroke();')
@@ -304,10 +305,7 @@
             </div>
 
 
-            <div class="col-lg-3">
-                <input class="btn btn-primary" type="submit" value="Get County Level MOS Report">
-                </form>
-            </div>
+            
 
         </div>
 

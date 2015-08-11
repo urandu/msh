@@ -14,13 +14,13 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
         </div>
     </div>
 
-    <div class="wrapper wrapper-content">
+    <div  class="wrapper wrapper-content">
 
 
 <div class="row">
@@ -51,44 +51,45 @@ if (isset($period)) {
 ?>
 
 <div class="row">
-<div class="col-lg-12">
+<div id="page-content" class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
 
-                            <h5>Central Level MOS for period: <?php echo $p; ?></h5>
+                            <h5>Central Level MOS for period: <?php echo "<font color= #33CC99> $p</font> ";?></h5>
 
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
                                 </a>
-                                
-                            
+
+
+
                             </div>
                         </div>
                         <div class="ibox-content">
 
-                            <table class="table table-hover">
+                            <table style="text-align: right;" class="table table-hover">
                                 <thead>
-                                <tr>
+                                <tr >
 
                              
-            <th>
+            <th style="text-align:right">
                 Commodity Name
             </th>
         
-            <th>
+            <th style="text-align:right">
                 Adjusted Facility AMC
             </th>
-            <th>
-               Central Stock on Hand KEMSA
+            <th style="text-align:right">
+               Stocks at central level
             </th>
-            <th>
+            <th style="text-align:right">
                Pending Shipments
             </th>
-            <th>
+            <th style="text-align:right">
                 Central Level MOS
             </th>
-            <th>
+            <th style="text-align:right">
                 Pending Shipments MOS
             </th>
             
@@ -117,23 +118,23 @@ if (isset($period)) {
             
             <td>
                 <?php
-
-                echo $p->adjusted_facility_amc;
-
+             
+               $amc=ceil($p->adjusted_facility_amc);
+                echo(number_format($amc));
                 ?>
             </td>
 
             <td>
                 <?php
-                echo $p->central_stock;
-
+                $pc=ceil($p->central_stock);
+                 echo(number_format($pc));
 
                 ?>
             </td>
              <td>
                 <?php
-                echo $p->pending_shipment;
-
+                $ps=ceil($p->pending_shipment);
+                echo(number_format($ps));
 
                 ?>
             </td>
@@ -194,17 +195,15 @@ if(!empty($p->central_stock) && !empty($p->adjusted_facility_amc))
 
 
 <div class="row">
-    <div class="col-lg-12">
-        <div class="ibox float-e-margins">
+    <div  class="col-lg-12">
+        <div  class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Central Level months of stock chart</h5>
-                <!--<div class="pull-right">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-xs btn-white active">Today</button>
-                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
-                        <button type="button" class="btn btn-xs btn-white">Annual</button>
-                    </div>
-                </div>-->
+                <div class="pull-right">
+
+                </div>
+
+
             </div>
             <div class="ibox-content">
                 <div class="row">
@@ -217,9 +216,9 @@ if(!empty($p->central_stock) && !empty($p->adjusted_facility_amc))
                                 }
                             };
                         </script>
-                        <script asyn src="http://charts.livegap.com/js/webfont.js">
-                        </script>
-                        <script src="http://charts.livegap.com/js/Chart.min.js"></script>
+                        <script asyn src="<?php echo(base_url()); ?>assets/js/webfont.js">
+                                </script>
+                                <script src="<?php echo(base_url()); ?>assets/js/Chart.min.js"></script>
                         <script>
                             function DrawTheChart(ChartData, ChartOptions, ChartId, ChartType) {
                                 eval('var myLine = new Chart(document.getElementById(ChartId).getContext("2d")).' + ChartType + '(ChartData,ChartOptions);document.getElementById(ChartId).getContext("2d").stroke();')
@@ -291,7 +290,7 @@ $x_axis1=$x_axis1.(round($central_mos, 1)).",";
                                 datasets: [
 
                                     {fillColor: "rgba(171,56,56,0.99)", strokeColor: "rgba(209,12,12,0.93)", pointColor: "rgba(52,152,219,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
-                                        data: [<?php echo($x_axis1); ?> ], title: "STOCKS AT KEMSA"},
+                                        data: [<?php echo($x_axis1); ?> ], title: "STOCKS AT CENTRAL LEVEL"},
                                     {fillColor: "rgba(49,95,212,0.91)", strokeColor: "rgba(36,141,240,1)", pointColor: "rgba(46,204,113,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
                                         data: [<?php echo($x_axis2); ?> ], title: "PENDING SHIPMENTS"}
                                 ]};

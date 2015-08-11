@@ -3,13 +3,14 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Individual pending commodities</h2>
+        <h2>Individual pending Shipments</h2>
 
     </div>
     <div class="col-sm-8">
-        <!--<div class="title-action">
-            <a href="" class="btn btn-primary">This is action area</a>
-        </div>-->
+        <div class="title-action">
+            <a class="word-export" href="javascript:void(0)"> Export to word </a>
+        </div>
+
     </div>
 </div>
 </br>
@@ -27,11 +28,13 @@
         </form>
       </div> 
       </div>
-
-<div class="wrapper wrapper-content">
-    <table  class="table">
+<div class="ibox-content">
+<div id="page-content" class="wrapper wrapper-content">
+    <table   class="table">
         <thead>
-            <tr>Period: <?php echo $period;?></tr>
+  <span > <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <9</span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  < 3</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >3 to < 6</span>
+
+            <tr>Period: <?php echo "<font color= #33CC99> $period </font>";?></tr>
 
         <tr>
             <th><b>#</b></th>
@@ -93,6 +96,7 @@
         </tbody>
         <?php } ?>
     </table>
+</div>
 </div>
 
 <?php require_once("includes/footer.php"); ?>

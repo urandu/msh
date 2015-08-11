@@ -6,9 +6,9 @@
             <h2>Commodities report</h2>
                   </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
         </div>
     </div>
   </br>
@@ -29,12 +29,13 @@
       </div> 
       </div>
 
-    <div class="wrapper wrapper-content">
+<div class="ibox-content">
+    <div id="page-content" class="wrapper wrapper-content">
 
        <table class="table">
  
   <thead>
-    <tr>Period: <?php echo $period; ?></tr>
+    <tr>Period: <?php echo "<font color= #33CC99> $period </font>"; ?></tr>
     <tr >
      <th>Expected Stocks<br>Expected Shipments Totals</th>
    </tr>
@@ -73,5 +74,6 @@ if ($pending_totals->commodity_id==$COMM->commodity_id){
   </table> 
 
     </div>
+  </div>
 
 <?php require_once("includes/footer.php"); ?>

@@ -237,7 +237,16 @@ $("#ionrange_4").ionRangeSlider({
 
 </script>
 
+<script src="<?php echo(base_url()); ?>assets/js/FileSaver.js"></script>
+<script src="<?php echo(base_url()); ?>assets/js/jquery.wordexport.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("a.word-export").click(function(event) {
+            $("#page-content").wordExport();
+        });
 
+    });
+</script>
 </body>
 
 </html>
