@@ -35,8 +35,10 @@
 
                     <?php endforeach; ?>
                 </select>
+
                 <input type="checkbox" name="no_reporting_rate" value="true"><span style="color:white"> Without adjusting consumption for reporting rate</span>        
                 </div>
+
         <div class="col-lg-3">
             <input class="btn btn-primary" type="submit" value="Get National Level MOS Report">
             </form>
@@ -128,10 +130,12 @@
                                     <td>
                                         <?php
 
+
                                         if($p->adjusted_facility_amc==0)
                                         {
                                             $p->adjusted_facility_amc=1;
                                         }
+
                                         $amc=ceil($p->adjusted_facility_amc);
                                         echo(number_format($amc));
                                         ?>

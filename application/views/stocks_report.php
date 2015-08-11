@@ -36,6 +36,10 @@
       </div> 
       </div>
 
+
+      <div class="ibox-content">
+
+
     <div id="page-content" class="wrapper wrapper-content">
 
          <table class="table">
@@ -69,7 +73,7 @@
         </tr>
 
         <?php if ($period>0){?>
-        <tr>Period:<b><?php echo $period; ?></b></tr>
+        <tr>Period:<b><?php echo "<font color= #33CC99> $period </font>"; ?></b></tr>
        <tbody>
         <?php foreach ($COMMODITY as $item): ?>
         <tr> 
@@ -125,5 +129,6 @@
     </table>
 
     </div>
+</div>
 
 <?php require_once("includes/footer.php"); ?>

@@ -30,7 +30,6 @@ class Stocks_model extends CI_Model{
     $this->db->select('*');
     $this->db->from('central_level_data');
     $this->db->where('period', $period);
-
     $query = $this->db->get();
     $result = $query->result();
     return $result;

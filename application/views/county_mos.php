@@ -141,10 +141,12 @@
                                         <td>
                                             <?php
 
+
                                             if($p->adjusted_county_amc==0)
                                             {
                                                 $p->adjusted_county_amc=1;
                                             }
+
                                             $amc=ceil($p->adjusted_county_amc);
                                             echo(number_format($amc));
                                             ?>

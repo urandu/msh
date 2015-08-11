@@ -112,6 +112,7 @@ function county_level_period_exists($date)
 
         return false;
     }
+
 }
 
 
@@ -123,4 +124,5 @@ function get_commodity_alias($commodity_name)
     $colors=$CI->db->query("SELECT * FROM  malaria_commodities WHERE commodity_id =  '{$commodity_name}'");
     //print_r($colors->result());
     return $colors->result()[0]->alt_name;
+
 }

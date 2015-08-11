@@ -29,12 +29,15 @@
       </div> 
       </div>
 
+
+<div class="ibox-content">
+
     <div id="page-content" class="wrapper wrapper-content">
 
        <table class="table">
  
   <thead>
-    <tr>Period: <?php echo $period; ?></tr>
+    <tr>Period: <?php echo "<font color= #33CC99> $period </font>"; ?></tr>
     <tr >
      <th>Expected Stocks<br>Expected Shipments Totals</th>
    </tr>
@@ -73,5 +76,6 @@ if ($pending_totals->commodity_id==$COMM->commodity_id){
   </table> 
 
     </div>
+  </div>
 
 <?php require_once("includes/footer.php"); ?>

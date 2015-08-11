@@ -119,10 +119,12 @@ if (isset($period)) {
             <td>
                 <?php
 
+
                 if($p->adjusted_facility_amc==0)
                 {
                     $p->adjusted_facility_amc=1;
                 }
+
                $amc=ceil($p->adjusted_facility_amc);
                 echo(number_format($amc));
                 ?>

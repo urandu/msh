@@ -27,11 +27,12 @@
       </div> 
       </div>
 
+      <div class="ibox-content">
 
     <div id="page-content" class="wrapper wrapper-content">
 
-        <table  class="table" border="1">
-          <tr>Pending Stock(s) for: <?php echo $selected_period ?></tr>
+        <table  class="table table-hover" style="text-align:right" border="1">
+          <tr>Pending Stock(s) for: <?php echo "<font color= #33CC99> $selected_period </font>"; ?></tr>
           <thead>
             <th>Commodity</th>
             <th>Agency total</th>
@@ -73,5 +74,6 @@
  <?php }?>
 </table>
     </div>
+  </div>
 
 <?php require_once("includes/footer.php"); ?>

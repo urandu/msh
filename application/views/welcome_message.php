@@ -51,7 +51,9 @@
 <div class="ibox float-e-margins">
 <div class="ibox-title">
     <h5 class="font-bold">National Stock Status Map for Period: (<?php echo "<font color= #33CC99>$bil</font>" ;?>)
+
         <!--<br>
+
 
         <span > <i style="color:<?php /*echo(get_color(1)); */?>;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:<?php /*echo(get_color(2)); */?>;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:<?php /*echo(get_color(3)); */?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php /*echo(get_color(4)); */?>;" class="fa fa-square"></i>  >9</span>
 
@@ -583,7 +585,9 @@ if(!empty($items)){
                                     </select>
                             </div>
                             <div class="col-lg-3">
+
                                 <input class="btn btn-primary" type="submit" value="Display chart">
+
                                 </form>
                             </div>
 
@@ -739,7 +743,9 @@ if(!empty($items)){
 
 
                             <div class="col-lg-3">
+
                                 <input class="btn btn-primary" type="submit" value="Display Chart">
+
                                 </form>
                             </div>
 
