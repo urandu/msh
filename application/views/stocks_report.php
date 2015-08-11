@@ -14,13 +14,29 @@
             </ol>-->
         </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
+
         </div>
     </div>
+    </br>
+    <div class="row">
+    <div class="col-lg-3">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>reports/stocks">
+    <select name="period" class="form-control">
+        <option  selected>--SELECT PERIOD--</option>
+        <?php foreach ($select_period as $cld): ?>
+            <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+        <?php endforeach; ?>
+    </select>
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get stocks report">
+        </form>
+      </div> 
+      </div>
 
-    <div class="wrapper wrapper-content">
+    <div id="page-content" class="wrapper wrapper-content">
 
          <table class="table">
             <thead>
@@ -51,6 +67,9 @@
 
             </thead>
         </tr>
+
+        <?php if ($period>0){?>
+        <tr>Period:<b><?php echo $period; ?></b></tr>
        <tbody>
         <?php foreach ($COMMODITY as $item): ?>
         <tr> 
@@ -101,6 +120,7 @@
             </tr>
             <?php endforeach;?>
        </tbody>
+       <?php }?>
 
     </table>
 

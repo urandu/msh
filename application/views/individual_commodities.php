@@ -3,19 +3,36 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Individual pending commodities</h2>
+        <h2>Individual pending Shipments</h2>
 
     </div>
     <div class="col-sm-8">
-        <!--<div class="title-action">
-            <a href="" class="btn btn-primary">This is action area</a>
-        </div>-->
+        <div class="title-action">
+            <a class="word-export" href="javascript:void(0)"> Export to word </a>
+        </div>
+
     </div>
 </div>
+</br>
+     <div class="row">
+    <div class="col-lg-3">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>reports/individual_commodity">
+    <select name="period" class="form-control">
+        <option  selected>--SELECT PERIOD--</option>
+        <?php foreach ($select_period as $cld): ?>
+            <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+        <?php endforeach; ?>
+    </select>
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get individual pending shipments report">
+        </form>
+      </div> 
+      </div>
 
-<div class="wrapper wrapper-content">
-    <table  class="table">
+<div id="page-content" class="wrapper wrapper-content">
+    <table   class="table">
         <thead>
+            <tr>Period: <?php echo $period;?></tr>
 
         <tr>
             <th><b>#</b></th>
@@ -24,8 +41,10 @@
             <th><b>Source</b></th>
             <th><b>Quantity</b></th>
             <th><b>E.T.A</b></th>
+            <th><b>Color code</b></th>
         </tr>
         </thead>
+        <?php if($period>0){?>
         <tbody>
         <?php $count=1;
         foreach ($PSTOCKS as $pendingstocks):?>
@@ -53,12 +72,27 @@
                 <td>
                     <?php  echo $pendingstocks->expected_time_of_arrival;?>
                 </td>
+                
+                <?php if (get_months($pendingstocks->expected_time_of_arrival) < 3 ||get_months($pendingstocks->expected_time_of_arrival)==3) {
+                    echo "<td style='background-color: #00FF00'>".""."</td>";  
+
+                  }elseif (get_months($pendingstocks->expected_time_of_arrival)> 3 && get_months($pendingstocks->expected_time_of_arrival) < 6 || get_months($pendingstocks->expected_time_of_arrival)==6) {
+                    echo "<td style='background-color: #FFFF00'>".""."</td>";
+
+                  }elseif (get_months($pendingstocks->expected_time_of_arrival) >6 && get_months($pendingstocks->expected_time_of_arrival) < 9|| get_months($pendingstocks->expected_time_of_arrival)==9) {
+                     echo "<td style='background-color: #FF9900'>".""."</td>";
+                  }else
+                  {
+                        echo "<td style='background-color: #FF0000 '>".""."</td>";
+                  }
+                  ?>
             </tr>
 
             <?php
             $count++;
         endforeach;?>
         </tbody>
+        <?php } ?>
     </table>
 </div>
 

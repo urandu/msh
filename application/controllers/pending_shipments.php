@@ -56,6 +56,7 @@ class Pending_shipments extends MY_Controller
     public function save_pending_shipment(){
         $period= (str_replace("-",null,$this->input->post('period')));
 
+        $unit_of_measure= ($this->input->post('unit_of_measure'));
         $commodity_name= ($this->input->post('commodity_name'));
         //$pack_size= ($this->input->post('pack_size'));
         $funding_agency= ($this->input->post('funding_agency'));
@@ -68,6 +69,7 @@ class Pending_shipments extends MY_Controller
 
         $pendingStock = array(
             'commodity_id'=>$commodity_id,
+            'unit_of_measure'=>$unit_of_measure,
             //'pack_size'=>$pack_size,
             'funding_agency_id'=>$funding_agency_Id,
             'quantity'=>$quantity,
@@ -97,6 +99,7 @@ class Pending_shipments extends MY_Controller
         $funding_agency_id=$this->pending_shipments_model->get_funding_agency_id($funding_agency_name);
         $data = array(
             'period'=>$this->input->post('period'),
+            'unit_of_measure'=>$this->input->post('unit_of_measure'),
             'quantity' => $this->input->post('quantity'),
             'expected_time_of_arrival'=>$this->input->post('expected_date_delivery'),
             'comments'=>$this->input->post('pddescription'),

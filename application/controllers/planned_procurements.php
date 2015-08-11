@@ -63,6 +63,7 @@ class Planned_procurements extends MY_Controller
         $funding_agency_id=$this->planned_procurements_model->get_funding_agency_id($funding_agency);
 
         $pendingStock = array(
+            'unit_of_measure'=>$this->input->post('unit_of_measure'),
             'planned_delivery_date'=>$this->input->post('planned_delivery_date'),
             'quantity' => $this->input->post('quantity'),
             'comment'=>$this->input->post('ppdescription'),
@@ -92,6 +93,7 @@ class Planned_procurements extends MY_Controller
         $funding_agency_id=$this->planned_procurements_model->get_funding_agency_id($funding_agency_name);
         $data = array(
             'planned_delivery_date'=>$this->input->post('planned_delivery_date'),
+            'unit_of_measure'=>$this->input->post('unit_of_measure'),
             'quantity' => $this->input->post('quantity'),
             'comment'=>$this->input->post('ppdescription'),
             'commodity_id'=>$commodity_id,

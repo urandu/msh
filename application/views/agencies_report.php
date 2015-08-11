@@ -4,31 +4,39 @@
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Commodities per agency</h2>
-            <!--<ol class="breadcrumb">
-                <li>
-                    <a href="index.html">This is</a>
-                </li>
-                <li class="active">
-                    <strong>Breadcrumb</strong>
-                </li>
-            </ol>-->
-        </div>
+          </div>
         <div class="col-sm-8">
-            <!--<div class="title-action">
-                <a href="" class="btn btn-primary">This is action area</a>
-            </div>-->
+            <div class="title-action">
+                <a class="word-export" href="javascript:void(0)"> Export to word </a>
+            </div>
         </div>
     </div>
+ </br>
+        <div class="row">
+    <div class="col-lg-3">
+    <form class="form" method="post" action="<?php echo(base_url()); ?>reports/agencies">
+    <select name="period" class="form-control">
+        <option  selected>--SELECT PERIOD--</option>
+        <?php foreach ($period as $cld): ?>
+            <option value="<?php echo $cld->period; ?>"  ><?php echo $cld->period; ?></option>
+        <?php endforeach; ?>
+    </select>
+    </br>
+        <input class="btn btn-primary" type="submit" value="Get pending commodities per agency report">
+        </form>
+      </div> 
+      </div>
 
-    <div class="wrapper wrapper-content">
+
+    <div id="page-content" class="wrapper wrapper-content">
 
         <table  class="table" border="1">
-
-<thead>
-<th>Commodity</th>
-<th>Agency total</th>
-</tr>
-</thead>
+          <tr>Pending Stock(s) for: <?php echo $selected_period ?></tr>
+          <thead>
+            <th>Commodity</th>
+            <th>Agency total</th>
+          </thead>
+<?php if ($selected_period>0){?>
 
 <?php foreach($COMMODITY as $COMM):?>
   <tr>
@@ -61,9 +69,9 @@
     </td>
   </tr>
 <?php endforeach;?>
+
+ <?php }?>
 </table>
-
-
     </div>
 
 <?php require_once("includes/footer.php"); ?>

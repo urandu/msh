@@ -57,6 +57,9 @@ class Current_stock extends MY_Controller
         $datacl['supply_chain_agency'] = $this->agency_model->show_supply_chain_agencies();
         $datacl['funding_agency'] = $this->agency_model->show_funding_orgs();
         $datacl['period']=$period;
+        $datacl['pending_shipment'] = $this->stocks_model->show_pending_shipments();
+
+        /*show_pending_shipments*/
 
         $this->load->view('current_stock',$datacl);
 
@@ -74,7 +77,7 @@ class Current_stock extends MY_Controller
         $id= $this->input->post('central_level_stock_id');//central_level_stock_id
         $f_agency_name= ($this->input->post('funding_agency_name'));
 
-        $today = date("Ym");
+        $today = $this->input->post('period');
 
         $data = array(
             'period'=>$today,
@@ -114,32 +117,80 @@ class Current_stock extends MY_Controller
 
     public function save_central_level(){
 
-        $commodity_name=($this->input->post('commodity_name'));
+        //$commodity_name=($this->input->post('commodity_name'));
         $supply_chain_agency= ($this->input->post('supply_chain_agency'));
-        $f_agency_name= ($this->input->post('funding_agency_name'));
-        $today = date("Ym");
-        $time = date("F j, Y, g:i a");
+        //$f_agency_name= ($this->input->post('funding_agency_name'));
+        $date = $this->input->post('period');
+        $quantity_received=$this->input->post('soh_closing_balance');
+        $pid=$this->input->post('pending_shipment_id');
+        $values=$this->stocks_model->show_pending_shipment_by_id($pid);
+        foreach ($values as $key) {
+            $commodity_id=$key->commodity_id;
+            $funding_agency_id=$key->funding_agency_id;
+            $today=str_replace("-", null, $date);
+        }
 
-        $dataArray = array(
-
-
+        $data_array = array(
+            'pending_stock_id'=>$pid,
             'period'=>$today,
-            'funding_agency_id' => $this->agency_model->get_funding_agency_id($f_agency_name),
-            'commodity_id' => $this->commodity_model->get_commodity_id_with_the_given_name($this->input->post('commodity_name')),	//GET THE COMODITIES ID
+            'funding_agency_id' => $funding_agency_id,
+            'commodity_id' => $commodity_id,	//GET THE COMODITIES ID
             'supply_agency_id' =>$this->agency_model->get_agency_id_with_the_given_name($supply_chain_agency),
-
-            'soh_closing_balance'=>$this->input->post('soh_closing_balance'),
+            'soh_closing_balance'=>$quantity_received,
 
 
         );
+        $this->stocks_model->add_central_stock($data_array);
+        $fetched_data=$this->stocks_model->show_pending_shipment($pid);
+        foreach ($fetched_data as $value) {
+            $quantity_on_hand=$value->quantity;
+        }
+        $quantity_remaining=$quantity_on_hand-$quantity_received;
+
+        if($quantity_remaining!=0){
+
+            $second_array= array('quantity' =>$quantity_remaining);
+       $this->stocks_model->update_pending_shipment($pid, $second_array);
+       $this->show_central_level_stock();
+
+        }else{
+            $this->stocks_model->delete_pending_data($pid);
+            $this->show_central_level_stock();
+        }
+
+       
 
 
-        $this->stocks_model->add_central_stock($dataArray);
 
-        $this->show_central_level_stock();
+    }
 
-
-
+    function get_by_id()
+    {
+        $pending_shipment_id = $_GET['pending_shipment_id'];
+        $data=$this->stocks_model->show_pending_shipment_by_id($pending_shipment_id);
+        
+        $data_array = array();
+        foreach($data as $myvalue){
+        $commodity_id=$myvalue->commodity_id;
+        $funding_agency_id=$myvalue->funding_agency_id;
+        $funding_agency_name=$this->stocks_model->get_funding_agency_name($funding_agency_id);
+        $commodity_name= $this->stocks_model->get_commodity_id_with_the_given_id($commodity_id);
+       
+        $data_array[] = $funding_agency_id;
+        $data_array[] = $funding_agency_name;
+        $data_array[] = $commodity_id;
+        $data_array[] = $commodity_name;
+        //echo($funding_agency_name." ".$commodity_name);
+        }
+        /*NOTES:
+            0 - funding agency id
+            1 - funding agency name
+            2 - commodity id
+            3 - commodity name
+        */   
+        $return = json_encode($data_array);
+        echo $return;
+        
     }
 
 

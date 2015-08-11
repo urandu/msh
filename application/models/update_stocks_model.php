@@ -9,10 +9,33 @@ class Update_stocks_model extends CI_Model{
 
 
     function show_current_stock(){
+        $this->db->distinct();
+        $this->db->group_by('period DESC' );
         $query = $this->db->get('current_stock');
         $query_result = $query->result();
         return $query_result;
     }
+
+    function show_current_stock_by_period($period){
+        $this->db->select('*, SUM(quantity_received) AS PendingTotal, SUM(quantity_issued) AS sum_issued');
+        $this->db->from('current_stock');
+        $this->db->group_by('commodity_id');
+        $this->db->where('period', $period);
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+    }
+
+    /*    function show_sorted_central_stock(){
+    $this->db->distinct();
+    $this->db->group_by('period DESC' );
+    $query = $this->db->get('central_level_data');
+    $query_result = $query->result();
+    return $query_result;
+
+}*/
+
+  
     // Function To Fetch All Commodies Record
     function show_malaria_commodities(){
     $query = $this->db->get('malaria_commodities');

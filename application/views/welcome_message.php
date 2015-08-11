@@ -50,10 +50,10 @@
 
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5 class="font-bold">MOS Status (Facility Level) (<?php echo($bil); ?>)
+    <h5 class="font-bold">National Stock Status Map for Period: (<?php echo "<font color= #33CC99>$bil</font>" ;?>)
         <br>
 
-        <span > <i style="color:red;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:green;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:orange;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:yellow;" class="fa fa-square"></i>  >9</span>
+        <span > <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <=3</span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  >3 to <=6</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >9</span>
 
 
         <br></h5>
@@ -554,7 +554,7 @@ if(!empty($items)){
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>National Level months of stock chart, period: <?php if(!empty($national_p)){echo($national_p);} ?></h5>
+                        <h5>National Stock Status for period: <?php if(!empty($national_p)){echo "<font color= #33CC99>$national_p</font>";} ?></h5>
                         <!--<div class="pull-right">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-xs btn-white active">Today</button>
@@ -576,7 +576,7 @@ if(!empty($items)){
                                     </select>
                             </div>
                             <div class="col-lg-3">
-                                <input class="btn btn-primary" type="submit" value="Get National Level MOS chart">
+                                <input class="btn btn-primary" type="submit" value="Display chart Title">
                                 </form>
                             </div>
 
@@ -591,9 +591,9 @@ if(!empty($items)){
                                         }
                                     };
                                 </script>
-                                <script asyn src="http://charts.livegap.com/js/webfont.js">
+                                <script asyn src="<?php echo(base_url()); ?>assets/js/webfont.js">
                                 </script>
-                                <script src="http://charts.livegap.com/js/Chart.min.js"></script>
+                                <script src="<?php echo(base_url()); ?>assets/js/Chart.min.js"></script>
                                 <script>
                                     function DrawTheChart(ChartData, ChartOptions, ChartId, ChartType) {
                                         eval('var myLine = new Chart(document.getElementById(ChartId).getContext("2d")).' + ChartType + '(ChartData,ChartOptions);document.getElementById(ChartId).getContext("2d").stroke();')
@@ -617,6 +617,7 @@ if(!empty($items)){
                                                 $y_axisn="";
                                                 $x_axis1n="";
                                                 $x_axis2n="";
+                                                 $x_axis3n="";
                                             foreach ($national_period as $p) {
 
 
@@ -641,8 +642,9 @@ if(!empty($items)){
 
 
 
-                                   // $facility_mos = ($p->physical_count) / ($p->adjusted_facility_amc);
+                                    $facility_mos = ($p->physical_count) / ($p->adjusted_facility_amc);
                                    // echo(round($facility_mos, 1));
+                                   $x_axis3n=$x_axis3n.(round($facility_mos, 1)).",";
 
 
 
@@ -664,9 +666,12 @@ if(!empty($items)){
                                         datasets: [
 
                                             {fillColor: "rgba(171,56,56,0.99)", strokeColor: "rgba(209,12,12,0.93)", pointColor: "rgba(52,152,219,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
-                                                data: [<?php if(!empty($national_period)){echo($x_axis1n);unset($x_axis1n);}  ?> ], title: "STOCKS AT KEMSA"},
+                                                data: [<?php if(!empty($national_period)){echo($x_axis1n);unset($x_axis1n);}  ?> ], title: "STOCKS AT CENTRAL LEVEL"},
                                             {fillColor: "rgba(49,95,212,0.91)", strokeColor: "rgba(36,141,240,1)", pointColor: "rgba(46,204,113,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
-                                                data: [<?php if(!empty($national_period)){echo($x_axis2n);unset($x_axis2n);}  ?>], title: "PENDING SHIPMENTS"}
+                                                data: [<?php if(!empty($national_period)){echo($x_axis2n);unset($x_axis2n);}  ?>], title: "PENDING SHIPMENTS"},
+
+                                            {fillColor: "rgba(71,21,120,0.97)", strokeColor: "rgba(71,115,250,1)", pointColor: "rgba(71,115,250,1)", markerShape: "circle", pointStrokeColor: "rgba(255,255,255,1.00)",
+                                                data: [<?php if(!empty($national_period)){echo($x_axis3n);unset($x_axis3n);}  ?> ], title: "Facility MOS"}
                                         ]};
                                     ChartOptions = {canvasBackgroundColor: 'rgba(255,255,255,1.00)', spaceLeft: 12, spaceRight: 12, spaceTop: 12, spaceBottom: 12, canvasBorders: false, canvasBordersWidth: 1, canvasBordersStyle: "solid", canvasBordersColor: "rgba(0,0,0,1)", yAxisMinimumInterval: 'none', scaleShowLabels: true, scaleShowLine: true, scaleLineStyle: "solid", scaleLineWidth: 1, scaleLineColor: "rgba(0,0,0,1)", scaleOverlay: false, scaleOverride: false, scaleSteps: 100, scaleStepWidth: 10, scaleStartValue: 0, inGraphDataShow: true, inGraphDataTmpl: '<%=v3%>', inGraphDataFontFamily: "'Open Sans'", inGraphDataFontStyle: "normal bold", inGraphDataFontColor: "rgba(0,0,0,1)", inGraphDataFontSize: 12, inGraphDataPaddingX: 0, inGraphDataPaddingY: -0, inGraphDataAlign: "center", inGraphDataVAlign: "middle", inGraphDataXPosition: 2, inGraphDataYPosition: 2, inGraphDataAnglePosition: 2, inGraphDataRadiusPosition: 2, inGraphDataRotate: 0, inGraphDataPaddingAngle: 0, inGraphDataPaddingRadius: 0, inGraphDataBorders: false, inGraphDataBordersXSpace: 1, inGraphDataBordersYSpace: 1, inGraphDataBordersWidth: 1, inGraphDataBordersStyle: "solid", inGraphDataBordersColor: "rgba(0,0,0,1)", legend: true, maxLegendCols: 5, legendBlockSize: 15, legendFillColor: 'rgba(255,255,255,0.00)', legendColorIndicatorStrokeWidth: 1, legendPosX: -2, legendPosY: 4, legendXPadding: 0, legendYPadding: 0, legendBorders: false, legendBordersWidth: 1, legendBordersStyle: "solid", legendBordersColors: "rgba(102,102,102,1)", legendBordersSpaceBefore: 5, legendBordersSpaceLeft: 5, legendBordersSpaceRight: 5, legendBordersSpaceAfter: 5, legendSpaceBeforeText: 5, legendSpaceLeftText: 5, legendSpaceRightText: 5, legendSpaceAfterText: 5, legendSpaceBetweenBoxAndText: 5, legendSpaceBetweenTextHorizontal: 5, legendSpaceBetweenTextVertical: 5, legendFontFamily: "'Open Sans'", legendFontStyle: "normal normal", legendFontColor: "rgba(0,0,0,1)", legendFontSize: 14, showYAxisMin: false, rotateLabels: "smart", xAxisBottom: true, yAxisLeft: true, yAxisRight: false, scaleFontFamily: "'Open Sans'", scaleFontStyle: "normal normal", scaleFontColor: "rgba(0,0,0,1)", scaleFontSize: 10, pointLabelFontFamily: "'Open Sans'", pointLabelFontStyle: "normal normal", pointLabelFontColor: "rgba(102,102,102,1)", pointLabelFontSize: 12, angleShowLineOut: true, angleLineStyle: "solid", angleLineWidth: 1, angleLineColor: "rgba(0,0,0,0.1)", percentageInnerCutout: 50, scaleShowGridLines: false, scaleGridLineStyle: "solid", scaleGridLineWidth: 1, scaleGridLineColor: "rgba(0,0,0,0.08)", scaleXGridLinesStep: 1, scaleYGridLinesStep: 0, segmentShowStroke: true, segmentStrokeStyle: "solid", segmentStrokeWidth: 2, segmentStrokeColor: "rgba(255,255,255,1.00)", datasetStroke: true, datasetFill: true, datasetStrokeStyle: "solid", datasetStrokeWidth: 2, bezierCurve: true, bezierCurveTension: 0.4, pointDotStrokeStyle: "solid", pointDotStrokeWidth: 1, pointDotRadius: 3, pointDot: true, barShowStroke: true, barBorderRadius: 0, barStrokeStyle: "solid", barStrokeWidth: 1, barValueSpacing: 3, barDatasetSpacing: 0, scaleShowLabelBackdrop: true, scaleBackdropColor: 'rgba(255,255,255,0.75)', scaleBackdropPaddingX: 2, scaleBackdropPaddingY: 2, animation: true, onAnimationComplete: function () {
                                         MoreChartOptions()
@@ -690,7 +695,7 @@ if(!empty($items)){
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>County level</h5>
+                        <h5>County Stock Status</h5>
                         <!--<div class="pull-right">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-xs btn-white active">Today</button>
@@ -723,7 +728,7 @@ if(!empty($items)){
 
 
                             <div class="col-lg-3">
-                                <input class="btn btn-primary" type="submit" value="Get County Level MOS">
+                                <input class="btn btn-primary" type="submit" value="Display Chart Title">
                                 </form>
                             </div>
 
@@ -731,7 +736,7 @@ if(!empty($items)){
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <h4>County level months of stock chart for <?php if(!empty($c)){echo(get_county_name($c));}  ?>, period: <?php if(!empty($p1)){ echo($p1);} ?></h4>
+                                    <h4>County level months of stock chart for <?php if(!empty($c)){echo(get_county_name($c));}  ?>, period: <?php if(!empty($p1)){ echo "<font color= #33CC99>$p1</font>";} ?></h4>
                                 </div>
 
                                 <script>
