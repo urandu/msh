@@ -62,7 +62,7 @@ class Reports extends MY_Controller
         $forecast_report['dates']=$this->report_model->get_forecast_commodity_data_periods();
 
         $forecast_report['period']=$this->report_model->get_forecast_commodity_data_mos($period);
-        $forecast_report['p']=$period;
+        $forecast_report['pe']=$period;
         $this->load->view('forecast_mos',$forecast_report);
     }
     public function central_mos($period="000000")

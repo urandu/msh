@@ -56,7 +56,7 @@
                 <div id="page-content" class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Forecast Commodities Data MOS for period: <?php echo "<font color= #33CC99>$p</font>"; ?></h5>
+                            <h5>Forecast Commodities Data MOS for period: <?php echo "<font color= #33CC99>$pe</font>"; ?></h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -98,7 +98,7 @@
                                     {  
                                       $pd=add_date($p->forecast_start_date,$p->forecast_period * 12);
                                        
-                                       if(($date->period)<=$pd) 
+                                       if($pe<=$pd) 
 
                                         {
 
@@ -146,7 +146,7 @@
                                        
                                     }
                                      
-                                     else  echo (" <font color='red'> The forecast period has expired,please adjust the period and forecast start date in the forecast option under settings.</font>");
+                                    else if($pe>=$pd)  echo (" <font color='red'> The forecast period has expired,please adjust the period and forecast start date in the forecast option under settings.</font>");
 
                                     }
                                     // endforeach;

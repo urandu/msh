@@ -35,12 +35,8 @@
 
                     <?php endforeach; ?>
                 </select>
-<<<<<<< HEAD
-                <input type="checkbox" name="no_reporting_rate" value="true"><span style="color:white"> Without adjusting consumption for reporting rate</span>        </div>
-=======
-                <input type="checkbox"  name="no_reporting_rate" value="true"> <span style="color:white">Without adjusting consumption for reporting rate</span>
-        </div>
->>>>>>> 2b715dc56b1b35a5acd0e05ed41fc719406a3a78
+                <input type="checkbox" name="no_reporting_rate" value="true"><span style="color:white"> Without adjusting consumption for reporting rate</span>        
+                </div>
         <div class="col-lg-3">
             <input class="btn btn-primary" type="submit" value="Get National Level MOS Report">
             </form>

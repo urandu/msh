@@ -66,6 +66,7 @@ if (isset($period)) {
                                 <th>Forecast Period </th>
                                 <th>Forecast Monthly Consumption</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -179,10 +180,12 @@ if (isset($period)) {
 
                  <form action="<?= base_url();?>forecast/save_forecast_commodity_data" method="post" enctype="multipart/form-data" autocomplete="on">
 
+                 
                 <div class= "form-group">
                 <label>Forecast Start Date:</label>
 
-              <input type="text" class="form-control" name="forecast_start_date" placeholder="Forecast start date">
+              <input type="text" class="form-control" name="forecast_start_date" data-mask="9999-99" placeholder="Forecast start date">
+                <span class="help-block">yyyy-mm</span>
                 </div>
                <div class "form-group">
                 <label>Forecast Period: </label>        

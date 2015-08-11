@@ -739,7 +739,7 @@ if(!empty($items)){
 
 
                             <div class="col-lg-3">
-                                <input class="btn btn-primary" type="submit" value="Display Chart Title">
+                                <input class="btn btn-primary" type="submit" value="Display Chart">
                                 </form>
                             </div>
 
