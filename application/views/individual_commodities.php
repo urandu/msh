@@ -32,7 +32,7 @@
 <div id="page-content" class="wrapper wrapper-content">
     <table   class="table">
         <thead>
-  <span > <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <9</span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  < 3</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >3 to < 6</span>
+  <span> <i style="color:<?php echo(get_color(1)); ?>;" class="fa fa-square"></i> <9 </span> || <span ><i style="color:<?php echo(get_color(2)); ?>;" class="fa fa-square"></i>  < 3</span> || <span ><i  style="color:<?php echo(get_color(3)); ?>;" class="fa fa-square"></i>  >6 to <=9</span> || <span ><i style="color:<?php echo(get_color(4)); ?>;" class="fa fa-square"></i>  >3 to < 6</span>
 
             <tr>Period: <?php echo "<font color= #33CC99> $period </font>";?></tr>
 
