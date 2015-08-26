@@ -1,5 +1,5 @@
 <?php
-include('connect.php');
+require 'connect.php';
 // Make a MySQL Connection
 $query = "SELECT period FROM county_level_data ORDER BY period DESC LIMIT 1"; 
 	 
@@ -13,7 +13,7 @@ while($row = mysql_fetch_array($result)){
 //convert the array into json for access in javascript
 $period_json = json_encode($period);
 
-//echo $period_json;
+echo $period_json;
 ?>
 
  

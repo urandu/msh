@@ -1,10 +1,7 @@
 <?php
-include('connect.php');
-include('facility_level_year.php');
+require 'connect.php';
+require 'facility_level_year.php';
 
-//API login Credentials
-$username="Bootcamp";
-$password="Bootcamp2015";
 $html=json_decode($period_json);
 function add_date($date,$interval)
 {
@@ -20,12 +17,7 @@ $last_month=add_date($html[0],1);
 //print_r($last_month);
 //HTTP GET request -Using Curl -Response JSON
 
-$url="http://test.hiskenya.org/api/analytics?dimension=dx:BnGDrFwyQp9;c0MB4RmVjxk;qnZmg5tNSMy;gVp1KSFI69G;cPlWFYbBacW&dimension=pe:LAST_12_MONTHS&dimension=co&filter=ou:HfVjCurKxh2&displayProperty=NAME";
-// $url_orgUnit="http://test.hiskenya.org/api/organisationUnits";
-
-// $data = array("dataSet" => "$dataset", "period" => "$period", "orgUnit" => "$orgUnit");
-// $data_string = http_build_query($data);
-// $url.="$data_string";
+$url="https://hiskenya.org/api/analytics?dimension=dx:BnGDrFwyQp9;c0MB4RmVjxk;qnZmg5tNSMy;gVp1KSFI69G;cPlWFYbBacW&dimension=pe:LAST_12_MONTHS&dimension=co&filter=ou:HfVjCurKxh2&displayProperty=NAME";
 
 // initailizing curl
 $ch = curl_init();
@@ -44,6 +36,7 @@ $result = curl_exec($ch);
 
 //close connection
 curl_close($ch);
+
 if ($result){
 
 	$result=json_decode($result,true);
@@ -68,7 +61,7 @@ if ($result){
        die('Error : ' . mysql_error()); 
     }
 
-}
+    }
 }
 else{
 

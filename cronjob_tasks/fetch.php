@@ -1,6 +1,6 @@
 
 <?php
-include('connect.php');
+require 'connect.php';
 // Make a MySQL Connection
 $query = "SELECT county_id FROM counties"; 
 	 
@@ -14,7 +14,7 @@ while($row = mysql_fetch_array($result)){
 //convert the array into json for access in javascript
 $county_json = json_encode($county);
 
-//echo $county_json;
+// echo $county_json;
 ?>
 
  

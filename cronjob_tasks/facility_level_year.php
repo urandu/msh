@@ -1,5 +1,5 @@
 <?php
-include('connect.php');
+require 'connect.php';
 // Make a MySQL Connection
 $query = "SELECT period FROM facility_level_data ORDER BY period DESC LIMIT 1"; 
 	 
