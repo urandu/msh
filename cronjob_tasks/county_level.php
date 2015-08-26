@@ -15,6 +15,7 @@ function add_date($date,$interval)
 
     return str_replace("-",null,$newdate);
 }
+
 $last_month=add_date($html[0],1);
 
 $html=json_decode($county_json,true);
@@ -24,7 +25,7 @@ $array_length=count($html);
     for($i=0;$i<$array_length;$i++)
     { 
    // print_r($data);
-$url="http://hiskenya.org/api/analytics?dimension=dx:BnGDrFwyQp9;c0MB4RmVjxk;qnZmg5tNSMy;gVp1KSFI69G;cPlWFYbBacW&dimension=pe:LAST_12_MONTHS&dimension=co&filter=ou:".$html[$i]."&displayProperty=NAME";
+$url="https://hiskenya.org/api/analytics?dimension=dx:BnGDrFwyQp9;c0MB4RmVjxk;qnZmg5tNSMy;gVp1KSFI69G;cPlWFYbBacW&dimension=pe:LAST_12_MONTHS&dimension=co&filter=ou:".$html[$i]."&displayProperty=NAME";
 
 // initailizing curl
 $ch = curl_init();
@@ -50,25 +51,25 @@ if ($result){
 	$json=$result['rows'];
 	//print_r($json);
 
-	 foreach($json as $row)
-    { 
-     if($row[1]==$last_month && ($row[2]=="rPAsF4cpNxm" || $row[2]=="w77uMi1KzOH"))
-     {
-    $drugid = $row[0];
-    $periodic = $row[1];
-    $drugcategoryid = $row[2];
-    $drugvalue = $row[3];
+  	 foreach($json as $row)
+      { 
+       if($row[1]==$last_month && ($row[2]=="rPAsF4cpNxm" || $row[2]=="w77uMi1KzOH"))
+       {
+      $drugid = $row[0];
+      $periodic = $row[1];
+      $drugcategoryid = $row[2];
+      $drugvalue = $row[3];
 
-  $sql = "INSERT INTO county_level_data(drug_id,period,drug_category_id,drug_value,county_id)VALUES('$drugid','$periodic','$drugcategoryid','$drugvalue','$html[$i]')";
-    if(mysql_query($sql,$con))
-    {
-    	echo ("inserted successfully <br>");
-        
-    }else
-       die('Error : ' . mysql_error()); 
-    }
+    $sql = "INSERT INTO county_level_data(drug_id,period,drug_category_id,drug_value,county_id)VALUES('$drugid','$periodic','$drugcategoryid','$drugvalue','$html[$i]')";
+      if(mysql_query($sql,$con))
+      {
+      	echo ("Inserted successfully <br>");
+          
+      }else
+         die('Error : ' . mysql_error()); 
+      }
 
-}
+  }
 }
 else{
 
