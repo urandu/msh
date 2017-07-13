@@ -5,3 +5,5 @@ Installation instructions
 2.import schema.sql on your database
 3.import create_user.sql on your database
 4.access the project from your browser at http://localhost/msh
+
+Codacy Badge
